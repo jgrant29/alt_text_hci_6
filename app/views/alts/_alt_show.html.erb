@@ -1,0 +1,12 @@
+<div data-controller="hello"></div>
+<div id="<%= dom_id alt %>">
+  <h1><%= alt.title %></h1>
+  <%= image_tag alt.image_url, class: "image" %>
+
+  <%= linked_tag_list alt %>
+  <%= alt.original_url %>
+  <%= alt.original_source %>
+  <%= alt.verified %>
+  <%= alt.user_id %>
+
+</div>

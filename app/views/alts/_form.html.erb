@@ -1,0 +1,48 @@
+<%= form_with(model: alt) do |form| %>
+  <% if alt.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(alt.errors.count, "error") %> prohibited this alt from being saved:</h2>
+
+      <ul>
+        <% alt.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.hidden_field :image, value: form.object.cached_image_data %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :tag_list, style: "display: block" %>
+    <%= form.text_field :tag_list, value: form.object.tag_list.join(", ") %>
+  </div>
+
+  <div>
+    <%= form.label :original_url, style: "display: block" %>
+    <%= form.text_field :original_url %>
+  </div>
+
+  <div>
+    <%= form.label :original_source, style: "display: block" %>
+    <%= form.text_field :original_source %>
+  </div>
+
+  <div>
+    <%= form.label :verified, style: "display: block" %>
+    <%= form.check_box :verified %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

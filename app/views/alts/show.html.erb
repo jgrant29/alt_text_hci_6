@@ -1,0 +1,6 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @alt_show %>
+<% if user_signed_in? && current_user == @alt_show.user %>
+  <%= link_to "Edit this image", edit_alt_path(@alt_show) %>
+<% end %>

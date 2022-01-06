@@ -1,0 +1,9 @@
+<div data-controller="hello"></div><p style="color: green"><%= notice %></p>
+
+<%= render @testing %>
+
+
+<% if user_signed_in? && current_user == @alt.user %>
+  <%= link_to "Back to image", alts_path %>
+  <%= button_to "Delete this image", @alt, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>

@@ -1,0 +1,16 @@
+<div data-controller="hello"></div>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Testings</h1>
+
+<div id="testings">
+  <% @testings.each do |testing| %>
+    <%= render testing %>
+    <p>
+      <%= link_to "Show this testing", testing %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New testing", new_testing_path %>

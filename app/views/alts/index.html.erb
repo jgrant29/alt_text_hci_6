@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+<div data-controller="hello"></div>
+<h1>Alts</h1>
+
+<div id="alts">
+  <% @alts.each do |alt| %>
+    <%= render alt %>
+    <p>
+      <%= link_to "Show this alt", alt %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New alt", new_alt_path %>
