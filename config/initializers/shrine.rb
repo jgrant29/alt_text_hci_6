@@ -7,8 +7,10 @@ if Rails.env.production?
   s3_options = { 
     bucket:            "alternative-production", # required 
     region:            "us-west-1", # required 
-    access_key_id:     Rails.application.credentials.dig(:aws, :access_key_id),
-    secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
+    access_key_id:     :access_key_id,
+    secret_access_key: :secret_access_key,
+    # access_key_id:     Rails.application.credentials.dig(:aws, :access_key_id),
+    # secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
   }
    
   Shrine.storages = { 
