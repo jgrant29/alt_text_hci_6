@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :alt_texts
   resources :alts
   devise_for :users
   root "alts#index"

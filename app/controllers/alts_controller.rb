@@ -5,11 +5,13 @@ class AltsController < ApplicationController
   # GET /alts or /alts.json
   def index
     @alts = Alt.all
+    @alt = Alt.new
   end
 
   # GET /alts/1 or /alts/1.json
   def show
     @alt_show = Alt.find(params[:id])
+    @alt = Alt.find(params[:id])
   end
 
   # GET /alts/new
@@ -23,13 +25,18 @@ class AltsController < ApplicationController
 
   # POST /alts or /alts.json
   def create
-    @alt = current_user.alts.new(alt_params)
+    @alt = Alt.new(alt_params)
 
     respond_to do |format|
       if @alt.save
+        @alt.image_derivatives!
+        @alt.image_attacher.add_metadata(caption: @alt.title, alt_text: "")
+        @alt.save
+        format.js
         format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
         format.json { render :show, status: :created, location: @alt }
       else
+        format.js
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @alt.errors, status: :unprocessable_entity }
       end
@@ -40,6 +47,9 @@ class AltsController < ApplicationController
   def update
     respond_to do |format|
       if @alt.update(alt_params)
+       @alt.image_derivatives!
+       @alt.image_attacher.add_metadata(caption: @alt.title, alt_text: "")
+       @alt.save
         format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
         format.json { render :show, status: :ok, location: @alt }
       else
@@ -60,13 +70,14 @@ class AltsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_alt
-      @alt = current_user.alts.find(params[:id])
+      @alt = Alt.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def alt_params
-      params.require(:alt).permit(:image, :title, :original_url, :original_source, :verified, :tag_list)
+      params.require(:alt).permit(:image, :title, :original_url, :original_source, :verified, :tag_list, :user_id)
     end
 end

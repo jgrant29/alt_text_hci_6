@@ -1,12 +1,81 @@
-<div data-controller="hello"></div>
-<div id="<%= dom_id alt %>">
+<section id="<%= dom_id alt %>">
   <h1 class="display-1"><%= alt.title %></h1>
-  <%= image_tag alt.image_url, class: "image" %>
+  <div class="row">
+    <div class="col-6 d-block d-sm-none">
+      <p>xs</p>
+      <span class="d-block">mime type <%= alt.image.mime_type %></span>
+      <span class="d-block">width <%= alt.image(:xsmall).width %> px </span>
+      <span class="d-block">height <%= alt.image(:xsmall).height %> px </span>
+    </div>
+    <div class="col-6 d-block d-sm-none">
+      <%= link_to alt.image(:xsmall).url do %>
+        <%= image_tag alt.image(:xsmall).url, class: "image", caption: alt.title, alt_text: "", class: "img-fluid", height: alt.image(:xsmall).height, width: alt.image(:xsmall).width %>
+      <% end %>
+    </div>
+    <div class="col-sm-6 d-none d-sm-block d-md-none">
+      <p>Small</p>
+      <span class="d-block">mime type <%= alt.image.mime_type %></span>
+      <span class="d-block">width <%= alt.image(:small).width %> px </span>
+      <span class="d-block">height <%= alt.image(:small).height %> px </span>
+    </div>
+    <div class="col-sm-6 d-none d-sm-block d-md-none">
+      <%= link_to alt.image(:small).url do %>
+        <%= image_tag alt.image(:small).url, class: "image", caption: alt.title, alt_text: "", class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
+      <% end %>
+    </div>
+    <div class="col-md-6 d-none d-md-block d-lg-none">
+      <p>Medium</p>
+      <span class="d-block">mime type <%= alt.image.mime_type %></span>
+      <span class="d-block">width <%= alt.image(:medium).width %> px </span>
+      <span class="d-block">height <%= alt.image(:medium).height %> px </span>
+    </div>
+    <div class="col-md-6 d-none d-md-block d-lg-none">
+      <%= link_to alt.image(:medium).url do %>
+        <%= image_tag alt.image(:medium).url, class: "image", caption: alt.title, alt_text: "", class: "img-fluid", height: alt.image(:medium).height, width: alt.image(:medium).width %>
+      <% end %>
+    </div>
+    <div class="col-md-6 d-none d-lg-block d-xl-none">
+      <p>Large</p>
+      <span class="d-block">mime type <%= alt.image.mime_type %></span>
+      <span class="d-block">width <%= alt.image(:large).width %> px </span>
+      <span class="d-block">height <%= alt.image(:large).height %> px </span>
+    </div>
+    <div class="col-md-6 d-none d-lg-block d-xl-none">
+      <%= link_to alt.image(:large).url do %>
+        <%= image_tag alt.image(:large).url, class: "image", caption: alt.title, alt_text: "", class: "img-fluid", height: alt.image(:large).height, width: alt.image(:large).width %>
+      <% end %>
+    </div>
+    <div class="col-md-6 d-none d-xl-block d-xxl-none">
+      <p>XL</p>
+      <span class="d-block">mime type <%= alt.image.mime_type %></span>
+      <span class="d-block">width <%= alt.image(:xl).width %> px </span>
+      <span class="d-block">height <%= alt.image(:xl).height %> px </span>
+    </div>
+    <div class="col-md-6 d-none d-xl-block d-xxl-none">
+      <%= link_to alt.image(:xl).url do %>
+        <%= image_tag alt.image(:xl).url, class: "image", caption: alt.title, alt_text: "", class: "img-fluid", height: alt.image(:xl).height, width: alt.image(:xl).width %>
+      <% end %>
+    </div>
+    <div class="col-md-6 d-none d-xxl-block">
+      <p>XL</p>
+      <span class="d-block">mime type <%= alt.image.mime_type %></span>
+      <span class="d-block">width <%= alt.image(:x_xl).width %> px </span>
+      <span class="d-block">height <%= alt.image(:x_xl).height %> px </span>
+    </div>
+    <div class="col-md-6 d-none d-xxl-block">
+      <%= link_to alt.image(:x_xl).url do %>
+        <%= image_tag alt.image(:x_xl).url, class: "image", caption: alt.title, alt_text: "", class: "img-fluid", height: alt.image(:x_xl).height, width: alt.image(:x_xl).width %>
+      <% end %>
+    </div>
+  </div>
 
+  <!-- reduce size of download for specific media -->
+  <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
   <%= linked_tag_list alt %>
   <%= alt.original_url %>
   <%= alt.original_source %>
   <%= alt.verified %>
-  <%= alt.user_id %>
-
-</div>
+  user: <%= first_last_name(alt) %>
+  <%= alt.user.email %>
+</section>
+  

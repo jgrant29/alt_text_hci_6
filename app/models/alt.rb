@@ -1,6 +1,6 @@
 class Alt < ApplicationRecord
   include ImageUploader::Attachment(:image)
-
+  
   acts_as_taggable
 
   has_rich_text :orginal_url

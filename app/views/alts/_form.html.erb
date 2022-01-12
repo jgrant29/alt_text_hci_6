@@ -15,6 +15,7 @@
     <%= form.label :image, style: "display: block" %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image %>
+
   </div>
 
   <div>
@@ -36,12 +37,11 @@
     <%= form.label :original_source, style: "display: block" %>
     <%= form.text_field :original_source %>
   </div>
-
   <div>
     <%= form.label :verified, style: "display: block" %>
     <%= form.check_box :verified %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
