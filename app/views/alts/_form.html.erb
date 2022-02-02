@@ -15,7 +15,6 @@
     <%= form.label :image, style: "display: block" %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image %>
-
   </div>
 
   <div>
@@ -32,7 +31,12 @@
     <%= form.label :original_url, style: "display: block" %>
     <%= form.text_field :original_url %>
   </div>
+  <div class="form-field">
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_area :body %>
+  </div>
 
+  <!-- add descriptions -->
   <div>
     <%= form.label :original_source, style: "display: block" %>
     <%= form.text_field :original_source %>

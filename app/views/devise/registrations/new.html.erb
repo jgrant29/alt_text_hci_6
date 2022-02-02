@@ -1,29 +1,38 @@
-<h2>Sign up</h2>
+<main class="container-fluid bg-light vh-100" aria-label="Alt Text Sign Up Form">
+  <section class="py-5 container">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="row">
+          <div class="card p-5 col-xl-6 offset-xl-3 col-12">
+            <h2 class="mb-3">Sign up</h2>
+            <div class="form-floating mt-1">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control", id: "email" %>
+              <label for="email" class="text-secondary">Email<span class="">*</span></label>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+            <div class="form-floating mt-1">
+              <%= f.password_field :password, id: "password", autocomplete: "new-password", placeholder: "Password '#{@minimum_password_length if @minimum_password_length} characters minimum", class: "form-control" %>
+              <label for="password" class="text-secondary">Password (<%= @minimum_password_length if @minimum_password_length %>) characters minimum<span class="">*</span></label>
+            </div>
+            <div class="form-floating mt-1">
+              <%= f.password_field :password_confirmation, id: "password_confirmation", autocomplete: "new-password", placeholder: "Password Confirmation '#{@minimum_password_length if @minimum_password_length} characters minimum", class: "form-control" %>
+              <label for="password_confirmation" class="text-secondary">Password Confirmation<span class="">*</span></label>
+            </div>
+            <div class="mt-2">
+              <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != "registrations" %>
+                <%= link_to "Forgot password?", new_password_path(resource_name), class: "fw-bold" %>
+              <% end %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Sign up", class: "btn btn-primary mt-3 w-100 btn-lg" %>
+            </div>
+          </div>
+        <% end %>
+        <div class="p-5 col-xl-6 offset-xl-3 col-12">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

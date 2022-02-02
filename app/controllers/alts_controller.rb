@@ -29,9 +29,8 @@ class AltsController < ApplicationController
 
     respond_to do |format|
       if @alt.save
-        @alt.image_derivatives!
-        @alt.image_attacher.add_metadata(caption: @alt.title, alt_text: "")
-        @alt.save
+        image_modification_alt
+        build_alt_text_versions
         format.js
         format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
         format.json { render :show, status: :created, location: @alt }
@@ -47,9 +46,8 @@ class AltsController < ApplicationController
   def update
     respond_to do |format|
       if @alt.update(alt_params)
-       @alt.image_derivatives!
-       @alt.image_attacher.add_metadata(caption: @alt.title, alt_text: "")
-       @alt.save
+        image_modification_alt
+        build_alt_text_versions
         format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
         format.json { render :show, status: :ok, location: @alt }
       else
@@ -57,6 +55,17 @@ class AltsController < ApplicationController
         format.json { render json: @alt.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def image_modification_alt
+    @alt.image_derivatives!
+    @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
+    @alt.save
+  end
+
+  def build_alt_text_versions
+    @alt_text = AltText.new(body: @alt.body, user_id: current_user.id, alt_id: @alt.id)
+    @alt_text.save
   end
 
   # DELETE /alts/1 or /alts/1.json
@@ -77,7 +86,8 @@ class AltsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+
     def alt_params
-      params.require(:alt).permit(:image, :title, :original_url, :original_source, :verified, :tag_list, :user_id)
+      params.require(:alt).permit(:body, :image, :title, :original_url, :original_source, :verified, :tag_list, :user_id)
     end
 end

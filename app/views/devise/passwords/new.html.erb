@@ -1,16 +1,26 @@
-<h2>Forgot your password?</h2>
+<main class="container-fluid bg-light vh-100">
+  <section class="container pt-5">
+    <div class="row">
+      <div class="card p-5 col-xl-6 offset-xl-3 col-12">
+        <h2 class="mb-3">Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="form-floating">
+            
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", "aria-label": "Enter valid email address to send reset password instructions", id: "email", class: "form-control", placeholder: "Email" %>
+            <%= f.label :email, for: "Your email address", class: "text-secondary" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+          <div class="actions mt-3">
+            <%= f.submit "Send me reset password instructions", "aria-label": "Send me reset password instructions", class: "w-100 btn btn-dark btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="p-5 col-xl-6 offset-xl-3 col-12">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </section>
+</main>

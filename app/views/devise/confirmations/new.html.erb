@@ -1,16 +1,26 @@
-<h2>Resend confirmation instructions</h2>
+<main class="container-fluid bg-light vh-100">
+    <section class="container pt-5">
+      <div class="row">
+        <div class="card p-5 col-xl-6 offset-xl-3 col-12">
+          <h2 class="mb-3">Resend confirmation instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+            <div class="form-floating">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "emial", class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+              <%= f.label :email, for: "email", class: "text-secondary" %>
+            </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+            <div class="actions">
+              <%= f.submit "Resend confirmation instructions", class: "btn btn-lg btn-primary w-100 mt-3" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="p-5 col-xl-6 offset-xl-3 col-12">
+        <%= render "devise/shared/links" %>
+      </div>
+  </section>
+</main>
 
-<%= render "devise/shared/links" %>

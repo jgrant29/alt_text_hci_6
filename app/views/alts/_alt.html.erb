@@ -1,12 +1,10 @@
-<div data-controller="hello"></div>
-<div id="<%= dom_id alt %>">
-  <h1><%= alt.title %></h1>
-  <%= image_tag alt.image(:large).url, class: "image" %>
 
-  <%= linked_tag_list alt %>
-  <%= alt.original_url %>
-  <%= alt.original_source %>
-  <%= alt.verified %>
-  <%= alt.user_id %>
-
-</div>
+  <div id="<%= dom_id alt %>" class="card p-3">
+    <h3><%= alt.title %></h3>
+    <%= link_to alt do %>
+      <%= image_tag alt.image(:large).url, class: "image w-100" %>
+    <% end %>    
+    <%= alt.user.first_name if alt.user.first_name.present? %>
+    <%= link_to "View image", alt, "aria-label": alt.title + "image" %>
+  </div>
+  

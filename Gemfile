@@ -74,6 +74,7 @@ group :test do
   gem "webdrivers"
 end
 
+# gem files from Justin
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'aws-sdk-s3', '~> 1.14'
 gem 'devise', '~> 4.8'

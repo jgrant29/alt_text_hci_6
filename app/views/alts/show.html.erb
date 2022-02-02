@@ -1,7 +1,7 @@
 <main class="container">
   <p style="color: green"><%= notice %></p>
   <%= render 'alt_show', alt: @alt %>
-  <% if user_signed_in? %>
+  <% if user_signed_in? && (current_user == @alt_show.user || current_user.super_user?) %>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Edit
     </button>
@@ -22,8 +22,5 @@
         </div>
       </div>
     </div>
-    <% if user_signed_in? && (current_user == @alt_show.user || current_user.super_user?) %>
-      <%= link_to "Edit this image", edit_alt_path(@alt_show) %>
-    <% end %>
   <% end %>
 </main>
