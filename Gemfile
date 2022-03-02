@@ -83,3 +83,5 @@ gem 'pry', '~> 0.13.1'
 gem "pundit"
 gem 'shrine', '~> 3.0'
 
+
+gem "meilisearch", "~> 0.18.1"
