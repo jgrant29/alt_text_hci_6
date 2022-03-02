@@ -1,13 +1,4 @@
-<% @title = "#{@alt.title}" %>
-<% @seo_description = "#{@alt.updated_at.strftime("%B #{@alt.updated_at.day.ordinalize}, %Y")}... #{@alt.title} #{strip_tags(@alt.body.truncate(130)).html_safe}" %>
-<% if @alt.image.present? %>
-  <% @seo_image = "#{@alt.original_url}" %>
-  <% @seo_alt = "#{@alt.body}" %>
-  <% @twitter_alt = "#{@alt.body}" %>
-<% end %>
-
 <section id="<%= dom_id alt %>">
-
   <h1 class="display-1"><%= alt.title %></h1>
   <%= alt.changed? %>
   <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
@@ -76,7 +67,6 @@
       <span class="d-block">width <%= alt.image(:xl).width %> px </span>
       <span class="d-block">height <%= alt.image(:xl).height %> px </span>
     </div>
-    
     <div class="col-md-6 d-none d-xxl-block">
       <%= link_to alt.image(:x_xl).url do %>
         <%= image_tag alt.image(:x_xl).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:x_xl).height, width: alt.image(:x_xl).width %>
@@ -90,27 +80,4 @@
     </div>
   </div>
 </section>
- <nav class="nav nav-pills nav-fill my-4">
-          <a aria-labeledby="Share on Twitter" class="social-share" href="https://twitter.com/intent/tweet?url=<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-brands fa-twitter fa-2x px-2 md-5"></i>
-          </a>
-
-          <a aria-labeledby="Share on Facebook" class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-brands fa-facebook fa-2x px-2 md-5"></i>
-         </a>
-
-         
-          <a aria-labeledby="Share on LinkedIn" class="social-share" href="https://www.linkedin.com/shareArticle?url=&amp<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-brands fa-linkedin  fa-2x px-2 md-5"></i>
-          </a>
-
-          <a aria-labeledby="Share on Email" class="social-share" href="mailto:?subject=<%=alt.title%>&body=<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-solid fa-envelope  fa-2x px-2 md-5"></i>
-          </a>
-
-           <a href="https://plus.google.com/share?url=${shareURL}" target="_blank" style="color : #555">
-            <i id="googleplus" class="fa fa-google-plus-square fa-2x px-2 md-5"></i>
-          </a>
-    </nav>
-   
   

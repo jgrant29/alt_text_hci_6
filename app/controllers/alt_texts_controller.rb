@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class AltTextsController < ApplicationController
   before_action :set_alt_text, only: %i[ show edit update destroy ]
 
@@ -16,12 +14,10 @@ class AltTextsController < ApplicationController
   def new
     @alt_text = AltText.new
   end
- 
+
   # GET /alt_texts/1/edit
   def edit
   end
-
- 
 
   # POST /alt_texts or /alt_texts.json
   def create

@@ -1,7 +1,6 @@
 require "image_processing/mini_magick"
 
 class ImageUploader < Shrine
-  plugin :determine_mime_type
 	plugin :add_metadata
 
   Attacher.derivatives do |original|

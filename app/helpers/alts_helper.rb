@@ -17,5 +17,4 @@ module AltsHelper
 			"[First Name] [Last Name]"
 		end
 	end
-	
 end

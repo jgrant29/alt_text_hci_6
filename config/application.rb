@@ -22,7 +22,5 @@ module AltTextHci6
     #
     config.time_zone = "Pacific Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    config.active_job.queue_adapter = :sidekiq
   end
 end
