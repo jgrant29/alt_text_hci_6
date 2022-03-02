@@ -337,11 +337,8 @@ DEPENDENCIES
   image_processing (~> 1.8)
   jbuilder
   jsbundling-rails
-<<<<<<< Updated upstream
   meilisearch (~> 0.18.1)
-=======
   meilisearch-rails (~> 0.5.1)
->>>>>>> Stashed changes
   pg (~> 1.1)
   phashion (~> 1.2.0)
   pry (~> 0.13.1)
