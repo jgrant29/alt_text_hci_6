@@ -1,5 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'actiontext.css';
+@import "font-awesome";
+
+
 
 a {
  color: $purple !important;
@@ -16,4 +19,15 @@ a:hover {
     
 .btn-outline-primary {
     @include button-outline-variant($purple, #222222, lighten($purple,5%), $purple);
+}
+
+.sr-only {  
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
