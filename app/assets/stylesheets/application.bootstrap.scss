@@ -1,25 +1,36 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'actiontext.css';
-
+@import "bootstrap/scss/bootstrap";
+@import "actiontext.css";
 
 a {
- color: $purple !important;
+  color: $purple !important;
 }
 
 a:hover {
-	color: darken($purple, 10%) !important;
+  color: darken($purple, 10%) !important;
 }
 
 .btn-primary {
-    @include button-variant($purple, darken($purple, 7.5%), #FFFFFF, lighten($purple, 5%), lighten($purple, 10%), #FFFFFF);
-    color: #FFFFFF;
-}
-    
-.btn-outline-primary {
-    @include button-outline-variant($purple, #222222, lighten($purple,5%), $purple);
+  @include button-variant(
+    $purple,
+    darken($purple, 7.5%),
+    #ffffff,
+    lighten($purple, 5%),
+    lighten($purple, 10%),
+    #ffffff
+  );
+  color: #ffffff;
 }
 
-.sr-only {  
+.btn-outline-primary {
+  @include button-outline-variant(
+    $purple,
+    #222222,
+    lighten($purple, 5%),
+    $purple
+  );
+}
+
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
