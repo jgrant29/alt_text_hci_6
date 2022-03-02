@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/1922d83c51.js" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="<%= @seo_description %>"/>
+    <meta name="twitter:title" content="<%= @title %>" />
+    <meta name="twitter:image:alt" content="<%= @twitter_alt %>">
+    <% if @seo_image.present? %>
+      <meta name="twitter:image" content="<%= @seo_image %>"/>
+    <% end %>
 
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="<%= @title %>" />
+    <meta property="og:description"   content="<%= @seo_description %>" />
+    <% if @seo_image.present? %>
+      <meta property="og:image" content="<%= @seo_image %>" />
+    <% end %>
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    
   </head>
 
   <body>
@@ -53,6 +71,8 @@
         </div>
       </div>
     </nav>
+    
     <%= yield %>
+    
   </body>
 </html>

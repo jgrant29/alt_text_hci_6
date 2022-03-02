@@ -1,6 +1,18 @@
 <main class="container-fluid pt-3">
   <section class="container bg-purple">
+  <div class="container-fluid d-grid  mt-5 pt-5 mx-auto col-md-6  align-self-center ">
+   <%= form_with url: '/alts', method: :get do |form| %>
+   <div class="input-group input-group-lg">
+      <%= form.label :query, "Search for:", class: "sr-only" %>
+      <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
+      <%= form.submit "Search", class: "text-white btn btn-primary" %>
+    </div>
+    <% end %>
+   </div>
     <h1>Images</h1>
+
+   
+   
     <div class="row">
       
         <% if user_signed_in? %>
@@ -19,7 +31,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                   <%= render "form", alt: @alt %> 
+                  <%= render "form", alt: @alt %> 
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -29,17 +41,72 @@
               </div>
             </div>
           </div>
-          <div class="col-md-9">
-            <div id="alts" class="row">
-              <% @alts.each do |alt| %>
-                <div class="col-4">
-                  <%= render alt %>
+
+          <div class="container">
+              <div class="card">
+
+            <nav>
+
+              <div class="card-header">
+
+                <div class="nav nav-tabs card-header-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="verified-tab" data-bs-toggle="tab" data-bs-target="#verified" type="button" role="tab" aria-controls="nav-verified" aria-selected="true">Media</button>
                 </div>
-              <% end %>
+
+              </div>
+
+          </nav>
+            <div class="card-body tab-content" id="nav-tabContent">
+            
+              <div class="tab-pane fade show active" id="verified" role="tabpanel" aria-labelledby="verified-tab">
+               <div class="col-md-9">
+                  <div id="alts" class="row">
+                    <% @alts.each do |alt| %>
+                      <div class="col-4">
+                        <% if alt.verified or !alt.verified %>
+                          <%= render alt %>
+                         <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="unverified" role="tabpanel" aria-labelledby="unverified-tab">
+                 <div class="col-md-9">
+                 <!-- <div id="alts" class="row">
+                    <% @alts.each do |alt| %>
+                      <div class="col-4">
+                        <% if !alt.verified %>
+                          <%= render alt %>
+                         <% end %>
+                      </div>
+                    <% end %>
+                  </div> -->
+                </div>
+              </div>
+
             </div>
-          </div>
+
+             
+              </div>
+            </div>
+          
+
+
+           <div class="col-md-9">
+            <div id= "twitter-feed" class="row">
+                <div class="col-4">
+                  <a class="twitter-timeline" data-height="330" data-width="220" href="https://twitter.com/bts_bighit?ref_src=twsrc%5Etfw">Tweets by bts_bighit</a> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+                    </script>
+                </div>
+            </div>
+        </div>
+
+         
         <% else %>
-          <div class="col-12">
+         <!-- <div class="col-12">
             <div id="alts" class="row">
               <% @alts.each do |alt| %>
                 
@@ -47,9 +114,13 @@
 
               <% end %>
             </div>
-          </div>
+          </div> -->
         <% end %>
       </div>
+
+     
+
+     
 
   </section>
 </main>
