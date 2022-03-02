@@ -10,7 +10,7 @@ Shrine.plugin :derivatives
     region:            "us-west-1", # required 
     access_key_id:     ENV['ACCESS_KEY_ID'], # Rails.application.credentials.dig(:aws, :access_key_id),
     secret_access_key:  ENV['SECRET_ACCESS_KEY'], # Rails.application.credentials.dig(:aws, :secret_access_key),           
-  }
+}
    
   Shrine.storages = { 
     cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options), # temporary 
