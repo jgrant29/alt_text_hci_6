@@ -6,10 +6,10 @@ Shrine.plugin :derivatives
   require 'shrine/plugins/url_options'
  
   s3_options = { 
-    bucket:            Rails.application.credentials.dig(:aws, :aws_bucket), # required 
+    bucket:            ENV['AWS_BUCKET'], #Rails.application.credentials.dig(:aws, :aws_bucket), # required 
     region:            "us-west-1", # required 
-    access_key_id:     Rails.application.credentials.dig(:aws, :access_key_id),
-    secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),           
+    access_key_id:     ENV['ACCESS_KEY_ID'],#Rails.application.credentials.dig(:aws, :access_key_id),
+    secret_access_key: ENV['SECRET_ACCESS_KEY']#Rails.application.credentials.dig(:aws, :secret_access_key),           
   }
    
   Shrine.storages = { 
