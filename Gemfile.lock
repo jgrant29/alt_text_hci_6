@@ -129,13 +129,13 @@ GEM
     down (5.2.4)
       addressable (~> 2.8)
     e2mmap (0.1.0)
-    elastic-transport (8.0.0)
-      faraday (~> 1)
+    elasticsearch (7.13.3)
+      elasticsearch-api (= 7.13.3)
+      elasticsearch-transport (= 7.13.3)
+    elasticsearch-api (7.13.3)
       multi_json
-    elasticsearch (8.0.0)
-      elastic-transport (= 8.0.0)
-      elasticsearch-api (= 8.0.0)
-    elasticsearch-api (8.0.0)
+    elasticsearch-transport (7.13.3)
+      faraday (~> 1)
       multi_json
     erubi (1.10.0)
     et-orbi (1.2.6)
@@ -371,7 +371,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.8)
-  elasticsearch
+  elasticsearch (< 7.14)
   fastimage
   image_processing (~> 1.8)
   jbuilder
