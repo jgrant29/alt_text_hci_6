@@ -91,3 +91,6 @@ gem 'sidekiq-cron'
 gem 'sidekiq-scheduler'
 gem "meilisearch-rails", "~> 0.5.1"
 gem "phashion", "~> 1.2.0"
+gem "searchkick"
+gem "elasticsearch"   # select one
+#gem "opensearch-ruby" # select one

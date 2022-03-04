@@ -1,6 +1,7 @@
 class Alt < ApplicationRecord
   include ImageUploader::Attachment(:image)
-  include MeiliSearch::Rails
+  #include MeiliSearch::Rails
+  searchkick
 
   acts_as_taggable
 
@@ -9,16 +10,28 @@ class Alt < ApplicationRecord
   belongs_to :user
   has_many :alt_texts
 
-   # attributes that we want to be indexed
-  meilisearch do
-    attribute :title
-    attribute :alt_texts do
-      alt_texts.pluck(:body)
-    end
+  #scope :search_import, -> { includes(:tag_list) }
 
-    attribute :tag_list 
-
-    sortable_attributes [:created_at, :updated_at]
+  # limit what is indexed
+  def search_data
+  {
+    title: title,
+   
+   
+  }
   end
+
+
+   # attributes that we want to be indexed
+  #meilisearch do
+  #  attribute :title
+  #  attribute :alt_texts do
+  #    alt_texts.pluck(:body)
+   # end
+
+  #  attribute :tag_list 
+
+   # sortable_attributes [:created_at, :updated_at]
+ # end
   
 end
