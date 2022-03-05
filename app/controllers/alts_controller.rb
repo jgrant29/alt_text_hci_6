@@ -21,7 +21,7 @@ class AltsController < ApplicationController
   
     #@alts = Alt.search(params[:query])
     #@alts = Alt.all
-    @alt = Alt.new
+    #@alt = Alt.new
   end
 
 
