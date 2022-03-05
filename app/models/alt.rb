@@ -4,7 +4,7 @@ class Alt < ApplicationRecord
   searchkick
 
   acts_as_taggable
-  scope :search_import, -> { includes(:tag_list) }
+ # scope :search_import, -> { includes(:tags) }
 
   has_rich_text :orginal_url
 
@@ -17,7 +17,10 @@ class Alt < ApplicationRecord
   def search_data
   {
     title: title,
-    tag_list: tag_list
+    attributes.merge(
+    tags_name: tags.map(&:name)
+   )
+   # body: body
   }
   end
 
