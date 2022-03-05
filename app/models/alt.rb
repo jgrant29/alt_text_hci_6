@@ -3,8 +3,8 @@ class Alt < ApplicationRecord
   #include MeiliSearch::Rails
   searchkick
 
-  acts_as_taggable :tag_list
-  scope :search_import, -> { includes(:tag_list) }
+  acts_as_taggable :tag_taggings
+  scope :search_import, -> { includes(:tag_taggings) }
 
   has_rich_text :orginal_url
 
@@ -17,7 +17,7 @@ class Alt < ApplicationRecord
   def search_data
   {
     title: title,
-    name_tagged: "#{tag_list} #{tags.map(&:tag_list).join(" ")}"
+    name_tagged: "#{tag_list} #{tags.map(&:tag_taggings).join(" ")}"
   }
   end
 
