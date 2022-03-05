@@ -3,8 +3,8 @@ class Alt < ApplicationRecord
   #include MeiliSearch::Rails
   searchkick
 
-  acts_as_taggable :tag_list
- # scope :search_import, -> { includes(:tags) }
+  acts_as_taggable 
+  scope :search_import, -> { includes(:tags) }
 
   has_rich_text :orginal_url
 
@@ -16,8 +16,8 @@ class Alt < ApplicationRecord
   # limit what is indexed
   def search_data
   {
-    title: title,
-    tag: tag_list
+    
+    tags: tag_list
    # body: body
   }
   end
