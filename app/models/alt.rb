@@ -15,7 +15,7 @@ class Alt < ApplicationRecord
   def search_data
   {
     
-    tags_name: tags.join(" "),
+    name_tagged: "#{name} #{tags.map(&:name).join(" ")}",
     title: title
    # body: body
   }
