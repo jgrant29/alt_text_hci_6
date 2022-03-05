@@ -3,7 +3,7 @@ class Alt < ApplicationRecord
   #include MeiliSearch::Rails
   searchkick
 
-  acts_as_taggable
+  acts_as_taggable :tag_list
   scope :search_import, -> { includes(:tag_list) }
 
   has_rich_text :orginal_url
