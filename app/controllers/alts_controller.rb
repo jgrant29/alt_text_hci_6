@@ -12,7 +12,7 @@ class AltsController < ApplicationController
     search = params[:query].present? ? params[:query] : nil
    
     @alts = Alt.search(search, fields: [:title])
-    #@alt = Alt.new
+    @alt = Alt.new
    
 
   
