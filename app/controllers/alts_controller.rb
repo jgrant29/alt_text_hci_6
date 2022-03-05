@@ -11,7 +11,8 @@ class AltsController < ApplicationController
   def index
     search = params[:query].present? ? params[:query] : nil
    
-    @alts = Alt.search(search, fields: ['title'])
+   # @alts = Alt.search(search, fields: ['title'])
+    @alts = Alt.all
     @alt = Alt.new
    
 
