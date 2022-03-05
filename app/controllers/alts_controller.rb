@@ -10,13 +10,8 @@ class AltsController < ApplicationController
   # GET /alts or /alts.json
   def index
     search = params[:query].present? 
-    if search
-      @alts = Alt.search(search, fields: ['tags'])
-      @alt = Alt.new
-    else
-      @alts = Alt.all
-      @alt = Alt.new
-    end
+    @alts = Alt.search(search, fields: [ 'tags'])
+    @alt = Alt.new
   
     #@alts = Alt.search(params[:query])
     #@alts = Alt.all
