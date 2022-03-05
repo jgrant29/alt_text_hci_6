@@ -4,14 +4,12 @@ class Alt < ApplicationRecord
   searchkick
 
   acts_as_taggable 
-  scope :search_import, -> { includes(:tags) }
+  scope :search_import, -> { includes(:title, :tags) }
 
   has_rich_text :orginal_url
 
   belongs_to :user
   has_many :alt_texts
-
-  #scope :search_import, -> { includes(:tag_list) }
 
   # limit what is indexed
   def search_data
