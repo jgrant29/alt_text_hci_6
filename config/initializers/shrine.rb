@@ -25,7 +25,7 @@ Shrine.plugin :derivatives
   Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays 
   Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
   Shrine.plugin :store_dimensions
-  # Shrine.plugin :url_options, store: { host: "http://d2mmrchyq2qjf8.cloudfront.net" }
+  Shrine.plugin :url_options, store: { host: "https://alt-text-hci-6.herokuapp.com/" }
 
 # enable localhost storage
   # Shrine.storages = { 
