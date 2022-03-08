@@ -93,4 +93,4 @@ gem "meilisearch-rails", "~> 0.5.1"
 gem "phashion", "~> 1.2.0"
 gem "searchkick"
 gem  "elasticsearch", "< 7.14"   # select one
-#gem "opensearch-ruby" # select one
+gem 'rails_12factor', group: :production
