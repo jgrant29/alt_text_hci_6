@@ -8,7 +8,7 @@ Shrine.plugin :derivatives
  
 # in vim change aws credential to match bucket, region and access_key_id, and other i.e. remove :aws
   s3_options = { 
-    bucket:            ENV['AWS_BUCKET'], # Rails.application.credentials.dig(:aws, :aws_bucket), # required 
+    bucket:            ENV.fetch('AWS_BUCKET'), # Rails.application.credentials.dig(:aws, :aws_bucket), # required 
     region:            "us-west-1", # required 
     access_key_id:     ENV['ACCESS_KEY_ID'], # Rails.application.credentials.dig(:aws, :access_key_id),
     secret_access_key:  ENV['SECRET_ACCESS_KEY'], # Rails.application.credentials.dig(:aws, :secret_access_key),           
