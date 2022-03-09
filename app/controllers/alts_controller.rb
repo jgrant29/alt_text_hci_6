@@ -44,6 +44,9 @@ class AltsController < ApplicationController
 
     respond_to do |format|
       if @alt.save
+        @alt.image_derivatives!
+        @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
+        @alt.create_derivatives
         if image_modification_alt == false
           format.js
           format.html { render :new, status: :unprocessable_entity }
@@ -97,9 +100,6 @@ class AltsController < ApplicationController
  
   # adds metadata 
   def image_modification_alt
-    @alt.image_derivatives!
-    @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
-    @alt.create_derivatives
     if is_duplicate == true
       @alt.destroy
       return false
