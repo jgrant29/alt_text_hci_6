@@ -99,7 +99,22 @@ class AltsController < ApplicationController
   def image_modification_alt
     @alt.image_derivatives!
     @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
-    
+
+    # Adding derivatives
+    attacher = @alt.image_attacher
+  
+    next unless attacher.stored?
+  
+    attacher.create_derivatives
+  
+    begin
+      attacher.atomic_persist            # persist changes if attachment has not changed in the meantime 
+    rescue Shrine::AttachmentChanged,    # attachment has changed 
+          ActiveRecord::RecordNotFound  # record has been deleted 
+      attacher.delete_derivatives        # delete now orphaned derivatives 
+    end
+
+
     if is_duplicate == true
       @alt.destroy
       return false
