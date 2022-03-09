@@ -46,7 +46,7 @@ class AltsController < ApplicationController
       if @alt.save
         @alt.image_derivatives!
         @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
-        @alt.save
+        #@alt.save
         Alt.find_each do |photo|
           attacher = photo.image_attacher
         
