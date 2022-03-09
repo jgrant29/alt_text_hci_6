@@ -107,12 +107,13 @@ class AltsController < ApplicationController
 
   def is_duplicate
     a = Alt.find_by(id: @alt.id)
-    img_mod = Phashion::Image.new(a.image_url)
-
+    img_mod = Phashion::Image.new(URI.open(a.image.url))
+    
     Alt.all.map { |u| 
 
        puts u.title
-       if img_mod.duplicate?(Phashion::Image.new(u.image_url)) == true
+       file2 = URI.open(u.image.url)
+       if img_mod.duplicate?(Phashion::Image.new(file2)) == true
           return true  
        end 
     }
