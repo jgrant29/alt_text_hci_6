@@ -11,10 +11,13 @@ class AltsController < ApplicationController
   def index
 
     
-    search = params[:query] #.present? ? params[:query] : nil
+    search = params[:query].present? ? params[:query] : nil
+    if search.nil?
+      @alts = Alt.all
+    else
+      @alts = Alt.search(search)
+    end
     
-    @alts = Alt.all
-   
     @alt = Alt.new
 
      
