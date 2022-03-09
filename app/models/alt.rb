@@ -20,6 +20,7 @@ class Alt < ApplicationRecord
   end
 
 
+
    # attributes that we want to be indexed
   #meilisearch do
   #  attribute :title

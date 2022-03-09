@@ -99,10 +99,7 @@ class AltsController < ApplicationController
   def image_modification_alt
     @alt.image_derivatives!
     @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
-
-
-
-
+    @alt.create_derivatives
     if is_duplicate == true
       @alt.destroy
       return false
