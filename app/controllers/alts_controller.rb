@@ -47,8 +47,10 @@ class AltsController < ApplicationController
         @alt.image_derivatives!
         @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
         @alt.save
-        @alt.create_derivatives
-        @alt.atomic_persist
+        @alt.image_attacher.create_derivatives
+       
+        @alt.image_attacher.atomic_persist
+       
         if image_modification_alt == false
           format.js
           format.html { render :new, status: :unprocessable_entity }
