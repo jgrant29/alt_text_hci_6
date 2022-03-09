@@ -110,6 +110,8 @@ class AltsController < ApplicationController
     img_mod = Phashion::Image.new(a.image.url)
 
     Alt.all.map { |u| 
+
+       puts u.title
        if img_mod.duplicate?(Phashion::Image.new(u.image.url)) == true
           return true  
        end 
