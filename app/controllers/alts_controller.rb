@@ -100,7 +100,7 @@ class AltsController < ApplicationController
     file1 = URI.parse(a.image.url).open
     puts file1.class
     if file1.instance_of?(StringIO)
-      file = Tempfile.new(['temp','.jpg'], :encoding => 'ascii-8bit')
+      file = Tempfile.new(a.image.metadata["filename"], :encoding => 'ascii-8bit')
       file1 = file.open
       puts file1.class
     end
@@ -112,7 +112,7 @@ class AltsController < ApplicationController
       
        file2 = URI.parse(u.image.url).open
        if file2.instance_of?(StringIO)
-        file = Tempfile.new(['temp','.jpg'], :encoding => 'ascii-8bit')
+        file = Tempfile.new(u.image.metadata["filename"], :encoding => 'ascii-8bit')
         file2 = file.open
         puts file2.class
        end
