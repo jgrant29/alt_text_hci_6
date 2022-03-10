@@ -100,7 +100,8 @@ class AltsController < ApplicationController
     file1 = URI.parse(a.image.url).open
     puts file1.class
     if file1.instance_of?(StringIO)
-      file1 = URI.parse(a.image.url).read
+      file = Tempfile.new(['temp','.jpg'], :encoding => 'ascii-8bit')
+      file1 = file
       puts file1.class
     end
     img_mod = Phashion::Image.new(file1.path)
@@ -110,7 +111,11 @@ class AltsController < ApplicationController
        puts u.title
       
        file2 = URI.parse(u.image.url).open
-    
+       if file2.instance_of?(StringIO)
+        file = Tempfile.new(['temp','.jpg'], :encoding => 'ascii-8bit')
+        file2 = file
+        puts file2.class
+       end
       
        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
           count = count + 1
