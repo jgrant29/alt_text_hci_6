@@ -101,7 +101,7 @@ class AltsController < ApplicationController
     puts file1.class
     if file1.instance_of?(StringIO)
       file = Tempfile.new(['temp','.jpg'], :encoding => 'ascii-8bit')
-      file1 = file
+      file1 = file.open
       puts file1.class
     end
     img_mod = Phashion::Image.new(file1.path)
@@ -113,7 +113,7 @@ class AltsController < ApplicationController
        file2 = URI.parse(u.image.url).open
        if file2.instance_of?(StringIO)
         file = Tempfile.new(['temp','.jpg'], :encoding => 'ascii-8bit')
-        file2 = file
+        file2 = file.open
         puts file2.class
        end
       
