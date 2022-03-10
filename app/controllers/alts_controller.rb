@@ -99,7 +99,7 @@ class AltsController < ApplicationController
     a = Alt.find_by(id: @alt.id)
     file1 = URI.parse(a.image.url).open
     puts file1.class
-    if file1.instance_of?(String)
+    if file1.instance_of?(StringIO)
       file1 = URI.parse(a.image.url).read
       puts file1.class
     end
