@@ -97,25 +97,25 @@ class AltsController < ApplicationController
 
   def is_duplicate
     a = Alt.find_by(id: @alt.id)
-    file1 = URI.parse(a.image.url).open
+    file1 = URI.parse(a.image_url(:large)).open
     puts file1.class
-    if file1.instance_of?(StringIO)
-      file = Tempfile.new(a.image.metadata["filename"], :encoding => 'ascii-8bit')
-      file1 = file.open
-      puts file1.class
-    end
+    #if file1.instance_of?(StringIO)
+     # file = Tempfile.new(a.image.metadata["filename"], :encoding => 'ascii-8bit')
+     # file1 = file.open
+      #puts file1.class
+    #end
     img_mod = Phashion::Image.new(file1.path)
     count = 0
     Alt.all.map { |u| 
 
        puts u.title
       
-       file2 = URI.parse(u.image.url).open
-       if file2.instance_of?(StringIO)
-        file = Tempfile.new(u.image.metadata["filename"], :encoding => 'ascii-8bit')
-        file2 = file.open
-        puts file2.class
-       end
+       file2 = URI.parse(u.image_url(:large)).open
+       #if file2.instance_of?(StringIO)
+       # file = Tempfile.new(u.image.metadata["filename"], :encoding => 'ascii-8bit')
+       # file2 = file.open
+       # puts file2.class
+       #end
       
        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
           count = count + 1
