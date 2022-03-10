@@ -99,11 +99,7 @@ class AltsController < ApplicationController
     a = Alt.find_by(id: @alt.id)
     file1 = URI.parse(a.image_url(:large)).open
     puts file1.class
-    #if file1.instance_of?(StringIO)
-     # file = Tempfile.new(a.image.metadata["filename"], :encoding => 'ascii-8bit')
-     # file1 = file.open
-      #puts file1.class
-    #end
+   
     img_mod = Phashion::Image.new(file1.path)
     count = 0
     Alt.all.map { |u| 
@@ -111,11 +107,7 @@ class AltsController < ApplicationController
        puts u.title
       
        file2 = URI.parse(u.image_url(:large)).open
-       #if file2.instance_of?(StringIO)
-       # file = Tempfile.new(u.image.metadata["filename"], :encoding => 'ascii-8bit')
-       # file2 = file.open
-       # puts file2.class
-       #end
+      
       
        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
           count = count + 1
