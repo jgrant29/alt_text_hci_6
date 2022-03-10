@@ -105,9 +105,9 @@ class AltsController < ApplicationController
     Alt.all.map { |u| 
 
        puts u.title
-       begin
-        file2 = URI.parse(u.image.url).open.read
-       rescue
+       
+       file2 = URI.parse(u.image.url).open.read
+       
       
        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
           count = count + 1
