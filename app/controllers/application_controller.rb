@@ -10,8 +10,13 @@ class ApplicationController < ActionController::Base
   end
 
   def pundit_user
-    current_user = User.new unless user_signed_in? 
-    return current_user
+    User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+  end
+
+  def create_guest_user
+    u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    u.save(:validate => false)
+    u
   end
 
   def configure_permitted_parameters
