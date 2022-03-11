@@ -8,7 +8,7 @@ class Alt < ApplicationRecord
 
   has_rich_text :orginal_url
 
-  belongs_to :user, :optional => true
+  belongs_to :user
   has_many :alt_texts
 
   # limit what is indexed
