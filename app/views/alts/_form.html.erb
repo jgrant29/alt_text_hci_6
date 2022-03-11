@@ -48,7 +48,7 @@
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%else%>
       
-      <%= form.hidden_field :user_id, value: pundit_user.id %>
+      <%= form.hidden_field :user_id, value: User.new.id %>
     <% end %>
   </div>
   <div>
