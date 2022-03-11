@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :set_current_user
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	include Pundit
 
@@ -9,6 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
+    current_user = User.new unless user_signed_in? 
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
