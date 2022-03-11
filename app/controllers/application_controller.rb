@@ -9,8 +9,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: exception.message
   end
 
-  def configure_permitted_parameters
+  def set_current_user
     current_user = User.new unless user_signed_in? 
+  end
+
+  def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
