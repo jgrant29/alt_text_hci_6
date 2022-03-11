@@ -46,6 +46,9 @@
     <%= form.check_box :verified %>
     <% if user_signed_in? %>
     <%= form.hidden_field :user_id, value: current_user.id %>
+    <%else%>
+      
+      <%= form.hidden_field :user_id, value: pundit_user.id %>
     <% end %>
   </div>
   <div>
