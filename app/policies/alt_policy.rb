@@ -9,7 +9,7 @@ class AltPolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    (user.present? || !user.present?) && create?
   end
 
   def destroy?
