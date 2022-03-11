@@ -5,7 +5,7 @@ class AltPolicy < ApplicationPolicy
   end
 
   def create?
-    create?
+    (user.present? || !user.present?) && create?
   end
 
   def update?
