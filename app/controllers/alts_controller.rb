@@ -137,6 +137,7 @@ class AltsController < ApplicationController
   end
 
   def build_alt_text_versions
+    
     @alt_text = AltText.new(body: @alt.body, user_id: current_user.id, alt_id: @alt.id)
     @alt_text.save
   end
