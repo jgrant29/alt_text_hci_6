@@ -10,12 +10,11 @@ class AltsController < ApplicationController
   # GET /alts or /alts.json
   def index
     
-    
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
       @alts = Alt.all
     else
-      @alts = Alt.search(search)
+      @alts = Alt.search(search, fields: [tags], match: :word_start, operator: "or")
     end
 
     @alt = Alt.new
