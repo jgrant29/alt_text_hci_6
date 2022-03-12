@@ -58,7 +58,7 @@ class AltsController < ApplicationController
        
         if image_modification_alt == false
           format.js
-          format.html { render :update, status: :unprocessable_entity }
+          format.html { render :new, status: :unprocessable_entity }
           flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
           @alt.save
