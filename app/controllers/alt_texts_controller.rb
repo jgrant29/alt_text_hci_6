@@ -5,11 +5,13 @@ class AltTextsController < ApplicationController
 
   # GET /alt_texts or /alt_texts.json
   def index
-    @alt_texts = AltText.all
+    #@alt_texts = AltText.all
+    @alt_texts = policy_scope(AltText)
   end
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
+    @alt_texts = policy_scope(AltText).find(params[:id])
   end
 
   # GET /alt_texts/new

@@ -3,7 +3,7 @@
 <% if @alt.image.present? %>
   <% @seo_image = "#{@alt.image_url}" %>
   <% @seo_alt = "#{@alt.body}" %>
- 
+  <% @twitter_alt = "#{@alt.body}" %>
 <% end %>
 
 <section id="<%= dom_id alt %>">

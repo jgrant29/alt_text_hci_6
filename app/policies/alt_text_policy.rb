@@ -23,4 +23,15 @@ class AltTextPolicy < ApplicationPolicy
   def destroy?
     create?
   end
+
+  class Scope < Scope
+    def resolve
+      if user.super_user?
+        scope.all
+      else
+        scope.where(published: true)
+      end
+    end
+  end
+
 end
