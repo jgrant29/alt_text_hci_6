@@ -4,12 +4,10 @@ class AltTextPolicy < ApplicationPolicy
     def resolve
       if user.super_user?
         scope.all
-      else
-        scope.where(published: true)
       end
     end
   end
-  
+
   def new?
     user.present? && user.super_user == true
   end
