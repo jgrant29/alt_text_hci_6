@@ -57,9 +57,11 @@
             <li class="nav-item">
               <%= link_to "Images", alts_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
-            </li>
+            <% if user.present? && user.super_user == true %>
+              <li class="nav-item">
+                <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
+              </li>
+            <% end %>
           </ul>
           <% if user_signed_in? %>
             <%= link_to "Account", edit_user_registration_path, class: "text-white ms-1 btn btn-primary" %>
