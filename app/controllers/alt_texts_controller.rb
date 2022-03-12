@@ -11,12 +11,12 @@ class AltTextsController < ApplicationController
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
-    
+
   end
 
   # GET /alt_texts/new
   def new
-    @alt_text = AltText.new
+    @alt_text = policy_scope(AltText).new
   end
  
   # GET /alt_texts/1/edit
