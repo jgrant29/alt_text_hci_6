@@ -10,7 +10,9 @@
 
   <h1 class="display-1"><%= alt.title %></h1>
   <%= alt.changed? %>
-  <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
+  <% if user_signed_in? %>
+    <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
+  <% end %>
   <%= linked_tag_list alt %>
   <%= alt.original_url %>
   <%= alt.original_source %>
