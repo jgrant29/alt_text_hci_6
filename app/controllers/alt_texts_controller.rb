@@ -11,6 +11,7 @@ class AltTextsController < ApplicationController
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
+    
   end
 
   # GET /alt_texts/new
