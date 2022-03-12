@@ -16,7 +16,7 @@ class Alt < ApplicationRecord
   {
     title: title,
     tags: tags.join(" "),
-    body: body
+    body: alt_texts.pluck(:body).last
  
   }
   end
