@@ -58,9 +58,10 @@ class AltsController < ApplicationController
        
         if image_modification_alt == false
           format.js
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { render :update, status: :unprocessable_entity }
           flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
+          @alt.save
           build_alt_text_versions
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
@@ -80,7 +81,7 @@ class AltsController < ApplicationController
       if @alt.update(alt_params)
         if image_modification_alt == false
           format.js
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { render :update, status: :unprocessable_entity }
           flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
           build_alt_text_versions
@@ -123,6 +124,7 @@ class AltsController < ApplicationController
   def image_modification_alt
     if is_duplicate == true
       @alt.destroy
+      #redirect_to alts_url
       return false
     end
     #img2 = Alt.find_by(id: 10)
