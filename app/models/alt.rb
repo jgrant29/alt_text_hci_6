@@ -1,7 +1,7 @@
 class Alt < ApplicationRecord
   include ImageUploader::Attachment(:image)
   #include MeiliSearch::Rails
-  searchkick word: [:tags]
+  searchkick word_start: [:title, :tags, :body]
 
   acts_as_taggable 
   scope :search_import, -> { includes(:tags) }
