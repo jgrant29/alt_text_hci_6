@@ -2,7 +2,7 @@
 require 'phashion'
 
 class AltsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :new, :create, :update]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_alt, only: %i[ edit update destroy ]
   helper_method :scrape
 
@@ -48,7 +48,7 @@ class AltsController < ApplicationController
   # POST /alts or /alts.json
   def create
     @alt = Alt.new(alt_params)
-    
+
     respond_to do |format|
       if @alt.save
         @alt.image_derivatives!
@@ -137,7 +137,6 @@ class AltsController < ApplicationController
   end
 
   def build_alt_text_versions
-    
     @alt_text = AltText.new(body: @alt.body, user_id: current_user.id, alt_id: @alt.id)
     @alt_text.save
   end

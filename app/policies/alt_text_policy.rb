@@ -1,23 +1,23 @@
 class AltTextPolicy < ApplicationPolicy
 
   def new?
-    (user.present? && @record.user_id == user.id) && (user.present? && user.super_user == true)
+    user.present? && user.super_user == true
   end
 
   def create?
-    create?
+    user.present? && user.super_user == true
   end
 
   def index?
-    create?
+    user.present? && user.super_user == true
   end
 
   def show
-    create?
+    user.present? && user.super_user == true
   end
 
   def update?
-    create?
+     user.present? && user.super_user == true
   end
 
   def destroy?
