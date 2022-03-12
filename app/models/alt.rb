@@ -16,6 +16,7 @@ class Alt < ApplicationRecord
   {
     title: title,
     tags: tags.join(" "),
+    body: body
  
   }
   end
