@@ -21,7 +21,7 @@ class AltTextPolicy < ApplicationPolicy
   end
 
   def show
-    user.present? && user.super_user == true
+    true
   end
 
   def update?
