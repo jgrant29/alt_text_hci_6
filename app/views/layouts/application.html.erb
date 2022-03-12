@@ -57,10 +57,13 @@
             <li class="nav-item">
               <%= link_to "Images", alts_path, class: "nav-link" %>
             </li>
-            <% if user_signed_in? && User.find_by(:id => current_user.id).super_user.nil? == false %>
+            <% if user_signed_in? %>
+            <% u = User.find_by(:id => current_user.id) %>
+             <% if u.super_user.nil? == false %>
               <li class="nav-item">
                 <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
               </li>
+              <% end %>
             <% end %>
           </ul>
           <% if user_signed_in? %>
