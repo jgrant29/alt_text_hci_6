@@ -14,7 +14,7 @@ class AltsController < ApplicationController
     if search.nil?
       @alts = Alt.all
     else
-      @alts = Alt.search(search, fields:[:title, :tags, :body], match: word_middle, operator: "or")
+      @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
     end
 
     @alt = Alt.new
