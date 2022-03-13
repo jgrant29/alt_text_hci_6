@@ -60,13 +60,14 @@
               <div class="tab-pane fade show active" id="verified" role="tabpanel" aria-labelledby="verified-tab">
                <div class="col-md-9">
                   <div id="alts" class="row">
+                   <turbo-frame id="<%= dom_id(@alts, 'alts') %>" loading="lazy" src="<%= render alt %>">
+                              <%= render('common/spinner') %>
+                      </turbo-frame>
                     <% @alts.each do |alt| %>
                       <div class="col-4">
                         <% if alt.verified or !alt.verified %>
                           <%= render alt %>
-                           <turbo-frame id="<%= dom_id(@alts, 'show-all') %>" loading="lazy" src="<%= alt %>">
-                              <%= render('common/spinner') %>
-                      </turbo-frame>
+                     
                          <% end %>
                           
                       </div>
