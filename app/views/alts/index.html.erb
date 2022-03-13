@@ -64,12 +64,13 @@
                       <div class="col-4">
                         <% if alt.verified or !alt.verified %>
                           <%= render alt %>
+                           <turbo-frame id="<%= dom_id(@alts, 'show-all') %>" loading="lazy" src="<%= alt %>">
+                              <%= render('common/spinner') %>
+                      </turbo-frame>
                          <% end %>
                           
                       </div>
-                      <turbo-frame id="<%= dom_id(@alts, 'show-all') %>" loading="lazy" src="<%= alts_path %>">
-                              <%= render('common/spinner') %>
-                      </turbo-frame>
+                     
                     <% end %>
                   </div>
                 </div>
