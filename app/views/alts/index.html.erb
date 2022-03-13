@@ -67,7 +67,7 @@
                          <% end %>
                           
                       </div>
-                      <turbo-frame id="<%= dom_id(@alts, 'show-all') %>" loading="lazy" src="<%= alts %>">
+                      <turbo-frame id="<%= dom_id(@alts, 'show-all') %>" loading="lazy" src="<%= alts_path %>">
                               <%= render('common/spinner') %>
                       </turbo-frame>
                     <% end %>
