@@ -65,10 +65,11 @@
                         <% if alt.verified or !alt.verified %>
                           <%= render alt %>
                          <% end %>
-                          <turbo-frame id="<%= dom_id(@alt, 'show-all') %>" loading="lazy" src="<%= alts %>">
-                              <%= render('common/spinner') %>
-                          </turbo-frame>
+                          
                       </div>
+                      <turbo-frame id="<%= dom_id(@alts, 'show-all') %>" loading="lazy" src="<%= alts %>">
+                              <%= render('common/spinner') %>
+                      </turbo-frame>
                     <% end %>
                   </div>
                 </div>
