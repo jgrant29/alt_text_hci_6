@@ -1,8 +1,9 @@
 
   <div id="<%= dom_id alt %>" class="card p-3">
-     <turbo-frame id="<%= dom_id(alt, 'alt') %>" loading="lazy" >
+      <turbo-frame id="<%= dom_id(alt, 'alt') %>" loading="lazy" src="<%= alt.image_url(:large) %>">
                               <%= render('common/spinner') %>
-                      </turbo-frame>
+      </turbo-frame>
+  
     <h3><%= alt.title %></h3>
     <%= link_to alt do %>
       <%= image_tag alt.image_url(:large), class: "image w-100" %>
@@ -10,5 +11,4 @@
     <%= alt.user.first_name if alt.user.first_name.present? %>
     <%= link_to "View image", alt, "aria-label": alt.title + "image" %>
   </div>
-
-  
+ 
