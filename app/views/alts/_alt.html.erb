@@ -1,6 +1,6 @@
 
   <div id="<%= dom_id alt %>" class="card p-3">
-      <turbo-frame id="<%= dom_id(alt, 'alt') %>" loading="lazy" src="<%= alt %>">
+      <turbo-frame id="<%= dom_id(alt) %>" loading="lazy" src="<%= dom_id alt %>">
           <%= render('common/spinner') %>
       </turbo-frame>
   

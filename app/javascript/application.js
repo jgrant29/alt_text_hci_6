@@ -27,10 +27,3 @@ function confirmSubmission(event) {
   })
 }
 
-$(document).on("page:fetch", function(){
- 
-});
-
-$(document).on("page:change", function(){
-  $("#spinner").hide();
-});
