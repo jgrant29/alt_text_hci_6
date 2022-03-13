@@ -2,7 +2,7 @@
   <div id="<%= dom_id alt %>" class="card p-3">
     <h3><%= alt.title %></h3>
     <%= link_to alt do %>
-     
+      <%= image_tag alt.image_url(:large), class: "image w-100" %>
        <turbo-frame id="<%= dom_id(alt) %>" loading="lazy" src="<%= image_tag alt.image_url(:large), class: "image w-100" %>">
           <%= render('common/spinner') %>
       </turbo-frame>
