@@ -51,5 +51,8 @@
   <div>
   <!-- Todo: add Spinner -->
     <%= form.submit %>
+    <turbo-frame id="<%= dom_id(@lt, 'state') %>" loading="lazy" src="<%= alt_texts_path %>">
+        <%= render('common/spinner') %>
+    </turbo-frame>
   </div>
 <% end %>
