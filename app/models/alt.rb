@@ -11,6 +11,7 @@ class Alt < ApplicationRecord
 
   belongs_to :user
   has_many :alt_texts
+  has_many :verifcations
 
   # limit what is indexed
   def search_data
