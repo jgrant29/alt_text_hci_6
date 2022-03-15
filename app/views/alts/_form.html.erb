@@ -11,46 +11,45 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :image, style: "display: block" %>
+  <div class="mb-3">
+    <label for="formFile" class="form-label">Image for Seven Army</label>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
   </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-floating mb-3">
+    <%= form.text_field :title, id: "title", class: "form-control", placeholder: "Title", required: true %>
+     <label for="title">Title<span style="color:red"> *</span></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= form.text_field :tag_list, id: "tags", class: "form-control d-block", placeholder: "Tags", required: true %>
+     <label for="tags">Tags<span style="color:red"> *</span></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= form.text_field :original_url, id: "original_url", class: "form-control d-block", placeholder: "original_url", required: true %>
+     <label for="original_url">Original URL<span style="color:red"> *</span></label>
+  </div>
+  <div class="form-floating mb-3">
+    <%= form.text_field :original_source, id: "original_source", class: "form-control d-block", placeholder: "original_source", required: true %>
+     <label for="original_source">Original Source (e.g. name of person)<span style="color:red"> *</span></label>
   </div>
 
-  <div>
-    <%= form.label :tag_list, style: "display: block" %>
-    <%= form.text_field :tag_list, value: form.object.tag_list.join(", ") %>
+  <div class="form-field mb-3">
+    <%= form.label :body, class: "d-block" %>
+    <%= form.text_area :body, class: "form-control", rows: 10 %>
   </div>
-
-  <div>
-    <%= form.label :original_url, style: "display: block" %>
-    <%= form.text_field :original_url %>
-  </div>
-  <div class="form-field">
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <!-- add descriptions -->
-  <div>
-    <%= form.label :original_source, style: "display: block" %>
-    <%= form.text_field :original_source %>
-  </div>
-  <div>
-    <%= form.label :verified, style: "display: block" %>
+  <div class="mb-3 bg-light border rounded border-1 p-3">
+  <div class="d-block">
+    <%= form.label "verified?", style: "display: block" %>
     <%= form.check_box :verified %>
-    <% if user_signed_in? %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <% end %>
+  </div>
+  <% if user_signed_in? %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
   </div>
   <div>
   <!-- Todo: add Spinner -->
-    <%= form.submit %>
+   <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
    
   </div>
 <% end %>
