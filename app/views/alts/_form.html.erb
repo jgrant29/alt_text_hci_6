@@ -45,6 +45,12 @@
     <%= form.label :verified, style: "display: block" %>
     <%= form.check_box :verified %>
     <% if user_signed_in? %>
+    <% verify = Verifications.where(alt_id: :id, user_id: current_user.id) %>
+     <%= if verify %>
+        <p>You have verifed this.</p>
+     <%else%>
+        <p> Needs verifcation</p>
+     <%end%>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <% end %>
   </div>
