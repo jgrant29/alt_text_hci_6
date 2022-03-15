@@ -44,16 +44,14 @@
   <div>
     <%= form.label :verified, style: "display: block" %>
     <%= form.check_box :verified %>
-    <%= turbo_frame_tag "#{dom_id(alt)}_verifications" do %>
-      <%= alt.total_verifications %>
-    <% end %>
+   
     <% if user_signed_in? %>
       <% verify = Verification.where(alt_id: alt.id, user_id: current_user.id).present? %>
       <div id="verfication-btns">
         <a>
           <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
         </a>
-          <p>0</p>
+           <%= alt.total_verifications %>
         <a>
           <i class="fa-regular fa-circle-down fa-2x px-2 md-5"></i> 
         </a>
