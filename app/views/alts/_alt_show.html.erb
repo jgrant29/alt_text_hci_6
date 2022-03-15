@@ -11,17 +11,27 @@
   <h1 class="display-1"><%= alt.title %></h1>
   <%= alt.changed? %>
   <% if user_signed_in? %>
-    <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
+    <div class="row">
+      <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
+    </div>
   <% end %>
-  <%= linked_tag_list alt %>
+  <div class="row">
+    <%= linked_tag_list alt %>
+  </div>
+  <div class="row">
   <%= alt.original_url %>
   <%= alt.original_source %>
+  </div>
+  <div>
   <%= alt.verified %>
-  <%= alt.image.metadata %>
+  </div>
+  <!--<%= alt.image.metadata %>-->
+  <div class="row">
   user: <%= first_last_name(alt) %>
   <p>Latest alt text: <%= alt.alt_texts.pluck(:body).last %></p>
   <p>Original: <%= alt.alt_texts.pluck(:body).first %></p>
   <%= alt.user.email %>
+  </div>
   <div class="row">
     <div class="col-6 d-block d-sm-none d-xtra-small">
       <%= link_to alt.image_url(:xsmall) do %>
