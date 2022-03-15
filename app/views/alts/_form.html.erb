@@ -46,9 +46,10 @@
     <%= form.check_box :verified %>
     <% if user_signed_in? %>
       <% verify = Verification.where(alt_id: alt.id, user_id: current_user.id).present? %>
-<i class="fa-regular fa-square-caret-up"></i>      <p>0</p>
-       <i class="fa-thin fa-down"></i>
-      <% if verify == true %>
+    <i class="fa-thin fa-square-caret-up"></i>    
+    <p>0</p>
+    <i class="fa-thin fa-square-caret-down"></i>     
+ <% if verify == true %>
           <p>You have verifed this.</p>
         
       <% else %>
