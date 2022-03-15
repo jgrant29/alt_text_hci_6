@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable
 
   has_many :alts
+  has_many :verifcations
 end

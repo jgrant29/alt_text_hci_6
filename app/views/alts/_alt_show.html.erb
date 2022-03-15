@@ -1,7 +1,7 @@
 <% @title = "#{@alt.title}" %>
 <% @seo_description = "#{@alt.updated_at.strftime("%B #{@alt.updated_at.day.ordinalize}, %Y")}... #{@alt.title} #{strip_tags(@alt.body.truncate(130)).html_safe}" %>
 <% if @alt.image.present? %>
-  <% @seo_image = "#{@alt.original_url}" %>
+  <% @seo_image = "#{@alt.image_url}" %>
   <% @seo_alt = "#{@alt.body}" %>
   <% @twitter_alt = "#{@alt.body}" %>
 <% end %>
@@ -10,7 +10,9 @@
 
   <h1 class="display-1"><%= alt.title %></h1>
   <%= alt.changed? %>
-  <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
+  <% if user_signed_in? %>
+    <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
+  <% end %>
   <%= linked_tag_list alt %>
   <%= alt.original_url %>
   <%= alt.original_source %>
@@ -22,8 +24,8 @@
   <%= alt.user.email %>
   <div class="row">
     <div class="col-6 d-block d-sm-none d-xtra-small">
-      <%= link_to alt.image(:xsmall).url do %>
-        <%= image_tag alt.image(:xsmall).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:xsmall).height, width: alt.image(:xsmall).width %>
+      <%= link_to alt.image_url(:xsmall) do %>
+        <%= image_tag alt.image_url(:xsmall), class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:xsmall).height, width: alt.image(:xsmall).width %>
       <% end %>
     </div>
     <div class="col-6 d-block d-sm-none d-xtra-small">
@@ -33,8 +35,8 @@
       <span class="d-block">height <%= alt.image(:xsmall).height %> px </span>
     </div>
     <div class="col-sm-6 d-none d-sm-block d-md-none">
-      <%= link_to alt.image(:small).url do %>
-        <%= image_tag alt.image(:small).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
+      <%= link_to alt.image_url(:small) do %>
+        <%= image_tag alt.image_url(:small), class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
       <% end %>
     </div>
     <div class="col-sm-6 d-none d-sm-block d-md-none">
@@ -44,8 +46,8 @@
       <span class="d-block">height <%= alt.image(:small).height %> px </span>
     </div>
     <div class="col-md-6 d-none d-md-block d-lg-none">
-      <%= link_to alt.image(:medium).url do %>
-        <%= image_tag alt.image(:medium).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:medium).height, width: alt.image(:medium).width %>
+      <%= link_to alt.image_url(:medium) do %>
+        <%= image_tag alt.image_url(:medium), class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:medium).height, width: alt.image(:medium).width %>
       <% end %>
     </div>
     <div class="col-md-6 d-none d-md-block d-lg-none">
@@ -55,8 +57,8 @@
       <span class="d-block">height <%= alt.image(:medium).height %> px </span>
     </div>
     <div class="col-md-6 d-none d-lg-block d-xl-none">
-      <%= link_to alt.image(:large).url do %>
-        <%= image_tag alt.image(:large).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:large).height, width: alt.image(:large).width %>
+      <%= link_to alt.image_url(:large) do %>
+        <%= image_tag alt.image_url(:large), class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:large).height, width: alt.image(:large).width %>
       <% end %>
     </div>
     <div class="col-md-6 d-none d-lg-block d-xl-none">
@@ -66,8 +68,8 @@
       <span class="d-block">height <%= alt.image(:large).height %> px </span>
     </div>
     <div class="col-md-6 d-none d-xl-block d-xxl-none">
-      <%= link_to alt.image(:xl).url do %>
-        <%= image_tag alt.image(:xl).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:xl).height, width: alt.image(:xl).width %>
+      <%= link_to alt.image_url(:xl) do %>
+        <%= image_tag alt.image_url(:xl), class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:xl).height, width: alt.image(:xl).width %>
       <% end %>
     </div>
     <div class="col-md-6 d-none d-xl-block d-xxl-none">
@@ -78,8 +80,8 @@
     </div>
     
     <div class="col-md-6 d-none d-xxl-block">
-      <%= link_to alt.image(:x_xl).url do %>
-        <%= image_tag alt.image(:x_xl).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:x_xl).height, width: alt.image(:x_xl).width %>
+      <%= link_to alt.image_url(:x_xl) do %>
+        <%= image_tag alt.image_url(:x_xl), class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:x_xl).height, width: alt.image(:x_xl).width %>
       <% end %>
     </div>
     <div class="col-md-6 d-none d-xxl-block">
