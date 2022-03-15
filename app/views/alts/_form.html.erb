@@ -47,9 +47,13 @@
     <% if user_signed_in? %>
       <% verify = Verification.where(alt_id: alt.id, user_id: current_user.id).present? %>
       <div id="verfication-btns">
-        <i class="fa-regular fa-circle-up"></i>
+        <a>
+          <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
+        </a>
           <p>0</p>
-        <i class="fa-regular fa-circle-down"></i> 
+        <a>
+          <i class="fa-regular fa-circle-down fa-2x px-2 md-5"></i> 
+        </a>
       </div>  
  <% if verify == true %>
           <p>You have verifed this.</p>
