@@ -1,7 +1,7 @@
 <% @title = "#{@alt.title}" %>
 <% @seo_description = "#{@alt.updated_at.strftime("%B #{@alt.updated_at.day.ordinalize}, %Y")}... #{@alt.title} #{strip_tags(@alt.body.truncate(130)).html_safe}" %>
 <% if @alt.image.present? %>
-  <% @seo_image = "#{@alt.original_url}" %>
+  <% @seo_image = "#{@alt.image_url}" %>
   <% @seo_alt = "#{@alt.body}" %>
   <% @twitter_alt = "#{@alt.body}" %>
 <% end %>
@@ -9,108 +9,58 @@
 <section id="<%= dom_id alt %>">
 
   <h1 class="display-1"><%= alt.title %></h1>
-  <%= alt.changed? %>
-  <%= link_to "Download", alt.image.url(response_content_disposition: "attachment") %>
-  <%= linked_tag_list alt %>
-  <%= alt.original_url %>
-  <%= alt.original_source %>
-  <%= alt.verified %>
-  <%= alt.image.metadata %>
-  user: <%= first_last_name(alt) %>
-  <p>Latest alt text: <%= alt.alt_texts.pluck(:body).last %></p>
-  <p>Original: <%= alt.alt_texts.pluck(:body).first %></p>
-  <%= alt.user.email %>
-  <div class="row">
-    <div class="col-6 d-block d-sm-none d-xtra-small">
-      <%= link_to alt.image(:xsmall).url do %>
-        <%= image_tag alt.image(:xsmall).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:xsmall).height, width: alt.image(:xsmall).width %>
+  <nav class="nav nav-pills nav-fill my-4">
+    <a aria-labeledby="Share on Twitter" class="social-share" href="https://twitter.com/intent/tweet?url=<%= alt_url(@alt) %>" target="_blank">
+      <i class="fa-brands fa-twitter fa-2x px-2 md-5"></i>
+    </a>
+
+    <a aria-labeledby="Share on Facebook" class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<%= alt_url(@alt) %>" target="_blank">
+      <i class="fa-brands fa-facebook fa-2x px-2 md-5"></i>
+   </a>
+
+   
+    <a aria-labeledby="Share on LinkedIn" class="social-share" href="https://www.linkedin.com/shareArticle?url=&amp<%= alt_url(@alt) %>" target="_blank">
+      <i class="fa-brands fa-linkedin  fa-2x px-2 md-5"></i>
+    </a>
+
+    <a aria-labeledby="Share on Email" class="social-share" href="mailto:?subject=<%=alt.title%>&body=<%= alt_url(@alt) %>" target="_blank">
+      <i class="fa-solid fa-envelope  fa-2x px-2 md-5"></i>
+    </a>
+
+     <a href="https://plus.google.com/share?url=${shareURL}" target="_blank" style="color : #555">
+      <i id="googleplus" class="fa fa-google-plus-square fa-2x px-2 md-5"></i>
+    </a>
+
+    <% if user_signed_in? %>
+      <%= link_to "Download", alt.image.url(response_content_disposition: "attachment"), class: "btn btn-sm btn-outline-primary" %>
+    <% end %>
+  </nav>
+  <div class="row mt-4">
+    <div class="col-md-6 bg-light p-5 border rounded">
+      <h2><u>Info.</u></h2>
+        <% if alt.verified == false %>
+          <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Verify
+          </button>
+        <% else %>
+          <small class="d-block mb-1">Verified</small>
+        <% end %>
+      <span class="d-block mb-1">Tags: <%= linked_tag_list alt %></span>
+      <span class="d-block mb-1">URL: <%= alt.original_url %></span>
+      <span class="d-block mb-1">Source: <%= alt.original_source %></span>
+      <!-- <span class="d-block mb-1"><%= alt.image.metadata %></span> -->
+      <span class="d-block mb-1">Mime type: <%= alt.image.mime_type %></span>
+      <span class="d-block mb-1">Width: <%= alt.image(:small).width %> px </span>
+      <span class="d-block mb-1">Height: <%= alt.image(:small).height %> px </span>
+      <span class="d-block mb-1">User: <%= first_last_name(alt) %></span>
+      <span class="d-block mb-1">Latest alt text: <%= alt.alt_texts.pluck(:body).last %></span>
+      <span class="d-block mb-1">Original alt text: <%= alt.alt_texts.pluck(:body).first %></span>
+    </div>
+    <div class="col-md-6">
+      <%= link_to alt.image_url(:small) do %>
+        <%= image_tag alt.image_url(:small), class: "image", caption: alt.title, alt: alt.alt_texts.pluck(:body).last, class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
       <% end %>
     </div>
-    <div class="col-6 d-block d-sm-none d-xtra-small">
-      <p>xs</p>
-      <span class="d-block">mime type <%= alt.image.mime_type %></span>
-      <span class="d-block">width <%= alt.image(:xsmall).width %> px </span>
-      <span class="d-block">height <%= alt.image(:xsmall).height %> px </span>
-    </div>
-    <div class="col-sm-6 d-none d-sm-block d-md-none">
-      <%= link_to alt.image(:small).url do %>
-        <%= image_tag alt.image(:small).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
-      <% end %>
-    </div>
-    <div class="col-sm-6 d-none d-sm-block d-md-none">
-      <p>Small</p>
-      <span class="d-block">mime type <%= alt.image.mime_type %></span>
-      <span class="d-block">width <%= alt.image(:small).width %> px </span>
-      <span class="d-block">height <%= alt.image(:small).height %> px </span>
-    </div>
-    <div class="col-md-6 d-none d-md-block d-lg-none">
-      <%= link_to alt.image(:medium).url do %>
-        <%= image_tag alt.image(:medium).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:medium).height, width: alt.image(:medium).width %>
-      <% end %>
-    </div>
-    <div class="col-md-6 d-none d-md-block d-lg-none">
-      <p>Medium</p>
-      <span class="d-block">mime type <%= alt.image.mime_type %></span>
-      <span class="d-block">width <%= alt.image(:medium).width %> px </span>
-      <span class="d-block">height <%= alt.image(:medium).height %> px </span>
-    </div>
-    <div class="col-md-6 d-none d-lg-block d-xl-none">
-      <%= link_to alt.image(:large).url do %>
-        <%= image_tag alt.image(:large).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:large).height, width: alt.image(:large).width %>
-      <% end %>
-    </div>
-    <div class="col-md-6 d-none d-lg-block d-xl-none">
-      <p>Large</p>
-      <span class="d-block">mime type <%= alt.image.mime_type %></span>
-      <span class="d-block">width <%= alt.image(:large).width %> px </span>
-      <span class="d-block">height <%= alt.image(:large).height %> px </span>
-    </div>
-    <div class="col-md-6 d-none d-xl-block d-xxl-none">
-      <%= link_to alt.image(:xl).url do %>
-        <%= image_tag alt.image(:xl).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:xl).height, width: alt.image(:xl).width %>
-      <% end %>
-    </div>
-    <div class="col-md-6 d-none d-xl-block d-xxl-none">
-      <p>XL</p>
-      <span class="d-block">mime type <%= alt.image.mime_type %></span>
-      <span class="d-block">width <%= alt.image(:xl).width %> px </span>
-      <span class="d-block">height <%= alt.image(:xl).height %> px </span>
-    </div>
-    
-    <div class="col-md-6 d-none d-xxl-block">
-      <%= link_to alt.image(:x_xl).url do %>
-        <%= image_tag alt.image(:x_xl).url, class: "image", caption: alt.title, alt: @alt.body, class: "img-fluid", height: alt.image(:x_xl).height, width: alt.image(:x_xl).width %>
-      <% end %>
-    </div>
-    <div class="col-md-6 d-none d-xxl-block">
-      <p>XL</p>
-      <span class="d-block">mime type <%= alt.image.mime_type %></span>
-      <span class="d-block">width <%= alt.image(:x_xl).width %> px </span>
-      <span class="d-block">height <%= alt.image(:x_xl).height %> px </span>
-    </div>
-  </div>
 </section>
- <nav class="nav nav-pills nav-fill my-4">
-          <a aria-labeledby="Share on Twitter" class="social-share" href="https://twitter.com/intent/tweet?url=<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-brands fa-twitter fa-2x px-2 md-5"></i>
-          </a>
-
-          <a aria-labeledby="Share on Facebook" class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-brands fa-facebook fa-2x px-2 md-5"></i>
-         </a>
-
-         
-          <a aria-labeledby="Share on LinkedIn" class="social-share" href="https://www.linkedin.com/shareArticle?url=&amp<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-brands fa-linkedin  fa-2x px-2 md-5"></i>
-          </a>
-
-          <a aria-labeledby="Share on Email" class="social-share" href="mailto:?subject=<%=alt.title%>&body=<%= alt_url(@alt) %>" target="_blank">
-            <i class="fa-solid fa-envelope  fa-2x px-2 md-5"></i>
-          </a>
-
-           <a href="https://plus.google.com/share?url=${shareURL}" target="_blank" style="color : #555">
-            <i id="googleplus" class="fa fa-google-plus-square fa-2x px-2 md-5"></i>
-          </a>
-    </nav>
    
   

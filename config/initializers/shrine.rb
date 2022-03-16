@@ -2,17 +2,27 @@
 require "shrine/storage/file_system"
 
 Shrine.plugin :derivatives
+Shrine.plugin :activerecord
 
   require "shrine/storage/s3"
   require 'shrine/plugins/url_options'
  
 # in vim change aws credential to match bucket, region and access_key_id, and other i.e. remove :aws
+if Rails.env == 'production'  
   s3_options = { 
     bucket:            ENV['AWS_BUCKET'], # Rails.application.credentials.dig(:aws, :aws_bucket), # required 
     region:            "us-west-1", # required 
     access_key_id:     ENV['ACCESS_KEY_ID'], # Rails.application.credentials.dig(:aws, :access_key_id),
     secret_access_key:  ENV['SECRET_ACCESS_KEY'], # Rails.application.credentials.dig(:aws, :secret_access_key),           
-}
+  }
+else
+  s3_options = { 
+    bucket:            Rails.application.credentials.dig(:aws_bucket), # required 
+    region:            "us-west-1", # required 
+    access_key_id:     Rails.application.credentials.dig(:access_key_id),
+    secret_access_key: Rails.application.credentials.dig(:secret_access_key),           
+  }
+end
 
    
   Shrine.storages = { 

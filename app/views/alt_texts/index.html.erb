@@ -3,12 +3,14 @@
 <h1>Alt texts</h1>
 
 <div id="alt_texts">
+<% if !@alt_texts.nil? %>
   <% @alt_texts.each do |alt_text| %>
     <%= render alt_text %>
     <p>
       <%= link_to "Show this alt text", alt_text %>
     </p>
   <% end %>
+<% end %>
 </div>
 
 <%= link_to "New alt text", new_alt_text_path %>

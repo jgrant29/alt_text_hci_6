@@ -9,9 +9,23 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
-    @alts = Alt.search(params[:query])
-    #@alts = Alt.all
+    
+    search = params[:query].present? ? params[:query] : nil
+    if search.nil?
+      @alts = Alt.all
+    else
+      @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
+    end
+
     @alt = Alt.new
+
+     
+   
+
+  
+    #@alts = Alt.search(params[:query])
+    #@alts = Alt.all
+    #@alt = Alt.new
   end
 
 
@@ -36,11 +50,17 @@ class AltsController < ApplicationController
 
     respond_to do |format|
       if @alt.save
+        @alt.image_derivatives!
+        @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
+        @alt.save
+       
+       
         if image_modification_alt == false
           format.js
           format.html { render :new, status: :unprocessable_entity }
           flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
+          @alt.save
           build_alt_text_versions
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
@@ -60,7 +80,7 @@ class AltsController < ApplicationController
       if @alt.update(alt_params)
         if image_modification_alt == false
           format.js
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { render :update, status: :unprocessable_entity }
           flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
           build_alt_text_versions
@@ -77,11 +97,23 @@ class AltsController < ApplicationController
 
   def is_duplicate
     a = Alt.find_by(id: @alt.id)
-    img_mod = Phashion::Image.new(a.image.url)
-
+    file1 = URI.parse(a.image_url(:small)).open
+    puts file1.class
+   
+    img_mod = Phashion::Image.new(file1.path)
+    count = 0
     Alt.all.map { |u| 
-       if img_mod.duplicate?(Phashion::Image.new(u.image.url)) == true
-          return true  
+
+       puts u.title
+      
+       file2 = URI.parse(u.image_url(:small)).open
+      
+      
+       if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
+          count = count + 1
+          if count == 2
+            return true 
+          end 
        end 
     }
     return false
@@ -89,11 +121,9 @@ class AltsController < ApplicationController
  
   # adds metadata 
   def image_modification_alt
-    @alt.image_derivatives!
-    @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
-    
     if is_duplicate == true
       @alt.destroy
+      #redirect_to alts_url
       return false
     end
     #img2 = Alt.find_by(id: 10)
@@ -211,6 +241,21 @@ class AltsController < ApplicationController
     return true
   
     
+  end
+
+
+  def verify
+    @alt = Alt.find(params[:id])
+    @alt.increment!(:total_verifcations)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "#{dom_id(@alt)}_verifications",
+          partial: 'alts/verifcations',
+          locals: {alt: @alt}
+        )
+      end
+    end
   end
 
   private
