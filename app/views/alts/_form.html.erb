@@ -51,8 +51,12 @@
         <a>
           <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
         </a>
-
+            <% if alt.total_verifications.nil? %>
+           <p>0</p>
+           <%else%>
            <p><% alt.total_verifications %></p>
+           <%end%>
+
         <a>
           <i class="fa-regular fa-circle-down fa-2x px-2 md-5"></i> 
         </a>
