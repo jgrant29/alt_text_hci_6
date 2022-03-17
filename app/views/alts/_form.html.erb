@@ -49,9 +49,10 @@
        
         <% if verify == false%>
          <%= form.hidden_field :alt_id, value: @alt.id %>
-        <%= form.submit "Verify" %>
-          <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
-        </a>
+       <%= button_tag(type: 'submit', class: 'btn btn-success') do %>
+          <span aria-hidden="true" class="fa-regular fa-circle-up fa-2x px-2 md-5"></span>
+        <% end %>
+        
         <%else%>
            <a style="color:grey;">
             <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
