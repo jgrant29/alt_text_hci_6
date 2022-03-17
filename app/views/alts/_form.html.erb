@@ -47,7 +47,7 @@
       <% verify = Verification.where(alt_id: alt.id, user_id: current_user.id).present? %>
       <div id="verfication-btns">
        
-        <% if verify %>
+        <% if verify == false%>
          <%= form.hidden_field :alt_id, value: @alt.id %>
         <%= form.submit "Verify" %>
           <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
