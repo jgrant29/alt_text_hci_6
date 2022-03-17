@@ -48,7 +48,7 @@
       <div id="verfication-btns">
        
         <% if verify %>
-         <%= form.hidden_field :verifcation[alt_id], value: @alt.id %>
+         <%= form.hidden_field :alt_id, value: @alt.id %>
         <%= form.submit, value: "Verification" %>
           <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
         </a>
