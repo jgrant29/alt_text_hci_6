@@ -49,7 +49,7 @@
        
         <% if verify == false %>
          <%= form.hidden_field :alt_id, value: @alt.id %>
-       <%= button_to {:controller => 'verifications', :action => 'create', :user_id => current_user.id, :alt_id => @alt.id},  class: "btn btn-primary btn-lg btn-block", id: @alt.id, {:method => :post} %>
+       <%= button_to {:controller => 'verifications', :action => 'create', :user_id => current_user.id, :alt_id => @alt.id},  {:method => :post} %>
           <span aria-hidden="true" class="fa-regular fa-circle-up fa-2x px-2 md-5"></span>
         <% end %>
         
@@ -72,4 +72,4 @@
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
    
   </div>
-
+<% end %>
