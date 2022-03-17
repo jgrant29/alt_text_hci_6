@@ -47,17 +47,14 @@
       <% verify = Verification.where(alt_id: alt.id, user_id: current_user.id).present? %>
       <div id="verfication-btns">
        
-        <% if verify == false%>
+        <% if verify == false %>
          <%= form.hidden_field :alt_id, value: @alt.id %>
        <%= button_to {:controller => 'verifications', :action => 'create', :user_id => current_user.id, :alt_id => @alt.id},  class: "btn btn-primary btn-lg btn-block", id: @alt.id, {:method => :post} %>
           <span aria-hidden="true" class="fa-regular fa-circle-up fa-2x px-2 md-5"></span>
         <% end %>
         
-        <%else%>
-           <a style="color:grey;">
-            <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
-          </a>
-        <%end%>
+       
+       
             <% if alt.total_verifications.nil? %>
              <!--@alt.increment! :total_verifcations-->
            <p>0</p>
@@ -65,12 +62,8 @@
            <p><% alt.total_verifications %></p>
            <%end%>
       </div>  
-      <% if verify == true %>
-          <p>You have verifed this.</p>
-        
-      <% else %>
-          <p> Needs verifcation</p> 
-      <%end%>
+    
+   
     <%= form.hidden_field :user_id, value: current_user.id %>
     <% end %>
   </div>
