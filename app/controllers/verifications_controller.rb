@@ -1,5 +1,5 @@
 class VerificationsController < ApplicationController
-     before_action :set_alt, only: %i[ edit update destroy create]
+     before_action :set_verification, only: %i[ edit update destroy create]
     def create
         @verifcation = current_user.verifcations.new(verifcation_params)
         if !@verifcation.save
