@@ -48,7 +48,8 @@
       <div id="verfication-btns">
        
         <% if verify %>
-        <a>
+         <%= form.hidden_field :verifcation[alt_id], value: @alt.id %>
+        <%= form.submit, value: "Verification" %>
           <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
         </a>
         <%else%>
@@ -63,7 +64,7 @@
            <p><% alt.total_verifications %></p>
            <%end%>
       </div>  
- <% if verify == true %>
+      <% if verify == true %>
           <p>You have verifed this.</p>
         
       <% else %>
