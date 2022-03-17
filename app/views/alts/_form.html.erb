@@ -46,18 +46,22 @@
     <% if user_signed_in? %>
       <% verify = Verification.where(alt_id: alt.id, user_id: current_user.id).present? %>
       <div id="verfication-btns">
+       
+        <% if verify %>
         <a>
           <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
         </a>
+        <%else%>
+           <a style="color:grey;">
+            <i class="fa-regular fa-circle-up fa-2x px-2 md-5"></i>
+          </a>
+        <%end%>
             <% if alt.total_verifications.nil? %>
+             <!--@alt.increment! :total_verifcations-->
            <p>0</p>
            <%else%>
            <p><% alt.total_verifications %></p>
            <%end%>
-
-        <a>
-          <i class="fa-regular fa-circle-down fa-2x px-2 md-5"></i> 
-        </a>
       </div>  
  <% if verify == true %>
           <p>You have verifed this.</p>

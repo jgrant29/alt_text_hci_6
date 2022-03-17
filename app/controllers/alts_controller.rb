@@ -33,6 +33,8 @@ class AltsController < ApplicationController
   def show
     @alt_show = Alt.find(params[:id])
     @alt = Alt.find(params[:id])
+   
+   
   end
 
   # GET /alts/new
