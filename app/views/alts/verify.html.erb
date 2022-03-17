@@ -1,7 +1,6 @@
 <main class="container-fluid pt-3">
   <section class="container">
-    <%= render partial: "alts/alt_actions" %>
-    <div class="col-8 mt-5 pt-5 mx-auto ">
+    <div class="col-8 mt-5 pt-5 mx-auto">
       <%= form_with url: '/alts', method: :get do |form| %>
         <div class="input-group input-group-lg">
           <%= form.label :query, "Search for:", class: "sr-only" %>
@@ -13,10 +12,10 @@
     <hr class="border-bottom border-muted my-5">
     <div class="row">
       <div class="col-lg-12">
-        <div id="alts" class="row">
-          <% @alts.each do |alt| %>
-            <div class="col-lg-4">
-                <%= render alt %>
+        <div id="altverify_me" class="row">
+          <% @alts.each do |altverify_me| %>
+            <div class="col-lg-4 mx-auto">
+                <%= render altverify_me %>
             </div>
           <% end %>
         </div>
