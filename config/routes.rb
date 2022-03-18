@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :alt_texts
   resources :alts
+  resources :verifcations 
+  
   devise_for :users
   get "verify", to: "alts#verify"
   root "alts#index"

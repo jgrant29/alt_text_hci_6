@@ -241,6 +241,21 @@ class AltsController < ApplicationController
     
   end
 
+
+  def verify
+    @alt = Alt.find(params[:id])
+    @alt.increment!(:total_verifcations)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "#{dom_id(@alt)}_verifications",
+          partial: 'alts/verifcations',
+          locals: {alt: @alt}
+        )
+      end
+    end
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
