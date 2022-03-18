@@ -46,7 +46,7 @@
         <div class="col-xl-5">
           <div id="alts" class="row">
             <% @alts.each do |alt| %>
-                <% if alt.verified or !alt.verified %>
+                <% if alt.verified %>
                   <%= render alt %>
                  <% end %>
             <% end %>
