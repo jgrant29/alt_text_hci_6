@@ -1,6 +1,9 @@
 @import "bootstrap/scss/bootstrap";
 @import "actiontext.css";
 
+body {
+  margin-bottom: 60px;
+}
 a {
   color: $purple !important;
 }
@@ -40,3 +43,4 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+

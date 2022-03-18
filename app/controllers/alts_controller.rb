@@ -1,7 +1,5 @@
-
-require 'phashion'
-
 class AltsController < ApplicationController
+  require 'phashion'
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_alt, only: %i[ edit update destroy ]
   helper_method :scrape
@@ -9,19 +7,14 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
-    
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
-      @alts = Alt.all
+      @alts = Alt.where(verified: true).shuffle.first(3)
     else
       @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
     end
 
     @alt = Alt.new
-
-     
-   
-
   
     #@alts = Alt.search(params[:query])
     #@alts = Alt.all
@@ -33,6 +26,11 @@ class AltsController < ApplicationController
   def show
     @alt_show = Alt.find(params[:id])
     @alt = Alt.find(params[:id])
+  end
+
+  def verify
+    @alts = Alt.where(verified: false).shuffle.first(1)
+    @alt = Alt.new
   end
 
   # GET /alts/new

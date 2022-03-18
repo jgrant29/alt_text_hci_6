@@ -1,4 +1,5 @@
 <main class="container">
+  <%= render partial: "alts/alt_actions" %>
   <p style="color: green"><%= notice %></p>
   <%= render 'alt_show', alt: @alt %>
   <% if user_signed_in? && (current_user == @alt_show.user || current_user.super_user?) %>
