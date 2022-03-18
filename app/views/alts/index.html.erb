@@ -44,20 +44,16 @@
       <div class="row">
         
        
-          <div id="alts" class="col-xl-3">
+          <div id="alts">
             <% @alts.each do |alt| %>
+              <div  class="col-xl-3">
                 <% if alt.verified %>
                   <%= render alt %>
                  <% end %>
+                </div>
             <% end %>
           </div>
-          <div id="alts" class="col-xl-3">
-            <% @alts.each do |alt| %>
-                <% if alt.verified %>
-                  <%= render alt %>
-                 <% end %>
-            <% end %>
-          </div>
+          
      
       
         <div class="col-xl-3">
