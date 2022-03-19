@@ -30,7 +30,7 @@ class AltsController < ApplicationController
 
   def verified
      @alts = Alt.where(verified: false)
-     
+     @alt = Alt.new
   end
 
 
