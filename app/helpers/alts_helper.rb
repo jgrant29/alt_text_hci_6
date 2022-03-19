@@ -17,5 +17,9 @@ module AltsHelper
 			"[First Name] [Last Name]"
 		end
 	end
+
+	def alts_unverified
+		@alts = Alt.where(verified: false)
+	end
 	
 end
