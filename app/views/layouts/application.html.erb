@@ -57,7 +57,7 @@
           <% if user_signed_in? %>
           <% cid = current_user.id %>
           <% u = User.find_by(:id => cid) %>
-           <% if u.super_user.nil?] == false && u.super_user == true %>
+           <% if u.super_user.nil? == false && u.super_user == true %>
             <li class="nav-item">
               <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
             </li>
