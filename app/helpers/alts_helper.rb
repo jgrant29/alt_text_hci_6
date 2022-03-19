@@ -17,5 +17,19 @@ module AltsHelper
 			"[First Name] [Last Name]"
 		end
 	end
+
+	def verification(alt)
+		if alt.verified == false
+        if super_admin
+        	link_to "Moderator Verify", edit_alt_path, class: "btn btn-sm btn-outline-primary"
+        else
+          "Modifiable"
+        end
+      else
+        "Verified by Seven Army"
+      end
+	
+	end
+
 	
 end
