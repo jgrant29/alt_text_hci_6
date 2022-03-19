@@ -1,7 +1,6 @@
 class Alt < ApplicationRecord
   include ImageUploader::Attachment(:image)
   #include MeiliSearch::Rails
-  attr_accessor :verified
   searchkick word_middle: [:title, :tags, :body]
   
 
