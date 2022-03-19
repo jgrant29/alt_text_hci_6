@@ -29,7 +29,7 @@ class AltsController < ApplicationController
   end
 
   def verified
-     @alts = Alt.where(verified: false)
+     @alts = Alt.where(verified: false).count
      @alt = Alt.new
   end
 
