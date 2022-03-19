@@ -29,7 +29,7 @@ class AltsController < ApplicationController
   end
 
   def verify_status
-    verified = params[:verified] 
+     @alts = Alt.all
   end
 
 
