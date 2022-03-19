@@ -28,6 +28,10 @@ class AltsController < ApplicationController
     #@alt = Alt.new
   end
 
+  def verify_status
+    verified = params[:verified] 
+  end
+
 
   # GET /alts/1 or /alts/1.json
   def show
