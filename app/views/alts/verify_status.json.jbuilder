@@ -1,1 +1,1 @@
-json.array! @alts, partial: "alts/alt", as: :alt
+json.array! @alts, partial: "alts/"
