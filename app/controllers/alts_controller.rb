@@ -30,6 +30,7 @@ class AltsController < ApplicationController
 
   def verify_status
      @alts = Alt.all
+     
   end
 
 
