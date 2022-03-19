@@ -2,7 +2,7 @@
 require 'phashion'
 
 class AltsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :verified]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_alt, only: %i[ edit update destroy ]
   helper_method :scrape
 
@@ -28,16 +28,18 @@ class AltsController < ApplicationController
     #@alt = Alt.new
   end
 
-  def verified
-     @alts = Alt.where(verified: false).count
-     @alt = Alt.new
-  end
+ 
 
 
   # GET /alts/1 or /alts/1.json
   def show
-    @alt_show = Alt.find(params[:id])
-    @alt = Alt.find(params[:id])
+
+    if params[:id] == "verified" 
+      @alts = Alt.where(verified: false).count
+    else
+      @alt_show = Alt.find(params[:id])
+      @alt = Alt.find(params[:id])
+    end
    
    
   end
