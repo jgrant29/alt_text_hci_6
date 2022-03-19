@@ -19,7 +19,7 @@ module AltsHelper
 	end
 
 	def alts_unverified
-		@alts = Alt.where(verified: false)
+		@alts = Alt.where(verified: "false")
 	end
 	
 end
