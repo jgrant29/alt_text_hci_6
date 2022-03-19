@@ -2,7 +2,7 @@
 require 'phashion'
 
 class AltsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :verify_status]
+  before_action :authenticate_user!, except: [:index, :show, :verified]
   before_action :set_alt, only: %i[ edit update destroy ]
   helper_method :scrape
 
