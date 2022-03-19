@@ -28,8 +28,8 @@ class AltsController < ApplicationController
     #@alt = Alt.new
   end
 
-  def verify_status
-     @alts = Alt.all
+  def verified
+     @alts = Alt.where(verified: false)
      
   end
 
