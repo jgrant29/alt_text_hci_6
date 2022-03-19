@@ -118,7 +118,7 @@ class AltsController < ApplicationController
     return false
   end
  
-  adds metadata 
+  # adds metadata 
   def image_modification_alt
     if is_duplicate == true
       @alt.destroy
