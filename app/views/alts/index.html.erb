@@ -15,6 +15,7 @@
         <%else%>
           <% form_url = alts_path %>
         <% end %>
+          <%= render partial: "alts/alt_actions" %>
           <%= form_with url: form_url, method: :get do |form| %>
             <div class="input-group input-group-lg">
               <% if params[:verified].present? &&  params[:verified] == "unverified" %>
@@ -73,16 +74,14 @@
             </div>
          </div>
           
-     
-      
-        <div class="col-md-3 p-5">
-          <div id= "twitter-feed" class="row">
-              <a class="twitter-timeline" data-height="330" data-width="220" href="https://twitter.com/bts_bighit?ref_src=twsrc%5Etfw">Tweets by bts_bighit</a> 
-              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-        </div>
 
       </div>
     </div>
   </section>
+  <div class="col-lg-2 position-absolute bottom-0 end-0">
+    <div id= "twitter-feed" class="row">
+        <a class="twitter-timeline" data-height="330" data-width="220" href="https://twitter.com/bts_bighit?ref_src=twsrc%5Etfw">Tweets by bts_bighit</a> 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
 </main>
