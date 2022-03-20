@@ -14,11 +14,13 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="alts" class="row">
+         <% if !alt.verified %>
           <% @alts.each do |alt| %>
             <div class="col-lg-4">
                 <%= render alt %>
             </div>
           <% end %>
+        <%end%>
         </div>
       </div>
     </div>
