@@ -18,7 +18,8 @@ class Alt < ApplicationRecord
   {
     title: title,
     tags: tags.join(" "),
-    body: alt_texts.pluck(:body).last
+    body: alt_texts.pluck(:body).last,
+    verified: verified
  
   }
   end
