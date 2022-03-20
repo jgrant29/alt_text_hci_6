@@ -14,7 +14,7 @@
           <%= form_with url: alts_path(:verified => 'unverified'), method: :get do |form| %>
             <div class="input-group input-group-lg">
               <%= form.label :query, "Search for:", class: "sr-only" %>
-              <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
+              <%= form.text_field :query, placeholder: "search for unverify...", class: "form-control rounded " %>
               <%= form.submit "Search", class: "btn btn-primary" %>
             </div>
           <% end %>
