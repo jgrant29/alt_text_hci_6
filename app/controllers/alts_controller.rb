@@ -46,6 +46,11 @@ class AltsController < ApplicationController
     @alts = Alt.where(verified: false).shuffle.first(1)
   end
 
+  def verify
+    @alts = Alt.where(verified: false).shuffle.first(1)
+    @alt = Alt.new
+  end
+
   # GET /alts/new
   def new
     @alt = Alt.new
