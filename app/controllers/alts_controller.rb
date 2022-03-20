@@ -16,13 +16,13 @@ class AltsController < ApplicationController
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
       if params[:verified] == "unverified" 
-        @alts = Alt.where(:verified => false)
+        @alts = Alt.find_by(:verified => false)
       else
         @alts = Alt.where(:verified => true)
       end
     else
       if params[:verified] == "unverified" 
-        @alts = Alt.search(search, fields:[:title, :tags, :body, :verified => false], operator: "or")
+        @alts = Alt.search(search, where{ _or:[:title, :tags, :body], :verified => false})
       else
         @alts = Alt.search(search, fields:[:title, :tags, :body, :verified => true], operator: "or")
       end
