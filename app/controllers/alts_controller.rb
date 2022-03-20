@@ -9,6 +9,8 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
+    puts params[:verified]
+    
     if params[:verified] == "unverified" 
       @alts = Alt.where(verified: false)
     end
