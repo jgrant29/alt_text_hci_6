@@ -10,13 +10,23 @@
         </button>
       </div>
       <div class="col-md-8">
-        <%= form_with url: (params[:verified] == "unverified") ? '/alts/?verified=unverified': '/alts', method: :get do |form| %>
-          <div class="input-group input-group-lg">
-            <%= form.label :query, "Search for:", class: "sr-only" %>
-            <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
-            <%= form.submit "Search", class: "btn btn-primary" %>
-          </div>
-        <% end %>
+        <% if params[:verified] == "unverified" %>
+          <%= form_with url: alts_path(:verified => 'unverified'), method: :get do |form| %>
+            <div class="input-group input-group-lg">
+              <%= form.label :query, "Search for:", class: "sr-only" %>
+              <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
+              <%= form.submit "Search", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        <%else%>
+          <%= form_with url: '/alts', method: :get do |form| %>
+            <div class="input-group input-group-lg">
+              <%= form.label :query, "Search for:", class: "sr-only" %>
+              <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
+              <%= form.submit "Search", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        <%end%>
       </div>
     </div>
     <hr class="border-bottom border-muted my-5">
