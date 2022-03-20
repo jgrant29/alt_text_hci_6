@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="col-md-8">
-        <%= form_with url: '/alts', method: :get do |form| %>
+        <%= form_with url: params[:verified] == "unverified" ? '/alts/?verified=unverified':'/alts', method: :get do |form| %>
           <div class="input-group input-group-lg">
             <%= form.label :query, "Search for:", class: "sr-only" %>
             <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
