@@ -9,10 +9,9 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
-     if params[:id] == "verified" 
-      @alts = Alt.where(verified: false).count
-      puts "staus"
-     end
+    if params[:verified] == "unverified" 
+      @alts = Alt.where(verified: false)
+    end
     
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
