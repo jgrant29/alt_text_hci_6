@@ -22,9 +22,9 @@ class AltsController < ApplicationController
       end
     else
       if params[:verified] == "unverified" 
-        @alts = Alt.where(:verified => false).search(search, fields:[:title, :tags, :body], operator: "or")
+        @alts = Alt.search(search, where: {verified: false}, fields:[:title, :tags, :body], operator: "or")
       else
-        @alts = Alt.where(:verified => true).search(search, fields:[:title, :tags, :body], operator: "or")
+        @alts = Alt.search(search, where: {verified: true}, fields:[:title, :tags, :body], operator: "or")
       end
     end
 
