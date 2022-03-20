@@ -78,6 +78,7 @@ end
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'aws-sdk-s3', '~> 1.14'
 gem 'devise', '~> 4.8'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem "fastimage"
 gem 'pry', '~> 0.13.1'
 gem "pundit"
