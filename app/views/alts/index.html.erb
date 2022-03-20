@@ -11,7 +11,7 @@
       </div>
       <div class="col-md-8">
         <!--<% if params[:verified] == "unverified" %>-->
-          <%= form_with url: (params[:verified].present?)? alts_path : alts_path(:verified => 'unverified'), method: :get do |form| %>
+          <%= form_with url: (params[:verified] == "unverified")? alts_path(:verified => 'unverified'): alts_path, method: :get do |form| %>
             <div class="input-group input-group-lg">
               <% if params[:verified].present? &&  params[:verified] == "unverified" %>
                 <%= form.hidden_field :verified, value: 'unverified' %>
