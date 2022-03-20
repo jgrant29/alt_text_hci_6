@@ -9,20 +9,15 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
-   
 
-   
-    
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
-     
-        @alts = Alt.all
-    
+      @alts = Alt.all
     else
       if params[:verified] == "unverified" 
-        @alts = Alt.search(search, fields:[:title, :tags, :body, :verified => false])
+        @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
       else
-        @alts = Alt.search(search, fields:[:title, :tags, :body, :verified => true])
+        @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
        
       end
     end
