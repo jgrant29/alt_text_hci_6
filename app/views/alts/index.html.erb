@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="alts" class="row">
-         <% if !alt.verified %>
+         <% if alt.verified %>
           <% @alts.each do |alt| %>
             <div class="col-lg-4">
                 <%= render alt %>
