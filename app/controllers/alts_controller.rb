@@ -1,7 +1,5 @@
-
-require 'phashion'
-
 class AltsController < ApplicationController
+  require 'phashion'
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_alt, only: %i[ edit update destroy ]
   helper_method :scrape
@@ -9,14 +7,16 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
-    
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
+     
+
       if params[:verified] == "unverified" 
         @alts = Alt.where(:verified => false)
       else
-        @alts = Alt.where(:verified => true)
+        @alts = Alt.where(verified: true).shuffle.first(3)
       end
+
     else
       if params[:verified] == "unverified" 
         @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
@@ -26,10 +26,6 @@ class AltsController < ApplicationController
     end
 
     @alt = Alt.new
-
-     
-   
-
   
     #@alts = Alt.search(params[:query])
     #@alts = Alt.all
@@ -41,12 +37,13 @@ class AltsController < ApplicationController
 
   # GET /alts/1 or /alts/1.json
   def show
+    @alt_show = Alt.find(params[:id])
+    @alt = Alt.find(params[:id])
+    authorize @alt
+  end
 
-   
-      @alt_show = Alt.find(params[:id])
-      @alt = Alt.find(params[:id])
-   
-   
+  def verify
+    @alts = Alt.where(verified: false).shuffle.first(1)
   end
 
   # GET /alts/new
@@ -69,17 +66,17 @@ class AltsController < ApplicationController
         @alt.save
        
        
-        if image_modification_alt == false
-          format.js
-          format.html { render :new, status: :unprocessable_entity }
-          flash[:alert] = "The image was a duplicate. Please upload another image" 
-        else
+        # if image_modification_alt == false
+        #   format.js
+        #   format.html { render :new, status: :unprocessable_entity }
+        #   flash[:alert] = "The image was a duplicate. Please upload another image" 
+        # else
           @alt.save
           build_alt_text_versions
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
           format.json { render :show, status: :created, location: @alt }
-        end
+        # end
       else
         format.js
         format.html { render :new, status: :unprocessable_entity }
@@ -92,15 +89,15 @@ class AltsController < ApplicationController
   def update
     respond_to do |format|
       if @alt.update(alt_params)
-        if image_modification_alt == false
-          format.js
-          format.html { render :update, status: :unprocessable_entity }
-          flash[:alert] = "The image was a duplicate. Please upload another image" 
-        else
+        # if image_modification_alt == false
+        #   format.js
+        #   format.html { render :update, status: :unprocessable_entity }
+        #   flash[:alert] = "The image was a duplicate. Please upload another image" 
+        # else
           build_alt_text_versions
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
           format.json { render :show, status: :ok, location: @alt }
-        end
+        # end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @alt.errors, status: :unprocessable_entity }
@@ -111,7 +108,8 @@ class AltsController < ApplicationController
 
   def is_duplicate
     a = Alt.find_by(id: @alt.id)
-    file1 = URI.parse(a.image_url(:small)).open
+    file1 = URI.parse(a.image_url).open
+    binding.pry
     puts file1.class
    
     img_mod = Phashion::Image.new(file1.path)
@@ -120,7 +118,7 @@ class AltsController < ApplicationController
 
        puts u.title
       
-       file2 = URI.parse(u.image_url(:small)).open
+       file2 = URI.parse(u.image.url).open
       
       
        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
@@ -159,6 +157,7 @@ class AltsController < ApplicationController
   # DELETE /alts/1 or /alts/1.json
   def destroy
     @alt.destroy
+    authorize @alt
 
     respond_to do |format|
       format.html { redirect_to alts_url, notice: "Alt was successfully destroyed." }
@@ -252,24 +251,7 @@ class AltsController < ApplicationController
       i += 1
     end
 
-    return true
-  
-    
-  end
-
-
-  def verify
-    @alt = Alt.find(params[:id])
-    @alt.increment!(:total_verifcations)
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
-          "#{dom_id(@alt)}_verifications",
-          partial: 'alts/verifcations',
-          locals: {alt: @alt}
-        )
-      end
-    end
+    return true 
   end
 
   private
