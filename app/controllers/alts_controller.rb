@@ -9,6 +9,7 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
+    log.debugger "errors"
     puts params[:verified]
 
     if params[:verified] == "unverified" 
