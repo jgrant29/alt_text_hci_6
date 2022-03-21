@@ -43,8 +43,15 @@ class AltsController < ApplicationController
   end
 
   def verify
-    @alts = Alt.where(verified: false).shuffle.first(1)
-    @alt = Alt.new
+    search = params[:query].present? ? params[:query] : nil
+    if search.nil?
+       @alts = Alt.where(verified: false).shuffle.first(1)
+       @alt = Alt.new
+    else
+      @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
+    end
+     @alt = Alt.new
+   
   end
 
   # GET /alts/new
