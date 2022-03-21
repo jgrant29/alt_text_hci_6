@@ -14,9 +14,11 @@
       <div class="col-lg-12">
         <div id="altverify_me" class="row">
           <% @alts.each do |altverify_me| %>
+          <%if altverify_me.verified == false%>
             <div class="col-lg-4 mx-auto">
                 <%= render altverify_me %>
             </div>
+            <%end%>
           <% end %>
         </div>
       </div>
