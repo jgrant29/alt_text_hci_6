@@ -1,7 +1,7 @@
 <main class="container-fluid pt-3">
   <section class="container">
     <div class="col-8 mt-5 pt-5 mx-auto">
-      <%= form_with url: alts_path(:verify => "true"), method: :get do |form| %>
+      <%= form_with url: verify_path, method: :get do |form| %>
         <div class="input-group input-group-lg">
           <%= form.label :query, "Search for:", class: "sr-only" %>
           <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
