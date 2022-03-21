@@ -4,6 +4,7 @@
   <% @seo_image = "#{@alt.image_url}" %>
   <% @seo_alt = "#{@alt.body}" %>
   <% @twitter_alt = "#{@alt.body}" %>
+  <% @seo_url = alt_url(@alt)%>
 <% end %>
 
 <section id="<%= dom_id alt %>">
