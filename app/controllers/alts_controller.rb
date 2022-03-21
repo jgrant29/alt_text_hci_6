@@ -43,7 +43,7 @@ class AltsController < ApplicationController
   end
 
   def verify
-    @alts = Alt.where(verified: false).shuffle.first(4)
+    @alts = Alt.where(verified: false).shuffle.first(1)
     @alt = Alt.new
   end
 
