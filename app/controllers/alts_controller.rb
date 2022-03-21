@@ -43,7 +43,7 @@ class AltsController < ApplicationController
   end
 
   def verify
-    @alts = Alt.where(verified: nil).shuffle.first(4)
+    @alts = Alt.where(verified: false).shuffle.first(4)
     @alt = Alt.new
   end
 
@@ -74,6 +74,7 @@ class AltsController < ApplicationController
         else
           @alt.save
           build_alt_text_versions
+          @alt.verfied = false
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
           format.json { render :show, status: :created, location: @alt }
