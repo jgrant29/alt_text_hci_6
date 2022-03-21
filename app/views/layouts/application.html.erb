@@ -8,7 +8,7 @@
     <%= csp_meta_tag %>
      <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/1922d83c51.js" crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:description" content="<%= @seo_description %>"/>
     <meta name="twitter:title" content="<%= @title %>" />
     <meta name="twitter:image:alt" content="<%= @twitter_alt %>">
@@ -16,11 +16,12 @@
       <meta name="twitter:image" content="<%= @seo_image %>"/>
     <% end %>
 
-    <meta property="og:type"          content="website" />
+    <meta property="og:type"          content="Article" />
     <meta property="og:title"         content="<%= @title %>" />
-    <meta property="og:description"   content="<%= @seo_description %>" />
+    <meta property='og:url' content="<%= @seo_url %>" />
+    <meta name="description" property="og:description"   content="<%= @seo_description %>" />
     <% if @seo_image.present? %>
-      <meta property="og:image" content="<%= @seo_image %>" />
+      <meta name="image" property="og:image" content="<%= @seo_image %>" />
     <% end %>
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
