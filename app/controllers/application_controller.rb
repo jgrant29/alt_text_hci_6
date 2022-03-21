@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def super_admin
-    if user_signed_in? && current_user.super_user == true && current_user.email == "jmgrant702@gmail.com"
+    if user_signed_in? && current_user.super_user == true && current_user.email == "kate@seven.army"
       current_user
     else
       nil
