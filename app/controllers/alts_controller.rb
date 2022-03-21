@@ -12,7 +12,7 @@ class AltsController < ApplicationController
      
 
       if params[:verified] == "unverified" 
-        @alts = Alt.where(:verified => false)
+        @alts = Alt.where(:verified => false).or(:verfied => nil)
       else
         @alts = Alt.where(verified: true).shuffle.first(3)
       end
