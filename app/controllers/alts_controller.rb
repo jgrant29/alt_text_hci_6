@@ -72,9 +72,10 @@ class AltsController < ApplicationController
            format.html { render :new, status: :unprocessable_entity }
            flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
+          @alt.verified = false
           @alt.save
           build_alt_text_versions
-          @alt.verified = false
+         
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
           format.json { render :show, status: :created, location: @alt }
