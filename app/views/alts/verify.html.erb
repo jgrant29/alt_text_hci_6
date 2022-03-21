@@ -1,6 +1,6 @@
 <main class="container-fluid pt-3">
   <section class="container">
-    <div class="col-8 mt-5 pt-5 mx-auto">
+    <div class="col-8 mt-3 py-3 mx-auto">
       <%= form_with url: '/alts', method: :get do |form| %>
         <div class="input-group input-group-lg">
           <%= form.label :query, "Search for:", class: "sr-only" %>
@@ -9,13 +9,19 @@
         </div>
       <% end %>
     </div>
-    <hr class="border-bottom border-muted my-5">
+    <hr class="border-bottom border-muted my-2">
+    <div class="text-center">
+      <a href="<%= verify_path %>" class="fs-3">
+        <i class="fa-solid fa-arrows-rotate"></i> Refresh 
+      </a>
+    </div>
     <div class="row">
+
       <div class="col-lg-12">
         <div id="altverify_me" class="row">
           <% @alts.each do |altverify_me| %>
-            <div class="col-lg-4 mx-auto">
-                <%= render altverify_me %>
+            <div class="col-lg-6 mx-auto">
+                <%= render "altverify_me", alt: altverify_me %>
             </div>
           <% end %>
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_14_223904) do
+ActiveRecord::Schema.define(version: 2022_03_21_214909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,22 @@ ActiveRecord::Schema.define(version: 2022_03_14_223904) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "moderators", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "description"
+    t.boolean "super_admin"
+    t.boolean "referee"
+    t.boolean "contributor"
+    t.boolean "flag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.index ["user_id"], name: "index_moderators_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -147,6 +163,9 @@ ActiveRecord::Schema.define(version: 2022_03_14_223904) do
     t.boolean "super_user"
     t.boolean "moderator"
     t.integer "verifications"
+    t.boolean "contributor"
+    t.boolean "flag"
+    t.boolean "referee"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -163,5 +182,6 @@ ActiveRecord::Schema.define(version: 2022_03_14_223904) do
   add_foreign_key "alt_texts", "alts"
   add_foreign_key "alt_texts", "users"
   add_foreign_key "alts", "users"
+  add_foreign_key "moderators", "users"
   add_foreign_key "taggings", "tags"
 end
