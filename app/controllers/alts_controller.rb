@@ -74,7 +74,7 @@ class AltsController < ApplicationController
         else
           @alt.save
           build_alt_text_versions
-          @alt.verfied = false
+          @alt.verified = false
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
           format.json { render :show, status: :created, location: @alt }
