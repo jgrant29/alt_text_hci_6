@@ -1,4 +1,5 @@
 <main class="container">
+  <%= render partial: "alts/alt_actions" %>
   <p style="color: green"><%= notice %></p>
   <%= render 'alt_show', alt: @alt %>
   <% if user_signed_in? && (current_user == @alt_show.user || super_admin) %>
@@ -24,6 +25,8 @@
     <button type="button" class="btn mt-3 btn-primary disabled" href="#">
       Participate*
     </button>
-    <p class="text-muted  ">*<%= link_to "Log in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %> to help Seven Army improve this image</p> 
+    <% if !user_signed_in? %>
+      <p class="text-muted  ">*<%= link_to "Log in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %> to help Seven Army improve this image</p> 
+    <% end %>
   <% end %>
 </main>

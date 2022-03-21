@@ -44,3 +44,8 @@ a:hover {
   border: 0;
 }
 
+.modal-backdrop{
+  opacity:0; transition:opacity .2s;
+  &.in{opacity:.55;}
+}
+
