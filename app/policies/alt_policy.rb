@@ -4,10 +4,6 @@ class AltPolicy < ApplicationPolicy
     (user.present? && @record.user_id == user.id) || (user.present? && user.super_user == true) 
   end
 
-  def show?
-    new?
-  end
-
   def create?
     create?
   end
