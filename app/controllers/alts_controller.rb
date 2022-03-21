@@ -18,7 +18,7 @@ class AltsController < ApplicationController
       end
 
     else
-      if params[:verify] == "true"
+      if params[:verify].present?
         @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
       else
         @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
