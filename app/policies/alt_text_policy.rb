@@ -21,7 +21,7 @@ class AltTextPolicy < ApplicationPolicy
   end
 
   def show
-    new?
+    true
   end
 
   def update?
