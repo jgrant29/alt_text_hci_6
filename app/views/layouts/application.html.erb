@@ -16,11 +16,11 @@
       <meta name="twitter:image" content="<%= @seo_image %>"/>
     <% end %>
 
-    <meta property="og:type"          content="website" />
+    <meta property="og:type"          content="Article" />
     <meta property="og:title"         content="<%= @title %>" />
-    <meta property="og:description"   content="<%= @seo_description %>" />
+    <meta name="description" property="og:description"   content="<%= @seo_description %>" />
     <% if @seo_image.present? %>
-      <meta property="og:image" content="<%= @seo_image %>" />
+      <meta name="image" property="og:image" content="<%= @seo_image %>" />
     <% end %>
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
