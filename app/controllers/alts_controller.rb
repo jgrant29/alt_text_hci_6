@@ -12,13 +12,13 @@ class AltsController < ApplicationController
      
 
       if params[:verified] == "unverified" 
-        @alts = Alt.where(:verified => false)
+        @alts = Alt.where(:verified => false).or(:verfied => nil)
       else
         @alts = Alt.where(verified: true).shuffle.first(3)
       end
 
     else
-      if params[:verified] == "unverified" 
+      if params[:verify].present?
         @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
       else
         @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
@@ -43,12 +43,17 @@ class AltsController < ApplicationController
   end
 
   def verify
-    @alts = Alt.where(verified: false).shuffle.first(1)
-  end
 
-  def verify
-    @alts = Alt.where(verified: false).shuffle.first(1)
-    @alt = Alt.new
+    search = params[:query].present? ? params[:query] : nil
+    if search.nil?
+       @alts = Alt.where(verified: false).shuffle.first(1)
+       @alt = Alt.new
+    else
+      @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
+
+    end
+     @alt = Alt.new
+   
   end
 
   # GET /alts/new
@@ -71,17 +76,19 @@ class AltsController < ApplicationController
         @alt.save
        
        
-        # if image_modification_alt == false
-        #   format.js
-        #   format.html { render :new, status: :unprocessable_entity }
-        #   flash[:alert] = "The image was a duplicate. Please upload another image" 
-        # else
+        if image_modification_alt == false
+           format.js
+           format.html { render :new, status: :unprocessable_entity }
+           flash[:alert] = "The image was a duplicate. Please upload another image" 
+        else
+          @alt.verified = false
           @alt.save
           build_alt_text_versions
+         
           format.js
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
           format.json { render :show, status: :created, location: @alt }
-        # end
+         end
       else
         format.js
         format.html { render :new, status: :unprocessable_entity }
@@ -140,7 +147,6 @@ class AltsController < ApplicationController
   def image_modification_alt
     if is_duplicate == true
       @alt.destroy
-      #redirect_to alts_url
       return false
     end
     #img2 = Alt.find_by(id: 10)
@@ -244,7 +250,7 @@ class AltsController < ApplicationController
       end
      
       #a = Alt.where(original_url: c[:original_url]).first_or_create
-      a = Alt.where(title: c[:title], user_id: 1, body: c[:body], original_url: c[:original_url], original_source: c[:original_source]).first_or_create
+      a = Alt.where(title: c[:title], user_id: 1, body: c[:body], original_url: c[:original_url], original_source: c[:original_source], verified: false).first_or_create
 
       #puts a.title
       
@@ -253,6 +259,8 @@ class AltsController < ApplicationController
       a.image_derivatives!
       a.image_attacher.add_metadata(caption: a.title, alt: a.body)
       a.save
+
+      
       i += 1
     end
 

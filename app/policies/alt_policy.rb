@@ -5,7 +5,7 @@ class AltPolicy < ApplicationPolicy
   end
 
   def show?
-    new?
+    true
   end
 
   def create?
