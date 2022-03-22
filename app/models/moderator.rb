@@ -1,7 +1,7 @@
 class Moderator < ApplicationRecord
   belongs_to :user
 
-  #scope :search_import, -> { includes(:user) }
+  scope :search_import, -> { includes(:user) }
 
   searchkick word_middle: [:id, :first_name, :last_name, :email]
 
