@@ -2,6 +2,7 @@ class AltPolicy < ApplicationPolicy
 
   def create?
     (user.present? && user.flag != true) || (user.present? && user.super_user == true)
+  end
 
   def show?
     true
