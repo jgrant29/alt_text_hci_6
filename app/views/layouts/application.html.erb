@@ -58,6 +58,7 @@
       <% end %>
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
+
          <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -65,28 +66,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div>
-        
           <%= link_to "Seven Army", alts_path, class: "navbar-brand" %>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <% if user_signed_in? %>
-            <% cid = current_user.id %>
-            <% u = User.find_by(:id => cid) %>
-             <% if super_admin %>
-              <li class="nav-item">
-                <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
-              </li><li class="nav-item">
-                <%= link_to "Users", moderators_path, class: "nav-link" %>
-              </li>
+         </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!--<%= link_to "Seven Army", alts_path, class: "navbar-brand" %>-->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <% if user_signed_in? %>
+              <% cid = current_user.id %>
+              <% u = User.find_by(:id => cid) %>
+              <% if super_admin %>
+                <li class="nav-item">
+                  <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
+                </li><li class="nav-item">
+                  <%= link_to "Users", moderators_path, class: "nav-link" %>
+                </li>
 
 
+                <% end %>
               <% end %>
-            <% end %>
-          </ul>
+            </ul>
             
-          <div class="d-inline"><%= link_to "Participate", verify_path, class: "me-3" %></div>
-          <% if user_signed_in? %>
+            <div class="d-inline"><%= link_to "Participate", verify_path, class: "me-3" %></div>
+            <% if user_signed_in? %>
             <div class="nav-item">
               <a href="<%= new_alt_path %>" class="me-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -96,10 +98,11 @@
             </div>
             <div class="d-inline"><%= link_to "Account", edit_user_registration_path, class: "text-white ms-1 btn btn-primary btn-sm" %></div>
             <div class="d-inline"><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "ms-1 btn btn-outline-primary btn-sm" %></div>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path, class: "text-white ms-1 btn btn-primary btn-small"  %>
-            <%= link_to "Login", new_user_session_path, class: "ms-1 btn btn-outline-primary btn-small"  %>
-          <% end %>
+            <% else %>
+              <%= link_to "Sign up", new_user_registration_path, class: "text-white ms-1 btn btn-primary btn-small"  %>
+              <%= link_to "Login", new_user_session_path, class: "ms-1 btn btn-outline-primary btn-small"  %>
+            <% end %>
+          </div>
         </div>
       </nav>
       
