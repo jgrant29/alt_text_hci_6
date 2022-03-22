@@ -9,8 +9,6 @@ class AltsController < ApplicationController
   def index
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
-     
-
       if params[:verified] == "unverified" 
         @alts = Alt.where(:verified => false).or(:verfied => nil)
       else
@@ -43,31 +41,32 @@ class AltsController < ApplicationController
   end
 
   def verify
-
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
        @alts = Alt.where(verified: false).shuffle.first(1)
        @alt = Alt.new
     else
       @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
-
     end
      @alt = Alt.new
-   
   end
 
   # GET /alts/new
   def new
     @alt = Alt.new
+    authorize @alt
   end
 
   # GET /alts/1/edit
   def edit
+    @alt = Alt.find(params[:id])
+    authorize @alt
   end
 
   # POST /alts or /alts.json
   def create
     @alt = Alt.new(alt_params)
+    authorize @alt
 
     respond_to do |format|
       if @alt.save
@@ -99,8 +98,9 @@ class AltsController < ApplicationController
 
   # PATCH/PUT /alts/1 or /alts/1.json
   def update
+    authorize @alt
     respond_to do |format|
-      if @alt.update(alt_params)
+      if @alt.update(update_alt_params)
         # if image_modification_alt == false
         #   format.js
         #   format.html { render :update, status: :unprocessable_entity }
@@ -121,7 +121,6 @@ class AltsController < ApplicationController
   def is_duplicate
     a = Alt.find_by(id: @alt.id)
     file1 = URI.parse(a.image_url).open
-    binding.pry
     puts file1.class
    
     img_mod = Phashion::Image.new(file1.path)
@@ -275,6 +274,10 @@ class AltsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+
+    def update_alt_params
+      params.require(:alt).permit(:body, :image, :title, :original_url, :original_source, :verified, :tag_list)
+    end
 
     def alt_params
       params.require(:alt).permit(:body, :image, :title, :original_url, :original_source, :verified, :tag_list, :user_id)
