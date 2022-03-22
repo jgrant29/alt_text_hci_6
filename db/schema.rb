@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2022_03_21_214909) do
     t.string "title"
     t.string "original_url"
     t.string "original_source"
-    t.boolean "verified"
+    t.boolean "verified", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
