@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :verifcations, dependent: :destroy
   has_one  :moderator, dependent: :destroy
 
+  searchkick word_middle: [:id, :first_name, :last_name, :email]
+
   def after_confirmation
     update(contributor: true, super_user: false, referee: false, flag: false)
     referee = Moderator.create(email: email, first_name: first_name, last_name: last_name, user_id: id, title: email, description: "new sign up", contributor: contributor, super_admin: false, referee: false, flag: false)
