@@ -10,7 +10,7 @@ class AltsController < ApplicationController
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
       if params[:tag].nil? == false 
-         @alts = Alt.search(search, fields:[:tags], operator: "or")
+         @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
       else
         @alts = Alt.where(verified: true).shuffle.first(3)
       end
