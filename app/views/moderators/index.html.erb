@@ -1,6 +1,16 @@
 <main class="container">
   <p style="color: green"><%= notice %></p>
 
+   <div class="col-8 mt-5 pt-5 mx-auto ">
+      <%= form_with url: moderators_path , method: :get do |form| %>
+        <div class="input-group input-group-lg">
+          <%= form.label :query, "Search for:", class: "sr-only" %>
+          <%= form.text_field :query, placeholder: "search for...", class: "form-control rounded " %>
+          <%= form.submit "Search", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+  </div>
+
   <h1>Users</h1>
 
   <div id="moderators">
