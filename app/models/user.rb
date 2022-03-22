@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :verifcations, dependent: :destroy
   has_one  :moderator, dependent: :destroy
 
-  searchkick word_middle: [:id, :first_name, :last_name, :email]
 
   def after_confirmation
     update(contributor: true, super_user: false, referee: false, flag: false)
@@ -17,12 +16,5 @@ class User < ApplicationRecord
     referee.save
   end
 
-  def search_data
-  {
-    id: id,
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
-  }
-  end
+
 end
