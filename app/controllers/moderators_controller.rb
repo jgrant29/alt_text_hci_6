@@ -4,8 +4,16 @@ class ModeratorsController < ApplicationController
 
   # GET /moderators or /moderators.json
   def index
-    @moderators = Moderator.all
-    @users = User.all
+     search = params[:query].present? ? params[:query] : nil
+    if search.nil?
+       @moderators = Moderator.all
+       @users = User.all
+
+    else
+      @moderators = Moderator.search(search, fields:[:title, :tags, :body], operator: "or")
+      @users = User.search(search, fields:[:id, :first_name, :last_name, :email], operator: "or")
+    end
+   
     authorize @moderators
   end
 

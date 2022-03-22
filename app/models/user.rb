@@ -14,4 +14,13 @@ class User < ApplicationRecord
     referee = Moderator.create(email: email, first_name: first_name, last_name: last_name, user_id: id, title: email, description: "new sign up", contributor: contributor, super_admin: false, referee: false, flag: false)
     referee.save
   end
+
+  def search_data
+  {
+    id: id,
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+  }
+  end
 end
