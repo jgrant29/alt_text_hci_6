@@ -10,7 +10,7 @@ class ModeratorsController < ApplicationController
        @users = User.all
 
     else
-      @moderators = Moderator.all
+      @moderators =  User.search(search, fields:[:id, :first_name, :last_name, :email], operator: "or")
       @users = User.search(search, fields:[:id, :first_name, :last_name, :email], operator: "or")
     end
    

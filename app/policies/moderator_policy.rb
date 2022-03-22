@@ -5,11 +5,11 @@ class ModeratorPolicy < ApplicationPolicy
   end
 
   def show?
-    (user.present? && user.super_user == true)
+    new?
   end
 
   def index?
-    (user.present? && user.super_user == true)
+    new?
   end
 
   def create?
