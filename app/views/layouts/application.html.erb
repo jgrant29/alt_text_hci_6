@@ -71,7 +71,7 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <!--<%= link_to "Seven Army", alts_path, class: "navbar-brand" %>-->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="nav navbar-nav">
               <% if user_signed_in? %>
               <% cid = current_user.id %>
               <% u = User.find_by(:id => cid) %>
