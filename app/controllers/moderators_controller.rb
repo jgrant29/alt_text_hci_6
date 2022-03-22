@@ -10,11 +10,11 @@ class ModeratorsController < ApplicationController
        @users = User.all
 
     else
-      @moderators =  Moderator.all
+      @moderators =  User.search(search, fields:[:id, :first_name, :last_name, :email], operator: "or")
       @users = User.search(search, fields:[:id, :first_name, :last_name, :email], operator: "or")
     end
    
-    authorize @moderators
+    #authorize @moderators
   end
 
   # GET /moderators/1 or /moderators/1.json
