@@ -96,6 +96,12 @@ class AltsController < ApplicationController
     end
   end
 
+  def flag_alt_image
+    @flag = Flag.new(user_id: current_user.id, alt_id: @alt.id) # add other params here too
+    @flag.save
+  end
+
+
   # PATCH/PUT /alts/1 or /alts/1.json
   def update
     authorize @alt
@@ -107,6 +113,7 @@ class AltsController < ApplicationController
         #   flash[:alert] = "The image was a duplicate. Please upload another image" 
         # else
           build_alt_text_versions
+          flag_alt_image
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
           format.json { render :show, status: :ok, location: @alt }
         # end
