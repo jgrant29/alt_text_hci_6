@@ -44,7 +44,7 @@
         <%= form.label "Verify the ALT TEXT of this image.", style: "display: block" %>
         <%= form.check_box :verified %>
       </div>
-       <% if !params[:new].present? %>
+       <% if params[:alts].present? %>
       <div class="d-block">
         <%= form.label "Flag the ALT TEXT of this image.", style: "display: block" %>
         <%= form.check_box :flag %>
