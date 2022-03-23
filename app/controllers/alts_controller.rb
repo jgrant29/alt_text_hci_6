@@ -96,10 +96,7 @@ class AltsController < ApplicationController
     end
   end
 
-  def flag_alt_image
-    @flag = Flag.new(user_id: @alt.user_id, alt_id: @alt.id) # add other params here too
-    @flag.save
-  end
+  
 
 
   # PATCH/PUT /alts/1 or /alts/1.json
@@ -122,6 +119,13 @@ class AltsController < ApplicationController
         format.json { render json: @alt.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def flag_alt_image
+    @alt.flag = true
+    @alt.save
+    @flag = Flag.new(user_id: @alt.user_id, alt_id: @alt.id) # add other params here too
+    @flag.save
   end
 
 
