@@ -116,15 +116,11 @@
     
       var dropdownNav = document.getElementById("navbar-toggler");
       dropdownNav.addEventListener("click", function() {
-        var content = dropdownNav.getAttribute("aria-expanded"); 
-        if (content === true) {
-        
-           document.getElementById("collapsibleNavbar");.style.display = "none";
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
         } else {
-          var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
-          var collapseList = collapseElementList.map(function (collapseEl) {
-            return new bootstrap.Collapse(collapseEl)
-          })
+          content.style.display = "block";
         }
       });
     
