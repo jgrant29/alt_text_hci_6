@@ -11,13 +11,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
      
-    <script src="https://kit.fontawesome.com/1922d83c51.js" crossorigin="anonymous"></script>
-     <script>
-        var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
-        var collapseList = collapseElementList.map(function (collapseEl) {
-          return new bootstrap.Collapse(collapseEl)
-        })
-      </script>
     <meta name="twitter:card" content="Seven Army image" />
     <meta name="twitter:description" content="<%= @seo_description %>"/>
     <meta name="twitter:title" content="<%= @title %>" />
