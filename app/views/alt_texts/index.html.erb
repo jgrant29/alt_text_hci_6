@@ -4,20 +4,23 @@
 
 <div id="alts">
 <% if !@alt_texts.nil? %>
-<% @alt_texts.alt.each do |a| %>
+<% @alt_texts.each do |alt_text| %>
+  <% alt_text.alt.each do |a| %>
      <div class="col-md-6">
       <%= link_to a.image_url(:small) do %>
         <%= image_tag a.image_url(:small), class: "image", caption: a.title, alt: a.alt_texts.last.body, class: "img-fluid", height: a.image(:small).height, width: a.image(:small).width %>
       <% end %>
     </div>
-    <div id="alt_texts">
-    <% a.alt_texts.each do |alt_text| %>
-      <%= render alt_text %>
-      <p>
-        <%= link_to "Show this alt text", alt_text %>
-      </p>
-    <%end%>
+
+     <div id="alt_texts">
+      <% a.alt_texts.each do |alt_text| %>
+        <%= render alt_text %>
+        <p>
+          <%= link_to "Show this alt text", alt_text %>
+        </p>
+      <%end%>
     </div>
+  <% end %>
   <% end %>
 <% end %>
 </div>
