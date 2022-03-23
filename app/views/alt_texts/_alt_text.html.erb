@@ -1,4 +1,9 @@
 <div id="<%= dom_id alt_text %>">
+   <div class="col-md-6">
+      <%= link_to alt_text.alt.image_url(:small) do %>
+        <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.pluck(:body).last, class: "img-fluid", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
+      <% end %>
+    </div>
   <p>
     <strong>Body:</strong>
     <%= alt_text.body %>
