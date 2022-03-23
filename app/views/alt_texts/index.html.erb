@@ -7,7 +7,7 @@
 <% @alt_texts.alt.each do |a| %>
      <div class="col-md-6">
       <%= link_to a.image_url(:small) do %>
-        <%= image_tag a.image_url(:small), class: "image", caption: a.title, alt: a.alt_text.last.body, class: "img-fluid", height: a.image(:small).height, width: a.image(:small).width %>
+        <%= image_tag a.image_url(:small), class: "image", caption: a.title, alt: a.alt_texts.last.body, class: "img-fluid", height: a.image(:small).height, width: a.image(:small).width %>
       <% end %>
     </div>
     <div id="alt_texts">
