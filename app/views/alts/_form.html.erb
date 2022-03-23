@@ -44,10 +44,12 @@
         <%= form.label "Verify the ALT TEXT of this image.", style: "display: block" %>
         <%= form.check_box :verified %>
       </div>
+       <% if !params[:new].present? %>
       <div class="d-block">
         <%= form.label "Flag the ALT TEXT of this image.", style: "display: block" %>
         <%= form.check_box :flag %>
       </div>
+      <% end %>
     <% end %>
     <% if user_signed_in? %>
       <%= form.hidden_field :user_id, value: current_user.id %>
