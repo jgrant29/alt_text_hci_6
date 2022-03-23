@@ -86,7 +86,7 @@
 
               <div class="d-inline"><%= link_to "Participate", verify_path, class: "me-3" %></div>
               <% if user_signed_in? %>
-              <div class="nav-item d-inline">
+              <div class="nav-item">
                   <a href="<%= new_alt_path %>" class="me-3">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -114,15 +114,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
     
-      var dropdownNav = document.getElementById("navbar-toggler");
-      dropdownNav.addEventListener("click", function() {
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
     
     </script>
 
