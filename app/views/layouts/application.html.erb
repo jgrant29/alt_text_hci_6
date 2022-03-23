@@ -117,9 +117,9 @@
       var dropdownNav = document.getElementById("navbar-toggler");
       dropdownNav.addEventListener("click", function() {
         var content = dropdownNav.getAttribute("aria-expanded"); 
-        if (content === "true") {
+        if (content === true) {
         
-          document.getElementById("collapsibleNavbar").setAttribute("aria-expanded", "false");
+           document.getElementById("collapsibleNavbar");.style.display = "none";
         } else {
           var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
           var collapseList = collapseElementList.map(function (collapseEl) {
