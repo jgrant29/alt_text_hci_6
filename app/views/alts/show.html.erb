@@ -1,6 +1,6 @@
 <main class="container">
   <%= render 'alt_show', alt: @alt %>
-  <% if user_signed_in? && ((current_user == @alt_show.user) || super_admin || referee || contributor) %>
+  <% if user_signed_in? && current_user.flag != true %>
     <button type="button" class="btn mt-3 btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Participate*
     </button>
