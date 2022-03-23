@@ -97,7 +97,7 @@ class AltsController < ApplicationController
   end
 
   def flag_alt_image
-    @flag = Flag.new(user_id: current_user.id, alt_id: @alt.id) # add other params here too
+    @flag = Flag.new(user_id: @alt.user_id, alt_id: @alt.id) # add other params here too
     @flag.save
   end
 
