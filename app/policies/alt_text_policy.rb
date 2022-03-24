@@ -2,7 +2,7 @@ class AltTextPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.super_user?
+      if user.super_user? || user.referee?
         scope.all
       end
     end
