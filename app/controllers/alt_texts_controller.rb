@@ -7,15 +7,18 @@ class AltTextsController < ApplicationController
   def index
     #@alt_texts = AltText.select('DISTINCT alt_id')
     @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
+    authorize @alt_texts
   end
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
+
   end
 
   # GET /alt_texts/new
   def new
     @alt_text = AltText.new
+    authorize @alt_text
   end
  
   # GET /alt_texts/1/edit
