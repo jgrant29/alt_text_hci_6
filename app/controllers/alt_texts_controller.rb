@@ -12,7 +12,6 @@ class AltTextsController < ApplicationController
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
-
   end
 
   # GET /alt_texts/new
@@ -23,6 +22,7 @@ class AltTextsController < ApplicationController
  
   # GET /alt_texts/1/edit
   def edit
+    authorize @alt_text
   end
 
  
@@ -57,6 +57,7 @@ class AltTextsController < ApplicationController
 
   # DELETE /alt_texts/1 or /alt_texts/1.json
   def destroy
+    authorize @alt_text
     @alt_text.destroy
 
     respond_to do |format|
