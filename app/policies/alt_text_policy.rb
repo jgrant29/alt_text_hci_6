@@ -9,7 +9,7 @@ class AltTextPolicy < ApplicationPolicy
   end
 
   def new?
-    user.present? && user.super_user == true
+    user.present? && user.super_user == true || user.referee == true
   end
 
   def create?
