@@ -12,7 +12,7 @@ class AltTextsController < ApplicationController
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
-
+    authorize @alt_text
   end
 
   # GET /alt_texts/new
@@ -23,6 +23,7 @@ class AltTextsController < ApplicationController
  
   # GET /alt_texts/1/edit
   def edit
+    authorize @alt_text
   end
 
  
