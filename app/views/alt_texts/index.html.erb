@@ -11,7 +11,7 @@
  
      <div class="col-lg-3">
       <%= link_to alt_text.alt.image_url(:small) do %>
-        <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "img-fluid", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
+        <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
       <% end %>
     </div>
 
