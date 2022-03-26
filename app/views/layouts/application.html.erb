@@ -84,7 +84,7 @@
              <% end %>
               
       </ul>
-      <form class="d-flex">
+     
          <div class="d-inline"><%= link_to "Participate", verify_path, class: "me-3" %></div>
               <% if user_signed_in? %>
               <div class="nav-item">
@@ -100,7 +100,7 @@
                 <%= link_to "Sign up", new_user_registration_path, class: "text-white ms-1 btn btn-primary btn-small"  %>
                 <%= link_to "Login", new_user_session_path, class: "ms-1 btn btn-outline-primary btn-small"  %>
               <% end %>
-      </form>
+     
     </div>
   </div>
   </nav>
