@@ -158,7 +158,7 @@
       var dropdownNav = document.getElementById("navbar-toggler");
       dropdownNav.addEventListener("click", function() {
         var content = this.nextElementSibling;
-        if (content.style.display === "none") {
+        if (content.style.visibility === "hidden") {
           content.css({
             height: $("#menu").get(0).scrollHeight,
             opacity: 1,
