@@ -158,22 +158,10 @@
       var dropdownNav = document.getElementById("navbar-toggler");
       dropdownNav.addEventListener("click", function() {
         var content = this.nextElementSibling;
-        if (content.style.visibility === "hidden") {
-          content.css({
-            height: $("#menu").get(0).scrollHeight,
-            opacity: 1,
-            marginBottom: '15px',
-            visibility: 'visible'
-        });
+        if (content.style.display === "none") {
+          content.style.display = "block";
         } else {
-          
-          content.css({
-            opacity: 0,
-            marginBottom: 0,
-            height: 0,
-            visibility: 'hidden'
-        });
-          
+          content.style.display = "none";
         }
       });
     
