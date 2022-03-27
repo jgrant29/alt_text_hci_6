@@ -67,7 +67,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" aria-label="Main navigation">
   <div class="container-fluid">
     <%= link_to "Seven Army", alts_path, class: "navbar-brand" %>
-    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"  data-bs-toggle="collapse" aria-label="Toggle navigation">
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" data-bs-target="#navbarsExampleDefault" data-bs-toggle="collapse" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" ></span>
     </button>
 
@@ -156,12 +156,19 @@
     <script>
     
       var dropdownNav = document.getElementById("navbar-toggler");
+      NavItemsStatus = '';
+
       dropdownNav.addEventListener("click", function() {
         var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
+        if((NavItemsStatus == "")|| (NavItemsStatus == undefined)){
+          NavItemsStatus = 'on';
+        } else if((NavItemsStatus == "off")){
+          NavItemsStatus = 'on';
+          $("#navbarsExampleDefault").show(600);
+        } else{
+          NavItemsStatus = 'off';
+          $("#navbarsExampleDefault").hide();
+          $("#navbarsExampleDefault").css('height','0px');
         }
       });
     
