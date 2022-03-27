@@ -161,12 +161,12 @@
       $('.navbar-toggler-icon').mousedown(function() {
         var content = this.nextElementSibling;
         if((NavItemsStatus == "")|| (NavItemsStatus == undefined)){
-          NavItemsStatus = 'on';
-        } else if((NavItemsStatus == "off")){
-          NavItemsStatus = 'on';
+          NavItemsStatus = 'off';
+        } else if((NavItemsStatus == "on")){
+          NavItemsStatus = 'off';
           $("#navbarsExampleDefault").show(600);
         } else{
-          NavItemsStatus = 'off';
+          NavItemsStatus = 'on';
           $("#navbarsExampleDefault").hide();
           $("#navbarsExampleDefault").css('height','0px');
         }
