@@ -64,35 +64,47 @@
      
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-  <div class=" w-100">
-    <div class="px-5">
-      <a class="navbar-brand float-right" href="#">
-        <img src="http://placehold.jp/100x100.png" alt="" class="navbar-logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" aria-label="Main navigation">
+  <div class="container-fluid">
+    <%= link_to "Seven Army", alts_path, class: "navbar-brand" %>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"  data-bs-toggle="collapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" ></span>
+    </button>
 
-         <span class="navbar-toggler-icon light"></span>
-       </button>
-      <div class="collapse navbar-collapse float-left " id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-3 mb-lg-0 ">
-          <li class="nav-item">
-            <a class="nav-link navbar-link active" href="#">المباني</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-link" href="#">المستخدمين</a>
-          </li>
-          <li class="border-bottom d-fixed d-lg-none m-2"></li>
-        </ul>
-        <div>
-          <button class="bg-white btn-logout btn me-5 d-flex justify-content-center align-items-center">
-             <img src="" alt="" class="logout-logo">
-           </button>
-        </div>
-      </div>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+
+     
+       <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+            <% if user_signed_in? && super_admin %>
+                      <li class="nav-item">
+                        <%= link_to "Alt Text", alt_texts_path, class: "nav-link" %>
+                      </li>
+                      <li class="nav-item">
+                        <%= link_to "Users", moderators_path, class: "nav-link" %>
+                      </li>
+             <% end %>
+              
+      </ul>
+        
+         <div class="nav-item mb-3 mx-1 mb-lg-0"><%= link_to "Participate", verify_path, class: "me-3" %></div>
+        <% if user_signed_in? %>
+         <div class="nav-item mb-3 mx-1 mb-lg-0">
+          <a href="<%= new_alt_path %>" class="me-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg> Create 
+          </a>
+         </div>
+                <div class="d-inline-block  mb-3 mt-3"><%= link_to "Account", edit_user_registration_path, class: "text-white me-3 btn btn-primary btn-sm" %></div>
+                <div class="d-inline-block  mb-3 mt-3"><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "me-3 btn btn-outline-primary btn-sm" %></div>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, class: "text-white ms-1 btn btn-primary btn-small"  %>
+                <%= link_to "Login", new_user_session_path, class: "ms-1 btn btn-outline-primary btn-small"  %>
+            <% end %>
+     
     </div>
   </div>
-</nav>
+  </nav>
   <!--
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid ">
@@ -141,7 +153,7 @@
         </div>
       </footer>
      
-<!--    <script>
+    <script>
     
       var dropdownNav = document.getElementById("navbar-toggler");
       dropdownNav.addEventListener("click", function() {
@@ -153,7 +165,7 @@
         }
       });
     
-    </script>-->
+    </script>
 
     </body>
   <% end %>
