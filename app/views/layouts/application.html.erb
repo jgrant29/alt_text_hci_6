@@ -159,9 +159,21 @@
       dropdownNav.addEventListener("click", function() {
         var content = this.nextElementSibling;
         if (content.style.display === "none") {
-          content.style.display = "block";
+          content.css({
+            height: $("#menu").get(0).scrollHeight,
+            opacity: 1,
+            marginBottom: '15px',
+            visibility: 'visible'
+        });
         } else {
           content.style.display = "none";
+          content.css({
+            opacity: 0,
+            marginBottom: 0,
+            height: 0,
+            visibility: 'hidden'
+        });
+          
         }
       });
     
