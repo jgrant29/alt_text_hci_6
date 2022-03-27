@@ -156,10 +156,9 @@
     <script>
     $(document).ready(function(){
 
-      var dropdownNav = document.getElementById("navbar-toggler");
       NavItemsStatus = '';
 
-      dropdownNav.addEventListener("click", function() {
+      $('.navbar-toggler-icon').mousedown(function() {
         var content = this.nextElementSibling;
         if((NavItemsStatus == "")|| (NavItemsStatus == undefined)){
           NavItemsStatus = 'on';
