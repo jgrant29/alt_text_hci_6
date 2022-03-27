@@ -67,11 +67,11 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" aria-label="Main navigation">
   <div class="container-fluid">
     <%= link_to "Seven Army", alts_path, class: "navbar-brand" %>
-    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" data-bs-target="#navbarsExampleDefault" data-bs-toggle="collapse" aria-label="Toggle navigation">
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"  data-bs-toggle="collapse" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" ></span>
     </button>
 
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" >
 
      
        <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
@@ -154,23 +154,15 @@
       </footer>
      
     <script>
-    $(document).ready(function(){
-
-      NavItemsStatus = '';
-
-      $('.navbar-toggler-icon').mousedown(function() {
+    
+      var dropdownNav = document.getElementById("navbar-toggler");
+      dropdownNav.addEventListener("click", function() {
         var content = this.nextElementSibling;
-        if((NavItemsStatus == "")|| (NavItemsStatus == undefined)){
-          NavItemsStatus = 'off';
-        } else if((NavItemsStatus == "on")){
-          NavItemsStatus = 'off';
-          $("#navbarsExampleDefault").show(600);
-        } else{
-          NavItemsStatus = 'on';
-          $("#navbarsExampleDefault").hide();
-          $("#navbarsExampleDefault").css('height','0px');
+        if (content.style.display === "none") {
+          content.style.display = "block";
+        } else {
+          content.style.display = "none";
         }
-        })
       });
     
     </script>
