@@ -1,9 +1,0 @@
-<div id="<%= dom_id altverify_me %>" class="p-2">
-  <%= link_to altverify_me, "aria-label": altverify_me.body do %>
-    <p><%= altverify_me.body %></p>
-    <%= image_tag altverify_me.image_url(:small), caption: altverify_me.title, alt: altverify_me.alt_texts.pluck(:body).last,height: altverify_me.image(:small).height, width: altverify_me.image(:small).width, class: "border rounded image img-fluid w-100" %>
-     <turbo-frame id="<%= dom_id(altverify_me) %>" loading="lazy" src="<%= verify_path %>">
-        <%= render('common/spinner') %>
-    </turbo-frame>
-  <% end %>    
-</div>
