@@ -173,8 +173,8 @@ GEM
     faraday-retry (1.0.3)
     fastimage (2.2.6)
     ffi (1.15.5)
-    font-awesome-sass (6.1.1)
-      sassc (~> 2.0)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     fugit (1.5.2)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
@@ -308,8 +308,6 @@ GEM
     rubyzip (2.3.2)
     rufus-scheduler (3.8.1)
       fugit (~> 1.1, >= 1.1.6)
-    sassc (2.4.0)
-      ffi (~> 1.9)
     searchkick (5.0.2)
       activemodel (>= 5.2)
       hashie
@@ -392,7 +390,7 @@ DEPENDENCIES
   elasticsearch (< 7.14)
   faker!
   fastimage
-  font-awesome-sass
+  font-awesome-rails
   image_processing (~> 1.8)
   jbuilder
   jsbundling-rails
