@@ -4,7 +4,7 @@ module AltsHelper
       		link_to tag_name, root_path(tag: tagname)
     	end
     	safe_join list,", "
-		return list
+		
 		
 	end
 
