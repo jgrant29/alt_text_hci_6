@@ -1,10 +1,11 @@
 module AltsHelper
 	def linked_tag_list(alt)
-		list = alt.tag_list.split.map do |tag_name|
-      		link_to tag_name, root_path(tag: tag_name)
+		list = []
+		alt.tag_list.split.map do |tag_name|
+      		list.add(link_to tag_name, root_path(tag: tag_name))
     	end
 		
-    	safe_join list,", "
+    	#safe_join list,", "
 		
 		
 	end
