@@ -43,7 +43,7 @@
         <span class="d-block mb-1">created by <%= @alt_show.user["email"] %></span>
       <% end %>
       <span class="d-block mb-1">Created: <%= alt.created_at.strftime("%B #{alt.created_at.day.ordinalize}, %Y") %></span>
-      <span class="d-block mb-1">Tags: <%= linked_tag_list.join(",") alt %></span>
+      <span class="d-block mb-1">Tags: <%= linked_tag_list alt %></span>
       <span class="d-block mb-1">URL: <%= alt.original_url %></span>
       <span class="d-block mb-1">Source: <%= alt.original_source %></span>
       <!-- <span class="d-block mb-1"><%= alt.image.metadata %></span> -->
