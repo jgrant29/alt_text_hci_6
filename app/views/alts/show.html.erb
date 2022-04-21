@@ -1,7 +1,9 @@
 <main class="container">
   <%= render 'alt_show', alt: @alt %>
   <% if user_signed_in? && current_user.flag != true %>
-     <%= link_to '<button type="button class="btn mt-3 btn-primary">Participate*</button>'.html_safe, edit_alt_path %>
+    <button type="button" class="btn mt-3 btn-primary" href="<%= edit_alt_path %>">
+      Participate*
+    </button>
 
     <!--<button type="button" class="btn mt-3 btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Participate*
