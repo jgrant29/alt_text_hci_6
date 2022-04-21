@@ -110,9 +110,7 @@ class AltsController < ApplicationController
         #   flash[:alert] = "The image was a duplicate. Please upload another image" 
         # else
           build_alt_text_versions
-          if @alt.flag.changed?
-            flag_alt_image
-          end
+         
           
          
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
