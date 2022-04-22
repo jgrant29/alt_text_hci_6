@@ -1,4 +1,5 @@
 require "image_processing/mini_magick"
+require "streamio-ffmpeg"
 
 class ImageUploader < Shrine
   plugin :determine_mime_type
