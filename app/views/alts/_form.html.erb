@@ -16,7 +16,8 @@
     <%= form.label :image %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
-<%= image_tag(image) %>
+   
+    <%= image_tag(form.object.cached_image_data) %>
   </div>
 
   <div class="form-floating mb-3">
