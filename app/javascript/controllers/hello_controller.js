@@ -10,7 +10,7 @@ export default class extends Controller {
 
     function myFunction(x) {
       if (x.matches) { // If media query matches
-        document.getElementsByClassName("d-xtra-small");
+        document.getElementsByClassName("col-lg-9");
       } else {
         document.body.style.backgroundColor = "pink";
       }
