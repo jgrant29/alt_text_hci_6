@@ -12,6 +12,24 @@ class ImageUploader < Shrine
     }
   end
 
-  
+  Attacher.validate do
+      img_mod = Phashion::Image.new(file.open.path)
+      count = 0
+      Alt.all.map { |u| 
+
+        puts u.title
+        
+        file2 = URI.parse(u.image.url).open
+        
+        
+        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
+            count = count + 1
+            if count == 2
+              errors << "Image is a duplicate" 
+            end 
+        end 
+      }
+    end
+  end
 
 end

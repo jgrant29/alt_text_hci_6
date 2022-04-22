@@ -97,4 +97,3 @@ gem "searchkick"
 gem  "elasticsearch", "< 7.14"   # select one
 gem 'rails_12factor', group: :production
 gem "font-awesome-rails"
-gem 'jquery-rails'
