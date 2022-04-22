@@ -16,10 +16,7 @@
     <%= form.label :image %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
-   
-    <%= image_tag(form.object.cached_image_data) %>
-  </div>
-
+  
   <div class="form-floating mb-3">
     <%= form.text_field :title, id: "title", class: "form-control", placeholder: "Title", required: true %>
      <label for="title">Title<span style="color:red"> *</span></label>
@@ -61,4 +58,6 @@
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
    
   </div>
+  <div id="preview">
+</div>
 <% end %>
