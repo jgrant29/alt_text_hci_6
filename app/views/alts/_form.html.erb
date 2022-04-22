@@ -73,7 +73,8 @@ $(function() {
       var img = new Image();
       console.log(file);
       img.src = file.target.result;
-      $('#preview').html(img).css({'width' : '50px' , 'height' : '50px'});
+      $('#preview').html(img);
+      $('#preview img').css({'width' : '50px' , 'height' : '50px'});
     }
     reader.readAsDataURL(image);
     console.log(files);
