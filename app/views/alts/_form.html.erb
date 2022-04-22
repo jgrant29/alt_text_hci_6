@@ -59,7 +59,8 @@
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
    
   </div>
- 
+  <div id="preview" style="width:100px;height:100px;">
+    </div>
 <script>
 $(function() {
   $('#formFile').on('change', function(event) {
@@ -73,9 +74,7 @@ $(function() {
       console.log(file);
       img.src = file.target.result;
       $('#preview').html(img);
-
-    
-     
+    }
     reader.readAsDataURL(image);
     console.log(files);
   });
@@ -83,6 +82,3 @@ $(function() {
 
 </script>
 <% end %>
- <div id="preview" style="width:100px;height:100px;">
-
-    </div>
