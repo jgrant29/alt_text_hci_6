@@ -60,6 +60,7 @@
    
   </div>
   <div id="preview" style="width:100px;height:100px;">
+
     </div>
 <script>
 $(function() {
@@ -74,7 +75,8 @@ $(function() {
       console.log(file);
       img.src = file.target.result;
       $('#preview').html(img);
-      $('#preview img').css({'width: 100px, height: 100px'});
+      $("#preview img").css("width", "100px");
+      $("#preview img").css("height", "100px");
     }
     reader.readAsDataURL(image);
     console.log(files);
