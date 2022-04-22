@@ -13,8 +13,8 @@
 
   <div class="mb-3">
     <label for="formFile" class="form-label">Image for Seven Army</label>
+    <div class="image-preview"> <img id="preview" /></div>
     <%= form.label :image %>
-    <%= image_tag form.object.image_url if form.object.cached_image_data %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
 
