@@ -44,6 +44,11 @@ a:hover {
   border: 0;
 }
 
+#preview img {
+  width:100px;
+  height:100px;
+}
+
 /*with a modal, the user should see the background text — JMG*/
 /*
 .modal-backdrop{
