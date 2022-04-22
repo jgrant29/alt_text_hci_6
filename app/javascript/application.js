@@ -4,6 +4,13 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 import "trix"
 import "@rails/actiontext"
+import jquery from "jquery"
+window.jQuery =jquery
+window.$ = jquery
+
+$(function() {
+  console.log("hello")
+})
 
 document.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
