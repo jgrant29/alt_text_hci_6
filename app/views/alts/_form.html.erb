@@ -74,6 +74,7 @@ $(window).on("load", function() {
       console.log(file);
       img.src = file.target.result;
       $('#preview').html(img);
+      console.log(img.width);
     }
     reader.readAsDataURL(image);
     console.log(files);
