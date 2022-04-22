@@ -16,7 +16,7 @@ export default class extends Controller {
       }
     }
 
-    var x = document.getElementsByClassName("col-lg-9");
+    var x = document.getElementsByClassName("col-lg-8");
     xtra_small = document.getElementsByClassName("d-xtra-small");
     myFunction(x) // Call listener function at run time
     x.addListener(myFunction) // Attach listener function on state changes
