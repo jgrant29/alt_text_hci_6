@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="mb-3">
-    <div id="preview" style="width:100px;height:100px;">
-    </div>
+   
     <label for="formFile" class="form-label">Image for Seven Army</label>
     <%= form.label :image %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
@@ -60,7 +59,8 @@
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
    
   </div>
- 
+  <div id="preview" style="width:100px;height:100px;">
+    </div>
 <script>
 $(function() {
   $('#formFile').on('change', function(event) {
