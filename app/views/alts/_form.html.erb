@@ -81,6 +81,20 @@ $(window).on("load", function() {
     reader.readAsDataURL(image);
     console.log(files);
   });
+
+  fetch('https://alt-text-hci-6.herokuapp.com/alts', {
+      method: 'POST',
+      body: formData
+   })
+   .then(resp => resp.json())
+   .then(data => {
+      if (data.errors) {
+         alert(data.errors)
+      }
+      else {
+         console.log(data)
+      }
+   })
 });
 
 </script>
