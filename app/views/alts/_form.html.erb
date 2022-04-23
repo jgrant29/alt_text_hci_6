@@ -79,7 +79,7 @@ $(window).on("load", function() {
       $('#preview').html(img);
       formData.append('image', image)
       console.log(img.width);
-       fetch('https://alt-text-hci-6.herokuapp.com/alts', {
+       fetch('/alts', {
             method: 'POST',
             body: formData
         })
