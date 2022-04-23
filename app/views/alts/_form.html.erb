@@ -67,18 +67,35 @@ $(window).on("load", function() {
   $('#formFile').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
-   
+    var formData = new FormData()
     console.log(image.size);
     var reader = new FileReader();
     reader.onload = function(file) {
       var img = new Image();
       console.log(file);
+     
+     
       img.src = file.target.result;
       $('#preview').html(img);
+      formData.append('image', image)
       console.log(img.width);
     }
     reader.readAsDataURL(image);
     console.log(files);
+
+     fetch('https://alt-text-hci-6.herokuapp.com/alts', {
+      method: 'POST',
+      body: formData
+   })
+   .then(resp => resp.json())
+   .then(data => {
+      if (data.errors) {
+         alert(data.errors)
+      }
+      else {
+         console.log(data)
+      }
+   })
   });
 });
 
