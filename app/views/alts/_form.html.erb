@@ -67,8 +67,9 @@ $(window).on("load", function() {
   $('#formFile').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
-  
-    console.log(image.size);
+    let formData = new FormData()
+    formData.append('image', image)
+    console.log(formData);
     var reader = new FileReader();
     reader.onload = function(file) {
       var img = new Image();
