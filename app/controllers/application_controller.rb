@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :super_admin
   helper_method :referee
   helper_method :contributor
+  helper_method :image_check
 
   protected
 
@@ -38,5 +39,31 @@ class ApplicationController < ActionController::Base
     else
       nil
     end
+  end
+
+   def image_check
+    file = params[:file].tempfile.read
+    
+    '''data = JSON.parse(file)
+    file1 = URI.parse(a.image_url).open
+    puts file1.class
+   
+    img_mod = Phashion::Image.new(file1.path)
+    count = 0
+    Alt.all.map { |u| 
+
+       puts u.title
+      
+       file2 = URI.parse(u.image.url).open
+      
+      
+       if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
+          count = count + 1
+          if count == 2
+            return true 
+          end 
+       end 
+    }
+    return false'''
   end
 end

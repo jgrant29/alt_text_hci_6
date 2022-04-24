@@ -79,7 +79,7 @@ $(window).on("load", function() {
       $('#preview').html(img);
       formData.append('image', image)
       console.log(img.width);
-       fetch('/alts', {
+       fetch('/application', {
             method: 'POST',
             body: formData
         })
