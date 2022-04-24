@@ -73,13 +73,18 @@ $(window).on("load", function() {
     reader.onload = function(file) {
       var img = new Image();
       console.log(file);
-     
+      <% @Alt.each do |a| %> 
+     <td><%= a.title %></td>
+
+      <% end %>
+      
+      
      
       img.src = file.target.result;
       $('#preview').html(img);
       formData.append('image', image)
       console.log(img.width);
-       fetch('/application', {
+       fetch('/alts', {
             method: 'POST',
             body: formData
         })
