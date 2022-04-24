@@ -73,13 +73,6 @@ $(window).on("load", function() {
     reader.onload = function(file) {
       var img = new Image();
       console.log(file);
-      <% @Alt.each do |a| %> 
-     <%= a.title %>
-
-      <% end %>
-      
-      
-     
       img.src = file.target.result;
       $('#preview').html(img);
       formData.append('image', image)
