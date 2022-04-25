@@ -72,10 +72,11 @@ class AltsController < ApplicationController
 
     respond_to do |format|
       if @alt.save
-        #@alt.image_derivatives!
-        #@alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
-        #@alt.save
-       
+        @alt.image_derivatives!
+        @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
+        @alt.image_attacher.file.add_metadata(caption: @alt.title, alt: @alt.body)
+        @alt.image_attacher.write
+        @alt.save
        
         if image_modification_alt == false
            format.js
