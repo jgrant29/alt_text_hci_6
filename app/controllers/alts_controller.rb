@@ -67,7 +67,6 @@ class AltsController < ApplicationController
   def create
     @alt = Alt.new(alt_params)
     authorize @alt
-
     respond_to do |format|
       if @alt.save
         @alt.image_derivatives!
