@@ -116,7 +116,7 @@ class AltsController < ApplicationController
         # else
           build_alt_text_versions
           
-         
+          @alt.flag = false
           
          
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
