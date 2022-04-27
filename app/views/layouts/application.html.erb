@@ -76,11 +76,11 @@
                 <a class="nav-link dropdown-toggle btn btn-outline-primary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ADMIN
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><%= link_to "Alt Text", alt_texts_path, class: "dropdown-item" %></li>
-                  <li><%= link_to "Users", moderators_path, class: "dropdown-item" %></li>
-                </ul>
-              </li>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Alt Text", alt_texts_path, class: "dropdown-item" %>
+                  <%= link_to "Users", moderators_path, class: "dropdown-item" %>
+                </div>
+              </div>
               <% end %>   
             </ul>
             <div class="nav-item mb-3 mx-1 mb-lg-0"><%= link_to "Participate", verify_path, class: "me-3" %></div>

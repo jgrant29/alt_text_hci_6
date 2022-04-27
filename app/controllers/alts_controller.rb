@@ -74,7 +74,7 @@ class AltsController < ApplicationController
         @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
         #@alt.image_attacher.file.add_metadata(caption: @alt.title, alt: @alt.body)
         #@alt.image_attacher.write
-        @alt.flag = false
+        
         @alt.save
        
         if image_modification_alt == false
@@ -83,6 +83,7 @@ class AltsController < ApplicationController
            flash[:alert] = "The image was a duplicate. Please upload another image" 
         else
           @alt.verified = false
+          @alt.flag = false
           @alt.image_derivatives!
           @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
           @alt.save
