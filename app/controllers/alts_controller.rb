@@ -67,7 +67,6 @@ class AltsController < ApplicationController
   # POST /alts or /alts.json
   def create
     @alt = Alt.new(alt_params)
-    byebug
     authorize @alt
 
     respond_to do |format|
