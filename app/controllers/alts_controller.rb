@@ -115,9 +115,7 @@ class AltsController < ApplicationController
         #   flash[:alert] = "The image was a duplicate. Please upload another image" 
         # else
           build_alt_text_versions
-          if @alt.flag == true
-            flag_alt_image
-          end
+          
          
           
          
@@ -132,7 +130,7 @@ class AltsController < ApplicationController
   end
 
   def flag_alt_image
-    @alt.flag = @alt.flag
+    #@alt.flag = @alt.flag
     @alt.save
     @flag = Flag.new(user_id: @alt.user_id, alt_id: @alt.id) # add other params here too
     @flag.save
