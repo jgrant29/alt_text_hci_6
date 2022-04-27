@@ -74,6 +74,7 @@ class AltsController < ApplicationController
         @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
         #@alt.image_attacher.file.add_metadata(caption: @alt.title, alt: @alt.body)
         #@alt.image_attacher.write
+        @alt.flag = false
         @alt.save
        
         if image_modification_alt == false
