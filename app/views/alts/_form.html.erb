@@ -138,8 +138,9 @@ $(window).on("load", function() {
               alert(data.errors)
             }
             else {
-              //console.log(data)
+              console.log(data)
               console.log(new Uint8Array(JSON.parse(data)))
+              base64String = new Uint8Array(JSON.parse(data)
             }
         });
     }
