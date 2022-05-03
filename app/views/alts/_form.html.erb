@@ -90,7 +90,7 @@
     // f = new File([blob], 'sample.jpeg', {
       type: blob.type,
   //});
-   image2 = blob;
+   image2 = new Int8Array(blob);
 
   //console.log(f);
    
@@ -121,11 +121,11 @@ $(window).on("load", function() {
       formData.append('image', image)
       console.log(img.width);
 
-      base64String = reader.result
+      base64String = new Int8Array(reader.readAsArrayBuffer(image))
                 //.replace('data:', '')
                // .replace(/^.+,/, '');
 
-      console.log(base64String);
+      //console.log(base64String);
 
       fetch('https://alt-text-hci-6.herokuapp.com/alts/', {
             method: 'POST',
@@ -145,7 +145,8 @@ $(window).on("load", function() {
 
     
     reader.readAsDataURL(image);
-     function urlBase64ToUint8Array(base64String) {
+    base64String = new Int8Array(reader.readAsArrayBuffer(image))
+     /*function urlBase64ToUint8Array(base64String) {
         var padding = '='.repeat((4 - base64String.length % 4) % 4);
         var base64 = (base64String + padding)
           .replace(/\-/g, '+')
@@ -158,10 +159,10 @@ $(window).on("load", function() {
           outputArray[i] = d.charCodeAt(i);
         }
         return outputArray;
-      }   
+      }   */
 
-    var img1 = urlBase64ToUint8Array(base64String);
-    var img2 = urlBase64ToUint8Array(image2);
+    var img1 =base64String;
+    var img2 = image2;
    
     pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1});
 
