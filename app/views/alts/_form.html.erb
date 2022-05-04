@@ -126,7 +126,7 @@ $(window).on("load", function() {
       console.log(base64String)
       img1 =base64String;
     img2 = image2;
-    if (img1 == img2) {
+    if (img1.trim() === img2.trim()) {
       console.log("Equal")
     } else {
       console.log("Not Equal")
