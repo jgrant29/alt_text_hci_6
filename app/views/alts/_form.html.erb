@@ -136,6 +136,7 @@ $(window).on("load", function() {
         .then(data => {
             if (data.errors) {
               alert(data.errors)
+              console.log(data)
             }
             else {
               console.log(data)
