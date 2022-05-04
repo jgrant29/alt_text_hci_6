@@ -124,6 +124,13 @@ $(window).on("load", function() {
       base64String = reader.result
       console.log("Result: ")
       console.log(base64String)
+      var img1 =base64String;
+    var img2 = image2;
+    if (img1 == img2) {
+      console.log("Equal")
+    } else {
+      console.log("Some error")
+    }
       //new Int8Array(reader.readAsArrayBuffer(image))
                 //.replace('data:', '')
                // .replace(/^.+,/, '');
@@ -153,13 +160,7 @@ $(window).on("load", function() {
     reader.readAsDataURL(image);
     
 
-    var img1 =base64String;
-    var img2 = image2;
-    if (img1 == img2) {
-      console.log("Equal")
-    } else {
-      console.log("Some error")
-    }
+    
    
     //pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1});
 
