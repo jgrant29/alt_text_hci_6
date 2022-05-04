@@ -100,7 +100,7 @@
    
 
       
-   
+var img1, img2 = "";
 var base64String = "";
 $(window).on("load", function() {
   $('#formFile').on('change', function(event) {
@@ -124,12 +124,12 @@ $(window).on("load", function() {
       base64String = reader.result
       console.log("Result: ")
       console.log(base64String)
-      var img1 =base64String;
-    var img2 = image2;
-    if (img1.localeCompare(img2) == 0) {
+      img1 =base64String;
+    img2 = image2;
+    if (img1 == img2) {
       console.log("Equal")
     } else {
-      console.log("Some error")
+      console.log("Not Equal")
     }
       //new Int8Array(reader.readAsArrayBuffer(image))
                 //.replace('data:', '')
