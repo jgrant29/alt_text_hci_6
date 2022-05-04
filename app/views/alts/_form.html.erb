@@ -100,7 +100,8 @@
    
 
       
-var img1, img2 = "";
+var img1 = "";
+var img2 = image2;
 var base64String = "";
 $(window).on("load", function() {
   $('#formFile').on('change', function(event) {
@@ -125,7 +126,7 @@ $(window).on("load", function() {
       console.log("Result: ")
       console.log(base64String)
       img1 =base64String;
-    img2 = image2;
+    
     if (img1.trim() === img2.trim()) {
       console.log("Equal")
     } else {
