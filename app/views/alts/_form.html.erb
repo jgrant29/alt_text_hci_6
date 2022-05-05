@@ -87,7 +87,8 @@ Promise.all(alts.map(alt =>
      mode: 'no-cors'
      }).then(res => res.blob)
 )).then(blob => {
-  console.log(blob)
+  console.log(blob[0])
+   image2 = blob.slice();
    var r2 = new FileReader()
    var temp=""
    for (let i = 0; i < blob.length; i++) {
