@@ -95,36 +95,7 @@ Promise.all(image2).then(imgContents) => {
 
 });
    
-/*Promise.all(alts.map(alt =>
 
-   fetch(alt,{
-     method: 'GET', 
-     mode: 'no-cors'
-     }).then(res => res.blob())
-)).then(blob => {
-  
-  var temp=""
-  var r2;
-  for (let i = 0; i < blob.length; i++) {
-    r2 = new FileReader()
-    reader.readAsDataURL(blob[i]);
-   // console.log(blob[i])
-    r2.onload = () => {
-      temp = r2.result
-      console.log(temp)
-      
-      //console.log("base64 size: ", image2.length)
-      
-    }
-    
-  }
- 
-   
-   
-  
-   
-   
-})*/
       
 var img1 = "";
 var base64String = "";
