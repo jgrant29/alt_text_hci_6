@@ -60,7 +60,7 @@
   <div>
   <!-- Todo: add Spinner -->
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
-   <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.url
+   <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri
 }} do %>
    <%end%>
 
@@ -71,7 +71,7 @@
 
 
     var f;
-    var image2;
+    var image2 ="";
     var r = new FileReader();
     console.log($('.alts').data('alts')[0]);
     var alt = $('.alts').data('alts')[0]
@@ -82,15 +82,14 @@
         mode: 'no-cors'
   }).then(res => res.blob()) 
   .then(blob => {
-
-     var reader = new FileReader();
-      reader.readAsDataURL(blob);
-
-      reader.onloadend = function () {
-        image2 = reader.result;
-        console.log(image2);
-    }
+  var r2 = new FileReader()
+  r2.onload = () => {
+    var image2 = r2.result
+    console.log(image2)
+    console.log("base64 size: ", image2.length)
     
+  }
+  r2.readAsDataURL(blob)
    // var url = URL.createObjectURL(blob)
     //var fd = new FormData()
   //fd.append('image', blob, 'sample')
