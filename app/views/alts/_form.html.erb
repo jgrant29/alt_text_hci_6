@@ -135,9 +135,10 @@ $(window).on("load", function() {
       img1 =base64String;
     
     if (img1.trim() === image2.trim()) {
-      console.log("Equal")
-    } else {
       alert("This image has already exists! Please select another image.")
+      
+    } else {
+      console.log("Not a duplicate")
     }
       //new Int8Array(reader.readAsArrayBuffer(image))
                 //.replace('data:', '')
