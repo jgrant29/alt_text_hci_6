@@ -85,9 +85,10 @@ Promise.all(alts.map(alt =>
    fetch(alt,{
      method: 'GET', 
      mode: 'no-cors'
-     }).then(res => res.blob)
+     }).then(res => res.text())
 )).then(blob => {
-  console.log(blob[0])
+  blob.split(/\r|\n/)
+  console.log(blob)
    image2 = blob.slice();
    var r2 = new FileReader()
    var temp=""
