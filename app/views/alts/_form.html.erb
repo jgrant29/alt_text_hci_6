@@ -71,12 +71,13 @@
 
 
     var f;
-    var image2 ="";
+    var image2 = [];
     var r = new FileReader();
     console.log($('.alts').data('alts')[0]);
-    var alt = $('.alts').data('alts')[0]
+    var alts = $('.alts').data('alts')
     //console.log($('.alts').data('alts')[0]);
     var mime_type = "image/jpeg"
+  Promise.all(alts.map(alt =>
   fetch(alt, {
        method: 'GET',
         mode: 'no-cors'
@@ -84,7 +85,7 @@
   .then(blob => {
   var r2 = new FileReader()
   r2.onload = () => {
-    image2 = r2.result
+    image2.push(r2.result)
     console.log(image2)
     console.log("base64 size: ", image2.length)
     
@@ -134,12 +135,17 @@ $(window).on("load", function() {
       console.log(base64String)
       img1 =base64String;
     
-    if (img1.trim() === image2.trim()) {
-      alert("This image has already exists! Please select another image.")
-      
-    } else {
-      console.log("Not a duplicate")
+    for (const i of image2) {
+       if (img1.trim() === i.trim()) {
+        alert("This image has already exists! Please select another image.")
+        break;
+        
+      } else {
+        console.log("Not a duplicate")
+      }
+
     }
+   
       //new Int8Array(reader.readAsArrayBuffer(image))
                 //.replace('data:', '')
                // .replace(/^.+,/, '');
