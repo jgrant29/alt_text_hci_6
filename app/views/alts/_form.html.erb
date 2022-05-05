@@ -80,8 +80,22 @@
  
    
 var r2;
+
+for (let alt of alts) {
+  let curr = new Promise(resolve => {
+    let r2 = new FileReader();
+    r2.readAsDataURL(alt);
+    r2.onload = () => resolve(r2.result);
+  });
+  image2.push(curr)
+}
+
+Promise.all(image2).then(imgContents) => {
+  console.log(imgContents)
+
+});
    
-Promise.all(alts.map(alt =>
+/*Promise.all(alts.map(alt =>
 
    fetch(alt,{
      method: 'GET', 
@@ -103,7 +117,7 @@ Promise.all(alts.map(alt =>
       
     }
     
-  }
+  }*/
  
    
    
