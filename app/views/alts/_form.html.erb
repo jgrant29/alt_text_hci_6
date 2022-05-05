@@ -89,14 +89,16 @@ Promise.all(alts.map(alt =>
 )).then(blob => {
   console.log(blob)
    var r2 = new FileReader()
+   var i =0;
    for (let b of blob) {
       r2.onload = () => {
       image2.push(r2.result)
-      console.log(image2)
+      console.log(image2[i])
+      i++;
       //console.log("base64 size: ", image2.length)
       
     }
-    r2.readAsDataURL(b)
+    //r2.readAsDataURL(b)
     }
    
 })
