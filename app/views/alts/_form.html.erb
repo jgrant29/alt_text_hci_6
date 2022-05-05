@@ -73,7 +73,7 @@
     var f;
     var image2 = [];
     var r = new FileReader();
-    console.log($('.alts').data('alts')[0]);
+   
     var alts = $('.alts').data('alts')
     //console.log($('.alts').data('alts')[0]);
     var mime_type = "image/jpeg"
@@ -89,17 +89,18 @@ Promise.all(alts.map(alt =>
 )).then(blob => {
   console.log(blob)
    var r2 = new FileReader()
-   var i =0;
-   for (let b of blob) {
+  
+   for (let i = 0; i < blob.length; i++) {
       r2.onload = () => {
-      image2.push(r2.result)
+      image2[i] = r2.result
       console.log(image2[i])
-      i++;
+     
       //console.log("base64 size: ", image2.length)
       
     }
     //r2.readAsDataURL(b)
     }
+   
    
 })
       
