@@ -85,10 +85,12 @@ Promise.all(alts.map(alt =>
    fetch(alt,{
      method: 'GET', 
      mode: 'no-cors'
-     }).then(res => res.json())
+     }).then(res => res.blob())
 )).then(blob => {
   
-  
+  for (let i = 0; i < blob.length; i++) {
+    console.log(blob[i])
+  }
    var arr = JSON.parse(blob)
    console.log(arr)
    image2 = arr.slice();
