@@ -85,11 +85,13 @@ Promise.all(alts.map(alt =>
    fetch(alt,{
      method: 'GET', 
      mode: 'no-cors'
-     }).then(res => res.text())
+     }).then(res => res.JSON())
 )).then(blob => {
-  blob.split(/\r|\n/)
+  blob.parse()
   console.log(blob)
-   image2 = blob.slice();
+   var arr = JSON.parse(blob)
+   console.log(arr)
+   image2 = arr.slice();
    var r2 = new FileReader()
    var temp=""
    for (let i = 0; i < blob.length; i++) {
