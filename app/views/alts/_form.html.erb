@@ -82,32 +82,30 @@
 
    
 Promise.all(alts.map(alt =>
+
    fetch(alt,{
      method: 'GET', 
      mode: 'no-cors'
      }).then(res => res.blob())
 )).then(blob => {
   
+  var temp=""
+   var r2;
   for (let i = 0; i < blob.length; i++) {
+    r2 = new FileReader()
     console.log(blob[i])
-  }
-   var arr = JSON.parse(blob)
-   console.log(arr)
-   image2 = arr.slice();
-   var r2 = new FileReader()
-   var temp=""
-   for (let i = 0; i < blob.length; i++) {
-     var r2 = new FileReader()
-      r2.onload = () => {
+    r2.onload = () => {
       temp = r2.result
       console.log(temp)
      
       //console.log("base64 size: ", image2.length)
       
     }
-    image2[i] = temp
-    //r2.readAsDataURL(image2[i])
-    }
+  }
+ 
+   
+   
+  
    
    
 })
