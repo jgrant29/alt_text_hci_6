@@ -87,8 +87,8 @@ Promise.all(alts.map(alt =>
      mode: 'no-cors'
      }).then(res => res.json())
 )).then(blob => {
-  blob.parse()
-  console.log(blob)
+  
+  
    var arr = JSON.parse(blob)
    console.log(arr)
    image2 = arr.slice();
