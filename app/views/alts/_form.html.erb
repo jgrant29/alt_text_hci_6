@@ -85,7 +85,7 @@
 
      var reader = new FileReader();
       reader.onload = function() {
-           image2 = reader.result.replace(/^data:.+;base64,/, '');
+           image2 = reader.result
           
       };
       reader.readAsDataURL(blob);
