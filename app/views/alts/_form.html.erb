@@ -85,7 +85,7 @@ Promise.all(alts.map(alt =>
    fetch(alt,{
      method: 'GET', 
      mode: 'no-cors'
-     }).then(res => res.JSON())
+     }).then(res => res.json())
 )).then(blob => {
   blob.parse()
   console.log(blob)
