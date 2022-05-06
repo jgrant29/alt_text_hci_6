@@ -1,9 +1,4 @@
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        This image has already exists! Please select another image.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-</div>
+
 <%= form_with(model: alt) do |form| %>
   <% if alt.errors.any? %>
     <div style="color: red">
@@ -160,11 +155,11 @@ $(window).on("load", function() {
     
     for (const i of alts) {
        if (img1.trim() === i.trim()) {
-         $('.alert').alert()
-        //alert("This image has already exists! Please select another image.")
+        
+        alert("This image has already exists! Please select another image.")
         
       } else{
-        $(".alert").alert('close')
+       
       }
 
     }
