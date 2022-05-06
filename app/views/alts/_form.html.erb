@@ -1,8 +1,8 @@
-<div class="alert alert-warning alert-dismissible fade close" role="alert">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
         This image has already exists! Please select another image.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+      </button>
 </div>
 <%= form_with(model: alt) do |form| %>
   <% if alt.errors.any? %>
@@ -131,7 +131,7 @@ for (let alt of alts) {
    
    
 })*/
-      
+ $(".alert").alert('close')     
 var img1 = "";
 var base64String = "";
 $(window).on("load", function() {
@@ -163,7 +163,9 @@ $(window).on("load", function() {
          $('.alert').alert()
         //alert("This image has already exists! Please select another image.")
         
-      } 
+      } else{
+        $(".alert").alert('close')
+      }
 
     }
    
