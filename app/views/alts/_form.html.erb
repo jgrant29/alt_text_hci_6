@@ -1,4 +1,6 @@
-
+<div class="alert alert-warning" role="alert">
+  This image has already exists! Please select another image.
+</div>
 
 <%= form_with(model: alt) do |form| %>
   <% if alt.errors.any? %>
@@ -155,9 +157,9 @@ $(window).on("load", function() {
       img1 =base64String;
     
     for (const i of alts) {
-       while (img1.trim() === i.trim()) {
-        alert("This image has already exists! Please select another image.")
-        
+       if (img1.trim() === i.trim()) {
+         $('.alert').alert()
+        //alert("This image has already exists! Please select another image.")
         
       } 
 
