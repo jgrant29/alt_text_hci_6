@@ -157,7 +157,7 @@ $(window).on("load", function() {
        if (img1.trim() === i.trim()) {
         
         alert("This image has already exists! Please select another image.")
-        img1 = ""
+        $('#formFile').val("");
         
       } else{
          console.log("Not a duplicate")
