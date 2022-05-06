@@ -153,7 +153,17 @@ $(window).on("load", function() {
       console.log(base64String)
       img1 =base64String;
     
-  
+    for (const i of alts) {
+       if (img1.trim() === i.trim()) {
+        
+        alert("This image has already exists! Please select another image.")
+        img1 = ""
+        
+      } else{
+         console.log("Not a duplicate")
+      }
+
+    }
    
       //new Int8Array(reader.readAsArrayBuffer(image))
                 //.replace('data:', '')
@@ -180,16 +190,7 @@ $(window).on("load", function() {
         });
     }
 
-    for (const i of alts) {
-       if (img1.trim() === i.trim()) {
-        
-        alert("This image has already exists! Please select another image.")
-        
-      } else{
-         console.log("Not a duplicate")
-      }
-
-    }
+    
     reader.readAsDataURL(image);
     
 
