@@ -155,13 +155,11 @@ $(window).on("load", function() {
       img1 =base64String;
     
     for (const i of alts) {
-       if (img1.trim() === i.trim()) {
+       while (img1.trim() === i.trim()) {
         alert("This image has already exists! Please select another image.")
-        break;
         
-      } else {
-        console.log("Not a duplicate")
-      }
+        
+      } 
 
     }
    
