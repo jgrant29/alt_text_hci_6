@@ -58,7 +58,7 @@
   </div>
   <div>
   <!-- Todo: add Spinner -->
-   <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
+   <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn" %>
    <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri
 }} do %>
    <%end%>
@@ -158,11 +158,14 @@ $(window).on("load", function() {
         
         alert("This image has already exists! Please select another image.")
         $('#formFile').val("");
+        $('#submit-btn').prop('disabled', true);
         break;
         
       } else{
          console.log("Not a duplicate")
+          $('#submit-btn').prop('disabled', false);
       }
+
 
     }
    
