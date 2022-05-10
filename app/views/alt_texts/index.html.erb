@@ -47,13 +47,13 @@
   <div id="alts" class="row col-lg-12 p-5">
 <% if !@alt_texts.nil? %>
 <% @alt_texts.each do |alt_text| %>
-    <% if alt_text.flag %>
+  <% if !Alt.find_by(id: AltText.first.alt_id).flag.nil? && Alt.find_by(id: AltText.first.alt_id).flag == true %>
      <div class="col-lg-3 mb-5">
       <%= link_to alt_text.alt.image_url(:small) do %>
         <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
       <% end %>
-    </div>
-
+     </div>
+    
      <div id="alt_texts" class="col-lg-3">
       <% alt_text.alt.alt_texts.each do |alt_text| %>
         <%= render alt_text %>
@@ -62,7 +62,7 @@
         </p>
       <%end%>
     </div>
-  <%end%>
+   <%end%>
   <% end %>
 <% end %>
 </div>
