@@ -55,12 +55,20 @@
           </div>
           
           <div id="alt_texts" class="col-lg-3">
+            <div class="accordion" id="accordionExample">
+            
+
             <% alt_text.alt.alt_texts.each do |alt_text| %>
+             <div class="accordion-item">
+
               <%= render alt_text %>
               <p>
                 <%= link_to "Show this alt text", alt_text %>
               </p>
+              </div>
             <%end%>
+
+            </div>
           </div>
          <%end%>
          <%end%>
