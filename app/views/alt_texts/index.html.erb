@@ -45,7 +45,7 @@
     <div id="alts" class="row col-lg-12 p-5">
       <% if !@alt_texts.nil? %>
       <% @alt_texts.each do |alt_text| %>
-        <% if alt_text.alt.flag.nil? == false  %>
+        <% if alt_text.alt.flag.nil? == false && alt_text.alt.flag == true %>
           <div class="col-lg-3 mb-5">
             <%= link_to alt_text.alt.image_url(:small) do %>
               <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
