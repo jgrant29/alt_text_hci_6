@@ -60,11 +60,21 @@
 
             <% alt_text.alt.alt_texts.each do |alt_text| %>
              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Accordion Item #1
+                  </button>
+                </h2>
+                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                       <%= render alt_text %>
+                      <p>
+                        <%= link_to "Show this alt text", alt_text %>
+                      </p>
+                    </div>
+                  </div>
 
-              <%= render alt_text %>
-              <p>
-                <%= link_to "Show this alt text", alt_text %>
-              </p>
+             
               </div>
             <%end%>
 
