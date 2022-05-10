@@ -65,6 +65,13 @@ a:active {
   );
 }
 
+.nav-link {
+  color: $purple;
+}
+.nav-link:hover {
+  color: darken($purple, 10%) !important;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
