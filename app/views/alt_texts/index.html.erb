@@ -45,7 +45,7 @@
     <div id="alts" class="row col-lg-12 p-5">
       <% if !@alt_texts.nil? %>
       <% @alt_texts.each do |alt_text| %>
-        <% if alt_text.alt.flag.nil? == false && alt_text.alt.flag == true %>
+        <% if alt_text.alt.flag.nil? == false %>
                 <% alt_text.alt.flag == true %>
 
           <div class="col-lg-3 mb-5">
