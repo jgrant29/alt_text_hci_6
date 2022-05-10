@@ -16,7 +16,7 @@ a:hover {
 }
 
 a:active {
-  color: darken($purple, 10%) !important;
+  background-color: darken($purple, 10%) !important;
   color: #ffffff !important;
 
   .btn-primary {
