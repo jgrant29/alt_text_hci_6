@@ -24,6 +24,18 @@ a:active {
   }
 }
 
+.nav-pills .nav-link.active,
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-link.active:focus {
+  background-color: darken($purple, 10%) !important;
+  color: #ffffff !important;
+  
+  .btn-primary {
+    color: #ffffff !important;
+  }
+
+}
+
 .btn-primary {
   @include button-variant(
     $purple,
