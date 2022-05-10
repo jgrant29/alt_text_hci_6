@@ -15,6 +15,14 @@ a:hover {
   }
 }
 
+a:active {
+  color: darken($purple, 10%) !important;
+
+  .btn-primary {
+    color: #ffffff !important;
+  }
+}
+
 .btn-primary {
   @include button-variant(
     $purple,
