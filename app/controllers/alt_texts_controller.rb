@@ -15,7 +15,8 @@ class AltTextsController < ApplicationController
   end
 
   def history
-    
+    @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
+    authorize @alt_texts
   end
 
   # GET /alt_texts/new
