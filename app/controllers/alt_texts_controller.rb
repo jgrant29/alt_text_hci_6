@@ -12,9 +12,8 @@ class AltTextsController < ApplicationController
 
   # GET /alt_texts/1 or /alt_texts/1.json
   def show
-    @alt_text_show = AltText.where(params[:id])
-    @alt_text = AltText.where(params[:id])
-    authorize @alt_text
+    @alt_texts= AltText.where(params[:id])
+    authorize @alt_texts
   end
 
   # GET /alt_texts/new
