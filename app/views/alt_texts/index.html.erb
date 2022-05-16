@@ -22,7 +22,7 @@
       <% @alt_texts.each do |alt_text| %>
       
           <div class="col-lg-3 mb-5">
-            <%= link_to image_tag alt_text.alt.image_url(:small),  "alt_texts/history" do %>
+            <%= link_to alt_text do %>
               <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
             <% end %>
           </div>
