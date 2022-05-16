@@ -22,7 +22,6 @@
       <% @alt_texts.each do |alt_text| %>
       
           <div class="col-lg-3 mb-5">
-           <!-- <%= link_to alt, "aria-label": alt.body do %> -->
             <%= link_to "alt_texts", alt_text.alt.image_url(:small) do %>
               <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
             <% end %>
