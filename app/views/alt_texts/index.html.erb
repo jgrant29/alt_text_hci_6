@@ -22,7 +22,8 @@
       <% @alt_texts.each do |alt_text| %>
       
           <div class="col-lg-3 mb-5">
-            <%= link_to alt_text.alt.image_url(:small) do %>
+           <!-- <%= link_to alt, "aria-label": alt.body do %> -->
+            <%= link_to "alt_texts", alt_text.alt.image_url(:small) do %>
               <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
             <% end %>
           </div>
@@ -62,10 +63,10 @@
              <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Accordion Item #1
+                    Alt Text 
                   </button>
                 </h2>
-                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                 <div id="collapse<%= alt_text.id%>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                        <%= render alt_text %>
                       <p>
