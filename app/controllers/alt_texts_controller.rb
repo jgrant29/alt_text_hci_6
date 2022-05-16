@@ -14,7 +14,7 @@ class AltTextsController < ApplicationController
   def show
     @alt_text_show = AltText.where(params[:id])
     @alt_text = AltText.where(params[:id])
-    authorize @alt_texts
+    authorize @alt_text
   end
 
   # GET /alt_texts/new
