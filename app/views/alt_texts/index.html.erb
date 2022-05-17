@@ -38,6 +38,17 @@
       
         <% end %>
       <% end %>
+       <div id="alt_texts" class="col-lg-3">
+            <% @alt_texts.each do |alt_text| %>
+              <%= render alt_text %>
+              <p>
+                <%= link_to "Show this alt text", alt_text %>
+              </p>
+            <%end%>
+          </div>
+      <% else %> 
+
+      <%end%>
     </div>
       <%= link_to "New alt text", new_alt_text_path %>
   </div>
