@@ -12,7 +12,7 @@ class AltTextsController < ApplicationController
        @alt_texts = policy_scope(AltText.select('DISTINCT id'))
     else
       @alt = Alt.new
-      @alt_texts = policy_scope(Alt.select('DISTINCT id').where(id: search))
+      @alt_texts = policy_scope(AltText.where(alt_id: search))
     end
     #@alt = Alt.new
    # @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
