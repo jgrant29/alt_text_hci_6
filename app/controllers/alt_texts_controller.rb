@@ -9,7 +9,7 @@ class AltTextsController < ApplicationController
     search = params[:alt_id].present? ? params[:alt_id] : nil
     if search.nil?
        @alt = Alt.new
-       @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
+       @alt_texts = policy_scope(AltText.select('DISTINCT id'))
     else
       @alt = Alt.new
       @alt_texts = policy_scope(AltText.where(alt_id: search))
