@@ -38,6 +38,7 @@
       
         <% end %>
       <% end %>
+       <% else %> 
        <div id="alt_texts" class="col-lg-3">
             <% @alt_texts.each do |alt_text| %>
               <%= render alt_text %>
@@ -46,7 +47,7 @@
               </p>
             <%end%>
           </div>
-      <% else %> 
+     
 
       <%end%>
     </div>
