@@ -6,7 +6,16 @@ class AltTextsController < ApplicationController
   # GET /alt_texts or /alt_texts.json
   def index
     #@alt_texts = AltText.select('DISTINCT alt_id')
-    @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
+    search = params[:alt_id].present? ? params[:alt_id] : nil
+    if search.nil?
+       @alt = Alt.new
+       @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
+    else
+      @alt = Alt.new
+      @alt_texts = policy_scope(AltText.where(alt_id: search))
+    end
+    #@alt = Alt.new
+   # @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
     authorize @alt_texts
   end
 
