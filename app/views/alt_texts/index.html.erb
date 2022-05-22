@@ -20,19 +20,23 @@
       <div id="alts" class="row col-lg-12 p-5">
         <% if !@alt_texts.nil? && params[:alt_id].present? == false  %>
           <% @alt_texts.each do |alt_text| %>
+           <% if alt_text.alt.flag == false %>
               <div class="col-lg-3 mb-5">
                 <%= link_to alt_alt_texts_path(alt_text.alt_id) do %>
                   <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
                 <% end %>
               </div>
+            <%end%>
           <% end %>
         <% else %> 
           <div id="alt_texts" class="col-lg-3">
                 <% @alt_texts.each do |alt_text| %>
+                  <% if alt_text.alt.flag == false %>
                   <%= render alt_text %>
                   <p>
                     <%= link_to "Show this alt text", alt_text %>
                   </p>
+                  <% end %>
                 <%end%>
           </div>
         <%end%>
@@ -50,32 +54,6 @@
                   <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
                 <% end %>
             </div>
-            
-            <!--<div id="alt_texts" class="col-lg-3">
-              <div class="accordion" id="accordionExample">
-              
-
-              <% alt_text.alt.alt_texts.each do |alt_text| %>
-              <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Alt Text 
-                    </button>
-                  </h2>
-                  <div id="collapse<%= alt_text.id%>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <%= render alt_text %>
-                        <p>
-                          <%= link_to "Show this alt text", alt_text %>
-                        </p>
-                      </div>
-                    </div>
-
-              
-                </div>
-              <%end%>
-
-              </div>-->
           
           <%end%>
           <%end%>
