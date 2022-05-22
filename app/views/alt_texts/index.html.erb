@@ -50,7 +50,7 @@
       <% end %>
     </div>
   </div>
-   <% else %> 
+   <% elsif !@alt_texts.nil? && params[:alt_id].present? == true  %> 
           <div id="alt_texts" class="col-lg-3">
                 <% @alt_texts.each do |alt_text| %>
                   <%= render alt_text %>
