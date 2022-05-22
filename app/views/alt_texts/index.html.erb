@@ -31,12 +31,10 @@
         <% else %> 
           <div id="alt_texts" class="col-lg-3">
                 <% @alt_texts.each do |alt_text| %>
-                  <% if alt_text.alt.flag == false %>
                   <%= render alt_text %>
                   <p>
                     <%= link_to "Show this alt text", alt_text %>
                   </p>
-                  <% end %>
                 <%end%>
           </div>
         <%end%>
