@@ -14,11 +14,11 @@
 
 
   <hr class="border-bottom border-muted my-5">
-   
+<% if !@alt_texts.nil? && params[:alt_id].present? == false  %>
  <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <div id="alts" class="row col-lg-12 p-5">
-        <% if !@alt_texts.nil? && params[:alt_id].present? == false  %>
+      
           <% @alt_texts.each do |alt_text| %>
            <% if alt_text.alt.flag == false %>
               <div class="col-lg-3 mb-5">
@@ -28,21 +28,12 @@
               </div>
             <%end%>
           <% end %>
-        <% else %> 
-          <div id="alt_texts" class="col-lg-3">
-                <% @alt_texts.each do |alt_text| %>
-                  <%= render alt_text %>
-                  <p>
-                    <%= link_to "Show this alt text", alt_text %>
-                  </p>
-                <%end%>
-          </div>
-        <%end%>
+       
       </div>
     </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div id="alts" class="row col-lg-12 p-5">
-        <% if !@alt_texts.nil? && !params[:alt_id].present?%>
+        <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
         <% @alt_texts.each do |alt_text| %>
           <% if alt_text.alt.flag.nil? == false %>
               <% if alt_text.alt.flag == true %>
@@ -59,5 +50,15 @@
       <% end %>
     </div>
   </div>
+   <% else %> 
+          <div id="alt_texts" class="col-lg-3">
+                <% @alt_texts.each do |alt_text| %>
+                  <%= render alt_text %>
+                  <p>
+                    <%= link_to "Show this alt text", alt_text %>
+                  </p>
+                <%end%>
+          </div>
+        <%end%>
 
    
