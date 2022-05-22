@@ -1,6 +1,6 @@
 <main class="container-fluid pt-3 p-5">
 
-<!--<h1 class="text-left px-5">Alt texts</h1>-->
+<% if !@alt_texts.nil? && params[:alt_id].blank? == true  %>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Alt Texts</button>
@@ -14,7 +14,6 @@
 
 
   <hr class="border-bottom border-muted my-5">
-<% if !@alt_texts.nil? && params[:alt_id].blank? == true  %>
  <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <div id="alts" class="row col-lg-12 p-5">
