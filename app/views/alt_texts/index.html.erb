@@ -1,6 +1,8 @@
 <main class="container-fluid pt-3 p-5">
 
-<!--<h1 class="text-left px-5">Alt texts</h1>-->
+<hr class="border-bottom border-muted my-5">
+
+<% if !@alt_texts.nil? && params[:alt_id].blank? == true  %>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Alt Texts</button>
@@ -13,12 +15,10 @@
 
 
 
-  <hr class="border-bottom border-muted my-5">
-   
  <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <div id="alts" class="row col-lg-12 p-5">
-        <% if !@alt_texts.nil? && params[:alt_id].present? == false  %>
+      
           <% @alt_texts.each do |alt_text| %>
            <% if alt_text.alt.flag == false %>
               <div class="col-lg-3 mb-5">
@@ -28,21 +28,12 @@
               </div>
             <%end%>
           <% end %>
-        <% else %> 
-          <div id="alt_texts" class="col-lg-3">
-                <% @alt_texts.each do |alt_text| %>
-                  <%= render alt_text %>
-                  <p>
-                    <%= link_to "Show this alt text", alt_text %>
-                  </p>
-                <%end%>
-          </div>
-        <%end%>
+       
       </div>
     </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div id="alts" class="row col-lg-12 p-5">
-        <% if !@alt_texts.nil? && !params[:alt_id].present?%>
+        <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
         <% @alt_texts.each do |alt_text| %>
           <% if alt_text.alt.flag.nil? == false %>
               <% if alt_text.alt.flag == true %>
@@ -59,5 +50,15 @@
       <% end %>
     </div>
   </div>
+   <% elsif !@alt_texts.nil? %> 
+          <div id="alt_texts" class="col-lg-3">
+                <% @alt_texts.each do |alt_text| %>
+                  <%= render alt_text %>
+                  <p>
+                    <%= link_to "Show this alt text", alt_text %>
+                  </p>
+                <%end%>
+          </div>
+    <%end%>
 
    
