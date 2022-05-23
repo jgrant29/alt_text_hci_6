@@ -54,6 +54,9 @@
             <div class="col-md-4">
                 <%= render @alt_texts[0].alt %>
             </div>
+             <div class="col-md-6">
+                  <%= render "verify_form", alt: @alt_texts[0].alt %>
+                </div>
           <div id="alt_texts" class="col-lg-3">
                 
                 <% @alt_texts.each do |alt_text| %>
