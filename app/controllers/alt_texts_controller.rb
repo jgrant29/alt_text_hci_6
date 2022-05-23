@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class AltTextsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_alt_text, only: %i[ show edit update destroy ]
 
   # GET /alt_texts or /alt_texts.json
