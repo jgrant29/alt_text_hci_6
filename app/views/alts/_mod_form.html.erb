@@ -33,7 +33,7 @@
           <%= form.label "Flag" , style: "display: block" %>
         
            <%= form.check_box :flag %>
-           <% :flag ? "<p> Reason: </p>" : "<p></p>"%>
+           <p><% :flag ? " Reason: " : ""%></p>
       </div>
       <div class="d-block">
         
