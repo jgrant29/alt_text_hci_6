@@ -35,7 +35,9 @@
            <%= form.check_box :flag %>
        </div>
        <div class="d-block">
-           <p><% (alt.flag == true) ? " Reason: " : "" %></p>
+           <%if :flag%>
+           <p>Reason:</p>
+           <%end%>
       </div>
       <div class="d-block">
         
