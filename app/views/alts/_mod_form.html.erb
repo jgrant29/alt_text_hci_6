@@ -29,7 +29,7 @@
     <% end %>
     <% if user_signed_in? %>
        <div class="d-block">
-        <%= if :flag %>
+        <%= if flag.verified %>
         <%= form.label "Unflag" , style: "display: block" %>
         <%else%>
           <%= form.label "Flag" , style: "display: block" %>
