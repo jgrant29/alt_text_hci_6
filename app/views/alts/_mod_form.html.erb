@@ -21,7 +21,7 @@
       <div class="d-block">
        <%= if :verified %>
         <%= form.label "Unverify" , style: "display: block" %>
-        <%elsif%>
+        <%else%>
          <%= form.label "Verify" , style: "display: block" %>
         <%end%>
         <%= form.check_box :verified %>
@@ -31,7 +31,7 @@
        <div class="d-block">
         <%= if :flag %>
         <%= form.label "Unflag" , style: "display: block" %>
-        <%elsif%>
+        <%else%>
           <%= form.label "Flag" , style: "display: block" %>
           <%end%>
            <%= form.check_box :flag %>
