@@ -19,30 +19,33 @@
   <div class="mb-3 bg-light border rounded border-1 p-3">
     <% if super_admin || referee %>
       <div class="d-block">
-       <%= if alt.verified == true %>
-        <%= form.label "Unverify" , style: "display: block" %>
-        <%else%>
+      
+       
+      
          <%= form.label "Verify" , style: "display: block" %>
-        <%end%>
+      
         <%= form.check_box :verified %>
       </div>
     <% end %>
     <% if user_signed_in? %>
        <div class="d-block">
-        <%= if flag.verified %>
-        <%= form.label "Unflag" , style: "display: block" %>
-        <%else%>
+      
           <%= form.label "Flag" , style: "display: block" %>
-          <%end%>
+        
            <%= form.check_box :flag %>
+       </div>
+       <div class="d-block">
+           <%if :flag%>
+           <p>Reason:</p>
+           <%end%>
       </div>
       <div class="d-block">
-         <%= if :flag %>
-        <%=  form.label "Unban", style: "display: block" %>
-        <%else%>
+        
+      
+       
           <%=  form.label "Ban", style: "display: block" %>
-        <%end%>
-          <%= form.check_box :flag %>
+       
+          
       </div>
       <%= form.hidden_field :user_id, value: current_user.id %>
     <% end %>
