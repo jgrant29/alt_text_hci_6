@@ -21,7 +21,7 @@
       <div class="col-md-10">
         <div id="altverify_me" class="row">
           <% @alts.each do |altverify_me| %>
-            <% next if (altverify_me.verified == true && altverify_me.flag == true) %>
+            <% next if (altverify_me.verified == true || altverify_me.flag == true) %>
               <h1><%= altverify_me.title if altverify_me.title %></h1>
               <div class="row bg-light p-3 border rounded">
                 <div class="col-6 mx-auto d-md-none d-sm-block">
