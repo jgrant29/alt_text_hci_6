@@ -287,10 +287,10 @@ class AltsController < ApplicationController
     # Only allow a list of trusted parameters through.
 
     def update_alt_params
-      params.require(:alt).permit(:body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list)
+      params.require(:alt).permit(:body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :flag_reason)
     end
 
     def alt_params
-      params.require(:alt).permit(:body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :user_id)
+      params.require(:alt).permit(:body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :user_id, :flag_reason)
     end
 end
