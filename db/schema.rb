@@ -170,7 +170,6 @@ ActiveRecord::Schema.define(version: 2022_05_31_221241) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "super_user"
     t.boolean "moderator"
-    t.integer "verifications"
     t.boolean "contributor"
     t.boolean "flag"
     t.boolean "referee"
