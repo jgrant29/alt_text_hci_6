@@ -12,13 +12,13 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
+  <!--<div class="mb-3">
     <label for="formFile" class="form-label">Image for Seven Army</label>
       <div id="preview" class="container-fluid" style="width:100px;height:100px;">
     </div>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
-  </div>
+  </div>-->
 
   <div class="form-floating mb-3">
     <%= form.text_field :title, id: "title", class: "form-control", placeholder: "Title", required: true %>
