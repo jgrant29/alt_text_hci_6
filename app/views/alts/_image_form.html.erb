@@ -58,6 +58,26 @@
           // image_base64 = e.target.result;
           // preview.attr("src", image_base64);
        };
+
+         fetch('https://alt-text-hci-6.herokuapp.com/alts/', {
+            method: 'POST',
+
+            body: formData
+        })
+        .then(resp => resp.arrayBuffer())
+        .then(data => {
+            if (data.errors) {
+              alert(data.errors)
+              console.log(data)
+            }
+            else {
+              console.log(data)
+              //console.log(new Uint8Array(JSON.parse(data)))
+              //ase64String = new Uint8Array(JSON.parse(data))
+            }
+        });
+    }
+
        reader.readAsDataURL(image);
     });
 });
