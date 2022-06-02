@@ -50,7 +50,7 @@
        var reader = new FileReader();
        reader.onload = function(e){
           var img = new Image();
-          img.src = file.target.result;
+          img.src = e.target.result;
          
           $('#preview').html(img);
            
