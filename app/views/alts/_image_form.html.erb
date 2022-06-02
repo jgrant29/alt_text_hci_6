@@ -45,13 +45,20 @@
 
      $('#formFile').on('change', function(event) {
        var input = event.target.files;
-       var file = input[0];
+       var image = input[0];
+        var formData = new FormData()
        var reader = new FileReader();
        reader.onload = function(e){
-           image_base64 = e.target.result;
-           preview.attr("src", image_base64);
+          var img = new Image();
+          img.src = file.target.result;
+         
+          $('#preview').html(img);
+           
+          formData.append('image', image)
+          // image_base64 = e.target.result;
+          // preview.attr("src", image_base64);
        };
-       reader.readAsDataURL(file);
+       reader.readAsDataURL(image);
     });
 });
 
