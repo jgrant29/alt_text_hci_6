@@ -15,6 +15,7 @@
   <div class="mb-3">
     <label for="formFile" class="form-label">Image for Seven Army</label>
       <div id="preview" class="container-fluid" style="width:100px;height:100px;">
+        <img id="img-show" src="#" alt="prev-image" />
     </div>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
@@ -40,46 +41,20 @@
   </div>
 
   <script>
-  $(window).on("load", function(){
-    var preview = $("#preview");
-
-     $('#formFile').on('change', function(event) {
-       var input = event.target.files;
-       var image = input[0];
-        var formData = new FormData()
-       var reader = new FileReader();
-       reader.onload = function(e){
-          var img = new Image();
-          img.src = e.target.result;
-         
-          $('#preview').html(img);
-           
-          formData.append('image', image)
-          // image_base64 = e.target.result;
-          // preview.attr("src", image_base64);
-       };
-
-         fetch('https://alt-text-hci-6.herokuapp.com/alts/', {
-            method: 'POST',
-
-            body: formData
-        })
-        .then(resp => resp.arrayBuffer())
-        .then(data => {
-            if (data.errors) {
-              alert(data.errors)
-              console.log(data)
-            }
-            else {
-              console.log(data)
-              //console.log(new Uint8Array(JSON.parse(data)))
-              //ase64String = new Uint8Array(JSON.parse(data))
-            }
-        });
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#img-show').attr('src', e.target.result);
     }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
 
-       reader.readAsDataURL(image);
-    });
+$("#formFile").change(function() {
+  readURL(this);
 });
 
 
