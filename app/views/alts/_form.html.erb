@@ -127,7 +127,7 @@ var r2;
  //$(".alert").alert('close')     
 var img1 = "";
 var base64String = "";
-$(window).on("DOMContentLoaded", function() {
+$(window).bind("turbolinks:load", function() {
   $('#formFile').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
