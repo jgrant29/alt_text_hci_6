@@ -33,19 +33,19 @@
   </div>
   <div>
   <!-- Todo: add Spinner -->
-   <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri 
+  <!--> <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri 
 }} do %>
-   <%end%>
+   <%end%>-->
 
   </div>
 
   <script>
   $(window).on("load", function(){
-    var preview = $("#preview img");
+    var preview = $("#preview");
 
-    $("#formFile").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
+     $('#formFile').on('change', function(event) {
+       var input = event.target.files;
+       var file = input[0];
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;
