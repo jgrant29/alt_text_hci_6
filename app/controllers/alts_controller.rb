@@ -81,7 +81,7 @@ class AltsController < ApplicationController
           build_alt_text_versions
          
           format.js
-          format.html { redirect_to alt_url(@alt), notice: "Alt was successfully created." }
+          format.html { redirect_to edit_alt_path(@alt), notice: "Alt was successfully created." }
           format.json { render :show, status: :created, location: @alt }
          #end
       else
