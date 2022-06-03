@@ -76,7 +76,7 @@
 {
      $("[id^='pills']").hide(); 
      e.preventDefault()
-     var ids=$(this).data('pills');
+     var ids=$(this).data('tab');
      $("#"+ids).show();
      $('#alts').masonry({
          itemSelector: '.alt'
