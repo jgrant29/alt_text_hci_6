@@ -12,13 +12,13 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
+  <!--<div class="mb-3">
     <label for="formFile" class="form-label">Image for Seven Army</label>
       <div id="preview" class="container-fluid" style="width:100px;height:100px;">
     </div>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
-  </div>
+  </div>-->
 
   <div class="form-floating mb-3">
     <%= form.text_field :title, id: "title", class: "form-control", placeholder: "Title", required: true %>
@@ -80,9 +80,7 @@
    
 var r2;
 
-for (let alt of alts) {
-  console.log(alt);
-}
+
   /*let curr = new Promise(resolve => {
     let r2 = new FileReader();
     r2.readAsDataURL(alt);
@@ -129,7 +127,7 @@ for (let alt of alts) {
  //$(".alert").alert('close')     
 var img1 = "";
 var base64String = "";
-$(window).on("load", function() {
+$(window).bind("turbolinks:load", function() {
   $('#formFile').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
@@ -199,12 +197,6 @@ $(window).on("load", function() {
     
 
     
-   
-    //pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1});
-
-
-    //console.log( pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1}));
-    console.log(files);
 
     
   });

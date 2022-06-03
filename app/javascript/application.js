@@ -19,6 +19,7 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
+
 function confirmSubmission(event) {
   const button = event.target.querySelector("[data-confirm]")
   const message = button?.dataset?.confirm

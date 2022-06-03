@@ -1,0 +1,64 @@
+
+<%= form_with(model: alt) do |form| %>
+  <% if alt.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(alt.errors.count, "error") %> prohibited this alt from being saved:</h2>
+
+      <ul>
+        <% alt.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <label for="formFile" class="form-label">Image for Seven Army</label>
+      <div id="preview" class="container-fluid" style="width:100px;height:100px;">
+        <img id="img-show" src="#" alt="prev-image" />
+    </div>
+    <%= form.hidden_field :image, value: form.object.cached_image_data %>
+    <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
+  </div>
+  <div class="mb-3">
+   <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn" %>
+  </div>
+
+  
+
+ 
+    <% if user_signed_in? %>
+      
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+  </div>
+  <div>
+  <!-- Todo: add Spinner -->
+  <!-- <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri 
+}} do %>
+   <%end%>-->
+
+  </div>
+
+  <script>
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#img-show').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#formFile").change(function() {
+  readURL(this);
+});
+
+
+
+ 
+</script>
+<% end %>
