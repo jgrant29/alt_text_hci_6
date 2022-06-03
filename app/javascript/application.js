@@ -4,7 +4,9 @@ import "./controllers"
 import * as bootstrap from "bootstrap"  
 import "trix"
 import "@rails/actiontext"
-import "pixelmatch"
+import React from "react"
+import ReactDOM from "react-dom"
+
 
 
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
@@ -16,6 +18,7 @@ document.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
     // show progress bar and set submit state here.
     // this block is optional.
+    alert("submitting...");
   })
 })
 
