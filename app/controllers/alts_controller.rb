@@ -75,7 +75,9 @@ class AltsController < ApplicationController
            @alt.destroy
            format.js
            format.html { render :new, status: :unprocessable_entity }
-           flash[:alert] = "The image was a duplicate. Please upload another image" 
+           #flash[:alert] = "The image was a duplicate. Please upload another image" 
+           format.json { render json: @alt.errors, status: :unprocessable_entity }
+
         else
           @alt.verified = @alt.verified
           @alt.save
