@@ -46,14 +46,18 @@
     var reader = new FileReader();
     
     reader.onload = function(e) {
-      $('#img-show').attr('src', e.target.result);
+      var img = new Image();
+      console.log(e);
+      img.src = e.target.result;
+      $('#preview').html(img);
+     
     }
     
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
 }
 
-$("#formFilegit ").change(function() {
+$("#formFile").change(function() {
   readURL(this);
 });
 
