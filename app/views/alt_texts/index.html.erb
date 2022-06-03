@@ -69,16 +69,5 @@
                 <%end%>
           </div>
     <%end%>
-<script type="text/javascript">
-  $('#pills-tab li').click(function (e) 
-{
-     $("[id^='pills']").hide(); 
-     e.preventDefault()
-     var ids=$(this).data('pills');
-     $("#"+ids).show();
-     $('.alts').masonry({
-         itemSelector: '.alt'
-    });
- })
-</script>
+
    
