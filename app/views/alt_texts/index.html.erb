@@ -72,16 +72,13 @@
 
    
 <script type="text/javascript">
- var $grid = $('.alts').masonry({
-     itemSelector: '.alt',
-     fitWidth: true,
-     gutter: 0,
-     percentPosition: true
+var grid = document.querySelector('.alts');
+var msnry = new Masonry( grid, {
+  itemSelector: '.alt',
+  columnWidth: 200
 });
 
-jQuery.noConflict();
-
-$(document).on('shown.bs.tab', 'button[data-bs-toggle="pill"]', function (e) {
-    $grid.masonry('layout');
+var msnry = new Masonry( '.alts', {
+  
 });
 </script>
