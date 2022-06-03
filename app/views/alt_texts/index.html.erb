@@ -81,7 +81,7 @@
 
 jQuery.noConflict();
 
-$(document).on('shown.bs.tab', 'a[data-toggle="pill"]', function (e) {
+$(document).on('shown.bs.tab', 'button[data-bs-toggle="pill"]', function (e) {
     $grid.masonry('layout');
 });
 </script>
