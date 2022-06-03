@@ -1,4 +1,32 @@
+<script>
 
+  $(document).on('turbolinks:load', function () { 
+
+    function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      var img = new Image();
+      console.log(e);
+      img.src = e.target.result;
+      $('#preview').html(img);
+     
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#formFile").change(function() {
+  readURL(this);
+})
+  });
+
+
+
+ 
+</script>
 <%= form_with(model: alt) do |form| %>
   <% if alt.errors.any? %>
     <div style="color: red">
@@ -40,29 +68,5 @@
 
   </div>
 
-  <script>
-  /*function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      var img = new Image();
-      console.log(e);
-      img.src = e.target.result;
-      $('#preview').html(img);
-     
-    }
-    
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
-}
-
-$("#formFile").change(function() {
-  readURL(this);
-});*/
-
-
-
- 
-</script>
+  
 <% end %>
