@@ -1,8 +1,10 @@
+<%= javascript_pack_tag 'test_js' %>
+
 <script>
 
- document.addEventListener("turbolinks:load", (event) => {
+ window.onload("turbolinks:load", (event) => {
 
-    function readURL(input) {
+  function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     
