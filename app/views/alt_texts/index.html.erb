@@ -76,9 +76,16 @@
 
 
 $(window).load(function() {
+
+  var $grid = $('#alts').masonry({
+     itemSelector: '#alt',
+     fitWidth: true,
+     gutter: 0,
+     percentPosition: true
+});
  jQuery.noConflict();
 
-$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
+$(document).on('shown.bs.tab', 'button[data-bs-toggle="pill"]', function (e) {
     $grid.masonry('layout');
 });
 });
