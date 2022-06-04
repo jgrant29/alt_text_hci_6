@@ -89,8 +89,9 @@
  $('.nav-item button').on('click', function() {
 	setTimeout( function() {
 		$('#alts').masonry({
-			itemSelector: '#alt'
-		}, 500);
+			itemSelector: '#alt',
+      percentPosition: true
+		}, 10);
 	});
 });
 
