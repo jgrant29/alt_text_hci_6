@@ -82,11 +82,28 @@
      gutter: 0,
      percentPosition: true
 });
- jQuery.noConflict();
 
+	$('button[data-bs-toggle="tab"]').each(function () {
+		var $this = $(this);
+
+		$this.on('shown.bs.tab', function () {
+		
+			$grid.imagesLoaded( function () {
+				$grid.masonry({
+					columnWidth: '#alt',
+					itemSelector: '#alt'
+				});
+			});
+
+		}); //end shown
+	});  //end each
+	
+})(jQuery);
+// jQuery.noConflict();
+/*
 $(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
     $grid.masonry('layout');
-});
+});*/
 
 
 /*
