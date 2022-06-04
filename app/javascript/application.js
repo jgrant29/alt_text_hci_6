@@ -17,7 +17,6 @@ document.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
     // show progress bar and set submit state here.
     // this block is optional.
-    alert("submitting...");
   })
 })
 
