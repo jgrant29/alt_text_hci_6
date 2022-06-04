@@ -88,4 +88,15 @@ $('.nav-item button').on('click', function() {
 		}, 500);
 	});
 });
+
+ $('.nav-item button').click(function (e) 
+{
+     $("[id^='pills']").hide(); 
+     e.preventDefault()
+     var ids=$(this).data('tab');
+     $("#"+ids).show();
+     $('#alts').masonry({
+         itemSelector: '#alt'
+    });
+ })
 </script>
