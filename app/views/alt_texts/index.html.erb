@@ -75,7 +75,6 @@
 
 
 
-$(window).load(function() {
 
   var $grid = $('#alts').masonry({
      itemSelector: '#alt',
@@ -88,7 +87,7 @@ $(window).load(function() {
 $(document).on('shown.bs.tab', 'button[data-bs-toggle="pill"]', function (e) {
     $grid.masonry('layout');
 });
-});
+
 /*
 $('.nav-item button').on('click', function() {
 	setTimeout( function() {
