@@ -76,11 +76,13 @@
 
 
 $(window).load(function() {
-  $('#alts').masonry({
-    itemSelector: '#alt'
-  });
-});
+ jQuery.noConflict();
 
+$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
+    $grid.masonry('layout');
+});
+});
+/*
 $('.nav-item button').on('click', function() {
 	setTimeout( function() {
 		$('#alts').masonry({
@@ -98,5 +100,5 @@ $('.nav-item button').on('click', function() {
      $('#alts').masonry({
          itemSelector: '#alt'
     });
- })
+ })*/
 </script>
