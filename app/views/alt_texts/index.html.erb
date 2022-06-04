@@ -86,6 +86,14 @@
    $grid.masonry();
  });
 
+ $('.nav-item button').on('click', function() {
+	setTimeout( function() {
+		$('#alts').masonry({
+			itemSelector: '#alt'
+		}, 500);
+	});
+});
+
 // jQuery.noConflict();
 /*
 $(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
