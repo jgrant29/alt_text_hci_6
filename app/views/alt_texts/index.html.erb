@@ -71,14 +71,21 @@
     <%end%>
 
    
-<script type="text/javascript">
-var grid = document.querySelector('.flags');
-var msnry = new Masonry( grid, {
-  itemSelector: '.flag',
-  columnWidth: 200
+<script>
+
+$(document).foundation();
+
+$(window).load(function() {
+  $('#alts').masonry({
+    itemSelector: '#alt'
+  });
 });
 
-var msnry = new Masonry( '.flags', {
-  
+$('.nav-item button').on('click', function() {
+	setTimeout( function() {
+		$('#alts').masonry({
+			itemSelector: '#alt'
+		}, 500);
+	});
 });
 </script>
