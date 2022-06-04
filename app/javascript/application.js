@@ -13,6 +13,12 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
 
+var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+tabEl.addEventListener('shown.bs.tab', function (event) {
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
+})
+
 document.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
     // show progress bar and set submit state here.

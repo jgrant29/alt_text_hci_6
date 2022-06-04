@@ -76,29 +76,16 @@
 
 
 
-  var $grid = $('#alts').masonry({
-     itemSelector: '#alt',
-     fitWidth: true,
-     gutter: 0,
-     percentPosition: true
-});
+  
+	var $grid = $('#alts').masonry({
+   itemSelector: '#alt',
+   percentPosition: true
+ });
 
-	$('button[data-bs-toggle="tab"]').each(function () {
-		var $this = $(this);
+ $grid.imagesLoaded().progress( function() {
+   $grid.masonry();
+ });
 
-		$this.on('shown.bs.tab', function () {
-		
-			$grid.imagesLoaded( function () {
-				$grid.masonry({
-					columnWidth: '#alt',
-					itemSelector: '#alt'
-				});
-			});
-
-		}); //end shown
-	});  //end each
-	
-})(jQuery);
 // jQuery.noConflict();
 /*
 $(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
