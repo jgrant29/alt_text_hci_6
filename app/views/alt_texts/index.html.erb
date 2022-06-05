@@ -87,12 +87,9 @@
  });
 
  $('.nav-item button').on('click', function() {
-	setTimeout( function() {
-		$('#alts').masonry({
-			itemSelector: '#alt',
-      percentPosition: true
-		}, 10);
-	});
+	$grid.imagesLoaded().progress( function() {
+   $grid.masonry();
+ });
 });
 
 // jQuery.noConflict();
