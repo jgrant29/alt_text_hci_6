@@ -87,7 +87,10 @@
  });
 
  $('.nav-item button').on('click', function() {
-	$grid.imagesLoaded().progress( function() {
+
+});
+$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
+   	$grid.imagesLoaded().progress( function() {
    $grid.masonry();
  });
 });
