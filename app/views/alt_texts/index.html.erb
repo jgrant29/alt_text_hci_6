@@ -98,7 +98,7 @@ $grid.imagesLoaded( function () {
    $grid.masonry();
 // });
 });*/
-
+/*
 $('button[data-bs-toggle="tab"]').each(function () {
   var $this = $(this);
 
@@ -112,14 +112,18 @@ $('button[data-bs-toggle="tab"]').each(function () {
     });  
   });
 });
-
+*/
 
 
 // jQuery.noConflict();
-/*
+
 $(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
-    $grid.masonry('layout');
-});*/
+    $grid.masonry({
+        columnWidth: '#alt',
+        itemSelector: '#alt',
+        percentPosition: true
+      });   
+});
 
 
 /*
