@@ -77,20 +77,41 @@
 
 
   
-	var $grid = $('#alts').masonry({
-   itemSelector: '#alt',
-   percentPosition: true
- });
+	var $grid = $('#alts');//({
+  // itemSelector: '#alt',
+   //percentPosition: true
+ //});
+$grid.imagesLoaded( function () {
+  $grid.masonry({
+    columnWidth: '#alt',
+    itemSelector: '#alt'
+  });   
+});  
 
- $grid.imagesLoaded().progress( function() {
+ /*$grid.imagesLoaded().progress( function() {
    $grid.masonry();
- });
+ });*/
 
-$(document).on('show.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
+/*$(document).on('show.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
   // 	$grid.imagesLoaded().progress( function() {
    $grid.masonry();
 // });
+});*/
+
+$('button[data-bs-toggle="tab"]').each(function () {
+  var $this = $(this);
+
+  $this.on('shown.bs.tab', function () {
+    $grid.imagesLoaded( function () {
+      $grid.masonry({
+        columnWidth: '#alt',
+        itemSelector: '#alt'
+      });   
+    });  
+  });
 });
+
+
 
 // jQuery.noConflict();
 /*
