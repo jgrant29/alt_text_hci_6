@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      <div  id="alts" class="row col-lg-12 p-5 flags">
+      <div  id="alts" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
         <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
         <% @alt_texts.each do |alt_text| %>
           <% if alt_text.alt.flag.nil? == false %>
@@ -77,7 +77,7 @@
 
 
   
-var $grid = $('#alts');//({
+//var $grid = $('#alts');({
   // itemSelector: '#alt',
    //percentPosition: true
  //});
@@ -120,22 +120,5 @@ $('.nav-item button').on('click', function() {
 		}, 500);
 	});
 });*/
-/*
-var triggerTabList = [].slice.call(document.querySelectorAll('#pills-tab button'))
-triggerTabList.forEach(function (triggerEl) {
-  var tabTrigger = new bootstrap.Tab(triggerEl)
 
-  triggerEl.addEventListener('click', function (event) {
-    event.preventDefault()
-    tabTrigger.show()
-        $grid.imagesLoaded( function () {
-        $grid.masonry({
-          columnWidth: '#alt',
-          itemSelector: '#alt',
-          percentPosition: true
-        });   
-    });  
-
-  })
-})*/
 </script>

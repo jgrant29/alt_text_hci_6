@@ -22,7 +22,8 @@ tabEl.addEventListener('shown.bs.tab', function (event) {
   event.relatedTarget // previous active tab
     new Masonry(grid,{
     itemSelector: '#alt',
-    columnWidth: 300
+    columnWidth: '#alt',
+    percentPosition: true
   });
   
 })
