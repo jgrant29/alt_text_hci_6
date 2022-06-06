@@ -73,17 +73,16 @@
    
 <script>
 
-$(window).load(function(){
-          $('#alts').masonry({
-               itemSelector : '#alt',
-               columnWidth : '#alt',
-               isAnimated: true,
-               animationOptions: {
-                    duration: 700,
-                    easing: 'linear',
-                    queue: false
-               }
-          });
-      });
+$('#pills-tab li').click(function(e){
+ $("[id^='pills']").hide(); 
+     e.preventDefault()
+     var ids=$(this).data('tab');
+     console.log(ids)
+     $("#"+ids).show();
+     $('#alts').masonry({
+         itemSelector: '#alt'
+    });
+  });
+
 
 </script>
