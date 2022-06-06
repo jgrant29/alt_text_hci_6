@@ -17,10 +17,10 @@ var grid = document.querySelector('#alts');
 
 
 var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
-tabEl.addEventListener('shown.bs.tab', function (event) {
+tabEl.addEventListener('show.bs.tab', function (event) {
   event.target // newly activated tab
-  event.relatedTarget // previous active tab
-    new Masonry(grid,{
+  //event.relatedTarget // previous active tab
+  new Masonry(grid,{
     itemSelector: '#alt',
     columnWidth: '#alt',
     percentPosition: true
