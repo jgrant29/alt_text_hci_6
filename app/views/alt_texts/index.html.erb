@@ -73,52 +73,11 @@
    
 <script>
 
-
-
-
-  
-//var $grid = $('#alts');({
-  // itemSelector: '#alt',
-   //percentPosition: true
- //});
-
-
- /*$grid.imagesLoaded().progress( function() {
-   $grid.masonry();
- });*/
-
-/*$(document).on('show.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
-  // 	$grid.imagesLoaded().progress( function() {
-   $grid.masonry();
-// });
-});*/
-/*
-$('button[data-bs-toggle="tab"]').each(function () {
-  var $this = $(this);
-
-  $this.on('shown.bs.tab', function () {
-    $grid.imagesLoaded( function () {
-      $grid.masonry({
-        columnWidth: '#alt',
-        itemSelector: '#alt',
-        percentPosition: true
-      });   
-    });  
-  });
+Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => { var elem = document.querySelector('#alts');
+ var msnry = new Masonry( elem, { 
+   itemSelector: '#alt', 
+   gutter: 10,
+    }); 
 });
-*/
-
-
-// jQuery.noConflict();
-
-
-/*
-$('.nav-item button').on('click', function() {
-	setTimeout( function() {
-		$('#alts').masonry({
-			itemSelector: '#alt'
-		}, 500);
-	});
-});*/
 
 </script>

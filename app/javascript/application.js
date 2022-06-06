@@ -12,7 +12,7 @@ let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
-
+/*
 var grid = document.querySelector('#alts');
 
 
@@ -26,7 +26,7 @@ tabEl.addEventListener('show.bs.tab', function (event) {
     percentPosition: true
   });
   
-})
+})*/
 
 document.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
