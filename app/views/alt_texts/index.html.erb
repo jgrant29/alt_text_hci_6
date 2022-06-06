@@ -73,11 +73,17 @@
    
 <script>
 
-Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => { var elem = document.querySelector('#alts');
- var msnry = new Masonry( elem, { 
-   itemSelector: '#alt', 
-   gutter: 10,
-    }); 
-});
+$(window).load(function(){
+          $('#alts').masonry({
+               itemSelector : '#alt',
+               columnWidth : '#alt',
+               isAnimated: true,
+               animationOptions: {
+                    duration: 700,
+                    easing: 'linear',
+                    queue: false
+               }
+          });
+      });
 
 </script>
