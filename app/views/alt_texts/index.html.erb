@@ -73,16 +73,17 @@
    
 <script>
 
-$('#pills-tab li').click(function(e){
- $("[id^='pills']").hide(); 
-     e.preventDefault()
-     var ids=$(this).data('tab');
-     console.log(ids)
-     $("#"+ids).show();
-     $('#alts').masonry({
-         itemSelector: '#alt'
-    });
-  });
+var $grid = $('#alts').masonry({
+     itemSelector: '#alt',
+     fitWidth: true,
+     gutter: 0,
+     percentPosition: true
+});
 
+jQuery.noConflict();
+
+$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
+    $grid.masonry('layout');
+});
 
 </script>
