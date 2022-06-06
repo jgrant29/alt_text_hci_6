@@ -77,17 +77,11 @@
 
 
   
-	var $grid = $('#alts');//({
+var $grid = $('#alts');//({
   // itemSelector: '#alt',
    //percentPosition: true
  //});
-$grid.imagesLoaded( function () {
-  $grid.masonry({
-    columnWidth: '#alt',
-    itemSelector: '#alt',
-    percentPosition: true
-  });   
-});  
+
 
  /*$grid.imagesLoaded().progress( function() {
    $grid.masonry();
@@ -117,14 +111,6 @@ $('button[data-bs-toggle="tab"]').each(function () {
 
 // jQuery.noConflict();
 
-$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
-    $grid.masonry({
-        columnWidth: '#alt',
-        itemSelector: '#alt',
-        percentPosition: true
-      });   
-});
-
 
 /*
 $('.nav-item button').on('click', function() {
@@ -135,14 +121,21 @@ $('.nav-item button').on('click', function() {
 	});
 });*/
 
- $('#pills-tab button').click(function (e) 
-{
-     $("[id^='pills']").hide(); 
-     e.preventDefault()
-     var ids=$(this).data('tab');
-     $("#"+ids).show();
-     $('#alts').masonry({
-         itemSelector: '#alt'
-    });
- })*/
+var triggerTabList = [].slice.call(document.querySelectorAll('#pills-tab button'))
+triggerTabList.forEach(function (triggerEl) {
+  var tabTrigger = new bootstrap.Tab(triggerEl)
+
+  triggerEl.addEventListener('click', function (event) {
+    event.preventDefault()
+    tabTrigger.show()
+    $grid.imagesLoaded( function () {
+    $grid.masonry({
+      columnWidth: '#alt',
+      itemSelector: '#alt',
+      percentPosition: true
+    });   
+});  
+
+  })
+})
 </script>
