@@ -13,17 +13,18 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
 
-var $grid = $('#alts');
+var grid = document.querySelector('#alts');
+
 
 var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
 tabEl.addEventListener('shown.bs.tab', function (event) {
   event.target // newly activated tab
   event.relatedTarget // previous active tab
-   $grid.masonry({
-        columnWidth: '#alt',
-        itemSelector: '#alt',
-        percentPosition: true
-      });   
+    new Masonry(grid,{
+    itemSelector: '#alt',
+    columnWidth: 300
+  });
+  
 })
 
 document.addEventListener("turbo:submit-start", (event) => {
