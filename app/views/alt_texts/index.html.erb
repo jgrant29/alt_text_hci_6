@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      <div  id="alts" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
+      <div  id="alts flags" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
         <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
         <% @alt_texts.each do |alt_text| %>
           <% if alt_text.alt.flag.nil? == false %>
@@ -79,14 +79,20 @@ $(function(){
     $('#alts').masonry({
         // options
         itemSelector : '#alt',
-        columnWidth : '#alt',
         percentPosition: true
    });
 });
-
+$(function(){
+    $('#flags').masonry({
+        // options
+        itemSelector : '#alt',
+        percentPosition: true
+   });
+});
 var masonryUpdate = function() {
     setTimeout(function() {
         $('#alts').masonry();
+        $('#flags').masonry();
     }, 500);
 }
 $(document).on('click', masonryUpdate);
