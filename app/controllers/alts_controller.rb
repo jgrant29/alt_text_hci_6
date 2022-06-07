@@ -8,12 +8,19 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
+    @cnt = 0
+   
     search = params[:query].present? ? params[:query] : nil
-    if search.nil?
+    if params[:search_home] 
+      @alts = Alt.where(verified: true, flag: false).shuffle
+    elsif search.nil?
       if params[:tag].nil? == false 
          @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
-      else
-        @alts = Alt.where(verified: true, flag: false).shuffle.first(3) 
+     
+      else #if @cnt > 0
+        @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
+      #else
+      #  @alts = Alt.where(verified: true, flag: false).shuffle.first(3) 
       end
 
     else
@@ -29,6 +36,7 @@ class AltsController < ApplicationController
     #@alts = Alt.search(params[:query])
     #@alts = Alt.all
     #@alt = Alt.new
+    @cnt += 1
   end
 
   # GET /alts/1 or /alts/1.json
