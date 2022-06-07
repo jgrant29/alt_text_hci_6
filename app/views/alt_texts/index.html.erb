@@ -75,18 +75,20 @@
 
 
 
-$(document).on('show.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
-   $('#alts').masonry({
-     itemSelector: '#alt',
-     percentPosition: true
-  });
+$(function(){
+    $('#alts').masonry({
+        // options
+        itemSelector : '#alt',
+        columnWidth : 200,
+        percentPosition: true
+   });
 });
 
-$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
-   $('#alts').masonry({
-     itemSelector: '#alt',
-     percentPosition: true
-  });
-});
-
+var masonryUpdate = function() {
+    setTimeout(function() {
+        $('#alts').masonry();
+    }, 500);
+}
+$(document).on('click', masonryUpdate);
+$(document).ajaxComplete(masonryUpdate);
 </script>
