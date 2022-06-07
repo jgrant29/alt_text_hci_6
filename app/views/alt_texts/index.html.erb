@@ -78,8 +78,13 @@
 $(document).on('show.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
    $('#alts').masonry({
      itemSelector: '#alt',
-     fitWidth: true,
-     gutter: 0,
+     percentPosition: true
+  });
+});
+
+$(document).on('shown.bs.tab', 'button[data-bs-toggle="tab"]', function (e) {
+   $('#alts').masonry({
+     itemSelector: '#alt',
      percentPosition: true
   });
 });
