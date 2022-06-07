@@ -14,11 +14,11 @@ class AltsController < ApplicationController
       if params[:tag].nil? == false 
          @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
      
-      elsif cnt > 0
+      elsif @cnt > 0
         @alts = Alt.where(verified: true, flag: false).shuffle
       else
         @alts = Alt.where(verified: true, flag: false).shuffle.first(3) 
-        cnt += 1
+        @cnt += 1
       end
 
     else
