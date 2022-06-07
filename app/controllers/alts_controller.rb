@@ -34,7 +34,6 @@ class AltsController < ApplicationController
     #@alts = Alt.search(params[:query])
     #@alts = Alt.all
     #@alt = Alt.new
-    @cnt += 1
   end
 
   # GET /alts/1 or /alts/1.json
