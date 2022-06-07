@@ -11,14 +11,14 @@ class AltsController < ApplicationController
     @cnt = 0
    
     search = params[:query].present? ? params[:query] : nil
-    if @cnt == 0
-      @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
+    if params[:search_home] 
+      @alts = Alt.where(verified: true, flag: false).shuffle
     elsif search.nil?
       if params[:tag].nil? == false 
          @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
      
       else #if @cnt > 0
-        @alts = Alt.where(verified: true, flag: false).shuffle
+        @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
       #else
       #  @alts = Alt.where(verified: true, flag: false).shuffle.first(3) 
       end
