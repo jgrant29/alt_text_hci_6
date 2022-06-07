@@ -5,15 +5,19 @@ class AltsController < ApplicationController
   protect_from_forgery prepend: true
   helper_method :scrape
 
-  
+  cnt = 0
   # GET /alts or /alts.json
   def index
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
       if params[:tag].nil? == false 
          @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
+     
+      elsif cnt > 0
+        @alts = Alt.where(verified: true, flag: false).shuffle
       else
         @alts = Alt.where(verified: true, flag: false).shuffle.first(3) 
+        cnt += 1
       end
 
     else
