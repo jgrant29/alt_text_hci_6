@@ -5,9 +5,10 @@ class AltsController < ApplicationController
   protect_from_forgery prepend: true
   helper_method :scrape
 
-  cnt = 0
+  
   # GET /alts or /alts.json
   def index
+    cnt = 0
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
       if params[:tag].nil? == false 
