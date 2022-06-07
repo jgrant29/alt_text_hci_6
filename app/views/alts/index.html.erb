@@ -11,8 +11,8 @@
     </div>
     <hr class="border-bottom border-muted my-5">
     <div class="row g-5">
-      <div class="col-md-10">
-        <div id="alts" class="row">
+      <div class="col-md-12">
+        <div id="alts" class="row" data-masonry='{"percentPosition": true }'>
           <% @alts.each do |alt| %>
           <!-- <% if alt.verified && !alt.flag %>-->
             <div class="col-md-4">
@@ -22,13 +22,15 @@
         <%end%>
         </div>
       </div>
-    <div class="col-md-1"></div>
+    <!--<div class="col-md-1"></div>-->
+    <!--
     <div class="col-md-1">
       <div id= "twitter-feed" class="position-sticky" style="top: 2rem">
           <a class="twitter-timeline" data-height="330"  style="width:100%; min-width: 300px;" href="https://twitter.com/bts_bighit?ref_src=twsrc%5Etfw">Tweets by bts_bighit</a> 
           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
-    </div>
+    </div>-->
     </div>
   </section>
 </main>
+

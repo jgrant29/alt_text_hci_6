@@ -12,12 +12,26 @@ let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
+/*
+var grid = document.querySelector('#alts');
+
+
+var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+tabEl.addEventListener('show.bs.tab', function (event) {
+  event.target // newly activated tab
+  //event.relatedTarget // previous active tab
+  new Masonry(grid,{
+    itemSelector: '#alt',
+    columnWidth: '#alt',
+    percentPosition: true
+  });
+  
+})*/
 
 document.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
     // show progress bar and set submit state here.
     // this block is optional.
-    alert("submitting...");
   })
 })
 
