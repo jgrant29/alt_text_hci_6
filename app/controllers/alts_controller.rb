@@ -9,6 +9,7 @@ class AltsController < ApplicationController
   # GET /alts or /alts.json
   def index
     @cnt = 0
+    @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
       if params[:tag].nil? == false 
