@@ -17,11 +17,13 @@
       <div id="preview" class="container-fluid" style="width:100px;height:100px;">
        
     </div>
+    <div class="load-div mb-3">
       <div class="load">
         <div class="check">
           <span class="check-one"></span>
           <span class="check-two"></span>
         </div>
+    </div>
     </div>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
