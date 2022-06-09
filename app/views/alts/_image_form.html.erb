@@ -17,17 +17,17 @@
       <div id="preview" class="container-fluid" style="width:100px;height:100px;">
        
     </div>
-    <div class="load">
-    <div class="check">
-      <span class="check-one"></span>
-      <span class="check-two"></span>
+      <div class="load">
+        <div class="check">
+          <span class="check-one"></span>
+          <span class="check-two"></span>
+        </div>
     </div>
-  </div>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
   </div>
   <div class="mb-3">
-   <%= form.button "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Checking..."}%>
+   <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Checking..."}%>
   </div>
  
   
@@ -51,6 +51,19 @@
 
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var btn = document.querySelector('#submit-btn');
+  var loader = document.querySelector('.load');
+  var check = document.querySelector('.check');
+  
+  btn.addEventListener('click', function () {
+    loader.classList.add('active');    
+  });
+ 
+  loader.addEventListener('animationend', function() {
+    check.classList.add('active'); 
+  });
+});
 
 
 // Todo: add image preview 
