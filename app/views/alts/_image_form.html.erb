@@ -1,5 +1,59 @@
 
+<%= form_with(model: alt) do |form| %>
+  <% if alt.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(alt.errors.count, "error") %> prohibited this alt from being saved:</h2>
+
+      <ul>
+        <% alt.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="mb-3">
+    <label for="formFile" class="form-label">Image for Seven Army</label>
+      <div id="preview" class="container-fluid" style="width:100px;height:100px;">
+       
+    </div>
+    <div class="load">
+    <div class="check">
+      <span class="check-one"></span>
+      <span class="check-two"></span>
+    </div>
+  </div>
+    <%= form.hidden_field :image, value: form.object.cached_image_data %>
+    <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
+  </div>
+  <div class="mb-3">
+   <%= form.button "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Checking..."}%>
+  </div>
+ 
+  
+
+ 
+    <% if user_signed_in? %>
+      
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+  </div>
+  <div>
+  <!-- Todo: add Spinner -->
+  <!-- <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri 
+}} do %>
+   <%end%>-->
+
+  </div>
+
+  
+<% end %>
+
+
 <script>
+
+
+// Todo: add image preview 
 /*
  window.onload("turbolinks:load", (event) => {
 
@@ -28,46 +82,3 @@ $("#formFile").change(function() {
 
  
 </script>
-<%= form_with(model: alt) do |form| %>
-  <% if alt.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(alt.errors.count, "error") %> prohibited this alt from being saved:</h2>
-
-      <ul>
-        <% alt.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <div class="mb-3">
-    <label for="formFile" class="form-label">Image for Seven Army</label>
-      <div id="preview" class="container-fluid" style="width:100px;height:100px;">
-      
-    </div>
-    <%= form.hidden_field :image, value: form.object.cached_image_data %>
-    <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
-  </div>
-  <div class="mb-3">
-   <%= form.button "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Checking..."}%>
-  </div>
- 
-  
-
- 
-    <% if user_signed_in? %>
-      
-      <%= form.hidden_field :user_id, value: current_user.id %>
-    <% end %>
-  </div>
-  <div>
-  <!-- Todo: add Spinner -->
-  <!-- <%= content_tag :div, class: 'alts', data: {alts: Alt.all.map { |u| u.image.data_uri 
-}} do %>
-   <%end%>-->
-
-  </div>
-
-  
-<% end %>
