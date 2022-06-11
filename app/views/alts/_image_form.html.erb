@@ -29,7 +29,7 @@
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
   </div>
   <div class="mb-3">
-   <%= form.button "Save".html_safe, type: :submit, class: "btn btn-primary btn-lg btn-block", id: "submit-btn",  :data => {:disable_with => "<i class='fa fa-spinner fa-spin'></i> Signing In..."} %>
+   <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn" %>
   </div>
  
   
