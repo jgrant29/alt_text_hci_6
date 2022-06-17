@@ -8,6 +8,10 @@
       <div class="mb-5" id="general">
         <h3 class="mb-3 pb-3">General</h3>
         <div class="form-floating mb-3">
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "Username", id: "Username", class: "form-control" %>
+          <%= f.label :username, for: "Username", class: "text-secondary" %>
+        </div>
+        <div class="form-floating mb-3">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", id: "Email", class: "form-control" %>
           <%= f.label :email, for: "Email", class: "text-secondary" %>
         </div>
