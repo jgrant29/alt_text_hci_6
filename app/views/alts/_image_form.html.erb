@@ -51,8 +51,8 @@
 
 <script>
 
-$(window).on('submit', '#img_form', function (event) {
- var btn = document.querySelector('#submit-btn');
+$( document ).ready(function() {
+  var btn = document.querySelector('#submit-btn');
   var loader = document.querySelector('.load');
   var check = document.querySelector('.check');
   
@@ -63,9 +63,6 @@ $(window).on('submit', '#img_form', function (event) {
   loader.addEventListener('submit', function() {
     check.classList.add('active'); 
   });
-})
-$( document ).ready(function() {
-  
 });
 
 
