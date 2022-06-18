@@ -173,7 +173,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_195906) do
     t.boolean "contributor"
     t.boolean "flag"
     t.boolean "referee"
-    t.string "username"
+    t.string "username", name: "index_users_on_username", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
