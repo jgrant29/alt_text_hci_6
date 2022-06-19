@@ -14,13 +14,13 @@
             </div>
 
             <div class="form-floating mt-1">
-              <%= f.email_field :email, autofocus: true, autocomplete: "user_email", class: "form-control", id: "user_email", placeholder: "Email*" %>
-              <label for="user_email" class="text-secondary">Email<span class="">*</span></label>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "email", placeholder: "Email*" %>
+              <label for="email" class="text-secondary">Email<span class="">*</span></label>
             </div>
 
             <div class="form-floating mt-1">
               <%= f.password_field :password, id: "password", autocomplete: "new-password", placeholder: "Password '#{@minimum_password_length if @minimum_password_length} characters minimum", class: "form-control" %>
-              <label for="password" class="text-secondary">Password (<%= @minimum_password_length if @minimum_password_length %>) characters minimum<span class="">*</span></label>
+              <label for="password" class="text-secondary">Password<span class="">*</span></label>
             </div>
             <div class="form-floating mt-1">
               <%= f.password_field :password_confirmation, id: "password_confirmation", autocomplete: "new-password", placeholder: "Password Confirmation '#{@minimum_password_length if @minimum_password_length} characters minimum", class: "form-control" %>
@@ -47,7 +47,7 @@
 <script>
 $("#new_user").on("submit", function() {
   $("#username").focus();
-  $("#user_email").focus();
+  $("#email").focus();
   $("#password").focus();
   $("#password_confirmation").focus();
 });
