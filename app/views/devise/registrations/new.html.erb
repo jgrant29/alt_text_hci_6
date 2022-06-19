@@ -45,10 +45,11 @@
 </main>
 
 <script>
-$("#new_user").on("submit", function() {
-  $("#username").focus();
-  $("#user_email").focus();
-  $("#password").focus();
-  $("#password_confirmation").focus();
+$("document").on("keyup", function() {
+  //$("#username").focus();
+  //$("#user_email").contentEditable = true;
+  document.getElementById("#user_email").focus();
+  //$("#password").focus();
+  //$("#password_confirmation").focus();
 });
 </script>
