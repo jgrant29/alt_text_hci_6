@@ -45,9 +45,9 @@
 </main>
 
 <script>
-$("document").on("load", function() {
+$("#new_user").on("submit", function() {
   $("#username").focus();
-  $("#user_email").autofocus();
+  $("#user_email").clear();
   $("#password").focus();
   $("#password_confirmation").focus();
 });
