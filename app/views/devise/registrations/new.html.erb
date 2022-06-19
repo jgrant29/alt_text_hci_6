@@ -45,10 +45,9 @@
 </main>
 
 <script>
-$("#new_user").on("keyup", function() {
+$("document").on("load", function() {
   $("#username").focus();
-  $("#user_email").contentEditable = true;
-  $("#user_email").focus();
+  $("#user_email").autofocus();
   $("#password").focus();
   $("#password_confirmation").focus();
 });
