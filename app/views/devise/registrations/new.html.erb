@@ -14,7 +14,7 @@
             </div>
 
             <div class="form-floating mt-1">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "useremail" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "user_email", placeholder: "Email*" %>
               <label for="email" class="text-secondary">Email<span class="">*</span></label>
             </div>
 
@@ -47,7 +47,7 @@
 <script>
 $("#new_user").on("submit", function() {
   $("#username").focus();
-  $("#useremail").focus();
+  $("#user_email").focus();
   $("#password").focus();
   $("#password_confirmation").focus();
 });
