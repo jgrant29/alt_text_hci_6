@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :alts, dependent: :destroy
   #has_many :verifcations, dependent: :destroy
   has_one  :moderator, dependent: :destroy
+  validates_uniqueness_of :username
 
 
   def after_confirmation
