@@ -37,7 +37,7 @@
       <h2><u>Info.</u></h2>
       <%= verification(alt) %>
       <% if user_signed_in? && (current_user == @alt_show.user) || super_admin || referee %>
-        <span class="d-block mb-1">created by <%= @alt_show.user["email"] %></span>
+        <span class="d-block mb-1">created by <%= @alt_show.user["username"] %></span>
       <% end %>
       <span class="d-block mb-1">Created: <%= alt.created_at.strftime("%B #{alt.created_at.day.ordinalize}, %Y") %></span>
       <span class="d-block mb-1">Tags: <%= linked_tag_list alt %></span>
@@ -47,9 +47,7 @@
       <span class="d-block mb-1">Mime type: <%= alt.image.mime_type %></span>
       <span class="d-block mb-1">Width: <%= alt.image(:small).width %> px </span>
       <span class="d-block mb-1">Height: <%= alt.image(:small).height %> px </span>
-      <span class="d-block mb-1">User: <%= first_last_name(alt) %></span>
       <span class="d-block mb-1">Latest alt text: <%= alt.alt_texts.pluck(:body).last %></span>
-      <span class="d-block mb-1">Original alt text: <%= alt.alt_texts.pluck(:body).first %></span>
     </div>
     <div class="col-md-6">
       <%= link_to alt.image_url(:small) do %>
