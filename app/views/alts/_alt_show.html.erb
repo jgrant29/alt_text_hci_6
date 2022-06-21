@@ -52,7 +52,13 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        <span class="d-block mb-1">Source: <%= alt.original_source %></span>
+        <!-- <span class="d-block mb-1"><%= alt.image.metadata %></span> -->
+        <span class="d-block mb-1">Mime type: <%= alt.image.mime_type %></span>
+        <span class="d-block mb-1">Width: <%= alt.image(:small).width %> px </span>
+        <span class="d-block mb-1">Height: <%= alt.image(:small).height %> px </span>
+        <span class="d-block mb-1">User: <%= first_last_name(alt) %></span>
+        <span class="d-block mb-1">Latest alt text: <%= alt.alt_texts.pluck(:body).last %></span>
       </div>
     </div>
   </div>
