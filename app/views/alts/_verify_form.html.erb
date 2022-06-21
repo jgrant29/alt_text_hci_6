@@ -10,10 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <em>Does the title represent the entire image?  If not, make a change.</em>
+  <em>Does the tags represent the entire image?  If not, make a change.</em>
   <div class="form-floating mb-3">
-    <%= form.text_field :title, id: "title", class: "form-control", placeholder: "Title", required: true %>
-    <label for="title">Title<span style="color:red"> *</span></label>
+    <%= form.text_field :tags, id: "tags", class: "form-control", placeholder: "Tags", required: true %>
+    <label for="title">Tags<span style="color:red"> *</span></label>
   </div>
   <div class="form-field mb-3">
     <%= form.label "Alternative text for #{alt.title}", for: "alt_text", class: "sr-only d-block" %>
