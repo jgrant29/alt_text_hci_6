@@ -43,6 +43,7 @@
       <span class="d-block mb-1">Tags: <%= linked_tag_list alt %></span>
       <span class="d-block mb-1">URL: <%= alt.original_url %></span>
 
+
       <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -60,14 +61,13 @@
         <span class="d-block mb-1">Mime type: <%= alt.image.mime_type %></span>
         <span class="d-block mb-1">Width: <%= alt.image(:small).width %> px </span>
         <span class="d-block mb-1">Height: <%= alt.image(:small).height %> px </span>
-        <span class="d-block mb-1">User: <%= first_last_name(alt) %></span>
         <span class="d-block mb-1">Latest alt text: <%= alt.alt_texts.pluck(:body).last %></span>
       </div>
     </div>
   </div>
 </div>
 
-     
+    
     </div>
     <div class="col-md-6">
       <%= link_to alt.image_url(:small) do %>
