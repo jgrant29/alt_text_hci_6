@@ -55,13 +55,16 @@ $( document ).ready(function() {
   var btn = document.querySelector('#submit-btn');
   var loader = document.querySelector('.load');
   var check = document.querySelector('.check');
+  var prev = document.getElementById('preview');
   
   btn.addEventListener('click', function () {
     loader.classList.add('active');    
+     prev.innerHTML ='<span style="background-color: lime"> Avocado</span>';
   });
  
-  loader.addEventListener('submit', function() {
+  loader.addEventListener('click', function() {
     check.classList.add('active'); 
+   
   });
 });
 
