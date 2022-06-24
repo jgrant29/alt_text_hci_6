@@ -15,7 +15,7 @@
   <div class="mb-3">
     <label for="formFile" class="form-label">Image for Seven Army</label>
       <div id="preview" class="container-fluid" style="width:100px;height:100px;">
-       <span></span>
+       <span id="prev"></span>
     </div>
     <div class="load-div mb-3">
       <div class="load">
@@ -55,11 +55,11 @@ $( document ).ready(function() {
   var btn = document.querySelector('#submit-btn');
   var loader = document.querySelector('.load');
   var check = document.querySelector('.check');
-  var prev = document.getElementById('preview');
+  var prev = document.getElementById('prev');
   
   btn.addEventListener('click', function () {
     loader.classList.add('active');    
-     prev.innerHTML =' Checking...';
+     prev.textContent =' Checking...';
   });
  
   loader.addEventListener('click', function() {
