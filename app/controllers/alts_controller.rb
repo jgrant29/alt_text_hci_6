@@ -20,7 +20,7 @@ class AltsController < ApplicationController
          @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
       #elsif params[:tag].nil? == true
        # @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
-      else 
+      elsif search == "" && params[:search_home] == "Search"
         @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
       end
 
