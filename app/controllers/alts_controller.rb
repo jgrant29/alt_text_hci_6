@@ -10,7 +10,7 @@ class AltsController < ApplicationController
   def index
     puts @clicked
     search = params[:query].present? ? params[:query] : nil
-    if params[:search_home] == "Search" && search.nil? 
+    if params[:search_home] == "Search" && search.nil? && @clicked == false
       @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
       @clicked = true
       puts @clicked
