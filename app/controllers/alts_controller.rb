@@ -5,14 +5,14 @@ class AltsController < ApplicationController
   protect_from_forgery prepend: true
   helper_method :scrape
 
-  clicked = false
+  @clicked = false
   # GET /alts or /alts.json
   def index
    
     search = params[:query].present? ? params[:query] : nil
-    if params[:search_home] == "Search" && search.nil? && clicked == false
+    if params[:search_home] == "Search" && search.nil? && @clicked == false
       @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
-      clicked = true
+      @clicked = true
     elsif params[:search_home] != ""
        @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
     elsif search.nil?
@@ -20,7 +20,7 @@ class AltsController < ApplicationController
          @alts = Alt.search(params[:tag], fields:[:tags], operator: "or")
       #elsif params[:tag].nil? == true
        # @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
-      elsif params[:search_home] == "Search" && clicked == true
+      elsif params[:search_home] == "Search" && @clicked == true
         @alts = Alt.where(verified: true, flag: false).shuffle
       end
 
