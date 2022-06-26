@@ -5,9 +5,10 @@ class AltsController < ApplicationController
   protect_from_forgery prepend: true
   helper_method :scrape
 
-  @clicked = false
+  
   # GET /alts or /alts.json
   def index
+    @clicked = false
     puts @clicked
     search = params[:query].present? ? params[:query] : nil
     if params[:search_home] == "Search" && search.nil? && @clicked == false
