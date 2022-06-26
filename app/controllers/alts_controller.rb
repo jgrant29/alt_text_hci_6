@@ -8,11 +8,12 @@ class AltsController < ApplicationController
   @clicked = false
   # GET /alts or /alts.json
   def index
-   
+    puts @clicked
     search = params[:query].present? ? params[:query] : nil
     if params[:search_home] == "Search" && search.nil? 
       @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
       @clicked = true
+      puts @clicked
     elsif params[:search_home] != ""
        @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
     elsif search.nil?
