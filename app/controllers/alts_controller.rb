@@ -14,7 +14,7 @@ class AltsController < ApplicationController
     if params[:search_home].nil? && search.nil?
       @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
     elsif params[:search_home] == "Search" && search.nil? && @clicked == false
-      @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
+      @alts = Alt.where(verified: true, flag: false).shuffle
       @clicked = true
       puts @clicked
     elsif params[:search_home] != ""
