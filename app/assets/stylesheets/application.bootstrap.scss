@@ -83,6 +83,18 @@ a:active {
   border: 0;
 }
 
+
+.blur-image {
+    filter: blur(25px);
+    -webkit-filter: blur(25px);
+
+    &:hover {
+      transition: 1s;
+      filter: blur(0px);
+      -webkit-filter: blur(0px);
+    }
+}
+
 /*with a modal, the user should see the background text — JMG*/
 /*
 .modal-backdrop{

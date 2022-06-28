@@ -3,8 +3,8 @@
     <div class="col-8 mt-2 mx-auto ">
       <%= form_with url: '/alts', method: :get do |form| %>
         <div class="input-group input-group-lg">
-          <%= form.label :query, "Search for:", class: "sr-only" %>
-          <%= form.text_field :query, placeholder: params[:query] || "search for...", class: "form-control rounded " %>
+          <%= form.label :query, "Search seven.army for:", class: "sr-only" %>
+          <%= form.text_field :query, placeholder: params[:query] || "search for...", class: "form-control rounded" %>
           <%= form.submit "Search", class: "btn btn-primary", name: "search_home" %>
         </div>
       <% end %>
@@ -14,22 +14,14 @@
       <div class="col-md-12">
         <div id="alts" class="row" data-masonry='{"percentPosition": true }'>
           <% @alts.each do |alt| %>
-          <!-- <% if alt.verified && !alt.flag %>-->
-            <div class="col-md-4">
+            <% if alt.verified && !alt.flag %>
+              <div class="col-md-4">
                 <%= render alt %>
-            </div>
-          <!--<% end %>-->
-        <%end%>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
-    <!--<div class="col-md-1"></div>-->
-    <!--
-    <div class="col-md-1">
-      <div id= "twitter-feed" class="position-sticky" style="top: 2rem">
-          <a class="twitter-timeline" data-height="330"  style="width:100%; min-width: 300px;" href="https://twitter.com/bts_bighit?ref_src=twsrc%5Etfw">Tweets by bts_bighit</a> 
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
-    </div>-->
     </div>
   </section>
 </main>
