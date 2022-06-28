@@ -11,7 +11,9 @@ class AltsController < ApplicationController
     @clicked = false
     puts @clicked
     search = params[:query].present? ? params[:query] : nil
-    if params[:search_home] == "Search" && search.nil? && @clicked == false
+    if params[:search_home].nil? && search.nil?
+      @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
+    elsif params[:search_home] == "Search" && search.nil? && @clicked == false
       @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
       @clicked = true
       puts @clicked
