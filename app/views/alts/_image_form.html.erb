@@ -14,7 +14,7 @@
  
   <div class="mb-3">
     <label for="formFile" class="form-label">Image for Seven Army</label>
-      <div id="preview" class="container-fluid" style="width:100px;height:100px;">
+    <div id="preview" class="container-fluid" style="width:100px;height:100px;">
        <span id="prev"></span>
     </div>
     <div class="load-div mb-3">
@@ -24,28 +24,15 @@
           <span class="check-two"></span>
         </div>
     </div>
-    </div>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, class: "btn btn-primary", class: "form-control", type: "file", id: "formFile" %>
   </div>
   <div class="mb-3">
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn"  %>
   </div>
- 
-  
-
- 
     <% if user_signed_in? %>
-      
       <%= form.hidden_field :user_id, value: current_user.id %>
     <% end %>
-  </div>
-  <div>
-
-
-  </div>
-
-  
 <% end %>
 
 
