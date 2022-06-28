@@ -1,4 +1,5 @@
 <% @title = "Documentation" %>
+<% if !@documentation_about.nil? %>
 <% @seo_description = "#{@documentation_about.seo}" %>
 <main class="my-5 container">
   <p style="color: green"><%= notice %></p>
@@ -18,3 +19,4 @@
     </div>
   </section>
 </main>
+<%end%>
