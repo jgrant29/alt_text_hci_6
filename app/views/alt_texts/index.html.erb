@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="tab-pane fade" id="pills-banned" role="tabpanel" aria-labelledby="pills-banned-tab">
-            <div  id="flags" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
+            <div  id="bans" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
                 <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
                     <% @alt_texts.each do |alt_text| %>
                         <% if alt_text.alt.flag.nil? == false && alt_text.alt.banned_image == true %>
@@ -100,10 +100,19 @@
             percentPosition: true
        });
     });
+
+     $(function(){
+        $('#bans').masonry({
+           
+            itemSelector : '#alt',
+            percentPosition: true
+       });
+    });
     var masonryUpdate = function() {
         setTimeout(function() {
             $('#alts').masonry();
             $('#flags').masonry();
+             $('#bans').masonry();
         }, 500);
     }
     $(document).on('click', masonryUpdate);
