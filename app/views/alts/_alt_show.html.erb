@@ -49,7 +49,7 @@
                More Info. 
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div id="collapseOne" class="accordion-collapse collapse overflow-auto" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <span class="d-block mb-1">URL: <%= alt.original_url %></span>
               <span class="d-block mb-1">Created: <%= alt.created_at.strftime("%B #{alt.created_at.day.ordinalize}, %Y") %></span>
