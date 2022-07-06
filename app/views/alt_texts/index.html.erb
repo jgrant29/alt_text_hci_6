@@ -49,14 +49,12 @@
             <div  id="flags" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
                 <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
                     <% @alt_texts.each do |alt_text| %>
-                        <% if alt_text.alt.flag.nil? == false && alt_text.alt.banned_image == true %>
-                            <% if alt_text.alt.flag == true %>
-                                <div id="alt" class="col-lg-3 mb-5 flag">
-                                    <%= link_to alt_alt_texts_path(alt_text.alt_id) do %>
-                                        <%= image_tag alt_text.alt.image_url(:small), caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "blur-image border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
-                                    <% end %>
-                                </div>
-                            <% end %>
+                        <% if alt_text.alt.banned_image == true %>
+                            <div id="alt" class="col-lg-3 mb-5 flag">
+                                <%= link_to alt_alt_texts_path(alt_text.alt_id) do %>
+                                    <%= image_tag alt_text.alt.image_url(:small), caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "blur-image border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
+                                <% end %>
+                            </div>
                         <% end %>
                     <% end %>
                 <% end %>
@@ -84,7 +82,6 @@
 
    
 <script>
-
     $(function(){
         $('#alts').masonry({
            
