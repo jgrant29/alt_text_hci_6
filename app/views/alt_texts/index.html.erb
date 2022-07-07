@@ -49,6 +49,7 @@
             <div  id="bans" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
                 <!--<% if !@alt_texts.nil? && !params[:alt_id].present?%>-->
                     <% @alt_texts.each do |alt_text| %>
+
                         <% if alt_text.alt.flag.nil? == false && alt_text.alt.banned_image.nil? == false %>
                             <% if alt_text.alt.flag == true && alt_text.alt.banned_image == true %>
                                 <div id="alt" class="col-lg-3 mb-5 flag">
@@ -84,7 +85,6 @@
 
    
 <script>
-
     $(function(){
         $('#alts').masonry({
            

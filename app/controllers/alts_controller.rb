@@ -3,7 +3,7 @@ class AltsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_alt, only: %i[ edit update destroy ]
   protect_from_forgery prepend: true
-  helper_method :scrape
+  # helper_method :scrape
 
   
   # GET /alts or /alts.json
@@ -11,6 +11,7 @@ class AltsController < ApplicationController
     @clicked = false
     puts @clicked
     search = params[:query].present? ? params[:query] : nil
+
     if params[:search_home].nil? && search.nil?
       @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
     elsif params[:search_home] == "Search" && search.nil? && @clicked == false
@@ -45,15 +46,20 @@ class AltsController < ApplicationController
 
   # GET /alts/1 or /alts/1.json
   def show
-    @alt_show = Alt.find(params[:id])
     @alt = Alt.find(params[:id])
-    authorize @alt
+    if @alt.banned_image == true || @alt.flag == true
+      redirect_to alts_path
+    else
+      @alt_show = Alt.find(params[:id])
+      @alt = Alt.find(params[:id])
+      authorize @alt
+    end
   end
 
   def verify
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
-       @alts = Alt.where(verified: false, flag: false).shuffle.first(1)
+       @alts = Alt.where(verified: false, flag: false, banned_image: nil).shuffle.first(1)
        @alt = Alt.new
     else
       @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
@@ -139,9 +145,6 @@ class AltsController < ApplicationController
     @flag.save
   end
 
- 
-
-
   def is_duplicate
     a = Alt.find_by(id: @alt.id)
     file1 = URI.parse(a.image_url).open
@@ -149,7 +152,7 @@ class AltsController < ApplicationController
    
     img_mod = Phashion::Image.new(file1.path)
     count = 0
-    Alt.all.map { |u| 
+    Alt.find_each.map { |u| 
 
        puts u.title
       
@@ -199,98 +202,99 @@ class AltsController < ApplicationController
     end
   end
 
+  private
 
-  def scrape
-    puts "scraping"
-    base_url = "https://www.instagram.com"
-    user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36"
+  # Does Kate still Instagram scrape?
+
+  # def scrape
+  #   puts "scraping"
+  #   base_url = "https://www.instagram.com"
+  #   user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36"
 
   
-    url = "#{base_url}/agustd/"
-    data = URI.open(url, "User-Agent" => user_agent).read
-    if data.nil? || data == 0
-      return false
-    end
-    matches = data.match(/window._sharedData =(.*);<\/script>/)
-    shared_data = JSON.parse(matches[1])
-    #puts data
+  #   url = "#{base_url}/agustd/"
+  #   data = URI.open(url, "User-Agent" => user_agent).read
+  #   if data.nil? || data == 0
+  #     return false
+  #   end
+  #   matches = data.match(/window._sharedData =(.*);<\/script>/)
+  #   shared_data = JSON.parse(matches[1])
+  #   #puts data
    
-    if shared_data["entry_data"]["ProfilePage"].nil? || data == 0
-      puts "Timed out"
-      return false
-    end
-    sharedData = shared_data["entry_data"]["ProfilePage"][0]
+  #   if shared_data["entry_data"]["ProfilePage"].nil? || data == 0
+  #     puts "Timed out"
+  #     return false
+  #   end
+  #   sharedData = shared_data["entry_data"]["ProfilePage"][0]
     
     
     
-    contents = []
-    edges = sharedData["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"].map { |n| n["node"] }
-    edges.each do |x| 
-      post = {}
-      if x["__typename"] == "GraphImage"
-        #puts "Height: " + x["dimensions"]["height"].to_s
-        #puts "Width: " + x["dimensions"]["width"].to_s
-        #puts "Display Url: " + x["display_url"]
-        #puts "Alt Text: " + x["accessibility_caption"]
-        post[:body] = x["accessibility_caption"]
-        post[:image] = x["display_url"]
-        post[:title] = ""
-        post[:original_url] = x["display_url"]
-        post[:original_source] = x["display_url"]
+  #   contents = []
+  #   edges = sharedData["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"].map { |n| n["node"] }
+  #   edges.each do |x| 
+  #     post = {}
+  #     if x["__typename"] == "GraphImage"
+  #       #puts "Height: " + x["dimensions"]["height"].to_s
+  #       #puts "Width: " + x["dimensions"]["width"].to_s
+  #       #puts "Display Url: " + x["display_url"]
+  #       #puts "Alt Text: " + x["accessibility_caption"]
+  #       post[:body] = x["accessibility_caption"]
+  #       post[:image] = x["display_url"]
+  #       post[:title] = ""
+  #       post[:original_url] = x["display_url"]
+  #       post[:original_source] = x["display_url"]
        
-        puts "\n\n"
-        contents.push(post)
-      elsif x["__typename"] == "GraphSidecar"
-        side_car = x["edge_sidecar_to_children"]["edges"]
-        side_car.each do |i| 
-            n = i["node"]
-            #puts "Type: " + n["__typename"]
-            #puts "Height: " + n["dimensions"]["height"].to_s
-            #puts "Width: " + n["dimensions"]["width"].to_s
-            #puts "Display Url: " + n["display_url"]
-            #puts "Alt Text: " + n["accessibility_caption"]
-            #puts "\n\n"
-            post[:body] = n["accessibility_caption"]
-            post[:image] = ""
-            post[:title] = n["id"]
-            post[:original_url] = n["display_url"]
-            post[:original_source] = n["display_url"]
-            contents.push(post)
-        end
+  #       puts "\n\n"
+  #       contents.push(post)
+  #     elsif x["__typename"] == "GraphSidecar"
+  #       side_car = x["edge_sidecar_to_children"]["edges"]
+  #       side_car.each do |i| 
+  #           n = i["node"]
+  #           #puts "Type: " + n["__typename"]
+  #           #puts "Height: " + n["dimensions"]["height"].to_s
+  #           #puts "Width: " + n["dimensions"]["width"].to_s
+  #           #puts "Display Url: " + n["display_url"]
+  #           #puts "Alt Text: " + n["accessibility_caption"]
+  #           #puts "\n\n"
+  #           post[:body] = n["accessibility_caption"]
+  #           post[:image] = ""
+  #           post[:title] = n["id"]
+  #           post[:original_url] = n["display_url"]
+  #           post[:original_source] = n["display_url"]
+  #           contents.push(post)
+  #       end
         
-        puts "\n\n"
+  #       puts "\n\n"
         
-      end
-    end
-     #binding.pry
-    #puts contents
-    # store item content to Alt model and attach meta data for content image
-    i = 0
-    contents.each do |c|
-      file = URI.open(c[:original_url])
-      if i == 20
-       break
-      end
+  #     end
+  #   end
+  #    #binding.pry
+  #   #puts contents
+  #   # store item content to Alt model and attach meta data for content image
+  #   i = 0
+  #   contents.each do |c|
+  #     file = URI.open(c[:original_url])
+  #     if i == 20
+  #      break
+  #     end
      
-      #a = Alt.where(original_url: c[:original_url]).first_or_create
-      a = Alt.where(title: c[:title], user_id: 1, body: c[:body], original_url: c[:original_url], original_source: c[:original_source], verified: false).first_or_create
+  #     #a = Alt.where(original_url: c[:original_url]).first_or_create
+  #     a = Alt.where(title: c[:title], user_id: 1, body: c[:body], original_url: c[:original_url], original_source: c[:original_source], verified: false).first_or_create
 
-      #puts a.title
+  #     #puts a.title
       
-      a.image_attacher.assign(file)
+  #     a.image_attacher.assign(file)
      
-      a.image_derivatives!
-      a.image_attacher.add_metadata(caption: a.title, alt: a.body)
-      a.save
+  #     a.image_derivatives!
+  #     a.image_attacher.add_metadata(caption: a.title, alt: a.body)
+  #     a.save
 
       
-      i += 1
-    end
+  #     i += 1
+  #   end
 
-    return true 
-  end
-
-  private
+  #   return true 
+  # end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_alt
