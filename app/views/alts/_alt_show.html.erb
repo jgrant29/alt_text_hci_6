@@ -64,9 +64,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <%= link_to alt.image_url(:small) do %>
-        <%= image_tag alt.image_url(:small), class: "image", caption: alt.title, alt: alt.alt_texts.pluck(:body).last, class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
-      <% end %>
+      <%= image_tag alt.image_url(:small), class: "image", caption: alt.title, alt: alt.alt_texts.pluck(:body).last, class: "img-fluid", height: alt.image(:small).height, width: alt.image(:small).width %>
     </div>
   </div>
 </section>
