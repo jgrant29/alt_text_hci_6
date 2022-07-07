@@ -149,7 +149,7 @@ class AltsController < ApplicationController
    
     img_mod = Phashion::Image.new(file1.path)
     count = 0
-    Alt.all.map { |u| 
+    Alt.find_each.map { |u| 
 
        puts u.title
       
