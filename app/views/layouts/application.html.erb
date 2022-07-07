@@ -87,7 +87,7 @@
                 </svg> Upload New 
                 </a>
               </div>
-              <div class="d-inline-block  mb-3 mt-3"><%= link_to "Account", edit_user_registration_path, class: "text-white me-3 btn btn-primary btn-sm" %></div>
+              <div class="d-inline-block  mb-3 mt-3"><%= link_to "Hi, #{current_user.username}!", edit_user_registration_path, class: "text-white me-3 btn btn-primary btn-sm" %></div>
               <div class="d-inline-block  mb-3 mt-3"><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "me-3 btn btn-outline-primary btn-sm" %></div>
             <% else %>
               <%= link_to "Sign up", new_user_registration_path, class: "text-white ms-1 btn btn-primary btn-small"  %>

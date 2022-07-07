@@ -11,8 +11,11 @@ class AltsController < ApplicationController
     @clicked = false
     puts @clicked
     search = params[:query].present? ? params[:query] : nil
-    if params[:search_home] == "Search" && search.nil? && @clicked == false
-      @alts = Alt.shuffle.first(3)
+
+    if params[:search_home].nil? && search.nil?
+      @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
+    elsif params[:search_home] == "Search" && search.nil? && @clicked == false
+      @alts = Alt.where(verified: true, flag: false).shuffle
       @clicked = true
       puts @clicked
     elsif params[:search_home] != ""
@@ -149,7 +152,7 @@ class AltsController < ApplicationController
    
     img_mod = Phashion::Image.new(file1.path)
     count = 0
-    Alt.all.map { |u| 
+    Alt.find_each.map { |u| 
 
        puts u.title
       
