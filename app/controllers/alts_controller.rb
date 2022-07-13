@@ -59,7 +59,7 @@ class AltsController < ApplicationController
   def verify
     search = params[:query].present? ? params[:query] : nil
     if search.nil?
-       @alts = Alt.where(verified: false, flag: false, banned_image: nil).shuffle.first(1)
+       @alts = Alt.where(verified: false, flag: false, banned_image: false).shuffle.first(1)
        @alt = Alt.new
     else
       @alts = Alt.search(search, fields:[:title, :tags, :body], operator: "or")
