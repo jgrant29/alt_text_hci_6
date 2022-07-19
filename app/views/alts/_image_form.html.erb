@@ -33,11 +33,12 @@
   <div class="my-5">
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block w-100", id: "submit-btn"  %>
   </div>
-    </div>
   <% if user_signed_in? %>
     <%= form.hidden_field :user_id, value: current_user.id %>
   <% end %>
 <% end %>
+    </div>
+  
 
 
 <script>
