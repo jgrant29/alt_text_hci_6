@@ -29,7 +29,7 @@
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <label for="formFile" class="form-label">Select an image</label>
     <%= form.file_field :image, class: "form-control form-control-lg", id: "formFileLg", type: "file", id: "formFile" %>
-  </div>
+
   <div class="my-5">
    <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block w-100", id: "submit-btn"  %>
   </div>
@@ -37,6 +37,8 @@
     <%= form.hidden_field :user_id, value: current_user.id %>
   <% end %>
 <% end %>
+    </div>
+  
 
 
 <script>
