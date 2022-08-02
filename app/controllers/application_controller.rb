@@ -1,9 +1,15 @@
+require 'action_text'
+
 class ApplicationController < ActionController::Base
+
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	include Pundit
   helper_method :super_admin
   helper_method :referee
   helper_method :contributor
+
+  helper ActionText::Engine.helpers
+
 
   protected
 
