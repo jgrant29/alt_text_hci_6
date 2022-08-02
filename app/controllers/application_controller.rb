@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   helper_method :referee
   helper_method :contributor
 
-  helper ActionText::Engine.helpers
-
 
   protected
 
