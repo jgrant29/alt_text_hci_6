@@ -2,7 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 require 'phashion'
-require 'action_text'
 
 
 # Require the gems listed in Gemfile, including any gems
@@ -12,7 +11,6 @@ Bundler.require(*Rails.groups)
 module AltTextHci6
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    helper ActionText::Engine.helpers
 
     config.load_defaults 7.0
 
