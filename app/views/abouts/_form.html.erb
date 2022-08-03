@@ -1,4 +1,5 @@
 <%= form_with(model: about) do |form| %>
+ <% if !about.nil? %> 
   <% if about.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(about.errors.count, "error") %> prohibited this about from being saved:</h2>
@@ -26,4 +27,5 @@
     <%= form.rich_text_area :body %>
   </div>
     <%= form.submit "Save", class: "btn btn-primary btn-lg btn-block", id: "submit-btn" %>
+<% end %>
 <% end %>

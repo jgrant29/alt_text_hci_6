@@ -1,4 +1,5 @@
 <% @title = "About Seven Army" %>
+<% if !about.nil? %>
 <% @seo_description = "#{about.description}" %>
 <section class="my-5" id="<%= dom_id about %>">
   <header class="row">
@@ -12,3 +13,4 @@
     <p><%= about.body %><p>
   <% end %>
 </section>
+<%end%>
