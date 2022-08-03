@@ -8,11 +8,15 @@ class AltsController < ApplicationController
   
   # GET /alts or /alts.json
   def index
+    @fav = AltFavorite.new
     @clicked = false
     puts @clicked
     search = params[:query].present? ? params[:query] : nil
-    if params[:search_home] == "Search" && search.nil? && @clicked == false
-      @alts = Alt.shuffle.first(3)
+
+    if params[:search_home].nil? && search.nil?
+      @alts = Alt.where(verified: true, flag: false).shuffle.first(3)
+    elsif params[:search_home] == "Search" && search.nil? && @clicked == false
+      @alts = Alt.where(verified: true, flag: false).shuffle
       @clicked = true
       puts @clicked
     elsif params[:search_home] != ""
@@ -43,6 +47,7 @@ class AltsController < ApplicationController
 
   # GET /alts/1 or /alts/1.json
   def show
+    @fav = AltFavorite.new
     @alt = Alt.find(params[:id])
     if @alt.banned_image == true || @alt.flag == true
       redirect_to alts_path
@@ -85,13 +90,13 @@ class AltsController < ApplicationController
         @alt.image_derivatives!
         @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
         @alt.save
-       
-        if is_duplicate == true
+        ImageDupCheckJob.perform_now(@alt)
+        if @alt.duplicate_check == true
            @alt.destroy
            format.js
            format.html { render :new, status: :unprocessable_entity }
-           flash[:alert] = "The image was a duplicate. Please upload another image" 
-        else
+           flash[:error] = "The image was a duplicate. Please upload another image" 
+        elsif @alt.duplicate_check == false
           @alt.verified = @alt.verified
           @alt.save
           build_alt_text_versions
@@ -142,29 +147,6 @@ class AltsController < ApplicationController
     @flag.save
   end
 
-  def is_duplicate
-    a = Alt.find_by(id: @alt.id)
-    file1 = URI.parse(a.image_url).open
-    puts file1.class
-   
-    img_mod = Phashion::Image.new(file1.path)
-    count = 0
-    Alt.all.map { |u| 
-
-       puts u.title
-      
-       file2 = URI.parse(u.image.url).open
-      
-      
-       if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
-          count = count + 1
-          if count == 2
-            return true 
-          end 
-       end 
-    }
-    return false
-  end
  
   # adds metadata 
   def image_modification_alt
@@ -301,10 +283,10 @@ class AltsController < ApplicationController
     # Only allow a list of trusted parameters through.
 
     def update_alt_params
-      params.require(:alt).permit(:banned_image, :body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :flag_reason)
+      params.require(:alt).permit(:duplicate_check, :banned_image, :body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :flag_reason)
     end
 
     def alt_params
-      params.require(:alt).permit(:banned_image, :body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :user_id, :flag_reason)
+      params.require(:alt).permit(:duplicate_check, :banned_image, :body, :image, :flag, :title, :original_url, :original_source, :verified, :tag_list, :user_id, :flag_reason)
     end
 end

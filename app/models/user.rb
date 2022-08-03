@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable, :authentication_keys => [:username]
 
   has_many :alts, dependent: :destroy
+  has_many :alt_favorites, dependent: :destroy
   #has_many :verifcations, dependent: :destroy
   has_one  :moderator, dependent: :destroy
   validates_uniqueness_of :username

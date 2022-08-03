@@ -6,7 +6,7 @@ class ImageUploader < Shrine
 	plugin :add_metadata
  
   Attacher.validate do
-    validate_max_size 5*1024*1024 # 5 MB 
+    validate_max_size 15*1024*1024 # 5 MB 
   end
 
   Attacher.derivatives do |original|

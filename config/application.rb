@@ -15,6 +15,7 @@ module AltTextHci6
     config.action_view.form_with_generates_remote_forms
     config.active_storage.variant_processor = :vips
     config.action_view.image_loading = "lazy"
+    config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #
