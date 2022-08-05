@@ -1,6 +1,0 @@
-<% if @alt_fav_user_check.present? && @alt_fav_user_check == @alt.id %>
-    $(".fa fa-heart fs-2 <%= @alt.id %>").classList.toggle("fa-regular");
-<% else %>
-    $(".fa fa-heart-o fs-2<%= @alt.id %>").classList.toggle("fa-solid");
-<% end %>
-
