@@ -34,7 +34,7 @@
                           <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path, :action =>'destroy', :id => fav.id}, data: { turbo_method: :delete }, class: "fa fa-heart fs-2") : nil}.uniq.compact.flatten.join(", ").html_safe %>
                             <%= render alt %>
                           <% else %>
-                            <%= form_for @fav do |f| %>
+                            <%= form_for @fav, :remote => true do |f| %>
                               <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
                               <%= f.hidden_field :user_id, value: current_user.id %>
                               <%= f.hidden_field :alt_id, value: alt.id %>
@@ -67,7 +67,7 @@
                             </turbo-frame>
                           <% end %>
                          <% else %>
-                          <%= form_for @fav, :remote => true do |f| %>
+                          <%= form_for @fav, :action => 'create', :remote => true do |f| %>
                             <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i class="fa fa-heart-o fs-2 <%= @alt.id %>" aria-hidden="true"></i><% end %>
                             <%= f.hidden_field :user_id, value: current_user.id %>
                             <%= f.hidden_field :alt_id, value: alt.id %>
