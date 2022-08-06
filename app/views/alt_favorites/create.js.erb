@@ -1,5 +1,5 @@
 
-$("<%= escape_javascript(render @alt_favorite) %>").appendTo("#<%= @alt.id %>");
+$("#noFav").html("<%= escape_javascript(render partial: "favorites/favorite", locals: {favorite: @fav}) %>");
 
 
 <!--<% if @alt_fav_user_check.present? && @alt_fav_user_check == @alt.id %>
