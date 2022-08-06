@@ -99,10 +99,10 @@
 
 <script>
 $( document ).ready(function() {
-    var btn = document.querySelector('#fav_id_<%=@fav.id%>');
+    var btn = document.querySelector('#fav_id_<%=fav.id%>');
    
     btn.addEventListener('click', function () {
-      btn.classList.replace('fa fa-heart fs-2 <%= @fav.id %>','fa-regular fa-heart fs-2 <%= @fav.id %>"');    
+      btn.classList.replace('fa fa-heart fs-2 <%= fav.id %>','fa-regular fa-heart fs-2 <%= fav.id %>"');    
     });
    
    
