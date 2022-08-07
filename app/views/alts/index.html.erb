@@ -31,7 +31,7 @@
                         <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                         <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
                         <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
-                          <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path, remote: true}, data: {  turbo_method: :delete }, id: "fav_id_#{fav.id}", class: "fa fa-heart fs-2") : nil}.uniq.compact.flatten.join(", ").html_safe %>
+                          <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path, :action =>'destroy'}, data: {  turbo_method: :delete }, id: "fav_id_#{fav.id}", class: "fa fa-heart fs-2") : nil}.uniq.compact.flatten.join(", ").html_safe %>
                             <%= render alt %>
                           <% else %>
                           <div id="noFav">
@@ -61,7 +61,7 @@
                         <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                         <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
                         <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
-                          <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path(@fav.id), :action =>'destroy', :id => fav.id}, data: { data_id: alt.id, turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "fa fa-heart fs-2 #{@alt.id} ") : nil}.uniq.compact.flatten.join(", ").html_safe %>
+                          <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path, :action =>'destroy', :id => fav.id}, data: { data_id: alt.id, turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "fa fa-heart fs-2 #{@alt.id} ") : nil}.uniq.compact.flatten.join(", ").html_safe %>
                           <%= link_to alt, "aria-label": alt.body do %>
                             <%= image_tag alt.image_url(:small), caption: alt.title, alt: alt.alt_texts.pluck(:body).last,height: alt.image(:small).height, width: alt.image(:small).width, class: "border rounded image img-fluid w-100" %>
                              <turbo-frame id="<%= dom_id(alt) %>" loading="lazy" src="<%= alts_path %>">
