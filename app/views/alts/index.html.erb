@@ -36,7 +36,7 @@
                           <% else %>
                           <div id="noFav">
                             <%= form_for @fav, :remote => true do |f| %>
-                              <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id= "fav_id_#{alt.id}" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
+                              <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id= "fav_id_<%=alt.id %>" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
                               <%= f.hidden_field :user_id, value: current_user.id %>
                               <%= f.hidden_field :alt_id, value: alt.id %>
                             <% end %>
