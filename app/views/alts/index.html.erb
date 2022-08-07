@@ -108,9 +108,8 @@
    
  // });
 
- $(document).on('page:change', function(){
+ $(document).on('click', '#fav_id_<%= @fav.id %>', function(){
 
-  $("#fav_id_<%= @fav.id %>").click(function(event){ 
       $.ajax({
           type: "DELETE",
           url: "/alt_favorites/" + @fav.id,
@@ -120,8 +119,7 @@
               alert("Deleted successfully");
           }
       });
-      event.preventDefault();
-  });
+      //event.preventDefault();
 });
 </script>
 
