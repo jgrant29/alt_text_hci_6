@@ -111,8 +111,8 @@
  $(document).on('click', '#fav_id_<%= @fav.id %>', function(){
 
       $.ajax({
-          type: "DELETE",
-          url: "/alt_favorites/" + @fav.id,
+          //type: "DELETE",
+          url: "/alt_favorites/destroy" + @fav.id,
           dataType: "json",
           //data: {""delete"},
           complete: function(){
