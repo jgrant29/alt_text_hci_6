@@ -54,9 +54,9 @@ class AltFavoritesController < ApplicationController
     @alt_favorite.destroy
     respond_to do |format|
       session[:return_to] ||= request.referer
-      flash.now[:notice] =  "Removed from My Seven Army favorites."
-      format.html { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
-      format.json #{ head :no_content }
+      flash.now[:notice] =  "Removed from My Seven Army favs"
+      #format.html { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
+      #format.json #{ head :no_content }
       format.js
     end
   end
