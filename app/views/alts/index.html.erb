@@ -108,6 +108,17 @@
   });
 });
 
+ $( document ).ready(function() {
+    
+    var btn = document.getElementById('<%= @fav.id%>');
+    
+    btn.addEventListener('click', function () {
+      btn.classList.toggle('fa-heart-regular');    
+    });
+   
+    
+  });
+
 //$(document).on('page:change', function(){
    // var btn<%@fav.id%> = document.querySelector('#fav_id_<%=@fav.id%>');
    
