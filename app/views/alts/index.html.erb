@@ -100,12 +100,11 @@
 
 <script>
 
-$('.fa fa-heart').on('click', function(){
-    if(confirm("Are you sure?")){
-        alert("Yes");
-     } else{
-        return false;
-    }
+
+$(document).on('page:change', function(){
+    $('.fa fa-heart').on('click', function(){
+      alert("Clicked");
+  });
 });
 
 //$(document).on('page:change', function(){
