@@ -56,7 +56,7 @@ class AltFavoritesController < ApplicationController
       session[:return_to] ||= request.referer
       
       format.html { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
-     // format.html { render :inline => "<i class='fa fa-heart-regular'></i>" }
+     # format.html { render :inline => "<i class='fa fa-heart-regular'></i>" }
       format.json { head :no_content }
       format.js
     end
