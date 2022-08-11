@@ -5,8 +5,8 @@ import * as bootstrap from "bootstrap"
 import "trix"
 import "@rails/actiontext"
 import './add_jquery'
-
-
+import Rails from '@rails/ujs';
+Rails.start();
 
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  
