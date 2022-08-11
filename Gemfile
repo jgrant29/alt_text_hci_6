@@ -85,6 +85,7 @@ gem "pundit"
 gem "select2-rails"
 gem 'shrine', '~> 3.0'
 gem 'sidekiq'
+gem 'kaminari'
 
 
 # gem files from Mimi
