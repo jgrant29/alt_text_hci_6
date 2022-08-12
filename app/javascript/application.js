@@ -42,7 +42,7 @@ function toggleFav(e){
   if (  e.currentTarget.classList == "fa-heart-o"){
           Rails.ajax({
           type:"POST",
-          url:"alt_favorites",
+          url:"/alt_favorites",
           dataType:"json",
           success:function(result){
             alert(result);
