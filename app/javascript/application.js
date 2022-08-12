@@ -43,7 +43,7 @@ function toggleFav(e) {
   if (btn.classList.contains("fa-heart-o")) {
       btn.data("method", "post")
   } else {
-     btn.data("method", "delete")
+      btn.data("method", "delete")
   }
 }
 
