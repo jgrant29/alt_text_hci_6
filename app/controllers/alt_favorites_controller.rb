@@ -54,7 +54,11 @@ class AltFavoritesController < ApplicationController
 
   # DELETE /alt_favorites/1 or /alt_favorites/1.json
   def destroy
+    @alts = Alt.order(created_at: :asc).page(params[:page]).where(verified: true, flag: false)
     @fav = AltFavorite.new
+    @alt_favorite = AltFavorite.new(alt_favorite_params)
+    @alt = Alt.find_by(params[:id])
+
     @alt_favorite.destroy
     respond_to do |format|
       session[:return_to] ||= request.referer
