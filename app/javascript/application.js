@@ -38,8 +38,13 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 function toggleFav(e) {
   console.log(e.currentTarget);
+  var btn = e.currentTarget;
   e.currentTarget.classList.toggle("fa-heart-o");
- 
+  if (btn.classList.contains("fa-heart-o")) {
+      e.currentTarget.data("method", "post")
+  } else {
+     e.currentTarget.data("method", "delete")
+  }
 }
 
 var favs = document.getElementsByClassName("fa fa-heart fs-2");
