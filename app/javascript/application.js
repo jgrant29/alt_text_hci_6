@@ -38,6 +38,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 
 document.addEventListener("click", (event) => {
+  console.log(this.value)
   document.getElementById("favorite").classList.toggle("fa-heart-o");
 
 })
