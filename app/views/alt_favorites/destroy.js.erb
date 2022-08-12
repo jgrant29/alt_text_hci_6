@@ -3,10 +3,3 @@
   document.getElementById("favorite").classList.toggle("fa-heart-o");
 
 })-->
- <%= form_for @fav, local: false, turbo: false, remote: true, controller: 'alts' do |f| %>
-                               <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id="fav_id_<%= @fav.alt.id %>" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
-                              <%= f.hidden_field :user_id, value: current_user.id %>
-                              <%= f.hidden_field :alt_id, value: alt.id %>
-                              <%= f.hidden_field :page, value: params[:page] %>
-
-<% end %>
