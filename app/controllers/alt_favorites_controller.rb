@@ -54,13 +54,12 @@ class AltFavoritesController < ApplicationController
 
   # DELETE /alt_favorites/1 or /alt_favorites/1.json
   def destroy
-    @fav = AltFavorite.new
     @alt_favorite.destroy
     respond_to do |format|
       session[:return_to] ||= request.referer
       
-      format.html { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
-     # format.html { render :inline => "<i class='fa fa-heart-regular'></i>" }
+      #format.html { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
+  
       format.json  { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }#{ head :no_content }
       format.js
     end
