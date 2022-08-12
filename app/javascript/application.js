@@ -35,6 +35,11 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
+document.addEventListener("click", (event) => {
+  document.getElementById("favorite}").classList.toggle("fa-heart-regular");
+
+})
+
 
 function confirmSubmission(event) {
   const button = event.target.querySelector("[data-confirm]")
