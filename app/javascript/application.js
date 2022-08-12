@@ -36,12 +36,25 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 
-var favbtn = document.getElementById("favorite");
-favbtn.addEventListener("click", (event) => {
-  console.log(event.current.target)
+function toggleFav(e){
+  console.log(e.currentTarget);
+  // When this function is used as an event handler: this === e.currentTarget
+}
+var favs = document.getElementsByClassName("fa fa-heart fs-2");
+
+
+for (let i = 0; i < favs.length; i++){
+ 
+  favs[i].addEventListener('click', toggleFav, false);
+}
+
+document.body.addEventListener('click', toggleFav, false);
+
+//favbtn.addEventListener("click", (event) => {
+  //console.log(event.current.target)
   //document.getElementById("favorite").classList.toggle("fa-heart-o");
 
-})
+//})
 
 
 function confirmSubmission(event) {
