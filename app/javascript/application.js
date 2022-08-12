@@ -38,8 +38,23 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 function toggleFav(e){
   console.log(e.currentTarget);
-  e.currentTarget.classList.toggle("fa-heart-o");
+   e.currentTarget.classList.toggle("fa-heart-o");
+  if (  e.currentTarget.classList == "fa-heart-o"){
+          Rails.ajax({
+          type:"POST",
+          url:"alt_favorites",
+          dataType:"json",
+          success:function(result){
+            alert(result);
+          }
+        })
+       
+  } 
+
+ // e.currentTarget.classList.toggle("fa-heart-o");
+ 
 }
+
 var favs = document.getElementsByClassName("fa fa-heart fs-2");
 
 
