@@ -48,7 +48,7 @@ for (let i = 0; i < favs.length; i++){
   favs[i].addEventListener('click', toggleFav, false);
 }
 
-document.body.addEventListener('click', toggleFav, false);
+//document.body.addEventListener('click', toggleFav, false);
 
 //favbtn.addEventListener("click", (event) => {
   //console.log(event.current.target)
