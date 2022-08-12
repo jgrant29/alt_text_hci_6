@@ -38,7 +38,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 function toggleFav(e){
   console.log(e.currentTarget);
-  // When this function is used as an event handler: this === e.currentTarget
+  e.currentTarget.classList.toggle("fa-heart-o");
 }
 var favs = document.getElementsByClassName("fa fa-heart fs-2");
 
