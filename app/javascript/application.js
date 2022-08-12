@@ -41,9 +41,9 @@ function toggleFav(e) {
   var btn = e.currentTarget;
   e.currentTarget.classList.toggle("fa-heart-o");
   if (btn.classList.contains("fa-heart-o")) {
-      btn.data("method", "post")
+      btn.dataset.method = "post";
   } else {
-      btn.data("method", "delete")
+      btn.dataset.method = "delete";
   }
 }
 
