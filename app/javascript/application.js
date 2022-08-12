@@ -36,22 +36,8 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 
-function toggleFav(e){
+function toggleFav(e) {
   console.log(e.currentTarget);
-  // e.currentTarget.classList.toggle("fa-heart-o");
-
-  /*if (  e.currentTarget.classList == "fa-heart-o"){
-        Rails.ajax({
-          type:"POST",
-          url:"/alt_favorites",
-          dataType:"json",
-          success:function(result){
-            console.log(result);
-          }
-        })
-       
-  } */
-
   e.currentTarget.classList.toggle("fa-heart-o");
  
 }
@@ -64,7 +50,6 @@ for (let i = 0; i < favs.length; i++){
   favs[i].addEventListener('click', toggleFav, false);
 }
 
-//document.body.addEventListener('click', toggleFav, false);
 
 //favbtn.addEventListener("click", (event) => {
   //console.log(event.current.target)
