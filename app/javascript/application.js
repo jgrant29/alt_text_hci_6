@@ -41,9 +41,9 @@ function toggleFav(e) {
   var btn = e.currentTarget;
   e.currentTarget.classList.toggle("fa-heart-o");
   if (btn.classList.contains("fa-heart-o")) {
-      e.currentTarget.data("method", "post")
+      btn.data("method", "post")
   } else {
-     e.currentTarget.data("method", "delete")
+     btn.data("method", "delete")
   }
 }
 
