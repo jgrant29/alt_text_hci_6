@@ -51,7 +51,7 @@ function toggleFav(e) {
 
 
 
-jQuery.ready(function() {
+
 
   var favs = document.getElementsByClassName("fa-heart");
   for (let i = 0; i < favs.length; i++){
@@ -59,7 +59,6 @@ jQuery.ready(function() {
   favs[i].addEventListener('click', toggleFav, false);
 }
 
-});
 
 
 
