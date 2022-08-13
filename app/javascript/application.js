@@ -50,6 +50,9 @@ function toggleFav(e) {
 
 var favs = document.getElementsByClassName("fa fa-heart fs-2");
 
+document.ready(function(){
+  alert("test");
+});
 
 for (let i = 0; i < favs.length; i++){
  
