@@ -28,9 +28,8 @@
                   <% if alt.verified && !alt.flag %>
                     <div class="col-md-4">
                       <% if current_user.present? %>
-                      user_id, value: current_user.id %>
-                              <%= f.hidden_field :alt_id, value: alt.id %>
-                              <%= f.hidden_field :page, value: params[:page] %>
+                    
+                             
                         <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                         <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
                         <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
