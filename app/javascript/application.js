@@ -36,7 +36,13 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 
-function toggleFav(e) {
+
+
+
+
+$(document).ready(function() {
+
+    function toggleFav(e) {
   console.log(e.currentTarget);
   var btn = e.currentTarget;
     btn.classList.toggle("fa-heart-o");
@@ -49,15 +55,14 @@ function toggleFav(e) {
   }
 }
 
+    var favs = document.getElementsByClassName("fa-heart");
+      for (let i = 0; i < favs.length; i++){
+    
+      favs[i].addEventListener('click', toggleFav, false);
+    }
+  })
 
-
-
-
-  var favs = document.getElementsByClassName("fa-heart");
-  for (let i = 0; i < favs.length; i++){
- 
-  favs[i].addEventListener('click', toggleFav, false);
-}
+  
 
 
 
