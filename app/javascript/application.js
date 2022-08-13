@@ -48,7 +48,7 @@ $(document).ready(function() {
     btn.classList.toggle("fa-heart-o");
   if (btn.classList.contains("fa-heart-o")) {
       btn.dataset.method = "post";
-      btn.href = indow.location.origin + "/alt_favorites";
+      btn.href = window.location.origin + "/alt_favorites";
     
   } else {
       btn.dataset.method = "delete";
