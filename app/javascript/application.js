@@ -39,12 +39,14 @@ document.addEventListener("turbo:submit-start", (event) => {
 function toggleFav(e) {
   console.log(e.currentTarget);
   var btn = e.currentTarget;
-  e.currentTarget.classList.toggle("fa-heart-o");
+ 
   if (btn.classList.contains("fa-heart-o")) {
       btn.dataset.method = "post";
       btn.href = "/alt_favorites";
+      e.currentTarget.classList.toggle("fa fa-heart fs-2");
   } else {
       btn.dataset.method = "delete";
+       e.currentTarget.classList.toggle("fa fa-heart-o fs-2");
   }
 }
 
