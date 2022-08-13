@@ -43,18 +43,24 @@ document.addEventListener("turbo:submit-start", (event) => {
 $(document).ready(function() {
 
     function toggleFav(e) {
-  console.log(e.currentTarget);
-  var btn = e.currentTarget;
-    btn.classList.toggle("fa-heart-o");
-  if (btn.classList.contains("fa-heart-o")) {
-      btn.dataset.method = "post";
-      btn.href = window.location.origin + "/alt_favorites";
-     
-    
-  } else {
-      btn.dataset.method = "delete";
-  }
-}
+      console.log(e.currentTarget);
+      var btn = e.currentTarget;
+        btn.classList.toggle("fa-heart-o");
+      if (btn.classList.contains("fa-heart-o")) {
+          btn.dataset.method = "post";
+          $.ajax({
+                url: "/alt_favorites",
+                data: {
+                  alt_favorite: <>
+                },
+                dataType: "json"
+              })
+        
+        
+      } else {
+          btn.dataset.method = "delete";
+      }
+    }
 
     var favs = document.getElementsByClassName("fa-heart");
       for (let i = 0; i < favs.length; i++){
