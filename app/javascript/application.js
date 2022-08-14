@@ -48,10 +48,10 @@ function toggleFav(e) {
                   
       } else {
           //btn.dataset.method = "delete";
-          const favForm = document.getElementsByClassName('new_alt_favorite');
-          const newForm = favForm.cloneNode(true);
-
-          btn.replaceWith(newForm);
+          const favFormDiv = document.getElementsByClassName('noFav');
+          //const newForm = favFormDiv.cloneNode(true);
+          btn.parentNode.replaceChildren(favFormDiv);
+          //btn.replaceWith(newForm);
       }
     }
 
