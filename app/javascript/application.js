@@ -49,8 +49,8 @@ function toggleFav(e) {
       } else if (btn.classList === "fa fa-heart fs-2") {
           //btn.dataset.method = "delete";
           
-          var favFormDiv = document.getElementsByClassName('noFav')[0];
-          
+          var favFormDiv = document.getElementsByClassName("noFav")[0];
+
           //const newForm = favFormDiv.cloneNode(true);
           btn.parentNode.innerHTML = favFormDiv;
           //btn.replaceWith(newForm);
