@@ -51,7 +51,6 @@ function toggleFav(e) {
     }
 
 
-$(document).ready(function() {
 
     
 
@@ -60,7 +59,7 @@ $(document).ready(function() {
     
       favs[i].addEventListener('click', toggleFav, false);
     }
-  })
+
 
   
 
