@@ -37,12 +37,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 
 
-
-
-
-$(document).ready(function() {
-
-    function toggleFav(e) {
+function toggleFav(e) {
       console.log(e.currentTarget);
       console.log(e.currentTarget.parentNode);
       var btn = e.currentTarget;
@@ -54,6 +49,11 @@ $(document).ready(function() {
           btn.dataset.method = "delete";
       }
     }
+
+
+$(document).ready(function() {
+
+    
 
     var favs = document.getElementsByClassName("fa-heart");
       for (let i = 0; i < favs.length; i++){
