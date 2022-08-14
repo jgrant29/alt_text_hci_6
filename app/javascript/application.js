@@ -41,12 +41,17 @@ function toggleFav(e) {
       console.log(e.currentTarget);
       console.log(e.currentTarget.parentNode);
       var btn = e.currentTarget;
-        btn.classList.toggle("fa-heart-o");
+       // btn.classList.toggle("fa-heart-o");
       if (btn.classList.contains("fa-heart-o")) {
-          btn.dataset.method = "post";
-        
+          //btn.dataset.method = "post";
+           
+                  
       } else {
-          btn.dataset.method = "delete";
+          //btn.dataset.method = "delete";
+          const favForm = document.getElementsByClassName('new_alt_favorite');
+          const newForm = favForm.cloneNode(true);
+
+          btn.replaceWith(newForm);
       }
     }
 
