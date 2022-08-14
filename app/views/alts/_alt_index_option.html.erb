@@ -26,7 +26,7 @@
               <div  id="alts" class="row col-lg-12 p-5" data-bs-masonry='{"percentPosition": true }'>
                 <% @alts.each do |alt| %>
                   <% if alt.verified && !alt.flag %>
-                    <div id="alt_<%= alt.id %>" class="col-md-4">
+                    <div id="alt_col_<%= alt.id %>" class="col-md-4">
                       <% if current_user.present? %>
                     
                              
