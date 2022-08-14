@@ -44,6 +44,7 @@ $(document).ready(function() {
 
     function toggleFav(e) {
       console.log(e.currentTarget);
+      console.log(e.currentTarget.parentNode);
       var btn = e.currentTarget;
         btn.classList.toggle("fa-heart-o");
       if (btn.classList.contains("fa-heart-o")) {
