@@ -48,14 +48,6 @@ $(document).ready(function() {
         btn.classList.toggle("fa-heart-o");
       if (btn.classList.contains("fa-heart-o")) {
           btn.dataset.method = "post";
-          $.ajax({
-                url: "/alt_favorites",
-                data: {
-                  alt_favorite: <>
-                },
-                dataType: "json"
-              })
-        
         
       } else {
           btn.dataset.method = "delete";
