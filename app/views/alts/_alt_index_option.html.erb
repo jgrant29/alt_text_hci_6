@@ -112,7 +112,13 @@
 
 <script>
   $( document ).ready(function() {
-       console.log(e.currentTarget);
+
+    var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
+      for (let i = 0; i < favs.length; i++){
+    
+      favs[i].addEventListener('click', toggleFav);
+    }
+       
     var btn = document.querySelector('#favorite');
     var loader = document.querySelector('.load');
     var check = document.querySelector('.check');
