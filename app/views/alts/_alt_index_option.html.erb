@@ -37,15 +37,7 @@
                          
                            <%= current_user.alt_favorites.map{|fav| (!fav.nil? && fav.alt_id == alt.id) ?  link_to("", "/alt_favorites/#{fav.id}", method: :delete, local:false, remote: true, id: "favorite", class: "fa fa-heart fs-2 ") : nil}.uniq.compact.flatten.join(", ").html_safe %>
                          
-                          <div class="noFav" >
-                            <%= form_for @fav, local: false, turbo: false, remote: true, :html => {:id => "noFav_#{ alt.id}" }, controller: 'alts' do |f| %>
-                               <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
-                              <%= f.hidden_field :user_id, value: current_user.id %>
-                              <%= f.hidden_field :alt_id, value: alt.id %>
-                              <%= f.hidden_field :page, value: params[:page] %>
-
-                            <% end %>
-                            </div>
+                         
                           <!--  <%= render alt %>-->
                         <% else %>
 
