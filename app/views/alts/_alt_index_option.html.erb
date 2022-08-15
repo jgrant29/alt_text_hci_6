@@ -109,3 +109,23 @@
     </div>
   </section>
 </main>
+
+<script>
+  $( document ).ready(function() {
+       console.log(e.currentTarget);
+    var btn = document.querySelector('#favorite');
+    var loader = document.querySelector('.load');
+    var check = document.querySelector('.check');
+    var prev = document.getElementById('prev');
+    
+    btn.addEventListener('click', function () {
+      loader.classList.add('active');    
+       prev.textContent =' Checking...';
+    });
+   
+    loader.addEventListener('click', function() {
+      check.classList.add('active'); 
+     
+    });
+  });
+  <script>
