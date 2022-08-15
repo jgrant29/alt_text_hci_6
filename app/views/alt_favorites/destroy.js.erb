@@ -1,6 +1,2 @@
 var favId = "<%= @alt %>";
-function toggleFavbtn(favId) { 
-  let favButton = document.querySelector("#alt_col_"${favId}"a#favorite");
-  favButton.classList.toggle('fa-heart-o');
-}
-toggleFavbtn(favId);
+$("#alt_col<%= @alt %>").closest('#favorite').hide();
