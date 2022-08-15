@@ -64,12 +64,14 @@ function toggleFav(e) {
 
 
     
-
-    var favs = document.getElementsByClassName("fa-heart");
+$(document).ready(function() { 
+    var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
       for (let i = 0; i < favs.length; i++){
     
       favs[i].addEventListener('click', toggleFav, false);
     }
+
+     });
 
 
   
