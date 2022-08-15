@@ -64,7 +64,7 @@ function toggleFav(e) {
 
 
     
-$(document).ready(function() { 
+jQuery(function() { 
     var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
       for (let i = 0; i < favs.length; i++){
     
