@@ -40,12 +40,14 @@ document.addEventListener("turbo:submit-start", (event) => {
 function toggleFav(e) {
       console.log(e.currentTarget);
       console.log(e.currentTarget.parentNode);
+      var parentCol = e.currentTarget.parentNode;
       var btn = e.currentTarget;
        // btn.classList.toggle("fa-heart-o");
+       
+
       if (btn.classList.contains("fa-heart-o")) {
-          //btn.dataset.method = "post";
-           
-                  
+           btn.hide();
+           parentCol.querySelector("#favorite").style.visibility = "visible";      
       } else if (btn.classList === "fa fa-heart fs-2") {
           //btn.dataset.method = "delete";
           
