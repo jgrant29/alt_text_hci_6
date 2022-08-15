@@ -52,7 +52,7 @@ function toggleFav(e) {
           //btn.dataset.method = "delete";
           
           //var favFormDiv = document.getElementsByClassName("noFav")[0];
-          btn.style.visibility = "hidden";
+          getComputedStyle(btn).style.visibility = "hidden";
           parentCol.querySelector("#favorite").style.display = "inline-block";  
           console.log(btn.style.visibility);
           //const newForm = favFormDiv.cloneNode(true);
@@ -68,7 +68,7 @@ $(document).ready(function() {
     var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
       for (let i = 0; i < favs.length; i++){
     
-      favs[i].addEventListener('click', toggleFav, false);
+      favs[i].addEventListener('click', toggleFav);
     }
 
      });
