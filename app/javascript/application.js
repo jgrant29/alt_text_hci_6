@@ -52,8 +52,9 @@ function toggleFav(e) {
           //btn.dataset.method = "delete";
           
           //var favFormDiv = document.getElementsByClassName("noFav")[0];
-          btn.style.visibility = "visible";
+          btn.style.visibility = "hidden";
           parentCol.querySelector("#favorite").style.display = "inline-block";  
+          console.log(btn.style.visibility);
           //const newForm = favFormDiv.cloneNode(true);
           //btn.parentNode.innerHTML = favFormDiv;
           //btn.replaceWith(newForm);
