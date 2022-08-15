@@ -48,7 +48,7 @@ function toggleFav(e) {
       if (btn.classList.contains("fa-heart-o")) {
            //btn.hide();
           // parentCol.querySelector("#favorite").style.visibility = "visible";      
-      } else if (btn.classList === "fa fa-heart fs-2") {
+      } else if (btn.classList == "fa fa-heart fs-2") {
           //btn.dataset.method = "delete";
           
           //var favFormDiv = document.getElementsByClassName("noFav")[0];
