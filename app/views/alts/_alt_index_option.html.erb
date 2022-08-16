@@ -41,7 +41,6 @@
                           <!--  <%= render alt %>-->
                         <% else %>
 
-                              <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ?  link_to("", "/alt_favorites/#{fav.id}", method: :delete, remote: true, style: 'visibility:hidden;', id: "favorite", class: "fa fa-heart fs-2") : nil}.uniq.compact.flatten.join(", ").html_safe %>
 
 
                               <div class="noFav" style="display: inline-block;">
