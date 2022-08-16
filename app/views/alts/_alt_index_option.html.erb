@@ -112,32 +112,16 @@
 <script>
   $( document ).ready(function() {
 
-    function toggleFav(e) {
-      console.log(e.currentTarget);
-      console.log(e.currentTarget.parentNode);
-      var parentCol = e.currentTarget.parentNode;
-      var btn = e.currentTarget;
-       // btn.classList.toggle("fa-heart-o");
+    function toggleFav() {
+      console.log("clicked");
+      
        
 
-      if (btn.classList.contains("fa-heart-o")) {
-           //btn.hide();
-          // parentCol.querySelector("#favorite").style.visibility = "visible";      
-      } else if (btn.classList == "fa fa-heart fs-2") {
-          //btn.dataset.method = "delete";
-          
-          //var favFormDiv = document.getElementsByClassName("noFav")[0];
-          btn.value.style.visibility = "hidden";
-          parentCol.querySelector("#noFav").style.display = "inline-block";  
-          //alert(btn.style.visibility);
-          //const newForm = favFormDiv.cloneNode(true);
-          //btn.parentNode.innerHTML = favFormDiv;
-          //btn.replaceWith(newForm);
-      }
+      
     }
 
     var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
-      for (let i = 0; i < favs.length; i++){
+    for (let i = 0; i < favs.length; i++){
     
       favs[i].addEventListener('click', toggleFav);
     }
