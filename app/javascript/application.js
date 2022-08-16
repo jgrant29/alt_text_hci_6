@@ -35,6 +35,11 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
+var btn = document.querySelector('a#favorite.fa.fa-heart');
+btn.addEventListener("turbo:click", (event) => {
+  console.log(event.currentTarget);
+  console.log("clicked");
+})
 
 /*
 function toggleFav(e) {
