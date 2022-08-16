@@ -37,17 +37,23 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 document.addEventListener("turbo:load", function() {
     alert('Test');
+    var btn = document.querySelector('a#favorite.fa.fa-heart');
+    btn.addEventListener("turbo: click", (event) => {
+      console.log(event.currentTarget);
+      console.log("clicked");
+      event.currentTarget.style.color = "pink";
+    })
 });
 
 
-
+/*
 jQuery.ready( function() {
   var btn = document.querySelector('a#favorite.fa.fa-heart');
   btn.addEventListener("turbo: click", (event) => {
     console.log(event.currentTarget);
     console.log("clicked");
   })
-})
+})*/
 
 /*
 function toggleFav(e) {
