@@ -40,8 +40,10 @@ document.addEventListener("turbo:load", function() {
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("turbo:click",  function() {
      // console.log(event.currentTarget);
+     btn.style.visibility = "hidden";
+     btn.parentNode.querySelector("#noFav").style.display = "none"; 
      
-      console.log("clicked");
+ 
       //event.currentTarget.style.color = "pink";
     })
 console.log("clicked");
