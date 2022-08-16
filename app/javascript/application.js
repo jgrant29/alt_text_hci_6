@@ -36,7 +36,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 document.addEventListener("turbo:load", function() {
-    alert('Test');
+    console.log('Test');
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("turbo: click", (event) => {
       console.log(event.currentTarget);
