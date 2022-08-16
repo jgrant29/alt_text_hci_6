@@ -67,11 +67,11 @@ function toggleFav(e) {
 
 
     
-document.addEventListener("turbo:load", function() { 
+document.addEventListener("load", function() { 
     var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
       for (let i = 0; i < favs.length; i++){
     
-      favs[i].addEventListener('turbo:click', toggleFav);
+      favs[i].addEventListener('click', toggleFav);
     }
 
   });
