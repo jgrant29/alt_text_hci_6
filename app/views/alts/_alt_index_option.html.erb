@@ -35,7 +35,7 @@
                         <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
                           <!--<%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path, :action =>'destroy', id: fav.id}, data: { turbo_method: :delete }, id: "favorite_#{alt.id}", class: "fa fa-heart fs-2 ") : nil}.uniq.compact.flatten.join(", ").html_safe %>-->
                          
-                           <%= current_user.alt_favorites.map{|fav| (!fav.nil? && fav.alt_id == alt.id) ?  link_to("", "/alt_favorites/#{fav.id}", method: :delete, id: "favorite", class: "fa fa-heart fs-2 ") : nil}.uniq.compact.flatten.join(", ").html_safe %>
+                           <%= current_user.alt_favorites.map{|fav| (!fav.nil? && fav.alt_id == alt.id) ?  link_to("", "/alt_favorites/#{fav.id}", method: :delete, turbo: false, id: "favorite", class: "fa fa-heart fs-2 ") : nil}.uniq.compact.flatten.join(", ").html_safe %>
                          
                          
                           <!--  <%= render alt %>-->
