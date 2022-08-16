@@ -107,6 +107,12 @@
       </div>
     </div>
     <script>
+
+    $(document).on("click","#favorite",function(){
+      $('#favorite').hide();
+      $('#noFav').show();
+    });
+
   /*$( document ).ready(function() {
     alert("test")
     function toggleFav() {
