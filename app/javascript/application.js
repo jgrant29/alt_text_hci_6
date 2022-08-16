@@ -35,9 +35,13 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
+document.addEventListener("turbolinks:load", function() {
+    console.log('Test');
+});
 
 
-document.addEventListener("load", (event) => {
+
+jQuery.ready( function() {
   var btn = document.querySelector('a#favorite.fa.fa-heart');
   btn.addEventListener("click", (event) => {
     console.log(event.currentTarget);
