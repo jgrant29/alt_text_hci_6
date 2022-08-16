@@ -36,7 +36,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 
-
+/*
 function toggleFav(e) {
       console.log("click");
 
@@ -74,7 +74,7 @@ document.addEventListener("load", function() {
       favs[i].addEventListener('click', toggleFav);
     }
 
-  });
+  });*/
 
 
   

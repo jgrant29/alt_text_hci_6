@@ -110,6 +110,15 @@
     </div>
     <script>
 
+    $( document ).ready(function() {
+      $('#favorite').click(function (event) {
+        alert('Clicked');
+        event.preventDefault(); // Prevent link from following its href
+      });
+
+     });
+
+     
     /*document.addEventListener("turbolinks:load", function() {
       document.addEventListener("turbolinks:click","#favorite",function(){
           //$('#favorite').hide();
