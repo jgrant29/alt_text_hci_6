@@ -35,10 +35,14 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
-var btn = document.querySelector('a#favorite.fa.fa-heart');
-btn.addEventListener("click", (event) => {
-  console.log(event.currentTarget);
-  console.log("clicked");
+
+
+document.addEventListener("turbo:submit-load", (event) => {
+  var btn = document.querySelector('a#favorite.fa.fa-heart');
+  btn.addEventListener("click", (event) => {
+    console.log(event.currentTarget);
+    console.log("clicked");
+  })
 })
 
 /*
