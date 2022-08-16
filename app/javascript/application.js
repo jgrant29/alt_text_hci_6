@@ -38,9 +38,9 @@ document.addEventListener("turbo:submit-start", (event) => {
 document.addEventListener("turbo:load", function() {
     console.log('Test');
     var btn = document.querySelector('a#favorite.fa.fa-heart');
-    btn.addEventListener("turbo:click", (event) => {
+    btn.addEventListener("turbo:click",  function() {
      // console.log(event.currentTarget);
-      event.preventDefault();
+     
       console.log("clicked");
       //event.currentTarget.style.color = "pink";
     })
