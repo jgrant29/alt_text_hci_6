@@ -38,8 +38,10 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 
 function toggleFav(e) {
+      console.log("click");
+
       console.log(e.currentTarget);
-      console.log(e.currentTarget.parentNode);
+      console.log("click");
       var parentCol = e.currentTarget.parentNode;
       var btn = e.currentTarget;
        // btn.classList.toggle("fa-heart-o");
