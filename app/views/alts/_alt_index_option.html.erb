@@ -108,11 +108,14 @@
     </div>
     <script>
 
-    $(document).on("click","#favorite",function(){
-      //$('#favorite').hide();
-      //$('#noFav').show();
-      alert("clicked");
-    });
+    document.addEventListener("turbolinks:load", function() {
+      document.addEventListener("turbolinks:click","#favorite",function(){
+          //$('#favorite').hide();
+          //$('#noFav').show();
+          alert("clicked");
+        });
+    })
+      
 
   /*$( document ).ready(function() {
     alert("test")
