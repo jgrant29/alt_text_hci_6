@@ -36,7 +36,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 document.addEventListener("turbo:load", function() {
-    console.log('Test');
+    alert('Test');
 });
 
 
