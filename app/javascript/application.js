@@ -44,7 +44,7 @@ document.addEventListener("turbo:load", function() {
       console.log("clicked");
       //event.currentTarget.style.color = "pink";
     })
-
+console.log("clicked");
      var noFavbtn = document.getElementById('#noFavorite');
      noFavbtn.style.color = "pink";
 });
