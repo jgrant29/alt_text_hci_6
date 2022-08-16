@@ -53,6 +53,7 @@ function toggleFav(e) {
           
           //var favFormDiv = document.getElementsByClassName("noFav")[0];
           btn.value.style.visibility = "hidden";
+          alert("clicked");
           parentCol.querySelector("#noFav").style.display = "inline-block";  
           alert(btn.style.visibility);
           //const newForm = favFormDiv.cloneNode(true);
@@ -71,7 +72,7 @@ document.addEventListener("turbo:load", function() {
       favs[i].addEventListener('turbo:click', toggleFav);
     }
 
-     });
+  });
 
 
   
