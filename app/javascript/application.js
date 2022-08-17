@@ -39,7 +39,7 @@ document.addEventListener("turbo:before-fetch-response", function() {
     console.log('Test');
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("click",  function() {
-      console.log("Test 2");
+      console.log(this);
       btn.style.display = "none";
       btn.style.color = "pink";
 
