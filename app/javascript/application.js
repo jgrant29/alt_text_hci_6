@@ -35,11 +35,11 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
-document.addEventListener("turbo:load", function() {
+document.addEventListener("turbo:frame-render", function() {
     console.log('Test');
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("turbo:click",  function() {
-     // console.log(event.currentTarget);
+      console.log("Test 2");
      btn.style.visibility = "hidden";
      btn.parentNode.querySelector("#noFav").style.display = "none"; 
      
