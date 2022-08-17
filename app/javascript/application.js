@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   });
 
-document.addEventListener("turbo:before-fetch-response", function() {
+//document.addEventListener("turbo:before-fetch-response", function() {
 
     /*console.log('Test');
     
 console.log("clicked");
      var noFavbtn = document.getElementById('#noFavorite');
      noFavbtn.style.color = "pink";*/
-});
+//});
 
 
 /*
