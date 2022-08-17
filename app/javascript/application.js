@@ -41,7 +41,7 @@ document.addEventListener("turbo:frame-render", function() {
     btn.addEventListener("turbo:click",  function() {
       console.log("Test 2");
      btn.style.visibility = "hidden";
-     btn.parentNode.querySelector("#noFav").style.display = "none"; 
+     //btn.parentNode.querySelector("#noFav").style.display = "none"; 
      
  
       //event.currentTarget.style.color = "pink";
