@@ -37,11 +37,6 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-  });
-
-document.addEventListener("turbo:before-fetch-response", function() {
-
-    console.log('Test');
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("click",  function() {
       console.log(this);
@@ -53,9 +48,15 @@ document.addEventListener("turbo:before-fetch-response", function() {
  
       //event.currentTarget.style.color = "pink";
     })
+  });
+
+document.addEventListener("turbo:before-fetch-response", function() {
+
+    /*console.log('Test');
+    
 console.log("clicked");
      var noFavbtn = document.getElementById('#noFavorite');
-     noFavbtn.style.color = "pink";
+     noFavbtn.style.color = "pink";*/
 });
 
 
