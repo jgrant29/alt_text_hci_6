@@ -43,7 +43,7 @@ document.addEventListener("turbo:frame-render", function() {
       btn.style.display = "inline-block";
       btn.style.color = "pink";
 
-     //btn.parentNode.querySelector("#noFav").style.display = "none"; 
+     btn.parentNode.querySelector("#noFav").style.display = "pink"; 
      
  
       //event.currentTarget.style.color = "pink";
