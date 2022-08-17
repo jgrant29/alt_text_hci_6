@@ -37,17 +37,13 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-    var btn = document.querySelector('a#favorite.fa.fa-heart');
-    btn.addEventListener("click",  function() {
-      console.log(this);
-      btn.style.display = "none";
-      btn.style.color = "pink";
+    var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
 
-      this.parentNode.querySelector("#noFav").style.color = "pink"; 
-     
- 
-      //event.currentTarget.style.color = "pink";
-    })
+    for (let i = 0; i < btns.length; i++){
+      btns[i].addEventListener('click', function(event) {
+          console.log(event.currentTarget);
+      });
+    }
   });
 
 document.addEventListener("turbo:before-fetch-response", function() {
