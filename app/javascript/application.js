@@ -35,7 +35,7 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
-document.addEventListener("turbo:frame-render", function() {
+document.addEventListener("turbo:before-fetch-response", function() {
     console.log('Test');
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("click",  function() {
