@@ -40,7 +40,9 @@ document.addEventListener("turbo:frame-render", function() {
     var btn = document.querySelector('a#favorite.fa.fa-heart');
     btn.addEventListener("click",  function() {
       console.log("Test 2");
-     btn.style.color = "pink";
+      btn.style.display = "inline-block";
+      btn.style.color = "pink";
+
      //btn.parentNode.querySelector("#noFav").style.display = "none"; 
      
  
