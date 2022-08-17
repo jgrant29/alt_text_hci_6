@@ -43,7 +43,7 @@ document.addEventListener("turbo:before-fetch-response", function() {
       btn.style.display = "none";
       btn.style.color = "pink";
 
-     btn.parentNode.querySelector("#noFav").style.color = "pink"; 
+      this.parentNode.querySelector("#noFav").style.color = "pink"; 
      
  
       //event.currentTarget.style.color = "pink";
