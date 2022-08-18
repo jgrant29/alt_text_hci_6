@@ -35,6 +35,15 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
+var noFavForm = document.querySelectorAll(".new_alt_favorite")
+noFavForm.addEventListener("turbo:submit-start", (event) => {
+  confirmSubmission(event).then(() => {
+    // show progress bar and set submit state here.
+    // this block is optional.
+    console.log("submit")
+  })
+})
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
