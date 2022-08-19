@@ -35,8 +35,15 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
-var noFavForm = document.querySelector(".new_alt_favorite");
-noFavForm.addEventListener("turbo:submit-start", (event) => {
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    console.log("DOM fully loaded and parsed");
+      setInterval(function(){ $(".alert").fadeOut(); }, 3000);
+
+
+      var noFavForm = document.querySelector(".new_alt_favorite");
+noFavForm.addEventListener("start", (event) => {
   confirmSubmission(event).then(() => {
     // show progress bar and set submit state here.
     // this block is optional.
@@ -44,10 +51,6 @@ noFavForm.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
-
-document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
-      setInterval(function(){ $(".alert").fadeOut(); }, 3000);
       
 
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
