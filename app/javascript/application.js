@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // show progress bar and set submit state here.
           // this block is optional.
           console.log("submit")
+          
           $("#favAdd").show();
           setInterval(function(){ $(".#favAdd").fadeOut(); }, 3000);
 
