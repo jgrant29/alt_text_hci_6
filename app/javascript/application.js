@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // this block is optional.
           console.log("submit")
           
-          $("#favAdd").show();
+          $("#favAdd").style.visibility = "visible";
           setInterval(function(){ $("#favAdd").fadeOut(); }, 3000);
 
       })
