@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           console.log("submit")
           
           $("#favAdd").show();
-          setInterval(function(){ $(".#favAdd").fadeOut(); }, 3000);
+          setInterval(function(){ $("#favAdd").fadeOut(); }, 3000);
 
       })
 
