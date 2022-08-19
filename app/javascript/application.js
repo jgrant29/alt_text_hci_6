@@ -35,21 +35,18 @@ document.addEventListener("turbo:submit-start", (event) => {
   })
 })
 
-
+var noFavForm = document.querySelector(".new_alt_favorite");
+noFavForm.addEventListener("turbo:submit-start", (event) => {
+  confirmSubmission(event).then(() => {
+    // show progress bar and set submit state here.
+    // this block is optional.
+    console.log("submit")
+  })
+})
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-
-
-          var noFavForm = document.querySelector(".new_alt_favorite");
-      noFavForm.addEventListener("submit", (event) => {
-        confirmSubmission(event).then(() => {
-          // show progress bar and set submit state here.
-          // this block is optional.
-          console.log("submit")
-        })
-      })
       setInterval(function(){ $(".alert").fadeOut(); }, 3000);
 
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
