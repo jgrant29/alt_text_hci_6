@@ -1,9 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Alt favorites</h1>
-<% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-<% end %>
+
 <div id="alt_favorites">
   <% @alt_favorites.each do |alt_favorite| %>
     <%= render alt_favorite %>

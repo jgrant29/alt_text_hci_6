@@ -1,4 +1,6 @@
-
+<% if notice == "" %>
+        <p class="alert alert-success"><%= notice %></p>
+<% end %>
 $(".favorite_seven").html("<%= escape_javascript(render partial: 'alts/alt_index_option') %>");
 
 
