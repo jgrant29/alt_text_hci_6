@@ -39,18 +39,19 @@ document.addEventListener("turbo:submit-start", (event) => {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-      setInterval(function(){ $(".alert").fadeOut(); }, 3000);
+      
 
 
       var noFavForm = document.querySelector(".new_alt_favorite");
-noFavForm.addEventListener("submit", function(event) {
-  
-    // show progress bar and set submit state here.
-    // this block is optional.
-    console.log("submit")
-    $("#favAdd").show();
+      noFavForm.addEventListener("submit", function(event) {
+        
+          // show progress bar and set submit state here.
+          // this block is optional.
+          console.log("submit")
+          $("#favAdd").show();
+          setInterval(function(){ $(".#favAdd").fadeOut(); }, 3000);
 
-})
+      })
 
       
 
@@ -59,6 +60,7 @@ noFavForm.addEventListener("submit", function(event) {
     for (let i = 0; i < btns.length; i++){
       btns[i].addEventListener('click', function(event) {
           console.log(event.currentTarget);
+          setInterval(function(){ $(".alert").fadeOut(); }, 3000);
       });
     }
   });
