@@ -48,6 +48,7 @@ noFavForm.addEventListener("submit", function(event) {
     // show progress bar and set submit state here.
     // this block is optional.
     console.log("submit")
+    $("#favAdd").show();
 
 })
 
