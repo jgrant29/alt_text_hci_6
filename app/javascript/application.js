@@ -48,6 +48,9 @@ noFavForm.addEventListener("turbo:submit-start", (event) => {
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
       setInterval(function(){ $(".alert").fadeOut(); }, 3000);
+      setInterval(function(){ 
+        $("#favAdd").show();
+       }, 3000);
 
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
 
