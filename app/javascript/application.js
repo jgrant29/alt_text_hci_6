@@ -43,12 +43,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
       var noFavForm = document.querySelector(".new_alt_favorite");
-noFavForm.addEventListener("start", (event) => {
-  confirmSubmission(event).then(() => {
+noFavForm.addEventListener("submit", function(event) {
+  
     // show progress bar and set submit state here.
     // this block is optional.
     console.log("submit")
-  })
+
 })
 
       
