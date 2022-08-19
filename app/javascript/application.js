@@ -36,7 +36,7 @@ document.addEventListener("turbo:submit-start", (event) => {
 })
 
 var noFavForm = document.querySelector(".new_alt_favorite");
-noFavForm.addEventListener("submit", (event) => {
+noFavForm.addEventListener("turbo:submit-start", (event) => {
   confirmSubmission(event).then(() => {
     // show progress bar and set submit state here.
     // this block is optional.
