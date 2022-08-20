@@ -6,6 +6,7 @@ import "trix"
 import "@rails/actiontext"
 import './add_jquery'
 import Rails from '@rails/ujs';
+import e from "trix"
 Rails.start();
 
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
@@ -55,10 +56,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   for (let i = 0; i < noFavForms.length; i++){
         noFavForms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+            noFavForms[i].children.querySelector("button").addEventListener('click', function(event) {
+              console.log(event.currentTarget);
+              document.querySelector("#favAdd").style.visibility = "visible";
+
+          });
             console.log("submit")
 
             
-            document.querySelector("#favAdd").style.visibility = "visible";
         });
       }
       
