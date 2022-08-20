@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
       
-     var noFavForms = document.querySelectorAll(".new_alt_favoritebutton");
+     var noFavForms = document.querySelectorAll(".new_alt_favorite");
 
   for (let i = 0; i < noFavForms.length; i++){
         noFavForms[i].addEventListener('submit', function(event) {
