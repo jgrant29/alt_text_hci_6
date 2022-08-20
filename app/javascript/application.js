@@ -42,18 +42,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
       
 
 
-      var noFavForm = document.querySelector(".new_alt_favorite");
-      noFavForm.addEventListener("submit", function(event) {
-        
-          // show progress bar and set submit state here.
-          // this block is optional.
-          console.log("submit")
+      var noFavForms = document.querySelectorAll(".new_alt_favorite");
+
+      for (let i = 0; i < btns.length; i++){
+      noFavForms[i].addEventListener('submit', function(event) {
+           console.log("submit")
           
           $("#favAdd").style.visibility = "visible";
-          //setInterval(function(){ $("#favAdd").fadeOut(); }, 3000);
-
-      })
-
+      });
+    }
+     
       
 
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
