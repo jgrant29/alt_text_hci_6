@@ -18,13 +18,14 @@ setInterval( function(){
 }, 3000);
 
 
-var noFavForms = document.querySelectorAll(".new_alt_favorite");
+var noFavForms = document.querySelectorAll(".new_alt_favoritebutton");
 
   for (let i = 0; i < noFavForms.length; i++){
         noFavForms[i].addEventListener('submit', function(event) {
             console.log("submit")
+
             
-            $("#favAdd").show().fadeOut( 3000 );
+            document.querySelector("#favAdd").style.visibility = "visible";
         });
       }
 
