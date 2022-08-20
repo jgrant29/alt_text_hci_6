@@ -55,13 +55,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
      var noFavForms = document.querySelectorAll(".new_alt_favorite");
 
   for (let i = 0; i < noFavForms.length; i++){
-        noFavForms[i].addEventListener('submit', function(event) {
+       // noFavForms[i].addEventListener('submit', function(event) {
             event.preventDefault();
             noFavForms[i].children.querySelector("button").addEventListener('click', function(event) {
               console.log(event.currentTarget);
               document.querySelector("#favAdd").style.visibility = "visible";
 
-          });
+         // });
             console.log("submit")
 
             
