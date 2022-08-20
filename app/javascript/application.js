@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         noFavForms[i].addEventListener('submit', function(event) {
             console.log("submit")
             
-            $("#favAdd").style.visibility = "visible";
+            $("#favAdd").css("visibility", "visible");
         });
       }
      
