@@ -50,25 +50,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
       
 
-
-      
-     var noFavForms = document.querySelectorAll(".new_alt_favorite");
-
-  for (let i = 0; i < noFavForms.length; i++){
-       // noFavForms[i].addEventListener('submit', function(event) {
-            event.preventDefault();
-           noFavForms[i].closet("button").addEventListener('click', function(event) {
-              console.log(event.currentTarget);
-              document.querySelector("#favAdd").style.visibility = "visible";
-
-         // });
-            console.log("submit")
-
-            
-        });
-      }
-      
-
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
 
     for (let i = 0; i < btns.length; i++){
