@@ -53,7 +53,7 @@
 
 
                               <div class="noFav" style="display: inline-block;">
-                                <%= form_for @fav, local: false, turbo: false, remote: true, :html => {:id => "noFav_#{ alt.id}" }, controller: 'alts' do |f| %>
+                                <%= form_for @fav, local: false, remote: true, :html => {:id => "noFav_#{ alt.id}" }, controller: 'alts' do |f| %>
                                   <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
                                   <%= f.hidden_field :user_id, value: current_user.id %>
                                   <%= f.hidden_field :alt_id, value: alt.id %>
