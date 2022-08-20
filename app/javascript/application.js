@@ -12,6 +12,11 @@ let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
+
+setInterval( function(){
+     $(".alert").fadeOut(); 
+}, 3000);
+
 /*
 var grid = document.querySelector('#alts');
 
@@ -59,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (let i = 0; i < btns.length; i++){
       btns[i].addEventListener('click', function(event) {
           console.log(event.currentTarget);
-          setInterval(function(){ $(".alert").fadeOut(); }, 3000);
       });
     }
   });
