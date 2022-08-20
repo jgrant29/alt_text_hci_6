@@ -18,16 +18,7 @@ setInterval( function(){
 }, 3000);
 
 
-var noFavForms = document.querySelectorAll(".new_alt_favoritebutton");
 
-  for (let i = 0; i < noFavForms.length; i++){
-        noFavForms[i].addEventListener('submit', function(event) {
-            console.log("submit")
-
-            
-            document.querySelector("#favAdd").style.visibility = "visible";
-        });
-      }
 
 /*
 var grid = document.querySelector('#alts');
@@ -60,7 +51,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
       
-     
+     var noFavForms = document.querySelectorAll(".new_alt_favoritebutton");
+
+  for (let i = 0; i < noFavForms.length; i++){
+        noFavForms[i].addEventListener('submit', function(event) {
+            console.log("submit")
+
+            
+            document.querySelector("#favAdd").style.visibility = "visible";
+        });
+      }
       
 
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
