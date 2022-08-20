@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   for (let i = 0; i < noFavForms.length; i++){
        // noFavForms[i].addEventListener('submit', function(event) {
             event.preventDefault();
-            noFavForms[i].children.querySelector("button").addEventListener('click', function(event) {
+           noFavForms[i].closet("button").addEventListener('click', function(event) {
               console.log(event.currentTarget);
               document.querySelector("#favAdd").style.visibility = "visible";
 
