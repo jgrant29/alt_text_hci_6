@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       btns[i].addEventListener('click', function(event) {
           console.log(event.currentTarget);
           btns[i].style.visibility = "hidden";
-          $(".alert").show();
+          document.getElementById("favAdd").style.visibility = "visible";
           // "Added to My Seven Army favorites."
       });
     }
