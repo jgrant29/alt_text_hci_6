@@ -58,10 +58,11 @@ class AltFavoritesController < ApplicationController
    
     respond_to do |format|
       session[:return_to] ||= request.referer
+      #, notice: "Removed from My Seven Army favorites." 
       
-      format.html { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
+      format.html { redirect_to session.delete(:return_to) }
   
-      format.json  { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
+      format.json  { redirect_to session.delete(:return_to)}
      
       
     end
