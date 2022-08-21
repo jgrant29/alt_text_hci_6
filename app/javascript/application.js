@@ -50,6 +50,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
       
 
+    var noFavbtns = document.querySelectorAll('#noFavbtn');
+     for (let i = 0; i < noFavbtns.length; i++){
+      btns[i].addEventListener('click', function(event) {
+          console.log(event.currentTarget);
+          alert("Added to my Favs");
+         
+      });
+
+
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
 
     for (let i = 0; i < btns.length; i++){
