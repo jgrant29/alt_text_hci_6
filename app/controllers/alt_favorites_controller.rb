@@ -31,7 +31,7 @@ class AltFavoritesController < ApplicationController
         session[:return_to] ||= request.referer
         format.html { redirect_to session.delete(:return_to), notice: "Added to My Seven Army favorites."}
         #format.js {redirect_to session.delete(:return_to), notice: "Added to My Seven Army favorites."}
-        format.json { render :show, status: :created, location: @alt_favorite }
+        format.json { render :show, status: :created, location: @alt_favorite, notice: "Added to My Seven Army favorites." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @alt_favorite.errors, status: :unprocessable_entity }
