@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var noFavbtns = document.querySelectorAll('#noFavbtn');
      for (let i = 0; i < noFavbtns.length; i++){
-      btns[i].addEventListener('click', function(event) {
+      noFavbtns[i].addEventListener('click', function(event) {
           console.log(event.currentTarget);
-          alert("Added to my Favs");
+          console.log("Added to my Favs");
          
       });
     }
