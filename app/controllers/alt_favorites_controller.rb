@@ -61,7 +61,7 @@ class AltFavoritesController < ApplicationController
       
       format.html { redirect_to session.delete(:return_to) }
   
-      format.json  { redirect_to session.delete(:return_to)}
+      format.json  { redirect_to session.delete(:return_to), notice: "Removed from My Seven Army favorites." }
      
       
     end
