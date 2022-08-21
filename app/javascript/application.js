@@ -18,9 +18,6 @@ setInterval( function(){
      $(".alert").fadeOut(); 
 }, 3000);
 
-$('a#favorite.fa.fa-heart').on("click", function(){
-   $(".alert").show(); 
-})
 
 
 
