@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           alert("Added to my Favs");
          
       });
+    }
 
 
     var btns = document.querySelectorAll('a#favorite.fa.fa-heart');
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // "Added to My Seven Army favorites."
       });
     }
+
   });
 
 //document.addEventListener("turbo:before-fetch-response", function() {
