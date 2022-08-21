@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (let i = 0; i < btns.length; i++){
       btns[i].addEventListener('click', function(event) {
           console.log(event.currentTarget);
+          btn[i].style.visibility = "hidden";
       });
     }
   });
