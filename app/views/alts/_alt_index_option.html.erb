@@ -116,49 +116,16 @@
         </div>
       </div>
     </div>
-    <script>
-
-   
-
-     
-    /*document.addEventListener("turbolinks:load", function() {
-      document.addEventListener("turbolinks:click","#favorite",function(){
-          //$('#favorite').hide();
-          //$('#noFav').show();
-          console.log("clicked");
-        });
-    })*/
-      
-
-  /*$( document ).ready(function() {
-    alert("test")
-    function toggleFav() {
-      console.log("clicked");
-      
-       
-
-      
-    }
-
-    var favs = document.querySelectorAll("a#favorite.fa.fa-heart");//getElementsByClassName("fa-heart");
-    for (let i = 0; i < favs.length; i++){
-    
-      favs[i].addEventListener('click', function () {
-        alert("clicke")
-      
-    });
-    }
-       
-    
-  });*/
-  <script>
   </section>
 </main>
  <script>
+   
   let ias = new InfiniteAjaxScroll('#alts_tab', {
       item: '#alt',
       next: ".next a",
       pagination: '.pagination'
     });
+
+     $(document).on('load', ias);
   </script>
 
