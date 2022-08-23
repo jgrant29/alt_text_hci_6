@@ -154,5 +154,18 @@
   <script>
   </section>
 </main>
-
+ <script>
+  $(document).on("load", function() {
+      $(window).scroll(function() {
+        var load_alts = $(".pagination a[rel='next']").attr('href');       
+        if (load_alts && ($(window).scrollTop() > ($(document).height() - $(window).height() - 5000))) {         
+            $('.pagination').show();
+            $('.pagination').html('<p>Loading...</p>');
+            $.getScript(load_alts);
+            return;
+        }
+      });
+      return $(window).scroll();
+    });
+  </script>
 

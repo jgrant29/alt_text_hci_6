@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	include Pundit
+  include Pagy::Backend
+
   helper_method :super_admin
   helper_method :referee
   helper_method :contributor
