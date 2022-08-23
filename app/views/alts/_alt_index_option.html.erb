@@ -157,11 +157,12 @@
  <script>
   $(document).on("turbolinks:load", function() {
       $(window).scroll(function() {
+        var host = window.location.hostname;
         var load_alts = $(".pagination a[rel='next']").attr('href');       
         if (load_alts && ($(window).scrollTop() > ($(document).height() - $(window).height() - 5000))) {         
             $('.pagination').show();
             $('.pagination').html('<p>Loading...</p>');
-            $.getScript(load_alts);
+            $.getScript(host + load_alts);
             return;
         }
       });
