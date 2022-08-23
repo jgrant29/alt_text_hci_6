@@ -126,7 +126,8 @@
       pagination: '.pagination'
     });
 
-     $(document).on('ready', ias);
+    $(document).on('scroll', ias);
+    $(document).ajaxComplete(ias);
 
   </script>
 
