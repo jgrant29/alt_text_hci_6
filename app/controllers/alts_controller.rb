@@ -16,8 +16,6 @@ class AltsController < ApplicationController
     else
       @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil]).order(created_at: :asc).page(params[:page])
     end
-    @pagy    = Pagy.new_from_searchkick(@alts, ...)
-
   end
 
   # GET /alts/1 or /alts/1.json
