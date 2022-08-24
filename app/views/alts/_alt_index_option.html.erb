@@ -130,12 +130,21 @@
       });
     }
 
-    $(document).ready(function() {
-      initIAS();
-     // $(document).on("load", initIAS);
+    var isMobile = false;
 
-    });
-    //$(document).ajaxComplete(ias);
+      if ("maxTouchPoints" in navigator) {
+          isMobile = navigator.maxTouchPoints > 0;
+      } 
+
+      if (isMobile) {
+          $(document).ready(function() {
+          initIAS();
+        });
+         
+      }
+
+    
+    
 
 
 
