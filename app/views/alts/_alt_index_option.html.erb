@@ -120,14 +120,25 @@
 </main>
  <script>
    
-  let ias = new InfiniteAjaxScroll('#alts_tab', {
-      item: '#alt',
-      next: ".next a",
-      pagination: '.pagination'
-    });
+   var ias;
+   function initIAS() {
+    ias = null;
+     ias = new InfiniteAjaxScroll('#alts_tab', {
+        item: '#alt',
+        next: ".next a",
+        pagination: '.pagination'
+      });
+    }
 
-    $(document).on('scroll', ias);
-    $(document).ajaxComplete(ias);
+    $(document).ready(function() {
+      initIAS();
+     // $(document).on("load", initIAS);
+
+    });
+    //$(document).ajaxComplete(ias);
+
+
+
 
   </script>
 
