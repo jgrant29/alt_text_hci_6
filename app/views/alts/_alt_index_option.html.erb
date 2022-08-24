@@ -116,12 +116,26 @@
         pagination: '.pagination'
       });
     }
-    $(document).ready(function() {
-      initIAS();
-     // $(document).on("load", initIAS);
 
-    });
-    //$(document).ajaxComplete(ias);
+     $(document).ready(function() {
+
+    var isMobile = false;
+
+      if ("maxTouchPoints" in navigator) {
+          isMobile = navigator.maxTouchPoints > 0;
+      } 
+
+      if (isMobile == false) {
+         
+          initIAS();
+       
+         
+      }
+
+       });
+
+    
+    
 
   </script>
 
