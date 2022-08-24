@@ -11,12 +11,12 @@ class AltTextsController < ApplicationController
     if search.nil?
        @alt = Alt.new
        @alt_texts = policy_scope(AltText.select('DISTINCT alt_id'))
+       authorize @alt
     else
       @alt = Alt.new
       @alt_texts = policy_scope(AltText.where(alt_id: search))
+      authorize @alt_texts
     end
-    authorize @alt
-    authorize @alt_texts
   end
 
   # GET /alt_texts/1 or /alt_texts/1.json

@@ -36,7 +36,7 @@
                         <% if alt_text.alt.banned_image.blank? || alt_text.alt.banned_image == false %>
                             <div id="alt" class="col-lg-3 mb-5 flag">
                                 <%= link_to alt_alt_texts_path(alt_text.alt_id) do %>
-                                    <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
+                                    <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width, id: "alt" %>
                                 <% end %>
                             </div>
                         <% end %>
@@ -50,7 +50,7 @@
                     <% if alt_text.alt.banned_image == true %>
                         <div id="alt" class="col-lg-3 mb-5 flag">
                             <%= link_to alt_alt_texts_path(alt_text.alt_id) do %>
-                                <%= image_tag alt_text.alt.image_url(:small), caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "blur-image border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width %>
+                                <%= image_tag alt_text.alt.image_url(:small), caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "blur-image border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width, id: "alts" %>
                             <% end %>
                         </div>
                     <% end %>

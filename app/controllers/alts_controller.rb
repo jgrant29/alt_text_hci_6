@@ -51,17 +51,6 @@ class AltsController < ApplicationController
   # GET /alts/1/edit
   def edit
     @alt = Alt.find(params[:id])
-    if @alt.duplicate_check == true
-      @dup_alt = Alt.find_by(id: @alt.image_dup_locate)
-      redirect_to edit_alt_path(@dup_alt)
-      flash[:error] = "Duplicate image. Here's a similar image to the one you tried to upload. Please upload a new image or help us modify this image"
-      @alt.destroy
-    elsif @alt.duplicate_check == false
-      @alt.verified = @alt.verified
-      @alt.save
-      flash[:success] = "Your image was successfully uploaded."
-      authorize @alt
-    end
   end
 
   # POST /alts or /alts.json
@@ -74,8 +63,9 @@ class AltsController < ApplicationController
         @alt.image_attacher.add_metadata(caption: @alt.title, alt: @alt.body)
         @alt.save
         build_alt_text_versions
-        image_duplication_check(@alt)
-        format.html { redirect_to edit_alt_path(@alt), warning: "Checking database for duplicates.  This could take awhile." }
+        @user = current_user
+        image_duplication_check(@alt, @user)
+        format.html { redirect_to root_path, alert: "Checking database for duplicates. This could take a while. Check your email for updates. Take this time to browse seven.army and add, edit, or favorite images." }
         format.json { render :show, status: :created, location: @alt }
         format.js
       else
@@ -86,8 +76,8 @@ class AltsController < ApplicationController
     end
   end
 
-  def image_duplication_check(alt)
-    ImageDupCheckJob.perform_later(alt)
+  def image_duplication_check(alt, user)
+    ImageDupCheckJob.perform_later(alt, user)
   end
 
   # PATCH/PUT /alts/1 or /alts/1.json
