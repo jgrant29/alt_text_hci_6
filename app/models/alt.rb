@@ -32,34 +32,68 @@ class Alt < ApplicationRecord
     is_duplicate
   end
 
-  def is_duplicate
-    require 'phashion'
-    file1 = URI.parse(image_url).open
-    puts file1.class
-   
-    img_mod = Phashion::Image.new(file1.path)
-    count = 0
-    @all_alt = Alt.all
-    a = []
-    @all_alt.dup_alt_sort.map  { |u| 
+  def is_duplicate(user)
+    begin
+      @user = user
+      require 'phashion'
+      file1 = URI.parse(image_url).open
+      puts file1.class
+     
+      img_mod = Phashion::Image.new(file1.path)
+      count = 0
+      @all_alt = Alt.all
+      @user = User.find_by(id: user.id)
+      a = []
+      @all_alt.dup_alt_sort.map  { |u| 
 
-       if u.image_url != nil
-      
-        file2 = URI.parse(u.image.url).open
-        if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
-          count = count + 1
-          a << u.id
-          a.sort
-           if count == 2
-            b = a.first
-            update(duplicate_check: true, image_dup_locate: b)
-            a_alt = Alt.find_by(id: b)
-            binding.pry
-          end
-        end 
+         if u.image_url != nil
+        
+          file2 = URI.parse(u.image.url).open
+          if img_mod.duplicate?(Phashion::Image.new(file2.path)) == true
+            count = count + 1
+            a << u.id
+            a.sort
+             if count == 2
+              b = a.first
+              update(duplicate_check: true, image_dup_locate: b)
+            end
+          end 
+        end
+      }
+      update(check_performed: true)
+      if duplicate_check == true
+        begin
+          alt = Alt.find_by(id: image_dup_locate)
+          image = alt.image_url
+          user_find = User.find_by(id: @user.id)
+          ImgDupMailer.send_image_dup_notification(alt, image, user_find).deliver_later
+          self.destroy
+        rescue
+          user_find = User.find_by(id: @user.id)
+          ImgDupMailer.send_error(user_find).deliver_later
+          self.destroy
+        end
+        return false
+      else
+        begin
+          alt = self
+          user_find = User.find_by(id: @user.id)
+          image = alt.image_url
+          ImgDupMailer.send_image_not_dup_notification(alt, image, user_find).deliver_later
+        rescue
+          user_find = User.find_by(id: @user.id)
+          ImgDupMailer.send_error(user_find).deliver_later
+          self.destroy
+        end
+        return false
       end
-    }
-    update(check_performed: true)
+      return false
+    rescue
+      user_find = User.find_by(id: @user.id)
+      ImgDupMailer.send_error(user_find).deliver_later
+      self.destroy
+      return false
+    end
     return false
   end
 
@@ -67,8 +101,6 @@ class Alt < ApplicationRecord
     @alt_text = alt.new(body: a.body, user_id: current_user.id, alt_id: a.id)
     @alt_text.save
   end
-
-
 
    # attributes that we want to be indexed
   #meilisearch do

@@ -1,6 +1,6 @@
-require 'action_text'
-
 class ApplicationController < ActionController::Base
+  require 'pagy'
+  require 'action_text'
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	include Pundit
