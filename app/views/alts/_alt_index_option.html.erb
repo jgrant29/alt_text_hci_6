@@ -130,18 +130,23 @@
       });
     }
 
+
+     $(document).ready(function() {
+
     var isMobile = false;
 
       if ("maxTouchPoints" in navigator) {
           isMobile = navigator.maxTouchPoints > 0;
       } 
 
-      if (isMobile) {
-          $(document).ready(function() {
+      if (isMobile == false) {
+         
           initIAS();
-        });
+       
          
       }
+
+       });
 
     
     
