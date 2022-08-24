@@ -85,15 +85,9 @@ class AltsController < ApplicationController
     authorize @alt
     respond_to do |format|
       if @alt.update(update_alt_params)
-        # if image_modification_alt == false
-        #   format.js
-        #   format.html { render :update, status: :unprocessable_entity }
-        #   flash[:alert] = "The image was a duplicate. Please upload another image" 
-        # else
           build_alt_text_versions
           format.html { redirect_to alt_url(@alt), notice: "Alt was successfully updated." }
           format.json { render :show, status: :ok, location: @alt }
-        # end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @alt.errors, status: :unprocessable_entity }
