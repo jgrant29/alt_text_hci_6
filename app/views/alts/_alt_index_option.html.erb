@@ -23,28 +23,48 @@
           </ul>
           <div class="tab-content favorite_seven" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
-              <div  id="alts" class="row col-lg-12 p-5" data-bs-masonry='{"percentPosition": true }'>
+              <div  id="alts_tab" class="row col-lg-12 p-5" data-bs-masonry='{"percentPosition": true }'>
                 <% @alts.each do |alt| %>
                   <% if alt.verified && !alt.flag %>
-                    <div class="col-md-4">
+                    <div id="alt" class="col-md-4">
                       <% if current_user.present? %>
+                    
+                             
                         <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                         <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
                         <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
-                          <%= current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? link_to("", {controller: alt_favorites_path, :action =>'destroy', id: fav.id}, data: { turbo_method: :delete }, id: "favorite_#{alt.id}", class: "fa fa-heart fs-2 ") : nil}.uniq.compact.flatten.join(", ").html_safe %>
-                            <%= render alt %>
-                          <% else %>
-                          <div id="noFav" class="">
-                            <%= form_for @fav, local: false, turbo: false, remote: true, controller: 'alts' do |f| %>
-                               <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id="fav_id_<%= alt.id %>" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
-                              <%= f.hidden_field :user_id, value: current_user.id %>
-                              <%= f.hidden_field :alt_id, value: alt.id %>
-                              <%= f.hidden_field :page, value: params[:page] %>
+                         
+                           <%= current_user.alt_favorites.map{|fav| (!fav.nil? && fav.alt_id == alt.id) ?  link_to("", "/alt_favorites/#{fav.id}", method: :delete, id: "favorite", class: "fa fa-heart fs-2 ", style: "visibility: visible;") : nil}.uniq.compact.flatten.join(", ").html_safe %>
+                         
+                           <div class="noFav" style="display: none;">
+                                <%= form_for @fav, local: false, turbo: false, remote: true, :html => {:id => "noFav_#{ alt.id}" }, controller: 'alts' do |f| %>
+                                  <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
+                                  <%= f.hidden_field :user_id, value: current_user.id %>
+                                  <%= f.hidden_field :alt_id, value: alt.id %>
+                                  <%= f.hidden_field :page, value: params[:page] %>
 
-                            <% end %>
-                            </div>
-                          <%= render alt %>
+                                <% end %>
+                              </div>
+                         
+                        
+                        <% else %>
+
+
+
+                              <div class="noFav" style="display: inline-block;">
+                                <%= form_for @fav, local: false, method: :post, :html => {:class => "noFavForm", :id => "noFav_#{ alt.id}" }, controller: 'alt_favorites' do |f| %>
+                                  <%= f.button type: 'submit', style: "border:0; background:none;", id: "noFavbtn", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
+                                  <%= f.hidden_field :user_id, value: current_user.id %>
+                                  <%= f.hidden_field :alt_id, value: alt.id %>
+                                  <%= f.hidden_field :page, value: params[:page] %>
+
+                                <% end %>
+                              </div>
                         <% end %>
+                        <div  >
+                          <%= render alt %>
+                          </div>
+                  
                       <% else %>
                         <%= render alt %>
                       <% end %>
@@ -72,7 +92,7 @@
                             </turbo-frame>
                           <% end %>
                         <% else %>
-                          <%= form_for @fav, turbo: false, remote: true do |f| %>
+                          <%= form_for @fav, turbo: false, remote: true, :html => {:id => alt.id } do |f| %>
                             <%= f.button type: 'submit', style: "border:0; background:none;", id: alt.id, class: "p-0" do  %><i class="fa fa-heart-o fs-2" aria-hidden="true"></i><% end %>
                             <%= f.hidden_field :user_id, value: current_user.id %>
                             <%= f.hidden_field :alt_id, value: alt.id %>
@@ -98,3 +118,27 @@
     </div>
   </section>
 </main>
+ <script>
+   
+   var ias;
+   function initIAS() {
+    ias = null;
+     ias = new InfiniteAjaxScroll('#alts_tab', {
+        item: '#alt',
+        next: ".next a",
+        pagination: '.pagination'
+      });
+    }
+
+    $(document).ready(function() {
+      initIAS();
+     // $(document).on("load", initIAS);
+
+    });
+    //$(document).ajaxComplete(ias);
+
+
+
+
+  </script>
+
