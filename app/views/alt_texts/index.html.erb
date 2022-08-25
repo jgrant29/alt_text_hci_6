@@ -137,10 +137,11 @@
 
             //$('#alts_tab').masonry('layout');
             //$('#alts').masonry('layout');
-            alts.layout();
-            alts_tabs.layout();
-            flags.layout();
-            bans.layout();
+              $('#alts').masonry({
+           
+                    itemSelector : '#alt',
+                    percentPosition: true
+            });
             //$('#flags').masonry('layout');
             // $('#bans').masonry('layout');
         
