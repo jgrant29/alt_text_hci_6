@@ -20,7 +20,7 @@ setInterval( function(){
 }, 3000);
 
 
-$(function() {
+$(document).on( "load", function() {
   console.log("masonry entry");
           
             $('#alts').masonry({
