@@ -101,8 +101,17 @@
             percentPosition: true
        });
     });
+
+      $(function(){
+        $('#alts_tab').masonry({
+           
+            itemSelector : '#alt',
+            percentPosition: true
+       });
+    });
     var masonryUpdate = function() {
         setTimeout(function() {
+            $('#alts_tab').masonry();
             $('#alts').masonry();
             $('#flags').masonry();
              $('#bans').masonry();
