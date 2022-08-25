@@ -19,10 +19,11 @@ setInterval( function(){
 }, 3000);
 
 
-setTimeout(function() {
+$(function() {
+  console.log("masonry entry");
           
             $('#alts').masonry({
-           
+        
                 itemSelector : '#alt',
                 percentPosition: true
             });
