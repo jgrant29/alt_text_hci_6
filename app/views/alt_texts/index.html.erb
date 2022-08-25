@@ -124,10 +124,18 @@
 
     var masonryUpdate = function() {
         setTimeout(function() {
-            $('#alts_tab').masonry();
-            $('#alts').masonry();
-            $('#flags').masonry();
-             $('#bans').masonry();
+           // $('#alts_tab').masonry();
+            //$('#alts').masonry();
+            //$('#flags').masonry();
+            // $('#bans').masonry();
+          
+            var alts = document.getElementById("#alts");
+            $('#alts_tab').masonry('layout');
+            //$('#alts').masonry('layout');
+            alts.layout();
+            $('#flags').masonry('layout');
+             $('#bans').masonry('layout');
+        
         }, 500);
     }
     
