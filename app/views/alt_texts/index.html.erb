@@ -117,7 +117,7 @@
              $('#bans').masonry();
         }, 500);
     }
-    $(document).ready(masonryUpdate);
+    $(document).on("load", masonryUpdate);
     $(document).ready(function() {
          $(".nav-link").on('click', masonryUpdate);
     });
