@@ -84,31 +84,44 @@
             itemSelector : '#alt',
             percentPosition: true
        });
-    });
+    
     // trigger masonory by using diff id
-    $(function(){
+   
         $('#flags').masonry({
            
             itemSelector : '#alt',
             percentPosition: true
        });
-    });
+    
 
-     $(function(){
+     
         $('#bans').masonry({
            
             itemSelector : '#alt',
             percentPosition: true
        });
-    });
+    
 
-      $(function(){
+     
         $('#alts_tab').masonry({
            
             itemSelector : '#alt',
             percentPosition: true
        });
+
+       setTimeout(function() {
+            var alts = document.getElementById("#alts");
+            $('#alts_tab').masonry('layout');
+            //$('#alts').masonry('layout');
+            alts.layout();
+            $('#flags').masonry('layout');
+             $('#bans').masonry('layout');
+        }, 500);
+    }
+
+       
     });
+
     var masonryUpdate = function() {
         setTimeout(function() {
             $('#alts_tab').masonry();
