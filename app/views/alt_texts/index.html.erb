@@ -130,11 +130,19 @@
             // $('#bans').masonry();
           
             var alts = document.getElementById("#alts");
-            $('#alts_tab').masonry('layout');
+            var alts_tabs = document.getElementById("#alts_tab");
+            var flags = document.getElementById("#flags");
+            var bans = document.getElementById("#bans");
+
+
+            //$('#alts_tab').masonry('layout');
             //$('#alts').masonry('layout');
             alts.layout();
-            $('#flags').masonry('layout');
-             $('#bans').masonry('layout');
+            alts_tabs.layout();
+            flags.layout();
+            bans.layout();
+            //$('#flags').masonry('layout');
+            // $('#bans').masonry('layout');
         
         }, 500);
     }
