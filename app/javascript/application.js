@@ -19,6 +19,38 @@ setInterval( function(){
 }, 3000);
 
 
+setTimeout(function() {
+          
+            $('#alts').masonry({
+           
+                itemSelector : '#alt',
+                percentPosition: true
+            });
+
+            $('#flags').masonry({
+           
+                itemSelector : '#alt',
+                percentPosition: true
+            });
+
+            $('#bans').masonry({
+           
+                itemSelector : '#alt',
+                percentPosition: true
+            });
+    
+
+     
+            $('#alts_tab').masonry({
+            
+                itemSelector : '#alt',
+                percentPosition: true
+            });
+           
+        
+        }, 500);
+
+
 
 
 /*
