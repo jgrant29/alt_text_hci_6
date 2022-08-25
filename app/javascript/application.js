@@ -6,6 +6,7 @@ import "trix"
 import "@rails/actiontext"
 import './add_jquery'
 import Rails from '@rails/ujs';
+import "masonry-layout"
 import e from "trix"
 Rails.start();
 
