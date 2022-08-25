@@ -304,7 +304,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    redis (4.8.0)
+    redis (4.7.1)
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -415,7 +415,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.0)
   rails_12factor
-  redis (~> 4.0)
+  redis (~> 4.7.1)
   searchkick
   select2-rails
   selenium-webdriver
