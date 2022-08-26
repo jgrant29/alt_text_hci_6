@@ -22,6 +22,8 @@ setInterval( function(){
 
 $(document).on( "load", function() {
   console.log("masonry entry");
+
+
           
             $('#alts').masonry({
         
@@ -50,7 +52,15 @@ $(document).on( "load", function() {
             });
            
         
+        setTimeout(function() {
+            var alts = document.getElementById("#alts");
+            $('#alts_tab').masonry('layout');
+            //$('#alts').masonry('layout');
+            alts.layout();
+            $('#flags').masonry('layout');
+             $('#bans').masonry('layout');
         }, 500);
+});
 
 
 
