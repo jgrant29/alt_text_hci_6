@@ -87,11 +87,17 @@
 
      $(document).ready(function() {
 
-          $('#alts').masonry({
+        var $alts =  $('#alts').masonry({
            
             itemSelector : '#alt',
             percentPosition: true
        });
+
+        $alts.masonry( 'on', 'layoutComplete', function() {
+            console.log('layout done');
+        });
+       
+       $alts.masonry();
     
     // trigger masonory by using diff id
    
@@ -118,13 +124,17 @@
        });
 
        setTimeout(function() {
-          $('#alts').masonry({
+        /*  $('#alts').masonry({
         
                 itemSelector : '#alt',
                 percentPosition: true,
                 columnWidth: 100
-            });
+                isInitLayout: false
+            });*/
+            $alts.masonry();
         }, 200);
+
+       
     
 
 
