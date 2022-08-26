@@ -114,9 +114,23 @@
        
             flags_mason.layout();
         });
+
+         var alts_tab_layout = document.querySelector('#flags');
+         var alts_tab_mason = new Masonry( alts_tab_layout, {
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: 150
+       });
+
+      
+        imagesLoaded( flagsalts_tab_mason ).on( 'progress', function() {
+       
+            alts_tab_mason.layout();
+        });
        
     
     // trigger masonory by using diff id
+    /*
    
         $('#flags').masonry({
            
@@ -138,7 +152,7 @@
            
             itemSelector : '#alt',
             percentPosition: true
-       });
+       });*/
 
        setTimeout(function() {
         /*  $('#alts').masonry({
