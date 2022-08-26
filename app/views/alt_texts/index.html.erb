@@ -89,6 +89,13 @@
          var alts_layout = document.querySelector('#alts');
          var alts_mason = new Masonry( alts_layout, {
             itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: 150
+       });
+
+        var alts_layout = document.querySelector('#alts');
+         var alts_mason = new Masonry( alts_layout, {
+            itemSelector : '#alt',
             percentPosition: true
        });
 
