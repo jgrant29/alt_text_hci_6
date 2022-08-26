@@ -101,7 +101,7 @@
             
         }
 
-       else if (isMobile == false) {
+       if (isMobile == false) {
             
             var alts_layout = document.querySelector('#alts');
             var alts_mason = new Masonry( alts_layout, {
@@ -128,32 +128,6 @@
        
             flags_mason.layout();
         });
-
-            var bans_layout = document.querySelector('#bans');
-            var bans_mason = new Masonry( bans_layout, {
-            itemSelector : '#alt',
-            percentPosition: true,
-            columnWidth: 150
-       });
-
-      
-        imagesLoaded( bans_mason ).on( 'progress', function() {
-       
-            bans_mason.layout();
-        });
-
-          /*var alts_tab_layout = document.querySelector('#alts_tab');
-            var alts_tab_mason = new Masonry( alts_tab_layout, {
-            itemSelector : '#alt',
-            percentPosition: true,
-            columnWidth: 150
-       });
-
-      
-        imagesLoaded( alts_tab_mason ).on( 'progress', function() {
-       
-            alts_tab_mason.layout();
-        });/
             
         
             
@@ -161,40 +135,18 @@
         
        
     
-    // trigger masonory by using diff id
-   /*
-        $('#flags').masonry({
-           
-            itemSelector : '#alt',
-            percentPosition: true
-       });
     
-
-     
-        $('#bans').masonry({
-           
-            itemSelector : '#alt',
-            percentPosition: true
-       });
-    
-
-     
-        $('#alts_tab').masonry({
-           
-            itemSelector : '#alt',
-            percentPosition: true
-       });
 
        setTimeout(function() {
-         $('#alts').masonry({
+        /*  $('#alts').masonry({
         
                 itemSelector : '#alt',
                 percentPosition: true,
                 columnWidth: 100
                 isInitLayout: false
-            });
+            });*/
             alts_mason.layout();
-        }, 200);*/
+        }, 200);
 
        
     
