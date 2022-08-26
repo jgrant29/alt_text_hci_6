@@ -86,8 +86,25 @@
    
 
      $(document).ready(function() {
-         var alts_layout = document.querySelector('#alts');
-         var alts_mason = new Masonry( alts_layout, {
+
+
+        var isMobile = false;
+
+        if ("maxTouchPoints" in navigator) {
+            isMobile = navigator.maxTouchPoints > 0;
+        } 
+
+        if (isMobile == true) {
+            
+            initIAS();
+        
+            
+        }
+
+       if (isMobile == false) {
+            
+            var alts_layout = document.querySelector('#alts');
+            var alts_mason = new Masonry( alts_layout, {
             itemSelector : '#alt',
             percentPosition: true,
             columnWidth: 150
@@ -98,10 +115,54 @@
        
             alts_mason.layout();
         });
+
+          var flags_layout = document.querySelector('#flags');
+            var flags_mason = new Masonry( flags_layout, {
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: 150
+       });
+
+      
+        imagesLoaded( flags_mason ).on( 'progress', function() {
+       
+            flags_mason.layout();
+        });
+
+            var bans_layout = document.querySelector('#bans');
+            var bans_mason = new Masonry( bans_layout, {
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: 150
+       });
+
+      
+        imagesLoaded( bans_mason ).on( 'progress', function() {
+       
+            bans_mason.layout();
+        });
+
+          var alts_tab_layout = document.querySelector('#alts_tab');
+            var alts_tab_mason = new Masonry( alts_tab_layout, {
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: 150
+       });
+
+      
+        imagesLoaded( alts_tab_mason ).on( 'progress', function() {
+       
+            alts_tab_mason.layout();
+        });
+            
+        
+            
+        }
+        
        
     
     // trigger masonory by using diff id
-   
+   /*
         $('#flags').masonry({
            
             itemSelector : '#alt',
@@ -125,15 +186,15 @@
        });
 
        setTimeout(function() {
-        /*  $('#alts').masonry({
+         $('#alts').masonry({
         
                 itemSelector : '#alt',
                 percentPosition: true,
                 columnWidth: 100
                 isInitLayout: false
-            });*/
+            });
             alts_mason.layout();
-        }, 200);
+        }, 200);*/
 
        
     
