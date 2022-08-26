@@ -92,7 +92,7 @@
          var alts_mason = new Masonry( alts_layout, {
             itemSelector : '#alt',
             percentPosition: true,
-            columnWidth: 150
+            columnWidth: 120
        });
 
       
@@ -106,16 +106,29 @@
          var flags_mason = new Masonry( flags_layout, {
             itemSelector : '#alt',
             percentPosition: true,
-            columnWidth: 150
+            columnWidth: 120
        });
 
       
-        imagesLoaded( flags_mason ).on( 'progress', function() {
+        imagesLoaded( ban ).on( 'progress', function() {
        
             flags_mason.layout();
         });
 
-         var alts_tab_layout = document.querySelector('#flags');
+         var bans_layout = document.querySelector('#bans');
+         var bans_mason = new Masonry( bans_layout, {
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: 120
+       });
+
+      
+        imagesLoaded( bans_mason ).on( 'progress', function() {
+       
+            bans_mason.layout();
+        });
+
+         var alts_tab_layout = document.querySelector('#alts_tab');
          var alts_tab_mason = new Masonry( alts_tab_layout, {
             itemSelector : '#alt',
             percentPosition: true,
@@ -123,7 +136,7 @@
        });
 
       
-        imagesLoaded( flagsalts_tab_mason ).on( 'progress', function() {
+        imagesLoaded( alts_tab_mason ).on( 'progress', function() {
        
             alts_tab_mason.layout();
         });
