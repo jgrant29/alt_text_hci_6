@@ -52,18 +52,16 @@ $(document).on( "load", function() {
             });
            
         
-        setTimeout(function() {
-           // var alts = document.getElementById("#alts");
-           $('#alts').masonry();
-            $('#alts_tab').masonry('layout');
-            //$('#alts').masonry('layout');
-            //alts.layout();
-            $('#flags').masonry();
-             $('#bans').masonry('layout');
-        }, 500);
+       
 });
 
-
+ setTimeout(function() {
+          $('#alts').masonry({
+        
+                itemSelector : '#alt',
+                percentPosition: true
+            });
+        }, 500);
 
 
 /*
