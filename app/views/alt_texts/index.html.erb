@@ -138,7 +138,9 @@
       
         imagesLoaded( alts_tab_mason ).on( 'progress', function() {
        
-            alts_tab_mason.layout();
+            alts_mason.layout();
+           
+
         });
        
     
@@ -176,6 +178,9 @@
                 isInitLayout: false
             });*/
             alts_mason.layout();
+            flags_mason.layout();
+            bans_mason.layout();
+            alts_tab_mason.layout();
         }, 200);
 
        
