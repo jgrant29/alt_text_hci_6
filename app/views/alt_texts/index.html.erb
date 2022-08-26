@@ -87,24 +87,9 @@
 
      $(document).ready(function() {
 
-
-        var isMobile = false;
-
-        if ("maxTouchPoints" in navigator) {
-            isMobile = navigator.maxTouchPoints > 0;
-        } 
-
-        if (isMobile == true) {
-            
-            initIAS();
         
-            
-        }
-
-       if (isMobile == false) {
-            
-            var alts_layout = document.querySelector('#alts');
-            var alts_mason = new Masonry( alts_layout, {
+         var alts_layout = document.querySelector('#alts');
+         var alts_mason = new Masonry( alts_layout, {
             itemSelector : '#alt',
             percentPosition: true,
             columnWidth: 150
@@ -115,9 +100,10 @@
        
             alts_mason.layout();
         });
+       
 
-          var flags_layout = document.querySelector('#flags');
-            var flags_mason = new Masonry( flags_layout, {
+        var flags_layout = document.querySelector('#flags');
+         var flags_mason = new Masonry( flags_layout, {
             itemSelector : '#alt',
             percentPosition: true,
             columnWidth: 150
@@ -128,14 +114,31 @@
        
             flags_mason.layout();
         });
-            
-        
-            
-        }
-        
        
     
+    // trigger masonory by using diff id
+   
+        $('#flags').masonry({
+           
+            itemSelector : '#alt',
+            percentPosition: true
+       });
     
+
+     
+        $('#bans').masonry({
+           
+            itemSelector : '#alt',
+            percentPosition: true
+       });
+    
+
+     
+        $('#alts_tab').masonry({
+           
+            itemSelector : '#alt',
+            percentPosition: true
+       });
 
        setTimeout(function() {
         /*  $('#alts').masonry({
