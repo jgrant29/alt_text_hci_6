@@ -86,9 +86,8 @@
    
 
      $(document).ready(function() {
-
-        var $alts =  $('#alts').masonry({
-           
+         var alts_layout = document.querySelector('#alts');
+         var alts_mason = new Masonry( alts_layout, {
             itemSelector : '#alt',
             percentPosition: true
        });
@@ -131,7 +130,7 @@
                 columnWidth: 100
                 isInitLayout: false
             });*/
-            $alts.masonry();
+            alts_mason.layout();
         }, 200);
 
        
@@ -177,5 +176,5 @@
     
     $(document).ready(masonryUpdate);*/
    
-    $(document).ajaxComplete(masonryUpdate);
+    //$(document).ajaxComplete(masonryUpdate);
 </script>
