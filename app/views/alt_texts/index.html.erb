@@ -103,7 +103,7 @@
          var flags_mason = new Masonry( flags_layout, {
             itemSelector : '#alt',
             percentPosition: true,
-            columnWidth: 120
+            
        });
 
       
@@ -132,7 +132,7 @@
       
         imagesLoaded( alts_tab_mason ).on( 'progress', function() {
        
-            alts_mason.layout();
+            alts_tab_mason.layout();
            
 
         });
@@ -176,7 +176,7 @@
                 alts_mason.layout();
             });
 
-             imagesLoaded( flags_mason ).on( 'progress', function() {
+        imagesLoaded( flags_mason ).on( 'progress', function() {
        
             flags_mason.layout();
         });
