@@ -179,13 +179,17 @@
 
        // imagesLoaded( flags_mason ).on( 'progress', function() {
        
-            flags_mason.layout();
+           
+             imagesLoaded( flags_mason ).on( 'progress', function() {
+       
+                flags_mason.layout();
+            });
         //});
             //alts_mason.layout();
             //flags_mason.layout();
             bans_mason.layout();
             alts_tab_mason.layout();
-        }, 200);
+        }, 500);
 
        
     
