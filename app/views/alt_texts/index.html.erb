@@ -99,13 +99,12 @@
        
        
 
-        var flags_layout = document.querySelector('#flags');
-         var flags_mason = new Masonry( flags_layout, {
+         $('#flags').masonry({
+           
             itemSelector : '#alt',
-            percentPosition: true,
-            
+            percentPosition: true
        });
-       flags_mason.layout();
+    
 
       
        
@@ -165,13 +164,7 @@
        });*/
 
        setTimeout(function() {
-        /*  $('#alts').masonry({
-        
-                itemSelector : '#alt',
-                percentPosition: true,
-                columnWidth: 100
-                isInitLayout: false
-            });*/
+       
              imagesLoaded( alts_mason ).on( 'progress', function() {
        
                 alts_mason.layout();
@@ -180,13 +173,10 @@
        // imagesLoaded( flags_mason ).on( 'progress', function() {
        
            
-             imagesLoaded( flags_mason ).on( 'progress', function() {
-       
-                flags_mason.layout();
-            });
+            
         //});
             //alts_mason.layout();
-            //flags_mason.layout();
+            $('#flags').masonry();
             bans_mason.layout();
             alts_tab_mason.layout();
         }, 500);
