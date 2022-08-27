@@ -176,7 +176,11 @@
             
         //});
             //alts_mason.layout();
-            $('#flags').masonry();
+             $('#flags').masonry({
+           
+                itemSelector : '#alt',
+                percentPosition: true
+            });
             bans_mason.layout();
             alts_tab_mason.layout();
         }, 500);
