@@ -116,18 +116,7 @@
       
        
 
-         var bans_layout = document.querySelector('#bans');
-         var bans_mason = new Masonry( bans_layout, {
-            itemSelector : '#alt',
-            percentPosition: true,
-            columnWidth: 120
-       });
 
-      
-        imagesLoaded( bans_mason ).on( 'progress', function() {
-       
-            bans_mason.layout();
-        });
 
        /*  var alts_tab_layout = document.querySelector('#alts_tab');
          var alts_tab_mason = new Masonry( alts_tab_layout, {
@@ -182,19 +171,22 @@
              $('#flags').masonry({
            
                 itemSelector : '#alt',
-                percentPosition: true
+                percentPosition: true,
+                columnWidth:120
     
             });
            // bans_mason.layout();
             //alts_tab_mason.layout();
-        }, 500);
 
-        $('#alts_tab').masonry({
+             $('#alts_tab').masonry({
             
                 itemSelector : '#alt',
                 percentPosition: true
             });
     
+        }, 200);
+
+       
 
 
      });
