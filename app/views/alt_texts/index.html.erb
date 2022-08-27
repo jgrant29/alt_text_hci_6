@@ -88,11 +88,11 @@
      $(document).ready(function() {
 
         
-         var alts_layout = document.querySelector('#alts');
-         var alts_mason = new Masonry( alts_layout, {
+          $('#alts').masonry({
+           
             itemSelector : '#alt',
             percentPosition: true,
-            columnWidth: 120
+            columnWidth: 80
        });
 
       
@@ -172,17 +172,12 @@
 
        setTimeout(function() {
        
-             imagesLoaded( alts_mason ).on( 'progress', function() {
-       
-                alts_mason.layout();
+             $('#alts').masonry({
+           
+                itemSelector : '#alt',
+                percentPosition: true
             });
 
-       // imagesLoaded( flags_mason ).on( 'progress', function() {
-       
-           
-            
-        //});
-            //alts_mason.layout();
              $('#flags').masonry({
            
                 itemSelector : '#alt',
