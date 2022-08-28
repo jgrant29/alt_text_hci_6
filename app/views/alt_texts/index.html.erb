@@ -98,7 +98,7 @@
        });
 
 
-       var flags_layout = document.querySelector('#alts');
+       var flags_layout = document.querySelector('#flags');
         var flags_mason = new Masonry( flags_layout, {
             itemSelector : '#alt',
             percentPosition: true,
@@ -140,16 +140,27 @@
     // trigger masonory by using diff id
     
    
-        $('#flags').masonry({
-           
-            itemSelector : '#alt',
-            percentPosition: true
-       });
+        var $grid = $('#flags');
+        $grid.imagesLoaded( function () {
+        $grid.masonry({
+            columnWidth: '#alt',
+            itemSelector: '#alt'
+        });   
+        });  
 
-       $('#flags').imagesLoaded( function() {
-            $('#flags').masonry();
+
+        $('a[data-toggle=tab]').each(function () {
+        var $this = $(this);
+
+        $this.on('shown.bs.tab', function () {
+            $grid.imagesLoaded( function () {
+            $grid.masonry({
+                columnWidth: '#alt',
+                itemSelector: '#alt'
+            });   
+            });  
         });
-    
+        });
 /*
      
         $('#bans').masonry({
