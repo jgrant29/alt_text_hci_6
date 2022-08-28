@@ -152,12 +152,12 @@
         var $this = $(this);
 
         $this.on('click', function () {
-            $grid.imagesLoaded( function () {
-            $grid.masonry({
-                columnWidth: '#alt',
+
+            setTimeout( function() {
+                $('#flags').masonry({
                 itemSelector: '#alt'
-            });   
-            });  
+                }, 500);
+           
         });
         });
 /*
