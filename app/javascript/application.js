@@ -23,7 +23,15 @@ setInterval( function(){
        
              //alts_mason.layout();
 
-             $('#flags').masonry();
+               var flags_layout = document.querySelector('#alts');
+                var flags_mason = new Masonry( flags_layout, {
+                    itemSelector : '#alt',
+                    percentPosition: true,
+                    columnWidth: 80
+              });
+
+              flags_mason.layout();
+
 
             //flags_mason.layout();
            // bans_mason.layout();
