@@ -90,23 +90,24 @@
      $(document).ready(function() {
 
         
-          var alts_layout = document.querySelector('#alts');
-         var alts_mason = new Masonry( alts_layout, {
+        var alts_layout = document.querySelector('#alts');
+        var alts_mason = new Masonry( alts_layout, {
             itemSelector : '#alt',
             percentPosition: true,
             columnWidth: 150
        });
 
 
-      
-         $('#flags').masonry({
-           
+       var flags_layout = document.querySelector('#alts');
+        var flags_mason = new Masonry( flags_layout, {
             itemSelector : '#alt',
             percentPosition: true,
-            columnWidth: 120
+            columnWidth: 80
        });
 
-       $('#flags').masonry();
+
+
+     
 
         $('#alts_tab').masonry({
             
@@ -165,7 +166,7 @@
        
              alts_mason.layout();
 
-             $('#flags').masonry();
+            flags_mason.layout();
            // bans_mason.layout();
             //alts_tab_mason.layout();
 
