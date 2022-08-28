@@ -138,15 +138,19 @@
        
     
     // trigger masonory by using diff id
-    /*
+    
    
         $('#flags').masonry({
            
             itemSelector : '#alt',
             percentPosition: true
        });
-    
 
+       $('#flags').imagesLoaded( function() {
+            $('#flags').masonry();
+        });
+    
+/*
      
         $('#bans').masonry({
            
@@ -166,7 +170,7 @@
        
              alts_mason.layout();
 
-            flags_mason.layout();
+            //flags_mason.layout();
            // bans_mason.layout();
             //alts_tab_mason.layout();
 
