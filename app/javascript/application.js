@@ -19,6 +19,19 @@ setInterval( function(){
      $(".alert").fadeOut(); 
 }, 3000);
 
+ setTimeout(function() {
+       
+             //alts_mason.layout();
+
+             $('#flags').masonry();
+
+            //flags_mason.layout();
+           // bans_mason.layout();
+            //alts_tab_mason.layout();
+
+             //$('#alts_tab').masonry();
+    
+        }, 200);
 
 
          
