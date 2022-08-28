@@ -161,28 +161,13 @@
 
        setTimeout(function() {
        
-             $('#alts').masonry({
-           
-                itemSelector : '#alt',
-                percentPosition: true,
-                columnWidth:120
-            });
+             $('#alts').masonry();
 
-             $('#flags').masonry({
-           
-                itemSelector : '#alt',
-                percentPosition: true,
-                columnWidth:120
-    
-            });
+             $('#flags').masonry();
            // bans_mason.layout();
             //alts_tab_mason.layout();
 
-             $('#alts_tab').masonry({
-            
-                itemSelector : '#alt',
-                percentPosition: true
-            });
+             $('#alts_tab').masonry();
     
         }, 200);
 
