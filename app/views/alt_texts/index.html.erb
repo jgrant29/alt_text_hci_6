@@ -147,6 +147,19 @@
             });  
         });
         });
+
+         $('a[data-toggle=tab]').each(function () {
+        var $this = $(this);
+
+        $this.on('click', function () {
+            $grid.imagesLoaded( function () {
+            $grid.masonry({
+                columnWidth: '#alt',
+                itemSelector: '#alt'
+            });   
+            });  
+        });
+        });
 /*
      
         $('#bans').masonry({
