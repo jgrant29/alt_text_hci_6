@@ -89,6 +89,24 @@
 
      $(document).ready(function() {
 
+
+         $('#alts').masonry({
+    
+            itemSelector : '#alt',
+            columnWidth : 100
+        });
+
+         $('#flags').masonry({
+            itemSelector : '#alt',
+            columnWidth : 100
+     });
+        /*setTimeout( function() {
+            $('#flags').masonry({
+                itemSelector: '#alt'
+            }, 500);
+            
+        });
+
         
         var alts_layout = document.querySelector('#alts');
         var alts_mason = new Masonry( alts_layout, {
@@ -96,129 +114,43 @@
             percentPosition: true,
             columnWidth: 150
        });
-
-
-
-     
-
-
-      
-       
-
-
-
-       /*  var alts_tab_layout = document.querySelector('#alts_tab');
-         var alts_tab_mason = new Masonry( alts_tab_layout, {
-            itemSelector : '#alt',
-            percentPosition: true,
-            columnWidth: 150
-       });
-
-      
-        imagesLoaded( alts_tab_mason ).on( 'progress', function() {
-       
-            alts_tab_mason.layout();
-           
-
-        });*/
-       
-    
-    // trigger masonory by using diff id
     
    
         var $grid = $('#flags');
         $grid.imagesLoaded( function () {
-        $grid.masonry({
-            columnWidth: '#alt',
-            itemSelector: '#alt'
-        });   
-        });  
-
-
-        $('a[data-toggle=tab]').each(function () {
-        var $this = $(this);
-
-        $this.on('shown.bs.tab', function () {
-            $grid.imagesLoaded( function () {
             $grid.masonry({
                 columnWidth: '#alt',
                 itemSelector: '#alt'
             });   
-            });  
-        });
-        });
-
-         $('a[data-toggle=tab]').each(function () {
-        var $this = $(this);
-
-        $this.on('click', function () {
-
-            setTimeout( function() {
-                $('#flags').masonry({
-                itemSelector: '#alt'
-                }, 500);
-           
-        });
-        });
-/*
-     
-        $('#bans').masonry({
-           
-            itemSelector : '#alt',
-            percentPosition: true
-       });
-    
-
-     
-        $('#alts_tab').masonry({
-           
-            itemSelector : '#alt',
-            percentPosition: true
-       });*/
-
-       
-
-       
+        });  
 
 
-     });
+        $('a[data-toggle=tab]').each(function () {
+            var $this = $(this);
 
-    /*
+            $this.on('shown.bs.tab', function () {
+                    $grid.imagesLoaded( function () {
+                        $grid.masonry({
+                            columnWidth: '#alt',
+                            itemSelector: '#alt'
+                        });   
+                    });  
+                });
+        });*/
 
-    var masonryUpdate = function() {
-        setTimeout(function() {
-          
-            $('#alts').masonry({
-           
-                itemSelector : '#alt',
-                percentPosition: true
-            });
+    });
 
-            $('#flags').masonry({
-           
-                itemSelector : '#alt',
-                percentPosition: true
-            });
 
-            $('#bans').masonry({
-           
-                itemSelector : '#alt',
-                percentPosition: true
-            });
-    
+var masonryUpdate = function() {
+    setTimeout(function() {
+        $('#alts').masonry();
+    }, 500);
 
-     
-            $('#alts_tab').masonry({
-            
-                itemSelector : '#alt',
-                percentPosition: true
-            });
-           
-        
-        }, 500);
-    }
-    
-    $(document).ready(masonryUpdate);*/
-   
-    //$(document).ajaxComplete(masonryUpdate);
+     setTimeout(function() {
+        $('#flags').masonry();
+    }, 500);
+}
+$(document).on('click', masonryUpdate);
+$(document).ajaxComplete(masonryUpdate);
+
 </script>
