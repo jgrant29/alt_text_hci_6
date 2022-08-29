@@ -23,7 +23,7 @@
           <div class="row" id="alt_tab" data-masonry='{"percentPosition": true }'>
             <% @alts.each do |alt| %>
               <% if alt.verified && !alt.flag %>
-                <div id="alt" class="p-4 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+                <div id="alt" class="p-3 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
@@ -61,7 +61,7 @@
             <% if current_user.present? %>
               <% current_user.alt_favorites.each do |alt| %>
               <% alt = Alt.find_by(id: alt.alt_id) %>
-                <div id="alt_fav" class="p-4 alt col-sm-6 col-md-4 col-lg-4 col-xl-3">
+                <div id="alt_fav" class="p-3 alt col-sm-6 col-md-4 col-lg-4 col-xl-3">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
