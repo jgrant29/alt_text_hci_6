@@ -143,11 +143,11 @@
 
 var masonryUpdate = function() {
     setTimeout(function() {
-        $('#alts').masonry();
+        //$('#alts').masonry();
          $('#flags').masonry();
     }, 200);
 }
-$(document).on('click', masonryUpdate);
+$(".nav-item").on('click', masonryUpdate);
 $(document).on('load', masonryUpdate);
 
 $(document).ajaxComplete(masonryUpdate);
