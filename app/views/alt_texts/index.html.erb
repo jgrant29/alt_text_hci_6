@@ -9,7 +9,7 @@
         <button class="nav-link active" id="pills-home-tab" data-bs-toggle="tab" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Alt Texts</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Flagged</button>
+        <button class="nav-link" id="pills-flag-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Flagged</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-banned-tab" data-bs-toggle="tab" data-bs-target="#pills-banned" type="button" role="tab" aria-controls="pills-banned" aria-selected="false">Banned</button>
@@ -147,8 +147,8 @@ var masonryUpdate = function() {
          $('#flags').masonry();
     }, 200);
 }
-$(".nav-item").on('click', masonryUpdate);
-$(document).on('load', masonryUpdate);
+$("#pills-flag-tab").on('click', masonryUpdate);
+//$(document).on('load', masonryUpdate);
 
 $(document).ajaxComplete(masonryUpdate);
 
