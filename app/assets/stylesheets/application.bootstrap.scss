@@ -201,7 +201,7 @@ a:active {
 }
 
 
-#alts_tab {
+#alts_tab, #flags {
   column-count: 4;
   column-gap: .5em;
   max-width: 980px;
@@ -209,25 +209,25 @@ a:active {
   width: 100%;
 }
 
-#alts_tab {
+#alts_tab, #flags {
   height: auto;
   max-width: 100%;
 }
 
 @media(max-width: 800px) {
-  #alts_tab {
+  #alts_tab, #flags {
     column-count: 3;
   }
 }
 
 @media(max-width: 600px) {
-  #alts_tab {
+  #alts_tab, #flags {
     column-count: 2;
   }
 }
 
 @media(max-width: 400px) {
-  #alts {
+  #alts_tab, #flags {
     column-count: 1;
   }
 }
