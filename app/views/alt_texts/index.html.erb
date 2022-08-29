@@ -144,13 +144,12 @@
 var masonryUpdate = function() {
     setTimeout(function() {
         $('#alts').masonry();
-    }, 500);
-
-     setTimeout(function() {
-        $('#flags').masonry();
-    }, 500);
+         $('#flags').masonry();
+    }, 200);
 }
 $(document).on('click', masonryUpdate);
+$(document).on('load', masonryUpdate);
+
 $(document).ajaxComplete(masonryUpdate);
 
 </script>
