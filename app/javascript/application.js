@@ -15,11 +15,27 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
 
-setInterval( function(){
-     $(".alert").fadeOut(); 
-}, 3000);
+ // setTimeout(function() {
+       
+ //       //alts_mason.layout();
+
+ //         var flags_layout = document.querySelector('#alts');
+ //          var flags_mason = new Masonry( flags_layout, {
+ //              itemSelector : '#alt',
+ //              percentPosition: true,
+ //              columnWidth: 80
+ //        });
+
+ //        flags_mason.layout();
 
 
+ //      //flags_mason.layout();
+ //     // bans_mason.layout();
+ //      //alts_tab_mason.layout();
+
+ //       //$('#alts_tab').masonry();
+
+ //  }, 200);
 
 
          
@@ -165,7 +181,3 @@ function confirmSubmission(event) {
     }
   })
 }
-
-
-
-
