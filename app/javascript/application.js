@@ -181,7 +181,3 @@ function confirmSubmission(event) {
     }
   })
 }
-
-
-
-
