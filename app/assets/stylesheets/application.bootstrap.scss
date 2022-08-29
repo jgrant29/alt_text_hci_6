@@ -83,6 +83,12 @@ a:active {
   border: 0;
 }
 
+.fa {
+  a {
+    text-decoration: none !important;
+  }
+  
+}
 
 .blur-image {
     filter: blur(25px);
