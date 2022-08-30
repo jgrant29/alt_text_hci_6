@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :alt_texts
   resources :alts, shallow: true do
     resources :alt_texts
+    collection do
+      post :index
+    end
   end
   # resources :verifcations
   

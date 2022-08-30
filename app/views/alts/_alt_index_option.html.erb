@@ -89,6 +89,14 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-6 text-center">
+          <%= link_to_previous_page @alts, '<——', remote: true, class: "btn btn-outline-primary btn-lg btn-block" %>
+        </div>
+        <div class="col-6 text-center">
+          <%= link_to_next_page @alts, '——>', theme: "materialize", remote: true, class: "btn btn-outline-primary btn-lg btn-block" %>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -150,4 +158,3 @@
     });
 
   </script>
-

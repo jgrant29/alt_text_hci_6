@@ -14,7 +14,7 @@ class AltsController < ApplicationController
       query = params[:query].presence
       @alts = Alt.search(query, where:{verified: true, flag: false, flag: nil, banned_image: nil}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
     else
-      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil]).order(created_at: :asc)
+      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil]).order(created_at: :asc).page(params[:page]).per(4)
     end
   end
 
