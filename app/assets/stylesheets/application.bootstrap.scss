@@ -207,3 +207,20 @@ a:active {
 }
 
 
+@media(max-width: 800px) {
+  #flags {
+    column-count: 3;
+  }
+}
+
+@media(max-width: 600px) {
+  #flags {
+    column-count: 2;
+  }
+}
+
+@media(max-width: 400px) {
+  #flags {
+    column-count: 1;
+  }
+}
