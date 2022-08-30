@@ -30,11 +30,11 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div  id="flags" class="row col-lg-12 p-5 flags" data-masonry='{"percentPosition": true }'>
+                <div  id="flags" class="row  flags"> 
                     <% @alt_texts.each do |alt_text| %>
                         <% if alt_text.alt.flag == true %>
                             <% if alt_text.alt.banned_image.blank? || alt_text.alt.banned_image == false %>
-                                <div id="flag_alt" class="col-lg-3 mb-5 flag">
+                                <div id="flag_alt" class="flag">
                                     <%= link_to alt_alt_texts_path(alt_text.alt_id) do %>
                                         <%= image_tag alt_text.alt.image_url(:small), class: "image", caption: alt_text.alt.title, alt: alt_text.alt.alt_texts.last.body, class: "border rounded image img-fluid w-100", height: alt_text.alt.image(:small).height, width: alt_text.alt.image(:small).width, id: "alt" %>
                                     <% end %>
@@ -86,7 +86,7 @@
        });
 
       
-
+     /*
       var tabFlags = document.getElementById("pills-flag-tab")
       tabFlags.addEventListener('shown.bs.tab', function (event) {
 
@@ -94,7 +94,7 @@
                 itemSelector: '#flag_alt',
                 percentPosition: true
             });
-      });
+      });*/
 
        /*  var alts_tab_layout = document.querySelector('#alts_tab');
          var alts_tab_mason = new Masonry( alts_tab_layout, {
