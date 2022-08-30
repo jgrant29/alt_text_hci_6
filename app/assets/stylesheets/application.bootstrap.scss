@@ -207,6 +207,20 @@ a:active {
 }
 
 
+#flags {
+  column-count: 4;
+  column-gap: .5em;
+  max-width: 980px;
+  margin: auto;
+  width: 100%;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+
 @media(max-width: 800px) {
   #flags {
     column-count: 3;
