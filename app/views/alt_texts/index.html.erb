@@ -7,7 +7,7 @@
             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="tab" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Alt Texts</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Flagged</button>
+            <button class="nav-link" id="pills-flag-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Flagged</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-banned-tab" data-bs-toggle="tab" data-bs-target="#pills-banned" type="button" role="tab" aria-controls="pills-banned" aria-selected="false">Banned</button>
@@ -85,11 +85,11 @@
             columnWidth: 150
        });
 
-        var flags_layout = document.querySelector('#alts');
+        var flags_layout = document.querySelector('#flags');
         var flags_mason = new Masonry( flags_layout, {
-            itemSelector : '#alt',
+            itemSelector : '#flag_alt',
             percentPosition: true,
-            columnWidth: 80
+            columnWidth: 150
        });
 
         $('#alts_tab').masonry({
@@ -97,7 +97,7 @@
             percentPosition: true
         });
 
-      var tabFlags = document.getElementById("pills-profile")
+      var tabFlags = document.getElementById("pills-flag-tab")
       tabFlags.addEventListener('shown.bs.tab', function (event) {
 
       $("#flags").masonry({
