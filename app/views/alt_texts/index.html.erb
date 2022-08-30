@@ -92,19 +92,16 @@
             columnWidth: 150
        });
 
-        $('#alts_tab').masonry({
-            itemSelector : '#alt',
-            percentPosition: true
-        });
+      
 
       var tabFlags = document.getElementById("pills-flag-tab")
       tabFlags.addEventListener('shown.bs.tab', function (event) {
 
-      $("#flags").masonry({
-        itemSelector: '#flag_alt',
-        percentPosition: true
+            $("#flags").masonry({
+                itemSelector: '#flag_alt',
+                percentPosition: true
+            });
       });
-    });
 
        /*  var alts_tab_layout = document.querySelector('#alts_tab');
          var alts_tab_mason = new Masonry( alts_tab_layout, {
