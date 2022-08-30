@@ -31,7 +31,7 @@
                        <%= current_user.alt_favorites.map{|fav| (!fav.nil? && fav.alt_id == alt.id) ?  link_to("", "/alt_favorites/#{fav.id}", method: :delete, id: "favorite", class: "fa fa-heart fs-4 ", style: "text-decoration: none; visibility: visible;") : nil}.uniq.compact.flatten.join(", ").html_safe %>
                        <div class="noFav" style="display: none;">
                           <%= form_for @fav, local: false, turbo: false, remote: true, :html => {:id => "noFav_#{ alt.id}" }, controller: 'alts' do |f| %>
-                            <%= f.button type: 'submit', style: "border:0; background:none;", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-4" aria-hidden="true"></i><% end %>
+                            <%= f.button type: 'submit', style: "border:0; background:none; text-decoration: none", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-4" aria-hidden="true" style="text-decoration: none;"></i><% end %>
                             <%= f.hidden_field :user_id, value: current_user.id %>
                             <%= f.hidden_field :alt_id, value: alt.id %>
                             <%= f.hidden_field :page, value: params[:page] %>
@@ -40,7 +40,7 @@
                     <% else %>
                       <div class="noFav" style="display: inline-block;">
                         <%= form_for @fav, local: false, method: :post, :html => {:class => "noFavForm", :id => "noFav_#{ alt.id}" }, controller: 'alt_favorites' do |f| %>
-                          <%= f.button type: 'submit', style: "border:0; background:none;", id: "noFavbtn", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-4" aria-hidden="true"></i><% end %>
+                          <%= f.button type: 'submit', style: "border:0; background:none; text-decoration: none", id: "noFavbtn", class: "p-0" do  %><i id="noFavorite" class="fa fa-heart-o fs-4" aria-hidden="true" style="text-decoration: none;"></i><% end %>
                           <%= f.hidden_field :user_id, value: current_user.id %>
                           <%= f.hidden_field :alt_id, value: alt.id %>
                           <%= f.hidden_field :page, value: params[:page] %>
@@ -55,6 +55,14 @@
               <% end %>
             <% end %>
           </div>
+          <div class="row">
+          <div class="col-6 text-center">
+            <%= link_to_previous_page @alts, '<——', class: "btn btn-outline-primary btn-lg btn-block" %>
+          </div>
+          <div class="col-6 text-center">
+            <%= link_to_next_page @alts, '——>', class: "btn btn-outline-primary btn-lg btn-block" %>
+          </div>
+        </div>
         </div>
         <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
           <div class="row" id="alts_fav" data-masonry='{"percentPosition": true }'>
@@ -87,14 +95,6 @@
               <% end %>  
             <% end %>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6 text-center">
-          <%= link_to_previous_page @alts, '<——', class: "btn btn-outline-primary btn-lg btn-block" %>
-        </div>
-        <div class="col-6 text-center">
-          <%= link_to_next_page @alts, '——>', class: "btn btn-outline-primary btn-lg btn-block" %>
         </div>
       </div>
     </div>
