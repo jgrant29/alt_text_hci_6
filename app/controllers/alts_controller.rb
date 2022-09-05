@@ -137,6 +137,19 @@ class AltsController < ApplicationController
     end
   end
 
+  def favorite 
+    @alt = Alt.find(params[:id])
+    @fav = AltFavorite.create(alt_id: @alt.id, user_id: current_user.id);
+  end
+
+  def unfavorite 
+    @alt = Alt.find(params[:id])
+    @fav = AltFavorite.all.where(alt_id: @alt.id, user_id: current_user.id)
+    if !@fav.nil?
+      @fav.destroy_all
+    end
+  end
+
   private
 
   # Does Kate still Instagram scrape?
@@ -230,6 +243,8 @@ class AltsController < ApplicationController
 
   #   return true 
   # end
+
+  
 
     # Use callbacks to share common setup or constraints between actions.
     def set_alt

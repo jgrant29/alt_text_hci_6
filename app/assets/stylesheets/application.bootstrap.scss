@@ -65,6 +65,23 @@ a:active {
   );
 }
 
+.fav-btn-show, .unfav-btn-show {
+  text-decoration: none;
+}
+.fav-btn-show:active {
+  background-color: transparent !important;
+  color: $purple !important;
+  text-decoration: none;
+  filter: brightness(130%);
+}
+
+.unfav-btn-show:active {
+  background-color: transparent !important;
+  color: $purple !important;
+  text-decoration: none;
+  filter: brightness(130%);
+}
+
 .nav-link {
   color: $purple;
 }
