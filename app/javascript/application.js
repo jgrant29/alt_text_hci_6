@@ -15,6 +15,11 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)  
 })  
 
+
+setInterval( function(){
+     $(".alert").fadeOut(); 
+}, 3000);
+
  // setTimeout(function() {
        
  //       //alts_mason.layout();
