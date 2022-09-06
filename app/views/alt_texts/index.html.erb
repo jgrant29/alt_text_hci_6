@@ -77,13 +77,106 @@
 </main>
 
 <script>
+
+ 
     $(document).ready(function() {
-        var alts_layout = document.querySelector('#alts');
-        var alts_mason = new Masonry( alts_layout, {
+
+    
+    $('#alts').imagesLoaded( function() { 
+
+        $('#alts').masonry({
             itemSelector : '#alt',
             percentPosition: true,
-            columnWidth: 150
-       });
+            columnWidth: '#alt',
+           
+        });
+
+    }); 
+   
+    $('#alts').masonry();
+
+    $('#flags').masonry({
+        itemSelector : '#alt',
+        percentPosition: true,
+        columnWidth: '#alt',
+        isAnimated: true,
+           animationOptions: {
+                duration: 700,
+                easing: 'linear',
+                queue: false
+           }
+    });
+
+    $('#bans').masonry({
+        itemSelector : '#alt',
+        percentPosition: true,
+        columnWidth: '#alt',
+        isAnimated: true,
+           animationOptions: {
+                duration: 700,
+                easing: 'linear',
+                queue: false
+           }
+    });
+
+   
+
+    var tabEl = document.getElementById("pills-home-tab")
+      tabEl.addEventListener('shown.bs.tab', function (event) {
+
+        $('#alts').masonry({
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: '#alt',
+           
+        });
+
+       
+    });
+
+    setTimeout(() => {
+        $('#alts').masonry()
+    }, 2000);
+
+     var tabEl = document.getElementById("pills-flag-tab")
+      tabEl.addEventListener('shown.bs.tab', function (event) {
+
+        $('#flags').masonry({
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: '#alt',
+            isAnimated: true,
+            animationOptions: {
+                duration: 700,
+                easing: 'linear',
+                queue: false
+           }
+        });
+
+       
+    });
+
+     var tabEl = document.getElementById("pills-banned-tab")
+      tabEl.addEventListener('shown.bs.tab', function (event) {
+
+        $('#bans').masonry({
+            itemSelector : '#alt',
+            percentPosition: true,
+            columnWidth: '#alt',
+            isAnimated: true,
+            animationOptions: {
+                duration: 700,
+                easing: 'linear',
+                queue: false
+           }
+        });
+
+       
+    });
+
+   
+
+
 
       
      /*
