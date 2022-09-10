@@ -225,7 +225,7 @@ a:active {
   margin-top: 5%;
 }
 
-
+/*
 #flags {
   column-count: 4;
   column-gap: .5em;
@@ -256,4 +256,80 @@ a:active {
   #flags {
     column-count: 1;
   }
-}
+}*/
+
+   
+  
+    .grid {
+        max-width: 1280px;
+        margin: auto;
+        padding: 1rem;
+      }
+      
+      #alt {
+       // border: 1px solid #ccc;
+      }
+      
+     
+      
+      #alt>img {
+        width: 100%;
+        height: auto;
+      }
+      
+      /* masonry styles */
+      .grid {
+        --masonry-columns: 2;
+        --masonry-gap: 1rem;
+      }
+      
+      @media (min-width: 768px) {
+        .grid {
+          --masonry-columns: 3;
+          --masonry-gap: 1rem;
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        .grid {
+          --masonry-columns: 4;
+          --masonry-gap: 2rem;
+        }
+      }
+      
+      /* load only if grid-template-rows: masonry is supported by the browser else use the fallback */
+      @supports (grid-template-rows: masonry) {
+        .grid{
+          display: grid;
+          grid-template-columns: repeat(var(--masonry-columns), 1fr);
+          grid-gap: var(--masonry-gap);
+          grid-template-rows: masonry;
+        }
+      
+        .grid>* {
+          margin-bottom: 0;
+        }
+      }
+      
+      /* fallback */
+      .grid {
+        column-count: var(--masonry-columns);
+        column-gap: var(--masonry-gap);
+      }
+      
+      .grid>* {
+        margin-bottom: var(--masonry-gap);
+        break-inside: avoid;
+      }
+  
+    #alt:after {
+      //font-weight: bold;
+      background-color: rgba(0, 0, 0, 0);
+      //content: counter(masonry);
+    
+    }
+  
+    #alt:hover:after {
+      font-size: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
