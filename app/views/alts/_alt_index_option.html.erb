@@ -20,10 +20,10 @@
       </ul>
       <div class="tab-content favorite_seven" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
-          <div class="row" id="alt_tab" data-masonry='{"percentPosition": true }'>
+          <div class="grid" id="alt_tab">
             <% @alts.each do |alt| %>
               <% if alt.verified && !alt.flag %>
-                <div id="alt" class="p-3 col-sm-6 col-md-4 col-lg-4 col-xl-3 text-center">
+                <div id="alt" class="item">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
@@ -56,20 +56,20 @@
             <% end %>
           </div>
           <div class="row">
-          <div class="col-6 text-center">
-            <%= link_to_previous_page @alts, '<——', class: "btn btn-outline-primary btn-lg btn-block" %>
+          <div class="col-6 text-center pagination_prev">
+            <%= link_to_previous_page @alts, '<——', class: "btn btn-outline-primary btn-lg btn-block prev" %>
           </div>
-          <div class="col-6 text-center">
-            <%= link_to_next_page @alts, '——>', class: "btn btn-outline-primary btn-lg btn-block" %>
+          <div class="col-6 text-center pagination_next">
+            <%= link_to_next_page @alts, '——>', class: "btn btn-outline-primary btn-lg btn-block next" %>
           </div>
         </div>
         </div>
         <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-          <div class="row" id="alts_fav" data-masonry='{"percentPosition": true }'>
+          <div class="grid" id="alts_fav">
             <% if current_user.present? %>
               <% current_user.alt_favorites.each do |alt| %>
               <% alt = Alt.find_by(id: alt.alt_id) %>
-                <div id="alt_fav" class="p-3 alt col-sm-6 col-md-4 col-lg-4 col-xl-3">
+                <div id="alt" class="item">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
@@ -102,33 +102,34 @@
 </main>
 
 <script>
-   var ias;
-   function initIAS() {
-    ias = null;
-     ias = new InfiniteAjaxScroll('#alts_tab', {
-        item: '#alt',
-        next: ".next a",
-        pagination: '.pagination'
-      });
-    }
 
      $(document).ready(function() {
 
-      var isMobile = false;
+          var ias;
+          var isMobile = false;
 
           if ("maxTouchPoints" in navigator) {
               isMobile = navigator.maxTouchPoints > 0;
           } 
 
-          if (isMobile == true) {
-            initIAS();
+         if (isMobile == true) {
+            ias = null
+            ias = new InfiniteAjaxScroll('#alt_tab', {
+              item: '#alt',
+              next: '.next',
+              pagination: '.pagination_next'
+
+            });
           }
+
+        
+    
 
        });
   </script>
 
   <script>
-    $(document).ready(function() {
+    //$(document).ready(function() {
      //  var alts_layout = document.querySelector('#alt_tab');
      //  var alts_mason = new Masonry( alts_layout, {
      //      itemSelector : '#alt',
@@ -142,7 +143,7 @@
      //      columnWidth: 80
      // });
 
-      $('#alt_tab').masonry({
+      /*$('#alt_tab').masonry({
           itemSelector : '#alt',
           percentPosition: true
       });
@@ -157,6 +158,6 @@
         itemSelector: '#alt_fav',
         percentPosition: true
       });
-    });
+    });*/
 
   </script>
