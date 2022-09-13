@@ -1,9 +1,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "actiontext.css";
 
-body {
-  margin-bottom: 60px;
-}
 a {
   color: $purple !important;
 }
@@ -227,74 +224,74 @@ a:active {
 
    
   
+.grid {
+    max-width: 1280px;
+    margin: auto;
+    padding: 1rem;
+  }
+  
+  #alt {
+   // border: 1px solid #ccc;
+  }
+  
+ 
+  
+  #alt>img {
+    width: 100%;
+    height: auto;
+  }
+  
+
+  .grid {
+    --masonry-columns: 2;
+    --masonry-gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
     .grid {
-        max-width: 1280px;
-        margin: auto;
-        padding: 1rem;
-      }
-      
-      #alt {
-       // border: 1px solid #ccc;
-      }
-      
-     
-      
-      #alt>img {
-        width: 100%;
-        height: auto;
-      }
-      
-    
-      .grid {
-        --masonry-columns: 2;
-        --masonry-gap: 1rem;
-      }
-      
-      @media (min-width: 768px) {
-        .grid {
-          --masonry-columns: 3;
-          --masonry-gap: 1rem;
-        }
-      }
-      
-      @media (min-width: 1024px) {
-        .grid {
-          --masonry-columns: 4;
-          --masonry-gap: 2rem;
-        }
-      }
-     
-      @supports (grid-template-rows: masonry) {
-        .grid{
-          display: grid;
-          grid-template-columns: repeat(var(--masonry-columns), 1fr);
-          grid-gap: var(--masonry-gap);
-          grid-template-rows: masonry;
-        }
-      
-        .grid>* {
-          margin-bottom: 0;
-        }
-      }
-      
-      /* fallback */
-      .grid {
-        column-count: var(--masonry-columns);
-        column-gap: var(--masonry-gap);
-      }
-      
-      .grid>* {
-        margin-bottom: var(--masonry-gap);
-        break-inside: avoid;
-      }
+      --masonry-columns: 3;
+      --masonry-gap: 1rem;
+    }
+  }
   
-    #alt:after {
-     
-      background-color: rgba(0, 0, 0, 0);
-    
+  @media (min-width: 1024px) {
+    .grid {
+      --masonry-columns: 4;
+      --masonry-gap: 2rem;
+    }
+  }
+ 
+  @supports (grid-template-rows: masonry) {
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(var(--masonry-columns), 1fr);
+      grid-gap: var(--masonry-gap);
+      grid-template-rows: masonry;
     }
   
-    #alt:hover:after {
-      font-size: 30px;
-      background-color: rgba(0, 0, 0, 0.6);
+    .grid>* {
+      margin-bottom: 0;
     }
+  }
+  
+  /* fallback */
+  .grid {
+    column-count: var(--masonry-columns);
+    column-gap: var(--masonry-gap);
+  }
+  
+  .grid>* {
+    margin-bottom: var(--masonry-gap);
+    break-inside: avoid;
+  }
+
+#alt:after {
+ 
+  background-color: rgba(0, 0, 0, 0);
+
+}
+
+#alt:hover:after {
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
