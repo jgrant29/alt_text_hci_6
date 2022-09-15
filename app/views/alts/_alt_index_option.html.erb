@@ -26,7 +26,7 @@
            
               <% if alt.verified && !alt.flag  %>
              
-                <div id="alt_item_<%= alt.id %>" class="item">
+                <div id="alt" class="item">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
@@ -58,7 +58,7 @@
               <% end %>
             <% end %>
           </div>
-          <div class="row">
+          <div class="row pagination">
           <div class="col-6 text-center pagination_prev">
             <%= link_to_previous_page @alts, '<——', class: "btn btn-outline-primary btn-lg btn-block prev" %>
           </div>
@@ -112,25 +112,28 @@
           var isMobile = false;
 
           if ("maxTouchPoints" in navigator) {
-              isMobile = navigator.maxTouchPoints > 0;
+              isMobile = navigator.userAgentData.mobile;
           } 
 
           
 
-         if (isMobile == true) {
+         if (typeof screen.orientation !== 'undefined') {
           ias = null
           var matches = [];
           ias = new InfiniteAjaxScroll('#alts_tab', {
               item: "div[id^='alt_item_']",
               next: '.next',
               pagination: '.pagination_next',
-              prefill: true
+              prefill: false
+             
              
             
             });
 
-           ias = null;
+          
 
+         } else {
+          $(".pagination").css('display', 'block');
          }
 
             
