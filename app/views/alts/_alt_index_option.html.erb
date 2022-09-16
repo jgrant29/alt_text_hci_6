@@ -26,7 +26,7 @@
            
               <% if alt.verified && !alt.flag  %>
              
-                <div id="alt" class="item">
+                <div id="alt_item_<% alt.id %>" class="item">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
@@ -72,7 +72,7 @@
             <% if current_user.present? %>
               <% current_user.alt_favorites.each do |alt| %>
               <% alt = Alt.find_by(id: alt.alt_id) %>
-                <div id="alt" class="item">
+                <div id="alt_item_<% alt.id %>" class="item">
                   <% if current_user.present? %>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
@@ -112,24 +112,25 @@
           var isMobile = false;
 
          // if ("maxTouchPoints" in navigator) {
-          if ('ontouchstart' in document.documentElement)
-              //isMobile = navigator.userAgentData.mobile;
-              isMobile = true
-          } 
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            console.log("mobile")
+            isMobile = true;
+        } 
 
           
 
          if (isMobile === true) {
           ias = null
-          var matches = [];
-          ias = new InfiniteAjaxScroll('#alts_tab', {
+          
+         
+           ias = new InfiniteAjaxScroll('#alts_tab', {
               item: "div[id^='alt_item_']",
               next: '.next',
               pagination: '.pagination_next',
-              prefill: false
             });
 
          } 
+         ias = null;
 
             
            /* dup test
