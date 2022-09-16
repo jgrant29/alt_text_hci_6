@@ -111,13 +111,15 @@
           var ias;
           var isMobile = false;
 
-          if ("maxTouchPoints" in navigator) {
-              isMobile = navigator.userAgentData.mobile;
+         // if ("maxTouchPoints" in navigator) {
+          if ('ontouchstart' in document.documentElement)
+              //isMobile = navigator.userAgentData.mobile;
+              isMobile = true
           } 
 
           
 
-         if (typeof screen.orientation !== 'undefined') {
+         if (isMobile === true) {
           ias = null
           var matches = [];
           ias = new InfiniteAjaxScroll('#alts_tab', {
@@ -125,16 +127,9 @@
               next: '.next',
               pagination: '.pagination_next',
               prefill: false
-             
-             
-            
             });
 
-          
-
-         } else {
-          $(".pagination").css('display', 'block');
-         }
+         } 
 
             
            /* dup test
