@@ -17,8 +17,8 @@ class AltsController < ApplicationController
       query = params[:tag].presence
       @alts = Alt.search(query, where:{verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: [true, nil]}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
     else
-      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(3)
-      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(3)
+      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
+      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
     end
   end
 
