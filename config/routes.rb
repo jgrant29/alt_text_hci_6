@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'favorites/destroy'
   get 'favorites/update'
   put '/alts/:id/favorite', to: 'alts#favorite', as: 'favorite'
-    put '/alts/:id/unfavorite', to: 'alts#unfavorite', as: 'unfavorite'
+  put '/alts/:id/unfavorite', to: 'alts#unfavorite', as: 'unfavorite'
 
   resources :documentations, path: "/documentation"
   resources :abouts, path: "/about"

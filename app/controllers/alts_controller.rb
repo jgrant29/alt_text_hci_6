@@ -142,7 +142,8 @@ class AltsController < ApplicationController
 
   def favorite 
     @alt = Alt.find(params[:id])
-    @fav = AltFavorite.create(alt_id: @alt.id, user_id: current_user.id);
+    @fav = AltFavorite.create(alt_id: @alt.id, user_id: current_user.id)
+    
   end
 
   def unfavorite 
