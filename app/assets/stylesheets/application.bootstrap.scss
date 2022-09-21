@@ -241,6 +241,8 @@ a:active {
   .grid {
     --masonry-columns: 2;
     --masonry-gap: 1rem;
+    --masonry-align-tracks: start; // A new masonry only property
+    --masonry-justify-tracks: start; // A new masonry only property
   }
   
   @media (min-width: 768px) {

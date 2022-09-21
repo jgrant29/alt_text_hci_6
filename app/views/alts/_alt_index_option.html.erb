@@ -34,10 +34,10 @@
                       <% @fav_check = current_user.alt_favorites.where("alt_id": alt.id).first %>
           
                       <% if !@fav_check.nil? && @fav_check.alt_id == alt.id %>
-                        <%=  link_to "",  "alts/#{alt.id}/unfavorite", id: "#{alt.id}_fav",class: "favbtn fav-btn-shown fa fa-heart fs-4 mt-3 #{alt.id}" , style: "display: block;" , remote: true %>
+                        <%=  link_to "",  "alts/#{alt.id}/unfavorite", id: "#{alt.id}_fav",class: "favbtn fav-btn-show fa fa-heart fs-4 mt-0 mb-1 #{alt.id}" , style: "display: block;" , remote: true %>
 
                       <% else %>
-                        <%=  link_to "",  "alts/#{alt.id}/favorite", id: "#{alt.id}_fav", class: "favbtn unfav-btn-shown fa fa-heart-o fs-4 mt-3 #{@alt.id} " , style: "display: block;", remote: true %>
+                        <%=  link_to "",  "alts/#{alt.id}/favorite", id: "#{alt.id}_fav", class: "favbtn unfav-btn-show fa fa-heart-o fs-4 mb-1 #{@alt.id} " , style: "display: block;", remote: true %>
 
                     <% end %>  
                   
