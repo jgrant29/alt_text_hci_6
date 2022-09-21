@@ -12,10 +12,13 @@ class AltsController < ApplicationController
     @alt = Alt.new
     if params[:query].present?
       query = params[:query].presence
-      @alts = Alt.search(query, where:{verified: true, flag: false, flag: nil, banned_image: nil}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
+      @alts = Alt.search(query, where:{verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: [true, nil]}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
+    elsif params[:tag].present?
+      query = params[:tag].presence
+      @alts = Alt.search(query, where:{verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: [true, nil]}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
     else
-      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil]).order(created_at: :asc).page(params[:page]).per(8)
-      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil]).order(created_at: :asc).page(params[:page]).per(8)
+      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
+      @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
     end
   end
 
@@ -137,6 +140,20 @@ class AltsController < ApplicationController
     end
   end
 
+  def favorite 
+    @alt = Alt.find(params[:id])
+    @fav = AltFavorite.create(alt_id: @alt.id, user_id: current_user.id)
+    
+  end
+
+  def unfavorite 
+    @alt = Alt.find(params[:id])
+    @fav = AltFavorite.all.where(alt_id: @alt.id, user_id: current_user.id)
+    if !@fav.nil?
+      @fav.destroy_all
+    end
+  end
+
   private
 
   # Does Kate still Instagram scrape?
@@ -230,6 +247,8 @@ class AltsController < ApplicationController
 
   #   return true 
   # end
+
+  
 
     # Use callbacks to share common setup or constraints between actions.
     def set_alt
