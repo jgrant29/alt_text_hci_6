@@ -15,10 +15,10 @@
           <button class="nav-link active" id="pills-all-tab" data-bs-toggle="tab" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">All Seven Army</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">My Seven Army <i class="fa fa-heart" aria-hidden="true" style="text-decoration: none"></i></button>
+          <button class="nav-link" id="pills-fav-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">My Seven Army <i class="fa fa-heart" aria-hidden="true" style="text-decoration: none"></i></button>
         </li>
       </ul>
-      <div class="tab-content favorite_seven" id="pills-tabContent">
+      <div class="tab-content favorite_seven" id="home-alts pills-tabContent">
         <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
        
           <div class="grid" id="alts_tab">
@@ -35,11 +35,9 @@
           
                       <% if !@fav_check.nil? && @fav_check.alt_id == alt.id %>
                         <%=  link_to "",  "alts/#{alt.id}/unfavorite", id: "#{alt.id}_fav",class: "favbtn fav-btn-show fa fa-heart fs-4 mt-0 mb-1 #{alt.id}" , style: "display: block;" , remote: true %>
-
                       <% else %>
                         <%=  link_to "",  "alts/#{alt.id}/favorite", id: "#{alt.id}_fav", class: "favbtn unfav-btn-show fa fa-heart-o fs-4 mb-1 #{@alt.id} " , style: "display: block;", remote: true %>
-
-                    <% end %>  
+                      <% end %>  
                   
                     <%= render alt %>
                   <% else %>
@@ -63,8 +61,16 @@
             <% if current_user.present? %>
               <% current_user.alt_favorites.each do |alt| %>
               <% alt = Alt.find_by(id: alt.alt_id) %>
-                <div id="alt" class="item">
+                <div id="alt favTab<%= alt.id %>" class="item">
                   <% if current_user.present? %>
+                    <% @fav_check = current_user.alt_favorites.where("alt_id": alt.id).first %>
+
+                      <% if !@fav_check.nil? && @fav_check.alt_id == alt.id %>
+                        <%=  link_to "",  "alts/#{alt.id}/unfavorite", id: "#{alt.id}_fav_tab",class: "favbtn fav-btn-show fa fa-heart fs-4 mt-0 mb-1 #{alt.id}" , style: "display: block;" , remote: true %>
+                      <% end %>  
+                      <%= link_to alt, "aria-label": alt.body do %>
+                        <%= image_tag alt.image_url(:small), caption: alt.title, alt: alt.alt_texts.pluck(:body).last,height: alt.image(:small).height, width: alt.image(:small).width, class: "border rounded image img-fluid w-100" %>
+                       <% end %>
                     <!--<% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
                     <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
@@ -157,6 +163,14 @@
  <script>
 $(document).ready( function() {
   console.log("test")
+
+   $('button[data-bs-toggle="tab"]').on('show.bs.tab', function(e) {
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+    var activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        $('#pills-tab button[href="' + activeTab + '"]').show();
+    }
  
 var favBtns = document.querySelectorAll(".favbtn");
 
@@ -164,6 +178,7 @@ var favBtns = document.querySelectorAll(".favbtn");
     console.log( $(this).attr("id").split("_")[0])
 
     var altID = $(this).attr("id").split("_")[0];
+    var favTabBtn = $(this).attr("id").split("_").length === 3 && $(this).attr("id").split("_")[2] === "tab" ;
     var hrefVal =  $(this).attr("href");
    //alert(hrefVal.split("/")[2])
     var action = hrefVal.split("/")[2]
@@ -175,17 +190,58 @@ var favBtns = document.querySelectorAll(".favbtn");
         url: hrefVal,
         data: {id : altID },
         async: false,
-         beforeSend: function () {
+       
+         beforeSend: function (req) {
+           var remove = false;
           if (action === "unfavorite") {
-            $(this).toggleClass("fa-heart-o");
-            $(this).attr("href",  "alts/" + altID + '/favorite');
+            //alert("Are you sure?")
+            if (favTabBtn === true) {
+              if (confirm('Are you sure?')) {
+                  alert('Removing')
+                  remove = true;
+                  $(this).parent().hide()
+
+
+              } else {
+                  alert('Canceling');
+                  req.abort();
+                  
+              }
+
+            } 
+
+          
+            if (favTabBtn === false ) {
+              $(this).toggleClass("fa-heart-o");
+              $(this).attr("href",  "alts/" + altID + '/favorite');
+              //$('#my_tabs').tabs('load', 1);
+              
+
+              $("pills-fav-tab").trigger('click');
+              $("#alt favTab"+altID).hide()
+              
+               $('#pills-fav-tab').click(function(){
+                 console.log($("#alt favTab"+altID))
+                 window.location.reload();
+                 // $('#tab'+($(this).parent('li').index()+1)+'-img').show(); 
+              });
+            }
+            
+            
+            
           } else if (action === "favorite"){
             $(this).removeClass("fa-heart-o");
             $(this).addClass("fa-heart");
             $(this).attr("href",  "alts/" + altID + '/unfavorite');
+
+
+            
+            window.location.reload();
+
           }
          },
           complete: function () {
+           
             console.log("Complete!");
           },
         success:function(){
@@ -193,6 +249,16 @@ var favBtns = document.querySelectorAll(".favbtn");
         }
       });
   });
+
+ $('#pills-all-tab').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+});
+$('#pills-fav-tab').click(function (e) {
+  //e.preventDefault();
+  //alert("fav tab")
+  //$(this).tab('show');
+});
 
 });
 
