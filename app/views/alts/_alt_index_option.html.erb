@@ -3,11 +3,7 @@
     <div class="col-8 mt-2 mx-auto ">
       <%= form_with url: '/alts', method: :get do |form| %>
         <div class="input-group input-group-lg">
-        <!-- <div class="d-block">
-          <%= form.label "Flag Reason:", style: "display: block" %>
-          <%= form.select(:flag_reason,  ['not bts related', 'inappropriate content', 'sasaeng content']) %>
-
-      </div>-->
+       
             <% if current_user.present? %>
           <%= form.select :filter, options_for_select([ ["Filter", ""], 
          
