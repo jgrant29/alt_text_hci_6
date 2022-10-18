@@ -16,21 +16,6 @@ class AltsController < ApplicationController
     elsif params[:tag].present?
       query = params[:tag].presence
       @alts = Alt.search(query, where:{verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: [true, nil]}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
-   
-
-    #elsif params[:filter].present?
-    #  query = params[:query].presence
-    #  filter = params[:filter].presence
-    #  puts  query
-    #  puts filter
-   #   @alt_favs = current_user.alt_favorites.pluck(:alt_id)
-    #  if query == ""
-    #    puts "blank"
-    #    @alts = Alt.search(query, where:{verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: [true, nil]}, fields:[:title, :tags, :body], operator: "or", page: params[:page], per_page: 20)
-     # else
-    #    @alts = Alt.where(id: @alt_favs, verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
-    #  end
-    #    puts @alts
     else
       @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
       @alts = Alt.where(verified: true, flag: [false, nil], banned_image: [false, nil], check_performed: true).order(created_at: :asc).page(params[:page]).per(100)
