@@ -3,17 +3,6 @@
     <div class="col-8 mt-2 mx-auto ">
       <%= form_with url: '/alts', method: :get do |form| %>
         <div class="input-group input-group-lg">
-        <!-- <div class="d-block">
-          <%= form.label "Flag Reason:", style: "display: block" %>
-          <%= form.select(:flag_reason,  ['not bts related', 'inappropriate content', 'sasaeng content']) %>
-
-      </div>-->
-            <% if current_user.present? %>
-          <%= form.select :filter, options_for_select([ ["Filter", ""], 
-         
-          "Favorites" 
-         ]), {}, { class: "btn btn-light  rounded" }  %>
-       <%end%>
           <%= form.label :query, "Search seven.army for:", class: "sr-only" %>
           <%= form.text_field :query, placeholder: params[:query] || "search for...", class: "form-control rounded" %>
           <%= form.submit "Search", class: "btn btn-primary", name: "search_home" %>
@@ -25,10 +14,9 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="pills-all-tab" data-bs-toggle="tab" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">All Seven Army</button>
         </li>
-        <!--
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="pills-fav-tab" data-bs-toggle="tab" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">My Seven Army <i class="fa fa-heart" aria-hidden="true" style="text-decoration: none"></i></button>
-        </li>-->
+        </li>
       </ul>
       <div class="tab-content favorite_seven" id="home-alts pills-tabContent">
         <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
@@ -40,18 +28,6 @@
              
                 <div id="alt_item_<% alt.id %>" class="item">
                   <% if current_user.present? %>
-
-                    <%if params[:filter].present? %>
-                      <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
-                      <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
-                      <% @fav_check = current_user.alt_favorites.where("alt_id": alt.id).first %>
-          
-                      <% if !@fav_check.nil? && @fav_check.alt_id == alt.id %>
-                        <%=  link_to "",  "alts/#{alt.id}/unfavorite", id: "#{alt.id}_fav",class: "favbtn fav-btn-show fa fa-heart fs-4 mt-0 mb-1 #{alt.id}" , style: "display: block;" , remote: true %>
-                          <%= render alt %>
-                      <% end %>  
-
-                    <%else%>
                     <% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
 
@@ -62,9 +38,8 @@
                       <% else %>
                         <%=  link_to "",  "alts/#{alt.id}/favorite", id: "#{alt.id}_fav", class: "favbtn unfav-btn-show fa fa-heart-o fs-4 mb-1 #{@alt.id} " , style: "display: block;", remote: true %>
                       <% end %>  
-                        <%= render alt %>
-                  <%end%>
                   
+                    <%= render alt %>
                   <% else %>
                     <%= render alt %>
                   <% end %>
@@ -81,7 +56,7 @@
           </div>
         </div>
         </div>
-        <!-- <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
           <div class="grid" id="alts_fav">
             <% if current_user.present? %>
               <% current_user.alt_favorites.each do |alt| %>
@@ -95,7 +70,7 @@
                       <% end %>  
                       <%= link_to alt, "aria-label": alt.body do %>
                         <%= image_tag alt.image_url(:small), caption: alt.title, alt: alt.alt_texts.pluck(:body).last,height: alt.image(:small).height, width: alt.image(:small).width, class: "border rounded image img-fluid w-100" %>
-                       <% end %>-->
+                       <% end %>
                     <!--<% @alt_fav_user_check = current_user.alt_favorites.map{|fav| fav.alt_id == alt.id ? fav.alt_id : nil}.compact.flatten.uniq %>
                     <% @alt_fav_user_check =  @alt_fav_user_check.pop %>
                     <% if @alt_fav_user_check.present? && @alt_fav_user_check == alt.id %>
@@ -114,14 +89,14 @@
                         <%= image_tag alt.image_url(:small), caption: alt.title, alt: alt.alt_texts.pluck(:body).last,height: alt.image(:small).height, width: alt.image(:small).width, class: "border rounded image img-fluid w-100" %>
                       <% end %>
                     <% end %>-->
-                <!--  <% else %>
+                  <% else %>
                     <div class="fs-1">Please log in or sign up to select favorites</div>
                   <% end %>
                 </div>
               <% end %>  
             <% end %>
           </div>
-        </div>-->
+        </div>
       </div>
     </div>
   </section>
