@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :async, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable, :authentication_keys => [:username]
 
@@ -10,6 +10,10 @@ class User < ApplicationRecord
   #has_many :verifcations, dependent: :destroy
   has_one  :moderator, dependent: :destroy
   validates_uniqueness_of :username
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 
 
   def after_confirmation
