@@ -11,10 +11,7 @@ class User < ApplicationRecord
   has_one  :moderator, dependent: :destroy
   validates_uniqueness_of :username
 
-  def send_devise_notification(notification, *args)
-    devise_mailer.send(notification, self, *args).deliver_later
-  end
-
+  
 
   def after_confirmation
     update(contributor: true, super_user: false, referee: false, flag: false)
