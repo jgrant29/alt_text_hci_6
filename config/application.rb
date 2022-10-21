@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "devise"
 require 'phashion'
 
 
@@ -18,6 +19,8 @@ module AltTextHci6
     config.active_storage.variant_processor = :vips
     config.action_view.image_loading = "lazy"
     config.active_job.queue_adapter = :sidekiq
+    config.action_mailer.deliver_later_queue_name = 'default'
+
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -27,6 +30,5 @@ module AltTextHci6
     config.time_zone = "Pacific Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 #! Create custom failure for turbo
 class TurboFailureApp < Devise::FailureApp
   def respond
@@ -48,7 +47,7 @@ Devise.setup do |config|
   config.mailer_sender = 'kate@seven.army'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  #config.mailer = "Devise::Async::Proxy"
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -333,3 +332,4 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+
